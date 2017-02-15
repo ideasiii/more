@@ -689,7 +689,7 @@
 
 <body>
 
-	<%@include file="../../more/home/console/menu.jsp"%>
+	<%@include file="../more/home/console/menu.jsp"%>
 
 	<!--PAGE CONTENT -->
 	<div id="content">
