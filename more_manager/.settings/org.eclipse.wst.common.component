@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="more_manager">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/manager"/>
+        <property name="context-root" value="more_manager"/>
+        <property name="java-output-path" value="/more_manager/build/classes"/>
+    </wb-module>
+</project-modules>
