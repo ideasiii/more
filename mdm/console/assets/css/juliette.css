@@ -1,0 +1,120 @@
+/* Global Styles */
+
+/* ------------------------------- */
+
+body {
+    background-color: #f8f8f8;
+  padding-top: 75px;
+  overflow: visible;
+}
+/* Wrappers */
+
+/* ------------------------------- */
+#wrap {
+  margin: 0 auto;
+}
+
+ #wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+
+/* Navigation */
+
+/* ------------------------------- */
+
+.navbar {
+  display: none;
+}
+
+.navbar-inverse {
+  /*/*background-color: #000;*/*/
+  border-color: #080808;
+}
+
+.navbar-fixed-top {
+  top: 0;
+  z-index: 1030;
+}
+
+.navbar-header:before,
+.navbar-header:after {
+  display: table;
+  content: " ";
+}
+
+.navbar-header:after {
+  clear: both;
+}
+
+.navbar-header:before,
+.navbar-header:after {
+  display: table;
+  content: " ";
+}
+
+.navbar-header:after {
+  clear: both;
+}
+
+@media (min-width: 768px) {
+  .navbar-header {
+    float: left;
+    margin-left: 60px; /*new*/
+  }
+}
+
+.navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand {
+    margin-left: -15px;
+  }
+}
+
+/* Top Right Navigation Dropdown Styles */
+
+.navbar-top-links .dropdown-username .styled-select.slate {
+   background: url(assets/img/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+   float:right;
+   }
+
+.navbar-top-links .dropdown-username .styled-select.slate {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px;
+    width: 268px;
+	color: #fff;
+	float:right;
+}
+
+.navbar-top-links .dropdown-username .semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   background-color: #3b8ec2;
+   float:right;
+}
+
+

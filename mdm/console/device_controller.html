@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Device Controller | MDM</title>
+
+<!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+
+<!-- GLOBAL STYLES -->
+<link rel="stylesheet"
+	href="assets/plugins/bootstrap/css/bootstrap_2.css" />
+<link rel="stylesheet" href="assets/css/main_2.css" />
+<link rel="stylesheet" href="assets/css/MoneAdmin.css" />
+<link rel="stylesheet"
+	href="assets/plugins/Font-Awesome/css/font-awesome_2.css" />
+<link rel="stylesheet"
+	href="assets/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
+<!--END GLOBAL STYLES -->
+
+<!-- jQuery -->
+<script src="assets/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+<style>
+
+/* dropdown */
+.styled-select {
+	background: url(assets/img/15xvbd5.png) no-repeat 96% 0;
+	height: 31.5px;
+	overflow: hidden;
+	width: 240px;
+	float: right;
+}
+
+.styled-select select {
+	background: transparent;
+	border: none;
+	font-size: 14px;
+	height: 31.5px;
+	padding: 5px;
+	width: 268px;
+}
+
+.semi-square {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.blue {
+	background-color: #428bca;
+}
+
+.blue select {
+	color: #fff;
+}
+/* end dropdown */
+
+/* add button */
+.button-add {
+	background-color: #428bca;
+	overflow: hidden;
+	border: none;
+	float: right;
+	margin-left: 6px;
+	margin-right: 8px;
+}
+
+.disable-button {
+	color: #c5c5c5;
+}
+/* end add button */
+
+/* Device info border*/
+.circle {
+	border: 15px solid;
+	border-color: #fff;
+	box-shadow: 4px 4px 12px 4px rgba(20%, 20%, 40%, 0.5);
+	border-top-right-radius: 500%;
+	border-bottom-right-radius: 500%;
+	border-top-left-radius: 500%;
+	border-bottom-left-radius: 500%;
+	float: left;
+	/*margin-rihgt: 100px;*/
+	padding: 4%;
+	margin: 5%;
+}
+
+.shelf-border {
+	display: block;
+	margin: 10px auto;
+	/*margin-left: 10%;*/
+	padding-left: 10%;
+	padding-top: 5%;
+	text-align: left;
+	/*border: 1px solid #efefef;*/
+	float: left;
+	text-align: left;
+}
+
+.shelf-heading {
+	display: inline-block;
+	margin: 10px auto;
+}
+
+.shelf-body {
+	display: block;
+	margin: 10px auto;
+	/*margin-left: 10%;*/
+	/*border: 1px solid #efefef;*/
+	float: left;
+	text-align: left;
+}
+
+.shelf {
+	border-bottom: 5px solid;
+	border-bottom-color: #fff;
+	box-shadow: 4px 4px 8px 4px rgba(20%, 20%, 40%, 0.5);
+	border-top-right-radius: 15%;
+	border-bottom-right-radius: 15%;
+	border-top-left-radius: 15%;
+	border-bottom-left-radius: 15%;
+	float: bottom;
+}
+
+/* end Device info border*/
+
+/* footer */
+.footer {
+	width: 100%;
+	background: #E0E0E0;
+}
+
+.footer .link_area {
+	background: #F0F0F0;
+	text-align: right;
+	padding: 30px 0;
+}
+
+.footer .link_area .link_group {
+	display: inline-block;
+	vertical-align: top;
+	margin: 10px 25px;
+}
+
+.footer .link_area .link_group .link {
+	text-align: left;
+	line-height: 1em;
+}
+
+.footer .link_area .link_group .link a {
+	color: #000;
+}
+
+.footer .link_area .link_group .link a:hover {
+	text-decoration: underline;
+}
+
+.footer .copyright_area {
+	text-align: right;
+	margin-right: 20px;
+	height: 40px;
+	line-height: 60px;
+	color: #9D9D9D;
+}
+/* end footer */
+
+/* device list */
+.device-btn {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	padding-top: 16px;
+	margin: 10px;
+	color: #444444;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+	-webkit-box-shadow: 0 0 0 1px #F8F8F8 inset, 0 0 0 1px #CCCCCC;
+	box-shadow: 0 0 0 1px #F8F8F8 inset, 0 0 0 1px #CCCCCC;
+}
+/* End device list */
+</style>
+
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<body class="padTop53 ">
+
+	<!-- MAIN WRAPPER -->
+	<div id="wrap">
+
+		<!-- HEADER SECTION -->
+		<div id="top">
+
+			<nav class="navbar navbar-inverse navbar-fixed-top "
+				style="padding-top: 10px;">
+
+				<!-- LOGO SECTION -->
+				<header class="navbar-header">
+					<div>
+						<a href="group_management.html" class="navbar-brand"> <img
+							width="100" style="padding-bottom: 5px;"
+							src="assets/img/more.png" alt="" />
+						</a>
+					</div>
+				</header>
+				<!-- END LOGO SECTION -->
+
+				<!-- CREATE GROUP -->
+				<div>
+					<button class="btn btn-info button-add semi-square"
+						data-toggle="modal" data-target="#AddGroup"
+						title="Create a new group">
+						<i class="fa fa-plus fa-lg" aria-hidden="true"></i> <span
+							class="sr-only">Create a new group</span>
+					</button>
+				</div>
+
+				<!--END CREATE GROUP -->
+
+				<!-- GROUP SELECT -->
+
+				<div class="styled-select blue semi-square">
+					<select>
+						<option>OOOO</option>
+						<option>XXXX</option>
+						<option>OXOX</option>
+						<option>OOXX</option>
+					</select>
+				</div>
+				<!--END GROUP SELECT -->
+
+			</nav>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="AddGroup" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H3">Create Group</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form">
+								<div class="form-group">
+									<label>Group Name</label> <input class="form-control"
+										placeholder="Enter your group name" />
+									<p class="help-block">Notification: Group name cannot be
+										changed.</p>
+								</div>
+								<div class="form-group">
+									<label>Login Account</label> <input class="form-control" />
+									<p class="help-block">(Must be less than 20 letters in
+										alphanumeric format.)</p>
+								</div>
+								<div class="form-group">
+									<label>Password</label> <input class="form-control" />
+									<p class="help-block">(Must be less than 20 letters in
+										alphanumeric format.)</p>
+								</div>
+								<div class="form-group">
+									<label>Max Number of Devices</label> <select
+										class="form-control">
+										<option>5</option>
+										<option>10</option>
+										<option>15</option>
+										<option>20</option>
+										<option>25</option>
+										<option>30</option>
+										<option>35</option>
+										<option>40</option>
+										<option>45</option>
+										<option>50</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label>Device Type</label> <select class="form-control">
+										<option>Android</option>
+
+									</select>
+								</div>
+
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-camera" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Turn Off / On Camera of This
+								Device</h4>
+						</div>
+						<div class="modal-body">Lorem ipsum dolor sit amet,
+							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. Duis aute irure dolor in reprehenderit in
+							voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+							officia deserunt mollit anim id est laborum.</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-danger"
+								style="margin-right: 60px;" data-dismiss="modal">Off</button>
+							<button type="button" class="btn btn-metis-2"
+								data-dismiss="modal">On</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-screen" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Turn Off / On Screen Lock of
+								This Device</h4>
+						</div>
+						<div class="modal-body">Lorem ipsum dolor sit amet,
+							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. Duis aute irure dolor in reprehenderit in
+							voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+							officia deserunt mollit anim id est laborum.</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-danger"
+								style="margin-right: 60px;" data-dismiss="modal">Off</button>
+							<button type="button" class="btn btn-metis-2" data-toggle="modal"
+								data-target="#screen-on" data-dismiss="modal">On</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="screen-on" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Set a Password to Lock Your
+								Screen</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form">
+								<div class="form-group">
+									<label>Screen Lock Password</label> <input class="form-control" />
+									<p class="help-block">(Must be less than 10 letters in
+										alphanumeric format.)</p>
+								</div>
+							</form>
+						</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-default"
+								style="margin-right: 60px;" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Confirm</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-mute" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Turn Off / On Mute of This
+								Device</h4>
+						</div>
+						<div class="modal-body">Lorem ipsum dolor sit amet,
+							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. Duis aute irure dolor in reprehenderit in
+							voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+							officia deserunt mollit anim id est laborum.</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-danger"
+								style="margin-right: 60px;" data-dismiss="modal">Off</button>
+							<button type="button" class="btn btn-metis-2"
+								data-dismiss="modal">On</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-wifi" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Grant Permission for
+								Accessing WiFi</h4>
+						</div>
+						<div class="modal-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<p></p>
+							<form role="form">
+								<div class="form-group">
+									<label>SSID</label> <input class="form-control" />
+									<p class="help-block">1234</p>
+								</div>
+								<div class="form-group">
+									<label>Password</label> <input class="form-control" />
+									<p class="help-block">1234</p>
+								</div>
+							</form>
+						</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-default"
+								style="margin-right: 60px;" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Confirm</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-content" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Sent the Content to This
+								Device</h4>
+						</div>
+						<div class="modal-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<p></p>
+							<form role="form">
+								<div class="form-group">
+									<br> <label>Your Content List</label>
+									<div class="box">
+										<div class="body"
+											style="margin-left: 40px; overflow-x: hidden; overflow-y: scroll; height: 180px;">
+											<div class="checkbox anim-checkbox" title="filename_demo1">
+												<input type="checkbox" id="ch1" class="success" /> <label
+													for="ch1">filename_demo1</label>
+											</div>
+											<span class="sr-only">filename_demo1</span>
+											<div class="checkbox anim-checkbox" title="filename_demo2">
+												<input type="checkbox" id="ch2" class="success" /> <label
+													for="ch2">filename_demo2</label>
+											</div>
+											<span class="sr-only">filename_demo2</span>
+											<div class="checkbox anim-checkbox" title="filename_demo3">
+												<input type="checkbox" id="ch3" class="success" /> <label
+													for="ch3">filename_demo3</label>
+											</div>
+											<span class="sr-only">filename_demo3</span>
+											<div class="checkbox anim-checkbox" title="filename_demo4">
+												<input type="checkbox" id="ch4" class="success" /> <label
+													for="ch4">filename_demo4</label>
+											</div>
+											<span class="sr-only">filename_demo4</span>
+											<div class="checkbox anim-checkbox" title="filename_demo5">
+												<input type="checkbox" id="ch5" class="success" /> <label
+													for="ch5">filename_demo5</label>
+											</div>
+											<span class="sr-only">filename_demo5</span>
+											<div class="checkbox anim-checkbox" title="filename_demo6">
+												<input type="checkbox" id="ch6" class="success" /> <label
+													for="ch6">filename_demo6</label>
+											</div>
+											<span class="sr-only">filename_demo6</span>
+										</div>
+									</div>
+									<p class="help-block"></p>
+								</div>
+							</form>
+						</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-default"
+								style="margin-right: 60px;" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Confirm</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-app" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Install or Uninstall Apps in
+								This Device</h4>
+						</div>
+						<div class="modal-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+
+							<p></p>
+							<div id="div-3" class="accordion-body collapse in body">
+								<div class="row">
+
+									<div class="col-lg-5">
+										<div class="form-group">
+											<div class="input-group"></div>
+										</div>
+										<div class="form-group">
+											<label>Your Application Management List</label> <select
+												id="box1View" multiple="multiple" class="form-control"
+												size="9">
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501649">Facebook</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501497">Gmail</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501053">Google Maps</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="500001">Line</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501227">Skype</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501610">Todoist</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501514">Twitter</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501656">Word</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501050">Yahoo</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501075">YouTube</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501493">QR Reader</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501562">Messenger</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="500676">Cloud</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="501460">Calendar</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="500004">aNote</option>
+												<option
+													style="background-image: url(assets/img/Apps-Android-icon-mini.png); background-repeat: no-repeat; background-position: bottom left; padding-left: 30px;"
+													value="500336">Dropbox</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-lg-2" style="text-align: right;">
+										<div class="btn-group" style="white-space: normal;">
+											<button id="to2" type="button" class="btn btn-default">
+												<i class="icon-plus"></i>
+											</button>
+											<button id="allTo2" type="button" class="btn btn-default">
+												<span>Add all</span>
+											</button>
+											<button id="to1" type="button" class="btn btn-default">
+												<i class=" icon-minus icon-white"></i>
+											</button>
+											<button id="allTo1" type="button" class="btn btn-default">
+												<span>Remove all</span>
+											</button>
+										</div>
+									</div>
+
+									<div class="col-lg-5">
+										<div class="form-group">
+											<label>Implementation</label> <select id="box2View"
+												multiple="multiple" class="form-control" size="5"></select>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-primary"
+								style="margin-right: 60px;" data-dismiss="modal">Install</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Uninstall</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-record" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Record This Device</h4>
+						</div>
+						<div class="modal-body">Lorem ipsum dolor sit amet,
+							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. Duis aute irure dolor in reprehenderit in
+							voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+							officia deserunt mollit anim id est laborum.</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-default"
+								style="margin-right: 60px;" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal" data-toggle="modal" data-target="#loading">Record</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-restore" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Restore This Device</h4>
+						</div>
+						<div class="modal-body">Lorem ipsum dolor sit amet,
+							consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+							nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. Duis aute irure dolor in reprehenderit in
+							voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+							Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+							officia deserunt mollit anim id est laborum.</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-default"
+								style="margin-right: 60px;" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal" data-toggle="modal" data-target="#loading">Restore</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="modal fade" id="con-format" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Format This Device</h4>
+						</div>
+						<div class="modal-body">
+							<span><i
+								class="fa fa-exclamation-triangle fa-4x text-danger fa-pull-left fa-border"></i>Lorem
+								ipsum dolor sit amet, consectetur adipisicing elit, sed do
+								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+								enim ad minim veniam, quis nostrud exercitation ullamco laboris
+								nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+								in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+								nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+								sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+						</div>
+						<div
+							style="border-top: 1px solid #e5e5e5; padding: 15px 15px 15px; text-align: center;">
+							<button type="button" class="btn btn-default"
+								style="margin-right: 60px;" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal" data-toggle="modal" data-target="#loading">Format</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12">
+			<div class="modal" id="loading" tabindex="-1"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div style="text-align: center; padding-top: 30%;">
+					<i class="fa fa-spinner fa-spin fa-3x fa-fw text-muted"></i> <span
+						class="sr-only">Loading...</span>
+				</div>
+			</div>
+		</div>
+		
+		<!-- END HEADER SECTION -->
+
+
+		<!--PAGE CONTENT -->
+		<div id="content">
+
+			<div class="inner" style="min-height: 700px;">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1>Device Controller</h1>
+					</div>
+				</div>
+				<hr />
+
+				<!-- CONTROLLER  SECTION -->
+
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="panel panel-default">
+							<div class="panel-heading">Click to control the device.</div>
+
+							<div class="demo-container">
+								<div id="placeholderRT" class="demo-placeholder"></div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="col-lg-4">
+						<br>
+
+						<div class="row">
+							<div class="col-lg-12">
+								<div style="text-align: center;">
+
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-camera"> <i class="icon-camera icon-2x"></i>
+										<span> Camera</span> <span class="label btn-metis-2">on</span>
+									</a> 
+									
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-screen"> <i
+										class="icon-lock icon-2x"></i> <span>Screen Lock</span> <span
+										class="label btn-danger">off</span>
+									</a> 
+									
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-mute"> <i
+										class="icon-volume-off icon-2x"></i> <span>Mute</span> <span
+										class="label btn-metis-2">on</span>
+									</a> 
+									
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-wifi"> <i class="icon-rss icon-2x"></i>
+										<span>Wi-Fi</span> <span class="label label-warning">service</span>
+									</a>
+									
+									 <a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-content"> <i
+										class="icon-file-text icon-2x"></i> <span>Content</span> <span
+										class="label label-warning">service</span>
+									</a> 
+									
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-app"> <i
+										class="icon-android icon-2x"></i> <span>Application</span> <span
+										class="label label-warning">service</span>
+									</a>
+									
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-record"> <i
+										class="icon-signin icon-2x"></i> <span>Record</span> <span
+										class="label btn-metis-4">system</span>
+									</a>
+									
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-restore"> <i
+										class="icon-exchange icon-2x"></i> <span>Restore</span> <span
+										class="label btn-metis-4">system</span>
+									</a>
+									
+									<a onmouseover="this.style.cursor='pointer'" class="quick-btn" data-toggle="modal"
+										data-target="#con-format"> <i
+										class="fa fa-dot-circle-o  fa-2x"></i> <span>Format</span> <span
+										class="label btn-metis-4">system</span>
+									</a>
+									
+									<a class="quick-btn"> <i
+										class="icon-cog icon-2x disable-button"></i> <span
+										class="disable-button"> New</span> <span
+										class="label label-default">coming</span>
+									</a>
+									
+									<a class="quick-btn"> <i
+										class="icon-map-marker icon-2x disable-button"></i> <span
+										class="disable-button"> New</span> <span
+										class="label label-default">coming</span>
+									</a>
+
+								</div>
+							</div>
+						</div>
+
+						<!--END CONTROLLER SECTION -->
+
+						<hr />
+						<br>
+						<!--DEVICE INFO AND APP LIST -->
+
+
+
+						<div class="circle"
+							style="text-align: center; position: relative;">
+							<div class="col-md-8" style="float: right;">
+								<img src="assets/img/phone.png" class="img-responsive"
+									style="max-width: 80%; padding: 15%; margin-left: 25%; vertical-align: middle">
+
+							</div>
+
+
+							<div class="col-md-12"
+								style="text-align: left; width: 25%; float: left; padding-top: 15%; position: absolute;">
+								<h5 style="display: inline-block;">
+									MODEL:ASUS_TOOF<a class="btn" href=""> <i
+										class="fa fa-refresh fa-lg fa-fw" aria-hidden="true" title="Refresh"></i><span
+										class="sr-only">Refresh</span></a> IMSI:466015881503938<br>2016/05/23
+									10:50:08
+								</h5>
+								<br> <br> <i class="fa fa-battery-3 fa-1x"
+									aria-hidden="true"></i><span> </span><span class="pull-right"><small>70%</small></span>
+
+								<div class="progress-mini mini">
+									<div class="progress-bar progress-bar-info" style="width: 70%"></div>
+								</div>
+
+								<i class="fa fa-file-text-o fa-1x" aria-hidden="true"></i><span>
+								</span><span class="pull-right"><small>50%</small></span>
+
+								<div class="progress-mini mini">
+									<div class="progress-bar progress-bar-warning"
+										style="width: 50%"></div>
+
+								</div>
+							</div>
+							<div style="clear: both;"></div>
+
+						</div>
+
+						<!--APP LIST -->
+						<div class="row">
+
+							<div class="shelf-border">
+								<div class="shelf-heading">
+
+									<h3>
+										<span class="fa-stack "> <i
+											class="fa fa-circle fa-stack-2x"></i> <i
+											class="fa fa-th-large fa-stack-1x fa-inverse"></i></span>
+										APPlication List
+									</h3>
+								</div>
+								<br>
+
+								<div class="shelf-body">
+
+									<div id="myCarousel" class="carousel slide"
+										data-ride="carousel" data-interval="false">
+
+										<div class="carousel-inner" role="listbox">
+											<div class="item active">
+
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+
+												<div style="clear: both;"></div>
+
+												<hr class="shelf">
+
+
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+
+												<div style="clear: both;"></div>
+
+												<hr class="shelf">
+
+											</div>
+											<div style="clear: both;"></div>
+
+
+											<!--APP LIST 2 -->
+
+											<div class="item text-primary">
+
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+
+												<div style="clear: both;"></div>
+
+												<hr class="shelf">
+
+
+												<div style="width: 90px; text-align: center; float: left;">
+													<img src="assets/img/Apps-Android-icon.png" vspace="1"
+														class="img-responsive"
+														style="width: 60px; text-align: center;"
+														title="android app"><span
+														style="text-align: center;">android app</span>
+												</div>
+
+
+												<div style="clear: both;"></div>
+
+												<hr class="shelf">
+											</div>
+										</div>
+
+										<!-- Controls -->
+										<a class="left carousel-control"
+											style="margin-left: -18%; color: #d5d7e8; text-shadow: 0 2px 3px rgba(0, 0, 0, 4); background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 100%);"
+											href="#myCarousel" role="button" data-slide="prev"> <span
+											class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+											<span class="sr-only">Previous</span>
+										</a> <a class="right carousel-control"
+											style="margin-right: -18%; color: #d5d7e8; text-shadow: 0 2px 3px rgba(0, 0, 0, 4); background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 100%);"
+											href="#myCarousel" role="button" data-slide="next"> <span
+											class="glyphicon glyphicon-chevron-right"
+											style="margin-left: -45%;" aria-hidden="true"></span> <span
+											class="sr-only">Next</span>
+										</a>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--END APP LIST -->
+						<!--END DEVICE INFO AND APP LIST -->
+
+
+						<!--LOCATION MAP  -->
+
+
+
+						<div class="col-lg-6">
+							<div class="box">
+								<header>
+									<h5>
+										<i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+										Location
+									</h5>
+								</header>
+
+								<div class="body">
+
+									<div class="panel-body" align="center"
+										style="padding-left: 10%; padding-right: 8%;">
+										<iframe
+											src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57832.35339693552!2d121.45923438641633!3d25.050287867406276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abedcf6ecf19%3A0xfc197c0f5e10a689!2z6LOH562W5pyDX-aZuuaFp-e2sui3r-mAmuioiuezu-e1seeglOeptuaJgA!5e0!3m2!1szh-TW!2stw!4v1454239312138"
+											width="100%" height="400" scrolling=auto style="border: 0"></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!--END LOCATION MAP  -->
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!--END PAGE CONTENT -->
+	</div>
+	<!--FOOTER -->
+	<footer class="footer">
+		<div class="link_area">
+			<dl class="link_group">
+				<dd class="link">
+					<a href="">Document</a>
+				</dd>
+			</dl>
+			<dl class="link_group">
+				<dd class="link">
+					<a href="">Privacy Policy</a>
+				</dd>
+			</dl>
+			<dl class="link_group">
+				<dd class="link">
+					<a href="">Contact Us</a>
+				</dd>
+			</dl>
+			<div class="copyright_area">Copyright ©</div>
+		</div>
+
+	</footer>
+
+	<!--END FOOTER -->
+
+
+	<!--END MAIN WRAPPER -->
+
+	<!-- GLOBAL SCRIPTS -->
+	<script src="assets/plugins/jquery-2.0.3.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<!-- END GLOBAL SCRIPTS -->
+	
+	<!-- PAGE LEVEL SCRIPT-->
+	<script src="assets/js/jquery-ui.min.js"></script>
+	<script src="assets/plugins/uniform/jquery.uniform.min.js"></script>
+	<script
+		src="assets/plugins/inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
+	<script src="assets/plugins/chosen/chosen.jquery.min.js"></script>
+	<script src="assets/plugins/colorpicker/js/bootstrap-colorpicker.js"></script>
+	<script src="assets/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+	<script src="assets/plugins/validVal/js/jquery.validVal.min.js"></script>
+	<script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
+	<script src="assets/plugins/daterangepicker/moment.min.js"></script>
+	<script src="assets/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="assets/plugins/timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script src="assets/plugins/switch/static/js/bootstrap-switch.min.js"></script>
+	<script
+		src="assets/plugins/jquery.dualListbox-1.3/jquery.dualListBox-1.3.min.js"></script>
+	<script src="assets/plugins/autosize/jquery.autosize.min.js"></script>
+	<script src="assets/plugins/jasny/js/bootstrap-inputmask.js"></script>
+	<script src="assets/js/formsInit.js"></script>
+	<script>
+		$(function() {
+			formInit();
+		});
+	</script>
+
+	<!--END PAGE LEVEL SCRIPT-->
+
+</body>
+</html>
