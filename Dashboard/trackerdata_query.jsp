@@ -689,7 +689,9 @@
 
 <body>
 
-	<%@include file="/home/console/menu.jsp"%>
+
+	<%@include file="../home/console/menu.jsp"%>
+	
 
 	<!--PAGE CONTENT -->
 	<div id="content">
@@ -699,7 +701,6 @@
 
 				<div class="row" style="margin: 5% 10%;">
 					<div class="col-lg-12" style="padding: 0px 1.7%;">
-
 
 
 						<div class="body">
