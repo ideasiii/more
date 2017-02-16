@@ -5,9 +5,9 @@
 <%@page import=" java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
 <%@ page import="mdmjava.*"%>
-<%@ page import="sdk.ideas.More"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -618,7 +618,7 @@
 	<!-- MAIN WRAPPER -->
 	<div id="wrap" style="display: table; width: 100%; height: 100%;">
 
-		<jsp:include page="../../more2/console/menu.jsp"></jsp:include>
+		<%@include file="../home/menu.jsp"%>
 
 		<!-- HEADER SECTION -->
 		<div id="top">
