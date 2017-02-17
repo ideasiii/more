@@ -618,7 +618,8 @@
 	<!-- MAIN WRAPPER -->
 	<div id="wrap" style="display: table; width: 100%; height: 100%;">
 
-		<%@include file="../home/menu.jsp"%>
+	<%@include file="/home/console/menu.jsp"%>
+
 
 		<!-- HEADER SECTION -->
 		<div id="top">

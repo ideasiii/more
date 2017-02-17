@@ -1,3 +1,4 @@
+<%@ page import="sdk.ideas.More"%>
 <%
 		     String strEmail = (String) session.getAttribute("Email");
 		    final Integer groupLevel = (Integer) session.getAttribute("Group Level");
