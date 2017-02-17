@@ -71,7 +71,7 @@
 									<li class="menu-header-li"><a href=""
 										class="menu-header-a"> PLATFORM </a>
 										<ul class="dropdown-menu-container">
-											<li class="dropdown-menu-li"><a href="">MORE MDM</a></li>
+											<li class="dropdown-menu-li"><a href="/more/mdm/console/group_management.jsp">MORE MDM</a></li>
 											<li class="dropdown-menu-li"><a href="">MORE API</a></li>
 										</ul></li>
 
