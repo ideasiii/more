@@ -624,19 +624,7 @@
 		<!-- HEADER SECTION -->
 		<div id="top">
 
-			<nav class="navbar navbar-inverse navbar-fixed-top "
-				style="padding-top: 7px;">
 
-				<!-- LOGO SECTION -->
-				<header class="navbar-header">
-					<div>
-						<a href="group_management.jsp" class="navbar-brand"> <img
-							height="55" style="padding-bottom: 7px; margin-left: 35px;"
-							src="assets/img/mdm_logo_web67t4.png" alt="" />
-						</a>
-					</div>
-				</header>
-				<!-- END LOGO SECTION -->
 
 				<!-- CREATE GROUP -->
 				<div>
@@ -655,7 +643,7 @@
 				
 				
 
-			</nav>
+			
 		</div>
 		<!--END GROUP SELECT -->
 
