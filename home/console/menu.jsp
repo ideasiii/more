@@ -1,7 +1,7 @@
 <%@ page import="sdk.ideas.More"%>
 <%
 		     String strEmail = (String) session.getAttribute("Email");
-		    final Integer groupLevel = (Integer) session.getAttribute("Group Level");
+		     Integer groupLevel = (Integer) session.getAttribute("Group Level");
 
 		    boolean bLogined = false;
 		    boolean bManager = false;

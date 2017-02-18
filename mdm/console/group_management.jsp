@@ -165,9 +165,9 @@
 	overflow: hidden;
 	border: none;
 	float: right;
-	margin-left: 6px;
-	margin-right: 8px;
-	margin-top: 6.5px;
+	margin-left: 10px;
+	margin-right: 20px;
+	margin-top: 4px;
 }
 
 /* end add button */
@@ -573,8 +573,6 @@
 .footer {
 	width: 100%;
 	background: rgba(86, 99, 100, 1);
-	/*display: table-row;*/
-	height:20%;
 }
 
 .footer .link_area {
@@ -620,32 +618,33 @@
 
 	<%@include file="/home/console/menu.jsp"%>
 
+<%
+final String strContextPath = request.getContextPath();
+strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
+  String strGroupId = request.getParameter(Common.GROUP_ID);
+  String strShowContent = request.getParameter("SHOW_CONTENT");
+  String strShowApp = request.getParameter("SHOW_APP");
+	String strShowGN = request.getParameter(Common.GROUP_NAME);
+  String strAccountV = "";
+
+  ArrayList<String> listPermissionName = new ArrayList<String>();
+
+  ArrayList<Mdm.PermissionData> listPermission = new ArrayList<Mdm.PermissionData>();
+  Mdm.PermissionData permissionData = null;
+  String strUserId_Android = null;
+
+  Mdm mdm = new Mdm();
+
+  if (!mdm.conDB())
+  {
+		response.sendRedirect("error.html"); //insert error page 
+		return;
+  }
+
+%>
 
 		<!-- HEADER SECTION -->
-		<div id="top">
-
-
-
-				<!-- CREATE GROUP -->
-				<div>
-					<button class="btn btn-info button-add semi-square"
-						data-toggle="modal" data-target="#AddGroup"
-						title="Create a new group">
-						<i class="fa fa-plus fa-lg" aria-hidden="true"></i> <span
-							class="sr-only">Create a new group</span>
-					</button>
-				</div>
-				<!--END CREATE GROUP -->
-
-				<!-- GROUP SELECT -->
-				<%@include file="groupBar.jsp"%>
-				
-				
-				
-
-			
-		</div>
-		<!--END GROUP SELECT -->
+		
 
 		<div class="col-lg-12">
 			<div class="modal fade" id="AddGroup" tabindex="-1" role="dialog"
@@ -1252,10 +1251,12 @@
 
 		<div id="content">
 
-			<div class="inner">
+			<div class="inner" style="margin-top:25px; min-height: 850px; ">
 				<div class="row">
 					<div class="col-lg-12">
+					<br>
 						<h1>Group Management</h1>
+						<br>
 					</div>
 				</div>
 
@@ -1265,12 +1266,126 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="panel panel-default">
+
+							<!-- CREATE GROUP -->
+							<button class="btn btn-info button-add semi-square"
+								data-toggle="modal" data-target="#AddGroup"
+								title="Create a new group">
+								<i class="fa fa-plus fa-lg" aria-hidden="true"></i> <span
+									class="sr-only">Create a new group</span>
+							</button>
+							<!--END CREATE GROUP -->
+
+							<!-- GROUP SELECT -->
+							<%
+							    int nCount = mdm.queryPermission(strEmail, listPermission);
+							    //nCount = 0;
+							    if (0 < nCount)
+							    {
+									Iterator<Mdm.PermissionData> itPD = null;
+									itPD = listPermission.iterator();
+
+									while (itPD.hasNext())
+									{
+									    permissionData = itPD.next();
+									    listPermissionName.add(permissionData.permission);
+									    if (permissionData.permission.trim().equals("android"))
+									    {
+										strUserId_Android = permissionData.user_id;
+
+										if (!mdm.conTypeDB(0))
+										{
+										    response.sendRedirect("error.html"); //insert error page 
+										    return;
+										}
+
+										/********** group info**************/
+
+										Iterator<Mdm.GroupData> itGD = null;
+										Mdm.GroupData groupData = null;
+
+										ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
+										int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+										//out.println(nGCount);
+
+										itGD = listGroup.iterator();
+							%>
+							<div class="styled-select blue semi-square"
+								style="margin-top: 4px;">
+								<select id="groupBar" name="groupBar"
+									onchange="location.href=this.options[this.selectedIndex].value">
+
+									<%
+									    if (null == strGroupId || null != strShowContent || null != strShowApp)
+												{
+									%>
+									<option value="#">Select Group</option>
+									<%
+									    }
+
+												while (itGD.hasNext())
+												{
+												    groupData = itGD.next();
+												    strAccountV = strAccountV + groupData.account;
+												    if (itGD.hasNext())
+												    {
+													strAccountV += ',';
+												    }
+
+												    if (null != strGroupId && (strGroupId.trim().equals(groupData.group_id.trim())))
+												    {
+									%>
+									<option selected
+										value="device_management.jsp?<%=Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
+									<%
+									    }
+												    else
+												    {
+									%>
+
+									<option
+										value="device_management.jsp?<%=Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
+
+									<%
+									    }
+												}
+											    }
+
+											    ///add conTpyeBD else type DB
+
+											} // end while(itPD.hasNext())
+											/********* end group info************/
+									%>
+
+								</select>
+							</div>
+
+							<%
+							    } // if
+							    else
+							    {
+							%>
+							<div class="styled-select blue semi-square">
+								<select><option>Please Create a Group</select>
+							</div>
+							<%
+							    }
+							%>
+
+							<%
+							    Iterator<Mdm.GroupData> itGD = null;
+							    Mdm.GroupData groupData = null;
+
+							    ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
+							    int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+
+							    itGD = listGroup.iterator();
+							%>
+							<!--END GROUP SELECT -->
+
 							<div class="panel-heading">Welcome, please select a group
 								to start.</div>
 
-							<div class="demo-container">
-								<div id="placeholderRT" class="demo-placeholder"></div>
-							</div>
 						</div>
 					</div>
 					<!--END CHAT SECTION -->

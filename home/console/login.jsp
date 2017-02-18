@@ -36,7 +36,8 @@
 <!-- END PAGE LEVEL STYLES -->
 
 <!-- JavaScript -->
-<script src="js/validation.js"></script>
+<script src="js/validation.js">
+</script>
 
 
 <style>

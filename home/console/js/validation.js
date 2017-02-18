@@ -1,5 +1,4 @@
-$.getScript('/more2/console/js/blowfish.js', function()
-{
+
 
 function Trim(x) {
 	return x.replace(/^\s+|\s+$/gm, '');
@@ -58,11 +57,10 @@ function checkAccountListData(formName) {
 }
 
 function checkLoginData(formName){
+	
 	var form = document.getElementById(formName);
 	var errMsg = '';
-	var encrEmail = '';
-	var encrPassword = '';
-	re = /\W/;
+
 	
 	if (Trim(form.inputEmail.value) == '')
 		errMsg += "E-mail account is required !!\n";
@@ -72,8 +70,6 @@ function checkLoginData(formName){
 	
 	
 	if (errMsg == '') {
-		
-		
 		form.submit();
 		return true;
 	}
@@ -82,9 +78,3 @@ function checkLoginData(formName){
 }
 
 
-
-
-
-
-
-});

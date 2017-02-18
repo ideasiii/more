@@ -647,11 +647,11 @@
 /* footer */
 .footer {
 	width: 100%;
-	background: #E0E0E0;
+	background: rgba(86, 99, 100, 1);
 }
 
 .footer .link_area {
-	background: #F0F0F0;
+	background: rgba(86, 99, 100, 1);
 	text-align: right;
 	padding: 30px 0;
 }
@@ -668,7 +668,7 @@
 }
 
 .footer .link_area .link_group .link a {
-	color: #000;
+	color: #fff;
 }
 
 .footer .link_area .link_group .link a:hover {
@@ -697,7 +697,7 @@
 	<div id="content">
 		<div class="inner" style="padding: 0;">
 			<div id="intro"
-				style="padding: 50px 0px; min-height: 700px; background-color: #8f8f8f;">
+				style="padding: 50px 0px; min-height: 900px; background-color: #8f8f8f;">
 
 				<div class="row" style="margin: 5% 10%;">
 					<div class="col-lg-12" style="padding: 0px 1.7%;">
@@ -878,7 +878,28 @@
 		//]]>
 	</script>
 	<!--END PAGE LEVEL SCRIPT-->
-
+<!--FOOTER -->
+	<footer class="footer">
+		<div class="link_area">
+			<dl class="link_group">
+				<dd class="link">
+					<a href="">Document</a>
+				</dd>
+			</dl>
+			<dl class="link_group">
+				<dd class="link">
+					<a href="">Privacy Policy</a>
+				</dd>
+			</dl>
+			<dl class="link_group">
+				<dd class="link">
+					<a href="">Contact Us</a>
+				</dd>
+			</dl>
+			<div class="copyright_area">Copyright ©</div>
+		</div>
+	</footer>
+	<!--END FOOTER -->
 </body>
 </html>
 <%
