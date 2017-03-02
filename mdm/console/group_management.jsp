@@ -620,11 +620,11 @@
 
 <%
 final String strContextPath = request.getContextPath();
-strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
-  String strGroupId = request.getParameter(Common.GROUP_ID);
+  strEmail = "juliettechien@iii.org.tw";//request.getParameter(Mdm.Common.USER_EMAIL);
+  String strGroupId = request.getParameter(Mdm.Common.GROUP_ID);
   String strShowContent = request.getParameter("SHOW_CONTENT");
   String strShowApp = request.getParameter("SHOW_APP");
-	String strShowGN = request.getParameter(Common.GROUP_NAME);
+	String strShowGN = request.getParameter(Mdm.Common.GROUP_NAME);
   String strAccountV = "";
 
   ArrayList<String> listPermissionName = new ArrayList<String>();
@@ -661,20 +661,20 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 								id="formAddGroup">
 								<input name="accountList" id="accountList"
 									value="<%=strAccountV%>" type="hidden"> <input
-									name="<%=Common.USER_EMAIL%>" id="<%=Common.USER_EMAIL%>"
+									name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
 									type="hidden" value="<%=strEmail%>" /> <input
 									name="userId_Android" id="userId_Android" type="hidden"
 									value="<%=strUserId_Android%>">
 								<div class="form-group">
 									<label>Group Name</label> <input class="form-control"
-										name="<%=Common.GROUP_NAME%>"
+										name="<%=Mdm.Common.GROUP_NAME%>"
 										placeholder="Enter your group name" />
 									<p class="help-block" style="color: #b94a48;">Notification:
 										Group name cannot be changed.</p>
 								</div>
 								<div class="form-group">
 									<label>Login Account</label> <input class="form-control"
-										name="<%=Common.ACCOUNT%>" onchange="showBtnV('formAddGroup')" />
+										name="<%=Mdm.Common.ACCOUNT%>" onchange="showBtnV('formAddGroup')" />
 									<button id="btnV" type="button"
 										class="btn btn-xs btn-grad btn-default"
 										style="margin-top: 10px;"
@@ -687,13 +687,13 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 								</div>
 								<div class="form-group">
 									<label>Password</label> <input class="form-control"
-										name="<%=Common.PASSWORD%>" />
+										name="<%=Mdm.Common.PASSWORD%>" />
 									<p class="help-block">(Must be less than 20 letters in
 										alphanumeric format.)</p>
 								</div>
 								<div class="form-group">
 									<label>Max Number of Devices</label> <select
-										name="<%=Common.MAXIMUM%>" class="form-control">
+										name="<%=Mdm.Common.MAXIMUM%>" class="form-control">
 										<option value="5">5</option>
 										<option value="10">10</option>
 										<option value="15">15</option>
@@ -709,7 +709,7 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 
 								<div class="form-group">
 									<label>Device Type</label> <select
-										name="<%=Common.PERMISSION%>" id="<%=Common.PERMISSION%>"
+										name="<%=Mdm.Common.PERMISSION%>" id="<%=Mdm.Common.PERMISSION%>"
 										class="form-control">
 										<%
 										    for (int i = 0; i < listPermissionName.size(); ++i) {
@@ -748,9 +748,9 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 								id="formEditGroup">
 								<input name="accountList" id="accountList"
 									value="<%=strAccountV%>" type="hidden"> <input
-									name="<%=Common.USER_EMAIL%>" id="<%=Common.USER_EMAIL%>"
+									name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
 									type="hidden" value="<%=strEmail%>" /> <input
-									name="<%=Common.GROUP_ID%>" id="<%=Common.GROUP_ID%>"
+									name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
 									type="hidden" value="<%=strGroupId%>" />
 								<div class="form-group">
 									<label>Login Account</label> <input name="GroupEditAccount"
@@ -817,9 +817,9 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 						</div>
 						<form action="pDeleteGroup.jsp" method="post"
 							name="formDeleteGroup" id="formDeleteGroup">
-							<input name="<%=Common.USER_EMAIL%>" id="<%=Common.USER_EMAIL%>"
+							<input name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
 								type="hidden" value="<%=strEmail%>" /> <input
-								name="<%=Common.GROUP_ID%>" id="<%=Common.GROUP_ID%>"
+								name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
 								type="hidden" value="<%=strGroupId%>" />
 							<div class="modal-body">
 								<span>You have selected to delete "<span
@@ -884,13 +884,15 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 																
 																ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
 																int nACount = mdm.queryApp(strGroupId, listApp);
-
+																//out.println(nACount);
+																
 																itAD = listApp.iterator();
 																while (itAD.hasNext()) {
 
 																	appData = itAD.next();
 																	strAppIconPath = strContextPath + appData.app_icon;
-	
+																	//out.println(strAppIconPath);
+																	
 																	if (null != strGroupId && (strGroupId.trim().equals(appData.group_id.trim()))) {
 													%>
 													<tr class="odd gradeA">
@@ -949,7 +951,7 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 							<form role="form" action="pAddApp.jsp" method="post"
 								enctype="multipart/form-data" name="formUploadApp"
 								id="formUploadApp">
-								<input name="<%=Common.GROUP_ID%>" id="<%=Common.GROUP_ID%>"
+								<input name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
 									type="hidden" value="" /> <input name="userId_Android"
 									type="hidden" value="<%=strUserId_Android%>" />
 
@@ -965,7 +967,7 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 										<div
 											class="fileupload-preview fileupload-exists thumbnail form-group"
 											style="width: 50px; height: 50px; padding: 0; border: 0; margin-bottom: 10px;"></div>
-										<input name="<%=Common.APP_ICON%>" id="inputIcon"
+										<input name="<%=Mdm.Common.APP_ICON%>" id="inputIcon"
 											style="margin-left: 20px;" type="file"
 											onChange="validateAppIcon(this.value)" />
 
@@ -973,27 +975,27 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 									<br>
 									<div class="fileupload fileupload-new">
 										<label class="control-label" style="margin-left: 20px;">File
-											Input</label> <input name="<%=Common.APK_FILE_NAME%>" id="inputAPK"
+											Input</label> <input name="<%=Mdm.Common.APK_FILE_NAME%>" id="inputAPK"
 											type="file" style="margin-left: 20px;"
 											onChange="validateAPK(this.value)" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label>App Name</label> <input name="<%=Common.APP_NAME%>"
+									<label>App Name</label> <input name="<%=Mdm.Common.APP_NAME%>"
 										class="form-control" style="width: 40%;" maxlength="10" />
 								</div>
 								<div class="form-group">
-									<label>Edition</label> <input name="<%=Common.EDITION%>"
+									<label>Edition</label> <input name="<%=Mdm.Common.EDITION%>"
 										class="form-control" style="width: 40%;" maxlength="8" />
 								</div>
 								<div class="form-group">
 									<label>Description</label> <input
-										name="<%=Common.DESCRIPTION%>" class="form-control"
+										name="<%=Mdm.Common.DESCRIPTION%>" class="form-control"
 										style="width: 40%;" maxlength="20" />
 								</div>
 								<div class="form-group">
-									<label>Category</label> <select name="<%=Common.CATEGORY%>"
+									<label>Category</label> <select name="<%=Mdm.Common.CATEGORY%>"
 										class="form-control" style="width: 40%;" style="height: 34px;">
 										<option value="工具">工具</option>
 										<option value="天氣">天氣</option>
@@ -1046,11 +1048,11 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 						</div>
 						<form action="pDeleteApp.jsp" method="post" name="formDeleteApp"
 							id="formDeleteApp">
-							<input name="<%=Common.USER_EMAIL%>" id="<%=Common.USER_EMAIL%>"
+							<input name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
 								type="hidden" value="<%=strEmail%>" /> <input
-								name="<%=Common.GROUP_ID%>" id="<%=Common.GROUP_ID%>"
+								name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
 								type="hidden" value="<%=strGroupId%>" /> <input
-								name="<%=Common.APK_FILE_NAME%>" id="<%=Common.APK_FILE_NAME%>"
+								name="<%=Mdm.Common.APK_FILE_NAME%>" id="<%=Mdm.Common.APK_FILE_NAME%>"
 								type="hidden" />
 							<div class="modal-body">
 								<span> You have selected to delete "<span
@@ -1183,16 +1185,16 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 							<form role="form" action="pAddContent.jsp" method="post"
 								enctype="multipart/form-data" name="formUploadContent"
 								id="formUploadContent">
-								<input name="<%=Common.GROUP_ID%>" id="<%=Common.GROUP_ID%>"
+								<input name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
 									type="hidden" value="" /> <input name="userId_Android"
 									type="hidden" value="<%=strUserId_Android%>" />
 								<div class="form-group">
-									<label>File Alias</label> <input name="<%=Common.ALIAS%>"
-										id="<%=Common.ALIAS%>" class="form-control"
+									<label>File Alias</label> <input name="<%=Mdm.Common.ALIAS%>"
+										id="<%=Mdm.Common.ALIAS%>" class="form-control"
 										style="width: 60%;" maxlength="15" />
 								</div>
 								<div class="form-group">
-									<label>File Input</label> <input name="<%=Common.FILE_NAME%>"
+									<label>File Input</label> <input name="<%=Mdm.Common.FILE_NAME%>"
 										id="inputContent" type="file"
 										onChange="validateContent(this.value)" />
 
@@ -1220,11 +1222,11 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 						</div>
 						<form action="pDeleteContent.jsp" method="post"
 							name="formDeleteContent" id="formDeleteContent">
-							<input name="<%=Common.USER_EMAIL%>" id="<%=Common.USER_EMAIL%>"
+							<input name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
 								type="hidden" value="<%=strEmail%>" /> <input
-								name="<%=Common.GROUP_ID%>" id="<%=Common.GROUP_ID%>"
+								name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
 								type="hidden" value="<%=strGroupId%>" /> <input
-								name="<%=Common.FILE_NAME%>" id="<%=Common.FILE_NAME%>"
+								name="<%=Mdm.Common.FILE_NAME%>" id="<%=Mdm.Common.FILE_NAME%>"
 								type="hidden" />
 
 							<div class="modal-body">
@@ -1336,7 +1338,7 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 												    {
 									%>
 									<option selected
-										value="device_management.jsp?<%=Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
+										value="device_management.jsp?<%=Mdm.Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
 									<%
 									    }
 												    else
@@ -1344,7 +1346,7 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 									%>
 
 									<option
-										value="device_management.jsp?<%=Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
+										value="device_management.jsp?<%=Mdm.Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
 
 									<%
 									    }
@@ -1573,16 +1575,16 @@ strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
 
 <form action="group_management.jsp" method="post"
 	name="FormHomeShowContent" id="FormHomeShowContent">
-	<input name="<%=Common.USER_EMAIL%>" type="hidden"> <input
-		name="<%=Common.GROUP_ID%>" type="hidden"> <input
-		name="<%=Common.GROUP_NAME%>" type="hidden"> <input
+	<input name="<%=Mdm.Common.USER_EMAIL%>" type="hidden"> <input
+		name="<%=Mdm.Common.GROUP_ID%>" type="hidden"> <input
+		name="<%=Mdm.Common.GROUP_NAME%>" type="hidden"> <input
 		name="SHOW_CONTENT" type="hidden" value="true">
 </form>
 <form action="group_management.jsp" method="post" name="FormHomeShowApp"
 	id="FormHomeShowApp">
-	<input name="<%=Common.USER_EMAIL%>" type="hidden"> <input
-		name="<%=Common.GROUP_ID%>" type="hidden"> <input
-		name="<%=Common.GROUP_NAME%>" type="hidden"> <input
+	<input name="<%=Mdm.Common.USER_EMAIL%>" type="hidden"> <input
+		name="<%=Mdm.Common.GROUP_ID%>" type="hidden"> <input
+		name="<%=Mdm.Common.GROUP_NAME%>" type="hidden"> <input
 		name="SHOW_APP" type="hidden" value="true">
 </form>
 

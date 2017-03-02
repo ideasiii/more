@@ -7,9 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
+
+
 
 public class Mdm
 {
@@ -22,6 +25,96 @@ public class Mdm
     public final static int MDM_JOB_CMMD = 0;
     public final static int MDM_JOB_ERROR = -1;
 
+    public class Common
+    {
+    	final public static String UPLOAD_FILE_ANDROID_MANAGE_CONTENT_PATH = "/mdm/uploadfile/android/manage/content";
+    	final public static String UPLOAD_FILE_ANDROID_MANAGE_APP_PATH = "/mdm/uploadfile/android/manage/app";
+    	final public static String UPLOAD_FILE_ANDROID_DEVICE_APP_PATH = "/mdm/uploadfile/android/device/icon"; //Icons for showing device screen & app list
+    	final public static String DB_PATH_MDM_USER = "/data/sqlite/mdm_user.db";
+    	final public static String DB_PATH_MDM_ANDROID = "/data/sqlite/mdm_android.db";
+    	final public static String DB_PATH_LOCATION = "/data/sqlite/location.db";
+    	
+    	/**sqlite Common**/
+    	final public static String USER_ID = "user_id";
+    	final public static String GROUP_ID = "group_id";
+    	final public static String START_TIME = "start_time";
+    	final public static String END_TIME = "end_time";
+    	final public static String CREATE_TIME = "create_time";
+    	final public static String UPDATE_TIME = "update_time";
+    	final public static String FILE_LOCATION = "file_location";
+    	final public static String APP_ICON = "app_icon";
+    	final public static String APP_ID  = "app_id";
+    	final public static String APP_NAME = "app_name";
+    	final public static String CONTENT_ID  = "content_id";
+    	final public static String MAC_ADDRESS  = "mac_address";
+    	final public static String DEVICE_MODEL  = "device_model";
+    	final public static String DEVICE_IMG  = "device_img";
+    	final public static String JOB_ID  = "job_id";
+    	final public static String JOB_SEQ  = "job_seq";
+    	final public static String CONTROL_ID  = "control_id";
+    	final public static String ACTION  = "action";
+    	
+    	/**sqlite mdm_user.db 
+    	 * table: user_permission**/
+    	final public static String USER_EMAIL = "user_email";
+    	final public static String PERMISSION = "permission";
+    	
+    	
+    	
+    	
+    	/**sqlite mdm_android.db 
+    	 * table: group_info**/
+    	final public static String GROUP_NAME = "group_name";
+    	final public static String ACCOUNT = "account";
+    	final public static String PASSWORD = "password";
+    	final public static String MAXIMUM = "maximum";
+    	final public static String CONNECTED = "connected";
+    	
+    	
+    	
+    	/**sqlite mdm_android.db 
+    	 * table: app_manage**/
+    	final public static String CATEGORY = "category";
+    	final public static String  EDITION = "edition";
+    	final public static String DESCRIPTION = "description";
+    	final public static String APK_FILE_NAME  = "apk_file_name";
+    	
+    	
+    	/**sqlite mdm_android.db 
+    	 * table: content_manage**/
+    	final public static String ALIAS  = "alias";
+    	final public static String CONTENT_TYPE  = "content_type";
+    	final public static String FILE_NAME  = "file_name";
+    	
+    	
+    	
+    	/**sqlite mdm_android.db 
+    	 * table: device_info**/
+    	final public static String BATTERY_PERCENT  = "battery_percent";
+    	final public static String TOTAL_SPACE  = "total_space";
+    	final public static String USED_SPACE  = "used_space";
+
+    	
+
+    	/**sqlite mdm_android.db 
+    	 * table: action_device**/
+    	final public static String INPUT  = "input";
+    }
+    
+    final public static ArrayList<String> listPermissionField = new ArrayList<>(Arrays.asList(Common.USER_EMAIL, Common.USER_ID, Common.PERMISSION, Common.START_TIME, Common.END_TIME, Common.CREATE_TIME, Common.UPDATE_TIME)); 
+    
+    final public static ArrayList<String> listGroupField = new ArrayList<>(Arrays.asList(Common.USER_ID, Common.GROUP_ID, Common.GROUP_NAME, Common.ACCOUNT,
+	    Common.PASSWORD, Common.MAXIMUM, Common.CONNECTED, Common.CREATE_TIME, Common.UPDATE_TIME)); 
+    
+    final public static ArrayList<String> listAppField = new ArrayList<>(Arrays.asList(Common.APP_ID, Common.GROUP_ID, Common.APP_NAME, Common.CATEGORY,
+	    Common.EDITION, Common.DESCRIPTION, Common.APP_ICON, Common.APK_FILE_NAME, Common.FILE_LOCATION, Common.CREATE_TIME, Common.UPDATE_TIME)); 
+
+    final public static ArrayList<String> listContentField = new ArrayList<>(Arrays.asList(Common.CONTENT_ID, Common.GROUP_ID, Common.ALIAS, Common.CONTENT_TYPE, Common.FILE_NAME, Common.FILE_LOCATION, Common.CREATE_TIME, Common.UPDATE_TIME)); 
+    
+    final public static ArrayList<String> listDeviceField = new ArrayList<>(Arrays.asList(Common.MAC_ADDRESS, Common.DEVICE_MODEL, Common.GROUP_ID, Common.BATTERY_PERCENT,
+	    Common.TOTAL_SPACE, Common.USED_SPACE, Common.DEVICE_IMG, Common.CREATE_TIME, Common.UPDATE_TIME)); 
+    
+    
     public static class PermissionData
     {
 	public String user_email;
@@ -188,7 +281,7 @@ public class Mdm
 	    // Connection con = sqlite.getConnection(Common.DB_PATH_MDM_USER);
 	    String strSQL = "select * from user_permission where user_email='" + strEmail + "' order by create_time ;";
 	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
-	    sqlite.query(conMdmUser, strSQL, Common.listPermissionField, listData);
+	    sqlite.query(conMdmUser, strSQL, listPermissionField, listData);
 	    // con.close();
 	    // sqlite = null;
 
@@ -235,7 +328,7 @@ public class Mdm
 	    // sqlite.getConnection(Common.DB_PATH_MDM_ANDROID);
 	    String strSQL = "select * from group_info where user_id='" + strUserId + "' order by create_time ;";
 	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
-	    sqlite.query(conMdmAndroid, strSQL, Common.listGroup, listData);
+	    sqlite.query(conMdmAndroid, strSQL, listGroupField, listData);
 	    // con.close();
 	    // sqlite = null;
 
@@ -406,7 +499,7 @@ public class Mdm
 	{
 	    String strSQL = "select * from app_manage where group_id='" + strGroupId + "' order by create_time ;";
 	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
-	    sqlite.query(conMdmAndroid, strSQL, Common.listApp, listData);
+	    sqlite.query(conMdmAndroid, strSQL, listAppField, listData);
 
 	    if (0 < listData.size())
 	    {
@@ -586,7 +679,7 @@ public class Mdm
 	{
 	    String strSQL = "select * from content_manage where group_id='" + strGroupId + "' order by create_time ;";
 	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
-	    sqlite.query(conMdmAndroid, strSQL, Common.listContent, listData);
+	    sqlite.query(conMdmAndroid, strSQL, listContentField, listData);
 
 	    if (0 < listData.size())
 	    {
@@ -706,7 +799,7 @@ public class Mdm
 	    String strSQL = "select * from device_info where group_id='" + strGroupId + "' order by create_time ;";
 	    System.out.println(strSQL);
 	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
-	    sqlite.query(conMdmAndroid, strSQL, Common.listDevice, listData);
+	    sqlite.query(conMdmAndroid, strSQL, listDeviceField, listData);
 
 	    if (0 < listData.size())
 	    {

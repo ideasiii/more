@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public abstract class Common
 {
-	final public static String UPLOAD_FILE_ANDROID_MANAGE_CONTENT_PATH = "/uploadfile/android/manage/content";
-	final public static String UPLOAD_FILE_ANDROID_MANAGE_APP_PATH = "/uploadfile/android/manage/app";
+	final public static String UPLOAD_FILE_ANDROID_MANAGE_CONTENT_PATH = "/mdm/uploadfile/android/manage/content";
+	final public static String UPLOAD_FILE_ANDROID_MANAGE_APP_PATH = "/more/mdm/uploadfile/android/manage/app";
 	final public static String UPLOAD_FILE_ANDROID_DEVICE_APP_PATH = "/uploadfile/android/device/icon"; //Icons for showing device screen & app list
 	final public static String DB_PATH_MDM_USER = "/data/sqlite/mdm_user.db";
 	final public static String DB_PATH_MDM_ANDROID = "/data/sqlite/mdm_android.db";

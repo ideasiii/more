@@ -1,11 +1,11 @@
-
+<%@ page import="mdmjava.*"%>
 <%
 	final String strContextPath = request.getContextPath();
-  strEmail = "juliettechien@iii.org.tw";//request.getParameter(Common.USER_EMAIL);
-    String strGroupId = request.getParameter(Common.GROUP_ID);
+String  strEmail = "juliettechien@iii.org.tw";//request.getParameter(Mdm.Common.USER_EMAIL);
+    String strGroupId = request.getParameter(Mdm.Common.GROUP_ID);
     String strShowContent = request.getParameter("SHOW_CONTENT");
     String strShowApp = request.getParameter("SHOW_APP");
-	String strShowGN = request.getParameter(Common.GROUP_NAME);
+	String strShowGN = request.getParameter(Mdm.Common.GROUP_NAME);
     String strAccountV = "";
 
     ArrayList<String> listPermissionName = new ArrayList<String>();
@@ -79,7 +79,7 @@
 					    {
 		%>
 		<option selected
-			value="device_management.jsp?<%=Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
+			value="device_management.jsp?<%=Mdm.Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
 		<%
 		    }
 					    else
@@ -87,7 +87,7 @@
 		%>
 
 		<option
-			value="device_management.jsp?<%=Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
+			value="device_management.jsp?<%=Mdm.Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
 
 		<%
 		    }
