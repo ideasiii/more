@@ -1,4 +1,4 @@
-package backstage;
+package more;
 
 public class MoreManager
 {

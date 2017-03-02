@@ -20,21 +20,21 @@
         <![endif]-->
 
 <!-- GLOBAL STYLES -->
+<link rel="stylesheet" href="/more/css/top_menu.css" />
+<link rel="stylesheet" href="/more/css/bootstrap_2.css" />
+<link rel="stylesheet" href="/more/css/main_2.css" />
+<link rel="stylesheet" href="/more/css/theme.css" />
+<link rel="stylesheet" href="/more/css/MoneAdmin.css" />
 <link rel="stylesheet"
-	href="assets/plugins/bootstrap/css/bootstrap_2.css" />
-<link rel="stylesheet" href="assets/css/main_2.css" />
-<link rel="stylesheet" href="assets/css/theme.css" />
-<link rel="stylesheet" href="assets/css/MoneAdmin.css" />
+	href="/more/css/plugins/Font-Awesome/css/font-awesome_2.css" />
 <link rel="stylesheet"
-	href="assets/plugins/Font-Awesome/css/font-awesome_2.css" />
-<link rel="stylesheet"
-	href="assets/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
+	href="/more/css/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
 <!--END GLOBAL STYLES -->
 
 <!-- PAGE LEVEL STYLES -->
-<link href="assets/plugins/dataTables/dataTables.bootstrap.css"
+<link href="/more/css/plugins/dataTables/dataTables.bootstrap.css"
 	rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/bootstrap-fileupload.min.css" />
+<link rel="stylesheet" href="/more/css/bootstrap-fileupload.min.css" />
 
 <!-- END PAGE LEVEL  STYLES -->
 
@@ -1359,7 +1359,7 @@ if (0 < nCount) {
 
 															while (itGD.hasNext()) {
 																groupData = itGD.next();
-																itGD						strAccountV = strAccountV + groupData.account;
+																strAccountV = strAccountV + groupData.account;
 																if (itGD.hasNext()) {
 																	strAccountV += ',';
 																}
