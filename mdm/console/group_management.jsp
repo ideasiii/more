@@ -4,7 +4,7 @@
 <%@ page import="java.sql.Statement"%>
 <%@page import=" java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
-<%@ page import="mdmjava.*"%>
+<%@ page import="more.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
 
@@ -616,35 +616,64 @@
 	<!-- MAIN WRAPPER -->
 	<div id="wrap" style="display: table; width: 100%; height: 100%;">
 
-	<%@include file="/home/console/menu.jsp"%>
+		<%@include file="/home/console/menu.jsp"%>
+
+		<%
+		    final String strContextPath = request.getContextPath();
+					//strEmail = "juliettechien@iii.org.tw";//request.getParameter(Mdm.Common.USER_EMAIL);
+					String strGroupId = request.getParameter(Mdm.Common.GROUP_ID);
+					String strShowContent = request.getParameter("SHOW_CONTENT");
+					String strShowApp = request.getParameter("SHOW_APP");
+					String strShowGN = request.getParameter(Mdm.Common.GROUP_NAME);
+					String strAccountV = "";
+
+					ArrayList<String> listPermissionName = new ArrayList<String>();
+
+					ArrayList<Mdm.PermissionData> listPermission = new ArrayList<Mdm.PermissionData>();
+					Mdm.PermissionData permissionData = null;
+					String strUserId_Android = null;
+
+					Mdm mdm = new Mdm();
+
+					if (!mdm.conDB()) {
+						response.sendRedirect("error.html"); //insert error page 
+						return;
+					}
+		%>
 
 <%
-final String strContextPath = request.getContextPath();
-  strEmail = "juliettechien@iii.org.tw";//request.getParameter(Mdm.Common.USER_EMAIL);
-  String strGroupId = request.getParameter(Mdm.Common.GROUP_ID);
-  String strShowContent = request.getParameter("SHOW_CONTENT");
-  String strShowApp = request.getParameter("SHOW_APP");
-	String strShowGN = request.getParameter(Mdm.Common.GROUP_NAME);
-  String strAccountV = "";
+int nCount = mdm.queryPermission(strEmail, listPermission);
+//nCount = 0;
+if (0 < nCount) {
+	Iterator<Mdm.PermissionData> itPD = null;
+	itPD = listPermission.iterator();
 
-  ArrayList<String> listPermissionName = new ArrayList<String>();
+	while (itPD.hasNext()) {
+		permissionData = itPD.next();
+		listPermissionName.add(permissionData.permission);
+	
+		if (permissionData.permission.trim().equals("android")) {
+			strUserId_Android = permissionData.user_id;
+			
+			if (!mdm.conTypeDB(0)) {
+				response.sendRedirect("error.html"); //insert error page 
+				return;
+			}
 
-  ArrayList<Mdm.PermissionData> listPermission = new ArrayList<Mdm.PermissionData>();
-  Mdm.PermissionData permissionData = null;
-  String strUserId_Android = null;
+			/********** group info**************/
 
-  Mdm mdm = new Mdm();
+			Iterator<Mdm.GroupData> itGD = null;
+			Mdm.GroupData groupData = null;
 
-  if (!mdm.conDB())
-  {
-		response.sendRedirect("error.html"); //insert error page 
-		return;
-  }
+			ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
+			int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+			//out.println(nGCount);
 
+			itGD = listGroup.iterator();
 %>
 
 		<!-- HEADER SECTION -->
-		
+
 
 		<div class="col-lg-12">
 			<div class="modal fade" id="AddGroup" tabindex="-1" role="dialog"
@@ -661,9 +690,10 @@ final String strContextPath = request.getContextPath();
 								id="formAddGroup">
 								<input name="accountList" id="accountList"
 									value="<%=strAccountV%>" type="hidden"> <input
-									name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
-									type="hidden" value="<%=strEmail%>" /> <input
-									name="userId_Android" id="userId_Android" type="hidden"
+									name="<%=Mdm.Common.USER_EMAIL%>"
+									id="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
+									value="<%=strEmail%>" /> <input name="userId_Android"
+									id="userId_Android" type="hidden"
 									value="<%=strUserId_Android%>">
 								<div class="form-group">
 									<label>Group Name</label> <input class="form-control"
@@ -674,14 +704,14 @@ final String strContextPath = request.getContextPath();
 								</div>
 								<div class="form-group">
 									<label>Login Account</label> <input class="form-control"
-										name="<%=Mdm.Common.ACCOUNT%>" onchange="showBtnV('formAddGroup')" />
+										name="<%=Mdm.Common.ACCOUNT%>"
+										onchange="showBtnV('formAddGroup')" />
 									<button id="btnV" type="button"
 										class="btn btn-xs btn-grad btn-default"
 										style="margin-top: 10px;"
 										onclick="checkAccountListData('formAddGroup')">Verification</button>
 									<button id="btnA" type="button" class="btn btn-xs btn-success"
-										style="display: none; margin-top: 10px;"
-										>Available</button>
+										style="display: none; margin-top: 10px;">Available</button>
 									<p class="help-block">(Must be less than 20 letters in
 										alphanumeric format.)</p>
 								</div>
@@ -708,9 +738,9 @@ final String strContextPath = request.getContextPath();
 								</div>
 
 								<div class="form-group">
-									<label>Device Type</label> <select
-										name="<%=Mdm.Common.PERMISSION%>" id="<%=Mdm.Common.PERMISSION%>"
-										class="form-control">
+									<label>Device Type </label> <select
+										name="<%=Mdm.Common.PERMISSION%>"
+										id="<%=Mdm.Common.PERMISSION%>" class="form-control">
 										<%
 										    for (int i = 0; i < listPermissionName.size(); ++i) {
 														out.println("<option>" + listPermissionName.get(i) + "</option>");
@@ -748,8 +778,9 @@ final String strContextPath = request.getContextPath();
 								id="formEditGroup">
 								<input name="accountList" id="accountList"
 									value="<%=strAccountV%>" type="hidden"> <input
-									name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
-									type="hidden" value="<%=strEmail%>" /> <input
+									name="<%=Mdm.Common.USER_EMAIL%>"
+									id="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
+									value="<%=strEmail%>" /> <input
 									name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
 									type="hidden" value="<%=strGroupId%>" />
 								<div class="form-group">
@@ -817,10 +848,11 @@ final String strContextPath = request.getContextPath();
 						</div>
 						<form action="pDeleteGroup.jsp" method="post"
 							name="formDeleteGroup" id="formDeleteGroup">
-							<input name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
-								type="hidden" value="<%=strEmail%>" /> <input
-								name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
-								type="hidden" value="<%=strGroupId%>" />
+							<input name="<%=Mdm.Common.USER_EMAIL%>"
+								id="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
+								value="<%=strEmail%>" /> <input name="<%=Mdm.Common.GROUP_ID%>"
+								id="<%=Mdm.Common.GROUP_ID%>" type="hidden"
+								value="<%=strGroupId%>" />
 							<div class="modal-body">
 								<span>You have selected to delete "<span
 									id="GroupDeleteConfirm"></span>".<br> <span
@@ -881,18 +913,18 @@ final String strContextPath = request.getContextPath();
 													    Iterator<Mdm.AppData> itAD = null;
 																Mdm.AppData appData = null;
 																String strAppIconPath = null;
-																
+
 																ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
 																int nACount = mdm.queryApp(strGroupId, listApp);
 																//out.println(nACount);
-																
+
 																itAD = listApp.iterator();
 																while (itAD.hasNext()) {
 
 																	appData = itAD.next();
 																	strAppIconPath = strContextPath + appData.app_icon;
 																	//out.println(strAppIconPath);
-																	
+
 																	if (null != strGroupId && (strGroupId.trim().equals(appData.group_id.trim()))) {
 													%>
 													<tr class="odd gradeA">
@@ -951,9 +983,10 @@ final String strContextPath = request.getContextPath();
 							<form role="form" action="pAddApp.jsp" method="post"
 								enctype="multipart/form-data" name="formUploadApp"
 								id="formUploadApp">
-								<input name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
-									type="hidden" value="" /> <input name="userId_Android"
-									type="hidden" value="<%=strUserId_Android%>" />
+								<input name="<%=Mdm.Common.GROUP_ID%>"
+									id="<%=Mdm.Common.GROUP_ID%>" type="hidden" value="" /> <input
+									name="userId_Android" type="hidden"
+									value="<%=strUserId_Android%>" />
 
 								<div class="col-lg-8" style="float: right;">
 									<label class="control-label" style="margin-left: 20px;">App
@@ -975,8 +1008,8 @@ final String strContextPath = request.getContextPath();
 									<br>
 									<div class="fileupload fileupload-new">
 										<label class="control-label" style="margin-left: 20px;">File
-											Input</label> <input name="<%=Mdm.Common.APK_FILE_NAME%>" id="inputAPK"
-											type="file" style="margin-left: 20px;"
+											Input</label> <input name="<%=Mdm.Common.APK_FILE_NAME%>"
+											id="inputAPK" type="file" style="margin-left: 20px;"
 											onChange="validateAPK(this.value)" />
 									</div>
 								</div>
@@ -1048,12 +1081,13 @@ final String strContextPath = request.getContextPath();
 						</div>
 						<form action="pDeleteApp.jsp" method="post" name="formDeleteApp"
 							id="formDeleteApp">
-							<input name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
-								type="hidden" value="<%=strEmail%>" /> <input
-								name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
-								type="hidden" value="<%=strGroupId%>" /> <input
-								name="<%=Mdm.Common.APK_FILE_NAME%>" id="<%=Mdm.Common.APK_FILE_NAME%>"
-								type="hidden" />
+							<input name="<%=Mdm.Common.USER_EMAIL%>"
+								id="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
+								value="<%=strEmail%>" /> <input name="<%=Mdm.Common.GROUP_ID%>"
+								id="<%=Mdm.Common.GROUP_ID%>" type="hidden"
+								value="<%=strGroupId%>" /> <input
+								name="<%=Mdm.Common.APK_FILE_NAME%>"
+								id="<%=Mdm.Common.APK_FILE_NAME%>" type="hidden" />
 							<div class="modal-body">
 								<span> You have selected to delete "<span
 									id="DeleteAppName"></span>". <br>If this was the action
@@ -1185,17 +1219,18 @@ final String strContextPath = request.getContextPath();
 							<form role="form" action="pAddContent.jsp" method="post"
 								enctype="multipart/form-data" name="formUploadContent"
 								id="formUploadContent">
-								<input name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
-									type="hidden" value="" /> <input name="userId_Android"
-									type="hidden" value="<%=strUserId_Android%>" />
+								<input name="<%=Mdm.Common.GROUP_ID%>"
+									id="<%=Mdm.Common.GROUP_ID%>" type="hidden" value="" /> <input
+									name="userId_Android" type="hidden"
+									value="<%=strUserId_Android%>" />
 								<div class="form-group">
 									<label>File Alias</label> <input name="<%=Mdm.Common.ALIAS%>"
 										id="<%=Mdm.Common.ALIAS%>" class="form-control"
 										style="width: 60%;" maxlength="15" />
 								</div>
 								<div class="form-group">
-									<label>File Input</label> <input name="<%=Mdm.Common.FILE_NAME%>"
-										id="inputContent" type="file"
+									<label>File Input</label> <input
+										name="<%=Mdm.Common.FILE_NAME%>" id="inputContent" type="file"
 										onChange="validateContent(this.value)" />
 
 								</div>
@@ -1222,10 +1257,11 @@ final String strContextPath = request.getContextPath();
 						</div>
 						<form action="pDeleteContent.jsp" method="post"
 							name="formDeleteContent" id="formDeleteContent">
-							<input name="<%=Mdm.Common.USER_EMAIL%>" id="<%=Mdm.Common.USER_EMAIL%>"
-								type="hidden" value="<%=strEmail%>" /> <input
-								name="<%=Mdm.Common.GROUP_ID%>" id="<%=Mdm.Common.GROUP_ID%>"
-								type="hidden" value="<%=strGroupId%>" /> <input
+							<input name="<%=Mdm.Common.USER_EMAIL%>"
+								id="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
+								value="<%=strEmail%>" /> <input name="<%=Mdm.Common.GROUP_ID%>"
+								id="<%=Mdm.Common.GROUP_ID%>" type="hidden"
+								value="<%=strGroupId%>" /> <input
 								name="<%=Mdm.Common.FILE_NAME%>" id="<%=Mdm.Common.FILE_NAME%>"
 								type="hidden" />
 
@@ -1253,10 +1289,10 @@ final String strContextPath = request.getContextPath();
 
 		<div id="content">
 
-			<div class="inner" style="margin-top:25px; min-height: 850px; ">
+			<div class="inner" style="margin-top: 25px; min-height: 850px;">
 				<div class="row">
 					<div class="col-lg-12">
-					<br>
+						<br>
 						<h1>Group Management</h1>
 						<br>
 					</div>
@@ -1280,37 +1316,34 @@ final String strContextPath = request.getContextPath();
 
 							<!-- GROUP SELECT -->
 							<%
-							    int nCount = mdm.queryPermission(strEmail, listPermission);
-							    //nCount = 0;
-							    if (0 < nCount)
-							    {
-									Iterator<Mdm.PermissionData> itPD = null;
-									itPD = listPermission.iterator();
+							  /*  int nCount = mdm.queryPermission(strEmail, listPermission);
+										//nCount = 0;
+										if (0 < nCount) {
+											Iterator<Mdm.PermissionData> itPD = null;
+											itPD = listPermission.iterator();
 
-									while (itPD.hasNext())
-									{
-									    permissionData = itPD.next();
-									    listPermissionName.add(permissionData.permission);
-									    if (permissionData.permission.trim().equals("android"))
-									    {
-										strUserId_Android = permissionData.user_id;
+											while (itPD.hasNext()) {
+												permissionData = itPD.next();
+												listPermissionName.add(permissionData.permission);
+											
+												if (permissionData.permission.trim().equals("android")) {
+													strUserId_Android = permissionData.user_id;
+													
+													if (!mdm.conTypeDB(0)) {
+														response.sendRedirect("error.html"); //insert error page 
+														return;
+													}
 
-										if (!mdm.conTypeDB(0))
-										{
-										    response.sendRedirect("error.html"); //insert error page 
-										    return;
-										}
+													//===== group info ======//
 
-										/********** group info**************/
+													Iterator<Mdm.GroupData> itGD = null;
+													Mdm.GroupData groupData = null;
 
-										Iterator<Mdm.GroupData> itGD = null;
-										Mdm.GroupData groupData = null;
+													ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
+													int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+													//out.println(nGCount);
 
-										ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
-										int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
-										//out.println(nGCount);
-
-										itGD = listGroup.iterator();
+													itGD = listGroup.iterator();*/
 							%>
 							<div class="styled-select blue semi-square"
 								style="margin-top: 4px;">
@@ -1318,31 +1351,25 @@ final String strContextPath = request.getContextPath();
 									onchange="location.href=this.options[this.selectedIndex].value">
 
 									<%
-									    if (null == strGroupId || null != strShowContent || null != strShowApp)
-												{
+									    if (null == strGroupId || null != strShowContent || null != strShowApp) {
 									%>
 									<option value="#">Select Group</option>
 									<%
 									    }
 
-												while (itGD.hasNext())
-												{
-												    groupData = itGD.next();
-												    strAccountV = strAccountV + groupData.account;
-												    if (itGD.hasNext())
-												    {
-													strAccountV += ',';
-												    }
+															while (itGD.hasNext()) {
+																groupData = itGD.next();
+																itGD						strAccountV = strAccountV + groupData.account;
+																if (itGD.hasNext()) {
+																	strAccountV += ',';
+																}
 
-												    if (null != strGroupId && (strGroupId.trim().equals(groupData.group_id.trim())))
-												    {
+																if (null != strGroupId && (strGroupId.trim().equals(groupData.group_id.trim()))) {
 									%>
 									<option selected
 										value="device_management.jsp?<%=Mdm.Common.GROUP_ID%>=<%=groupData.group_id%>&type=android"><%=groupData.group_name%></option>
 									<%
-									    }
-												    else
-												    {
+									    } else {
 									%>
 
 									<option
@@ -1350,13 +1377,13 @@ final String strContextPath = request.getContextPath();
 
 									<%
 									    }
-												}
-											    }
+															}
+														}
 
-											    ///add conTpyeBD else type DB
+														///add conTpyeBD else type DB
 
-											} // end while(itPD.hasNext())
-											/********* end group info************/
+													} // end while(itPD.hasNext())
+													/********* end group info************/
 									%>
 
 								</select>
@@ -1364,8 +1391,7 @@ final String strContextPath = request.getContextPath();
 
 							<%
 							    } // if
-							    else
-							    {
+										else {
 							%>
 							<div class="styled-select blue semi-square">
 								<select><option>Please Create a Group</select>
@@ -1376,12 +1402,12 @@ final String strContextPath = request.getContextPath();
 
 							<%
 							    Iterator<Mdm.GroupData> itGD = null;
-							    Mdm.GroupData groupData = null;
+										Mdm.GroupData groupData = null;
 
-							    ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
-							    int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+										ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
+										int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
 
-							    itGD = listGroup.iterator();
+										itGD = listGroup.iterator();
 							%>
 							<!--END GROUP SELECT -->
 
@@ -1558,7 +1584,8 @@ final String strContextPath = request.getContextPath();
 				if (null != strShowApp && strShowApp.trim().equals("true")) {
 	%>
 	<script type="text/javascript"> 
-	showGN('<%=strShowGN%>','<%=strGroupId%>');
+	showGN('<%=strShowGN%>','<%=strGroupId%>
+		');
 		$('#AppManage').modal('show');
 	</script>
 	<%
