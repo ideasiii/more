@@ -36,6 +36,7 @@
 <!-- JavaScript -->
 <script src="js/formverify.js"></script>
 
+
 </head>
 
 
@@ -833,13 +834,13 @@
 							%>
 
 							<%
-							    Iterator<Mdm.GroupData> itGD = null;
+							    Iterator<Mdm.GroupData> itGD2 = null;
 										Mdm.GroupData groupData = null;
 
 										ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
 										int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
 
-										itGD = listGroup.iterator();
+										itGD2 = listGroup.iterator();
 							%>
 							<!--END GROUP SELECT -->
 
@@ -891,8 +892,8 @@
 											<tbody>
 												<%
 												    int gCount = 0;
-															while (itGD.hasNext()) {
-																groupData = itGD.next();
+															while (itGD2.hasNext()) {
+																groupData = itGD2.next();
 												%>
 												<tr>
 													<td style="text-align: center; vertical-align: middle;"><%=++gCount%></td>
@@ -1016,8 +1017,7 @@
 				if (null != strShowApp && strShowApp.trim().equals("true")) {
 	%>
 	<script type="text/javascript"> 
-	showGN('<%=strShowGN%>','<%=strGroupId%>
-		');
+	showGN('<%=strShowGN%>','<%=strGroupId%>');
 		$('#AppManage').modal('show');
 	</script>
 	<%
