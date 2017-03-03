@@ -285,3 +285,77 @@ function checkAPKAddData(formName) {
  * 
  * });
  */
+
+
+function showBtnV(formName) {
+	var form = document.getElementById(formName);
+	var formname = form.name;
+
+	if (formname == "formEditGroup") {
+		document.getElementById("btnA2").style.display = "none";
+		document.getElementById("btnV2").style.display = "block";
+	}
+
+	if (formname == "formAddGroup") {
+		document.getElementById("btnA").style.display = "none";
+		document.getElementById("btnV").style.display = "block";
+	}
+}
+
+//	function changeBtn() {
+//		var form = document.getElementById(formName);
+//		document.getElementById("btnV").style.display = "none";
+//		document.getElementById("btnA").style.display = "block";	}
+
+function showGN(gName, gId, gAccount, gPw, gMax) {
+	//alert(gId);
+	document.getElementById("GroupDeleteConfirm").innerHTML = gName;
+	document.getElementById("GroupEditName").innerHTML = gName;
+	document.getElementById("CMGroupName").innerHTML = gName;
+	document.getElementById("AMGroupName").innerHTML = gName;
+	var form = document.getElementById("formDeleteGroup");
+	form.group_id.value = gId;
+	var form = document.getElementById("formEditGroup");
+	form.group_id.value = gId;
+	var form = document.getElementById("formUploadContent");
+	form.group_id.value = gId;
+	var form = document.getElementById("formUploadApp");
+	form.group_id.value = gId;
+	document.getElementById("GroupEditAccount").value = gAccount;
+	document.getElementById("originalAccount").value = gAccount;
+	document.getElementById("GroupEditPassword").value = gPw;
+	document.getElementById("GroupEditMaximum").value = gMax;
+
+}
+
+function showContentGN(gName, gId, uEmail)
+{
+	var form = document.getElementById("FormHomeShowContent");
+	form.group_id.value = gId;
+	form.group_name.value = gName;
+	form.user_email.value = uEmail;
+	form.submit();
+}
+	
+function showAppGN(gName, gId, uEmail)
+{
+	var form = document.getElementById("FormHomeShowApp");
+	form.group_id.value = gId;
+	form.group_name.value = gName;
+	form.user_email.value = uEmail;
+	form.submit();
+}
+
+function getContentFN(cFN, gId, cAlias)
+{
+	var form = document.getElementById("formDeleteContent");
+	form.file_name.value = cFN;
+	document.getElementById("DeleteContentName").innerHTML = cAlias;
+}
+
+function getAppFN(aFN, gId, appName)
+{
+	var form = document.getElementById("formDeleteApp");
+	form.apk_file_name.value = aFN;
+	document.getElementById("DeleteAppName").innerHTML = appName;
+}

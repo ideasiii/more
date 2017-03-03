@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="java.util.Map"%>
-<%@ page import="sdk.ideas.More"%>
+<%@ page import="more.*"%>
 <%@page import="sdk.ideas.HttpsClient"%>
 <%@ page import="sdk.ideas.HttpsClient.*"%>
 <%@ page import="org.json.JSONObject"%>
@@ -14,8 +14,8 @@
 
 <!-- GLOBAL STYLES -->
 <link rel="stylesheet"
-	href="/assets/plugins/bootstrap/css/bootstrap_2.css" />
-<link rel="stylesheet" href="/assets/css/countdown.css" />
+	href="/more/css/plugins/bootstrap/css/bootstrap_2.css" />
+<link rel="stylesheet" href="/more/css/countdown.css" />
 
 <!-- Javascript -->
 <script src="js/validation.js"></script>

@@ -8,16 +8,12 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Group Management | MDM</title>
 
-<!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
 
 <!-- GLOBAL STYLES -->
 <link rel="stylesheet" href="/more/css/more_style.css" />
@@ -35,97 +31,13 @@
 <link href="/more/css/plugins/dataTables/dataTables.bootstrap.css"
 	rel="stylesheet" />
 <link rel="stylesheet" href="/more/css/bootstrap-fileupload.min.css" />
-
 <!-- END PAGE LEVEL  STYLES -->
 
 <!-- JavaScript -->
 <script src="js/formverify.js"></script>
-<script type="text/javascript">
-	function showBtnV(formName) {
-		var form = document.getElementById(formName);
-		var formname = form.name;
-
-		if (formname == "formEditGroup") {
-			document.getElementById("btnA2").style.display = "none";
-			document.getElementById("btnV2").style.display = "block";
-		}
-
-		if (formname == "formAddGroup") {
-			document.getElementById("btnA").style.display = "none";
-			document.getElementById("btnV").style.display = "block";
-		}
-	}
-
-	//	function changeBtn() {
-	//		var form = document.getElementById(formName);
-	//		document.getElementById("btnV").style.display = "none";
-	//		document.getElementById("btnA").style.display = "block";	}
-</script>
-<script>
-	function showGN(gName, gId, gAccount, gPw, gMax) {
-		//alert(gId);
-		document.getElementById("GroupDeleteConfirm").innerHTML = gName;
-		document.getElementById("GroupEditName").innerHTML = gName;
-		document.getElementById("CMGroupName").innerHTML = gName;
-		document.getElementById("AMGroupName").innerHTML = gName;
-		var form = document.getElementById("formDeleteGroup");
-		form.group_id.value = gId;
-		var form = document.getElementById("formEditGroup");
-		form.group_id.value = gId;
-		var form = document.getElementById("formUploadContent");
-		form.group_id.value = gId;
-		var form = document.getElementById("formUploadApp");
-		form.group_id.value = gId;
-		document.getElementById("GroupEditAccount").value = gAccount;
-		document.getElementById("originalAccount").value = gAccount;
-		document.getElementById("GroupEditPassword").value = gPw;
-		document.getElementById("GroupEditMaximum").value = gMax;
-
-	}
-	
-	function showContentGN(gName, gId, uEmail)
-	{
-		var form = document.getElementById("FormHomeShowContent");
-		form.group_id.value = gId;
-		form.group_name.value = gName;
-		form.user_email.value = uEmail;
-		form.submit();
-	}
-		
-	function showAppGN(gName, gId, uEmail)
-	{
-		var form = document.getElementById("FormHomeShowApp");
-		form.group_id.value = gId;
-		form.group_name.value = gName;
-		form.user_email.value = uEmail;
-		form.submit();
-	}
-	
-	function getContentFN(cFN, gId, cAlias)
-	{
-		var form = document.getElementById("formDeleteContent");
-		form.file_name.value = cFN;
-		document.getElementById("DeleteContentName").innerHTML = cAlias;
-	}
-	
-	function getAppFN(aFN, gId, appName)
-	{
-		var form = document.getElementById("formDeleteApp");
-		form.apk_file_name.value = aFN;
-		document.getElementById("DeleteAppName").innerHTML = appName;
-	}
-	
-	
-</script>
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
 
 </head>
+
 
 <body class="padTop53">
 
@@ -1100,8 +1012,7 @@ if (0 < nCount) {
 				if (null != strShowApp && strShowApp.trim().equals("true")) {
 	%>
 	<script type="text/javascript"> 
-	showGN('<%=strShowGN%>','<%=strGroupId%>
-		');
+	showGN('<%=strShowGN%>','<%=strGroupId%>');
 		$('#AppManage').modal('show');
 	</script>
 	<%

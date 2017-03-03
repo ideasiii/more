@@ -1,6 +1,6 @@
 <%@ page import="more.*"%>
 <%
-    String strEmail = "juliettechien@iii.org.tw";//(String) session.getAttribute("Email");
+    String strEmail = "juliettechien@iii.org.tw"; /**(String) session.getAttribute("Email");**/
     Integer groupLevel = (Integer) session.getAttribute("Group Level");
 
     boolean bLogined = false;
