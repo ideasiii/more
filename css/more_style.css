@@ -5,57 +5,9 @@
 
 /*********************************************************/
 
-/*                                                       */
+/*                        Top Menu                       */
 
 /*********************************************************/
-
-
-/* dropdown */
-.styled-select {
-	background: url(assets/img/15xvbd5.png) no-repeat 96% 0;
-	height: 31.5px;
-	overflow: hidden;
-	width: 240px;
-	float: right;
-}
-
-.styled-select select {
-	background: transparent;
-	border: none;
-	font-size: 14px;
-	height: 31.5px;
-	padding: 5px;
-	width: 268px;
-}
-
-.semi-square {
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
-.blue {
-	background-color: #428bca;
-}
-
-.blue select {
-	color: #fff;
-}
-/* end dropdown */
-
-
-/* add button */
-.button-add {
-	background-color: #428bca;
-	overflow: hidden;
-	border: none;
-	float: right;
-	margin-left: 10px;
-	margin-right: 20px;
-	margin-top: 4px;
-}
-
-/* end add button */
 
 
 
@@ -86,7 +38,9 @@
 	background-color: #428bca;
 	padding: 0 1em;
 	/* overflow: hidden;*/
-	text-align: right; label { color : #fff;
+	text-align: right;
+	label { 
+	color : #fff;
 	font-size: 0.9em;
 	padding: 0.4em;
 	line-height: 1.1;
@@ -106,8 +60,7 @@
 	&:
 	first-child
 	{
-	padding-right
-	:
+	padding-right:
 	1.7em;
 }
 
@@ -121,17 +74,10 @@
 	line-height: 1.1;
 	padding: 0.4em 1.3em;
 	position: relative;
-	&:
-	hover
-	{
-	background-color
-	:
-	transparent;
-}
-
-&
-:before {
-	
+	&:hover {
+	background-color:transparent;
+	}
+	&:before {
 	content: '';
 	background: -moz-linear-gradient(-45deg, rgba(61, 70, 71, 0.3) 0%,
 		rgba(61, 70, 71, 0) 99%, rgba(61, 70, 71, 0) 100%);
@@ -139,8 +85,7 @@
 		rgba(61, 70, 71, 0) 99%, rgba(61, 70, 71, 0) 100%);
 	background: linear-gradient(135deg, rgba(61, 70, 71, 0.3) 0%,
 		rgba(61, 70, 71, 0) 99%, rgba(61, 70, 71, 0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d4647',
-		endColorstr='#003d4647', GradientType=1);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d4647',endColorstr='#003d4647', GradientType=1);
 	display: block;
 	position: absolute;
 	width: 400px;
@@ -150,8 +95,8 @@
 	left: -140px;
 	z-index: -1;
 }
-
 }
+
 /* end LOGIN ADMIN SECTION */
 
 
@@ -286,6 +231,69 @@
 	text-decoration: none;
 }
 /* end MENU DROPDOWN */
+
+
+/*********************************************************/
+
+/*                Dropdown Select & Button               */
+
+/*********************************************************/
+
+
+/* dropdown */
+.styled-select {
+	background: url(/assets/img/15xvbd5.png) no-repeat 96% 0;
+	height: 31.5px;
+	overflow: hidden;
+	width: 240px;
+	float: right;
+}
+
+.styled-select select {
+	background: transparent;
+	border: none;
+	font-size: 14px;
+	height: 31.5px;
+	padding: 5px;
+	width: 268px;
+}
+
+.semi-square {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.blue {
+	background-color: #428bca;
+}
+
+.blue select {
+	color: #fff;
+}
+/* end dropdown */
+
+
+/* add button */
+.button-add {
+	background-color: #428bca;
+	overflow: hidden;
+	border: none;
+	float: right;
+	margin-left: 10px;
+	margin-right: 20px;
+	margin-top: 4px;
+}
+
+/* end add button */
+
+
+
+/*********************************************************/
+
+/*                       Background                      */
+
+/*********************************************************/
 
 
 /* TEXT BACKGROUND */
@@ -463,6 +471,13 @@
 }
 
 /* end TEXT BACKGROUND */
+
+
+/*********************************************************/
+
+/*                         FOOTER                        */
+
+/*********************************************************/
 
 
 /* FOOTER */
