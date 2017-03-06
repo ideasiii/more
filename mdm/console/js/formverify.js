@@ -1,3 +1,6 @@
+
+
+
 function Trim(x) {
 	return x.replace(/^\s+|\s+$/gm, '');
 }
@@ -6,6 +9,7 @@ function formSubmit(formName) {
 	var form = document.getElementById(formName);
 	form.submit();
 }
+
 
 function checkAccountListData(formName) {
 	var form = document.getElementById(formName);
@@ -75,6 +79,7 @@ function checkAccountListData(formName) {
 	return false;
 }
 
+
 function checkGroupAddData(formName) {
 	var form = document.getElementById(formName);
 	var btnA = document.getElementById("btnA");
@@ -120,6 +125,8 @@ function checkGroupAddData(formName) {
 	alert(errMsg);
 	return false;
 }
+
+
 
 function checkGroupEditData(formName) {
 	var form = document.getElementById(formName);
@@ -256,35 +263,6 @@ function checkAPKAddData(formName) {
 	return false;
 }
 
-/** test * */
-/*
- * function getExtension(filename) { var parts = filename.split('.'); return
- * parts[parts.length - 1]; }
- * 
- * function isImage(filename) { var ext = getExtension(filename); switch
- * (ext.toLowerCase()) { case 'jpg': case 'gif': case 'bmp': case 'png': return
- * true; } return false; }
- * 
- * function isText(filename) { var ext = getExtension(filename); switch
- * (ext.toLowerCase()) { case 'doc': case 'docx': case 'ppt': case 'pptx': case
- * 'xls': case 'xlsx': case 'txt': case 'pdf':
- * 
- * return true; } return false; }
- * 
- * $(function() { $('#formUploadContent') .submit( function() { function
- * failValidation(msg) { alert(msg); // just an alert for now but you can //
- * spice this up later return false; }
- * 
- * var file = $('#file'); var imageChosen = $('#type-1').is(':checked'); if
- * (imageChosen && !isImage(file.val())) { return failValidation('Please select
- * a valid file'); } else if (!imageChosen && !isText(file.val())) { return
- * failValidation('Please select a valid file.'); } // success at this point //
- * indicate success with alert for now alert('Valid file! Here is where you
- * would return true to allow the form to submit normally.'); return true; //
- * prevent form submitting anyway - // remove this in your environment });
- * 
- * });
- */
 
 
 function showBtnV(formName) {

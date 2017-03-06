@@ -8,6 +8,13 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
 
+<%
+    final String strHostUrl = request.getRequestURL().toString();
+
+			/** Web Tracker **/
+			More.webTracker(request, "load page", null);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +42,9 @@
 
 <!-- JavaScript -->
 <script src="js/formverify.js"></script>
+<script type="text/javascript">
 
+</script>
 
 </head>
 
@@ -64,7 +73,7 @@
 
 					Mdm mdm = new Mdm();
 
-					if (!mdm.conDB()) {
+					if (!mdm.conDB(request)) {
 						response.sendRedirect("error.html"); //insert error page 
 						return;
 					}
@@ -96,6 +105,13 @@
 								int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
 								//out.println(nGCount);
 
+								if (0 < nGCount) {
+
+									More.webTracker(request, "queryGroup success ", "GroupCount: " + nGCount);
+								}else{
+								    More.webTracker(request, "queryGroup failed ", "GroupCount: " + nGCount);
+								}
+
 								itGD = listGroup.iterator();
 
 								/********** App Manager **************/
@@ -107,6 +123,13 @@
 								ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
 								int nACount = mdm.queryApp(strGroupId, listApp);
 								//out.println(nACount);
+								
+								if (0 < nACount) {
+
+									More.webTracker(request, "queryApp success ", "AppCount: " + nACount);
+								}else{
+								    More.webTracker(request, "queryApp failed ", "AppCount: " + nACount +" groupID: " + strGroupId);
+								}
 
 								itAD = listApp.iterator();
 
@@ -595,7 +618,7 @@
 														<td style="vertical-align: middle;"><%=contentData.content_type%></td>
 														<td class="center" style="vertical-align: middle;"><%=contentData.create_time%></td>
 														<td class="center"><a
-															href="<%="/mdm" + contentData.file_location%>"
+															href="<%=contentData.file_location%>"
 															target="_blank"><button
 																	class="btn btn-primary btn-line"
 																	style="margin-right: 10px;" title="Preview">
@@ -750,33 +773,33 @@
 							<!-- GROUP SELECT -->
 							<%
 							    /*  int nCount = mdm.queryPermission(strEmail, listPermission);
-																				//nCount = 0;
-																				if (0 < nCount) {
-																					Iterator<Mdm.PermissionData> itPD = null;
-																					itPD = listPermission.iterator();
-																		
-																					while (itPD.hasNext()) {
-																						permissionData = itPD.next();
-																						listPermissionName.add(permissionData.permission);
-																					
-																						if (permissionData.permission.trim().equals("android")) {
-																							strUserId_Android = permissionData.user_id;
+																									//nCount = 0;
+																									if (0 < nCount) {
+																										Iterator<Mdm.PermissionData> itPD = null;
+																										itPD = listPermission.iterator();
 																							
-																							if (!mdm.conTypeDB(0)) {
-																								response.sendRedirect("error.html"); //insert error page 
-																								return;
-																							}
-																		
-																							//===== group info ======//
-																		
-																							Iterator<Mdm.GroupData> itGD = null;
-																							Mdm.GroupData groupData = null;
-																		
-																							ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
-																							int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
-																							//out.println(nGCount);
-																		
-																							itGD = listGroup.iterator();*/
+																										while (itPD.hasNext()) {
+																											permissionData = itPD.next();
+																											listPermissionName.add(permissionData.permission);
+																										
+																											if (permissionData.permission.trim().equals("android")) {
+																												strUserId_Android = permissionData.user_id;
+																												
+																												if (!mdm.conTypeDB(0)) {
+																													response.sendRedirect("error.html"); //insert error page 
+																													return;
+																												}
+																							
+																												//===== group info ======//
+																							
+																												Iterator<Mdm.GroupData> itGD = null;
+																												Mdm.GroupData groupData = null;
+																							
+																												ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
+																												int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+																												//out.println(nGCount);
+																							
+																												itGD = listGroup.iterator();*/
 							%>
 							<div class="styled-select blue semi-square"
 								style="margin-top: 4px;">
@@ -894,7 +917,11 @@
 												    int gCount = 0;
 															while (itGD2.hasNext()) {
 																groupData = itGD2.next();
-												%>
+																
+																if (null != itGD2){
+																 More.webTracker(request, "itGD2 ", null);
+																}
+																 %>
 												<tr>
 													<td style="text-align: center; vertical-align: middle;"><%=++gCount%></td>
 													<td style="text-align: center; vertical-align: middle;"><%=groupData.group_name%></td>
@@ -1000,10 +1027,7 @@
 		});
 	</script>
 	<script src="assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
-	<SCRIPT type="text/javascript">
-		//changeBtn();
-		showBtnV();
-	</SCRIPT>
+
 	<%
 	    if (null != strShowContent && strShowContent.trim().equals("true")) {
 	%>

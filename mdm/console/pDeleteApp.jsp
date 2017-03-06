@@ -1,13 +1,13 @@
 
 <%@ page contentType="text/html; charset=utf-8" language="java"
 	session="false"%>
-<%@ page import="mdmjava.*"%>
+<%@ page import="more.*"%>
 <%
     request.setCharacterEncoding("UTF-8");
 
-			final String strEmail = request.getParameter(Common.USER_EMAIL);
-			final String strGroupId = request.getParameter(Common.GROUP_ID);
-			final String strAPKFileName = request.getParameter(Common.APK_FILE_NAME);
+			final String strEmail = request.getParameter(Mdm.Common.USER_EMAIL);
+			final String strGroupId = request.getParameter(Mdm.Common.GROUP_ID);
+			final String strAPKFileName = request.getParameter(Mdm.Common.APK_FILE_NAME);
 
 			Mdm mdm = new Mdm();
 			
@@ -66,7 +66,7 @@
 
 	<form action="group_management.jsp" method="post"
 		name="FormHome" id="FormHome">
-		<input name="<%=Common.USER_EMAIL%>" type="hidden"
+		<input name="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
 			value="<%=strEmail%>" />
 	</form>
 	<%

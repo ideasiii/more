@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 
 public class Mdm
@@ -27,9 +29,9 @@ public class Mdm
 
     public class Common
     {
-    	final public static String UPLOAD_FILE_ANDROID_MANAGE_CONTENT_PATH = "/mdm/uploadfile/android/manage/content";
-    	final public static String UPLOAD_FILE_ANDROID_MANAGE_APP_PATH = "/mdm/uploadfile/android/manage/app";
-    	final public static String UPLOAD_FILE_ANDROID_DEVICE_APP_PATH = "/mdm/uploadfile/android/device/icon"; //Icons for showing device screen & app list
+    	final public static String UPLOAD_FILE_ANDROID_MANAGE_CONTENT_PATH = "/more/mdm/uploadfile/android/manage/content";
+    	final public static String UPLOAD_FILE_ANDROID_MANAGE_APP_PATH = "/more/mdm/uploadfile/android/manage/app";
+    	final public static String UPLOAD_FILE_ANDROID_DEVICE_APP_PATH = "/more/mdm/uploadfile/android/device/icon"; //Icons for showing device screen & app list
     	final public static String DB_PATH_MDM_USER = "/data/sqlite/mdm_user.db";
     	final public static String DB_PATH_MDM_ANDROID = "/data/sqlite/mdm_android.db";
     	final public static String DB_PATH_LOCATION = "/data/sqlite/location.db";
@@ -195,7 +197,7 @@ public class Mdm
     Connection conMdmAndroid = null;
 
     // common DB
-    public boolean conDB()
+    public boolean conDB(HttpServletRequest request)
     {
 	sqlite = new sqliteClient();
 	boolean bResult = false;
@@ -204,11 +206,13 @@ public class Mdm
 	    conMdmUser = sqlite.getConnection(Common.DB_PATH_MDM_USER);
 	    conLocation = sqlite.getConnection(Common.DB_PATH_LOCATION);
 	    bResult = true;
+	    More.webTracker(request, "connect to mdm_user success", null);
 	}
 	catch (SQLException e)
 	{
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
+	    More.webTracker(request, "connect to mdm_user failed ", e.toString());
 	}
 	return bResult;
     }

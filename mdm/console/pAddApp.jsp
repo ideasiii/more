@@ -12,7 +12,7 @@
 <%@ page import="java.util.Iterator"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Arrays"%>
-<%@ page import="mdmjava.*"%>
+<%@ page import="more.*"%>
 
 
 
@@ -37,7 +37,7 @@
 	    //Check that we have a file upload request
 				boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 				if (isMultipart) {
-					String saveDirectory = application.getRealPath(Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH);
+					String saveDirectory = application.getRealPath(Mdm.Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH);
 
 					// Create a factory for disk-based file items
 					FileItemFactory factory = new DiskFileItemFactory();
@@ -70,7 +70,7 @@
 					long timeNow = System.currentTimeMillis();
 					String strFileName = String.valueOf(timeNow);
 					String strFName = null;
-					mapData.put(Common.APP_ICON, Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH + "/app_icon_default.png");
+					mapData.put(Mdm.Common.APP_ICON, Mdm.Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH + "/app_icon_default.png");
 
 					for (int i = 0; i < itemUploadFileArray.size(); i++) {
 						Logs.showTrace("*******" + itemUploadFileArray.get(i).getName());
@@ -95,7 +95,7 @@
 
 							if (fileName != null && !"".equals(fileName) && 0 < sizeInBytes) {
 								String strPath = saveDirectory + "/" + mapData.get("userId_Android") + "/"
-										+ mapData.get(Common.GROUP_ID);
+										+ mapData.get(Mdm.Common.GROUP_ID);
 
 								Logs.showTrace(" fieldName:"+fieldName);
 								if (fieldName != null && fieldName.equals("app_icon")) 
@@ -116,9 +116,9 @@
 										new File(strPath).mkdirs();
 										File uploadedFile = new File(strPath, strIN);
 										itemUploadFile.write(uploadedFile);
-										mapData.put(Common.APP_ICON,
-												Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH + "/"
-														+ mapData.get("userId_Android") + "/" + mapData.get(Common.GROUP_ID)
+										mapData.put(Mdm.Common.APP_ICON,
+											Mdm.Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH + "/"
+														+ mapData.get("userId_Android") + "/" + mapData.get(Mdm.Common.GROUP_ID)
 														+ "/" + strIN);
 									}
 								}
@@ -147,10 +147,10 @@
 												new File(strPath).mkdirs();
 												File uploadedFile = new File(strPath, strFN);
 												itemUploadFile.write(uploadedFile);
-												mapData.put(Common.FILE_LOCATION,
-														Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH + "/"
+												mapData.put(Mdm.Common.FILE_LOCATION,
+													Mdm.Common.UPLOAD_FILE_ANDROID_MANAGE_APP_PATH + "/"
 																+ mapData.get("userId_Android") + "/"
-																+ mapData.get(Common.GROUP_ID) + "/" + strFN);
+																+ mapData.get(Mdm.Common.GROUP_ID) + "/" + strFN);
 												
 												strFName = strFileName;
 											}
@@ -183,15 +183,15 @@
 						System.out.println(key + " : " + mapData.get(key) + "<br/>");
 					}
 					*/
-					final String strEmail = mapData.get(Common.USER_EMAIL);
+					final String strEmail = mapData.get(Mdm.Common.USER_EMAIL);
 					final String strUserId_Android = mapData.get("userId_Android");
-					final String strGroupId = mapData.get(Common.GROUP_ID);
-					final String strAppName = mapData.get(Common.APP_NAME);
-					final String strCategory = mapData.get(Common.CATEGORY);
-					final String strEdition = mapData.get(Common.EDITION);
-					final String strDescription = mapData.get(Common.DESCRIPTION);
-					final String strAppIcon = mapData.get(Common.APP_ICON);
-					final String strFileLocation = mapData.get(Common.FILE_LOCATION);
+					final String strGroupId = mapData.get(Mdm.Common.GROUP_ID);
+					final String strAppName = mapData.get(Mdm.Common.APP_NAME);
+					final String strCategory = mapData.get(Mdm.Common.CATEGORY);
+					final String strEdition = mapData.get(Mdm.Common.EDITION);
+					final String strDescription = mapData.get(Mdm.Common.DESCRIPTION);
+					final String strAppIcon = mapData.get(Mdm.Common.APP_ICON);
+					final String strFileLocation = mapData.get(Mdm.Common.FILE_LOCATION);
 
 					Logs.showTrace(
 							"Insert App Data to Database, USER_ID:" + strUserId_Android + ", GROUP_ID:" + strGroupId);
@@ -202,7 +202,7 @@
 						response.sendRedirect("error.html"); //insert error page 
 						return;
 					}
-					mapData.put(Common.APK_FILE_NAME, strFName);
+					mapData.put(Mdm.Common.APK_FILE_NAME, strFName);
 					int nResult = mdm.insertAppManage(strGroupId, strAppName, strCategory, strEdition, strDescription,
 							strAppIcon, strFName, strFileLocation);
 
@@ -212,7 +212,7 @@
 
 	<form action="group_management.jsp" method="post" name="FormHome"
 		id="FormHome">
-		<input name="<%=Common.USER_EMAIL%>" type="hidden"
+		<input name="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
 			value="<%=strEmail%>" />
 	</form>
 

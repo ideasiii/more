@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java"
 	session="false"%>
-<%@ page import="mdmjava.*"%>
+<%@ page import="more.*"%>
 
 
 <!DOCTYPE html>
@@ -45,12 +45,12 @@
 <%
     request.setCharacterEncoding("UTF-8");
 
-			final String strEmail = request.getParameter(Common.USER_EMAIL);
-			final String strName = request.getParameter(Common.GROUP_NAME);
-			final String strAccount = request.getParameter(Common.ACCOUNT);
-			final String strPassword = request.getParameter(Common.PASSWORD);
-			final String strMaximum = request.getParameter(Common.MAXIMUM);
-			final String strPermission = request.getParameter(Common.PERMISSION);
+			final String strEmail = request.getParameter(Mdm.Common.USER_EMAIL);
+			final String strName = request.getParameter(Mdm.Common.GROUP_NAME);
+			final String strAccount = request.getParameter(Mdm.Common.ACCOUNT);
+			final String strPassword = request.getParameter(Mdm.Common.PASSWORD);
+			final String strMaximum = request.getParameter(Mdm.Common.MAXIMUM);
+			final String strPermission = request.getParameter(Mdm.Common.PERMISSION);
 			String strUserId = null;
 	
 			if (null != strPermission && strPermission.trim().equals("android"))
@@ -58,7 +58,7 @@
 
 			Mdm mdm = new Mdm();
 
-			if (!mdm.conDB())
+			if (!mdm.conDB(request))
 			{
 				response.sendRedirect("error.html"); //insert error page 
 				return;
@@ -80,7 +80,7 @@
 <!-- Form -->
 <form action="group_management.jsp" method="post" name="FormHome"
 	id="FormHome">
-	<input name="<%=Common.USER_EMAIL%>" type="hidden"
+	<input name="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
 		value="<%=strEmail%>" />
 </form>
 <%

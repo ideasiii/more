@@ -80,7 +80,7 @@
 					strClientId = jObjLoginInput.getString("clientId");
 				}
 
-				if (nUserId > 0) {
+				if (0 < nUserId) {
 					httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize";
 
 					jobj = new JSONObject();
@@ -96,7 +96,7 @@
 					if (null != jObjAuth && jObjAuth.has("userId")) {
 						nUserId2 = jObjAuth.getInt("userId");
 					}
-						if (nUserId2 > 0) {
+						if (0 < nUserId2) {
 						    bAuthResult = true;
 							More.webTracker(request, "User login success: " + nUserId2, "Email: " + strEmail);
 
