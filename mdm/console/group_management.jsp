@@ -618,7 +618,7 @@
 														<td style="vertical-align: middle;"><%=contentData.content_type%></td>
 														<td class="center" style="vertical-align: middle;"><%=contentData.create_time%></td>
 														<td class="center"><a
-															href="<%=contentData.file_location%>"
+															href="<%="/more" +contentData.file_location%>"
 															target="_blank"><button
 																	class="btn btn-primary btn-line"
 																	style="margin-right: 10px;" title="Preview">
