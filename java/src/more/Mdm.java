@@ -206,34 +206,36 @@ public class Mdm
 	    conMdmUser = sqlite.getConnection(Common.DB_PATH_MDM_USER);
 	    conLocation = sqlite.getConnection(Common.DB_PATH_LOCATION);
 	    bResult = true;
-	    More.webTracker(request, "connect to mdm_user success", null);
+	    More.webTracker(request, "connect to mdm_user DB success", null);
 	}
 	catch (SQLException e)
 	{
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
-	    More.webTracker(request, "connect to mdm_user failed ", e.toString());
+	    More.webTracker(request, "connect to mdm_user DB failed ", e.toString());
 	}
 	return bResult;
     }
 
-    public void closeDB()
+    public void closeDB(HttpServletRequest request)
     {
 	try
 	{
 	    conMdmUser.close();
 	    conLocation.close();
 	    sqlite = null;
+	    More.webTracker(request, "close mdm_user DB success", null);
 	}
 	catch (SQLException e)
 	{
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
+	    More.webTracker(request, "close mdm_user DB failed ", e.toString());
 	}
     }
 
     // for android db
-    public boolean conTypeDB(int nType)
+    public boolean conTypeDB(HttpServletRequest request, int nType)
     {
 	sqlite = new sqliteClient();
 	boolean bResult = false;
@@ -246,16 +248,18 @@ public class Mdm
 		break;
 	    }
 	    bResult = true;
+	    More.webTracker(request, "connect to mdm_android DB success", null);
 	}
 	catch (SQLException e)
 	{
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
+	    More.webTracker(request, "connect to mdm_android DB failed ", e.toString());
 	}
 	return bResult;
     }
 
-    public void closeTypeDB(int nType)
+    public void closeTypeDB(HttpServletRequest request, int nType)
     {
 	try
 	{
@@ -266,11 +270,13 @@ public class Mdm
 		break;
 	    }
 	    sqlite = null;
+	    More.webTracker(request, "close mdm_android DB success", null);
 	}
 	catch (SQLException e)
 	{
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
+	    More.webTracker(request, "close mdm_android DB failed ", e.toString());
 	}
     }
 

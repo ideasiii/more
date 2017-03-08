@@ -918,9 +918,9 @@
 															while (itGD2.hasNext()) {
 																groupData = itGD2.next();
 																
-																if (null != itGD2){
+																/**if (null != itGD2){
 																 More.webTracker(request, "itGD2 ", null);
-																}
+																}**/
 																 %>
 												<tr>
 													<td style="text-align: center; vertical-align: middle;"><%=++gCount%></td>
@@ -1074,7 +1074,7 @@
 </html>
 <%
     mdm.closeTypeDB(0);
-    mdm.closeDB();
+    mdm.closeDB(request);
     mdm = null;
 
     //	out.println(strAccountV);

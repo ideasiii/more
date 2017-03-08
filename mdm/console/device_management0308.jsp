@@ -4,16 +4,9 @@
 <%@ page import="java.sql.Statement"%>
 <%@page import=" java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
-<%@ page import="more.*"%>
+<%@ page import="mdmjava.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
-
-<%
-    final String strHostUrl = request.getRequestURL().toString();
-
-			/** Web Tracker **/
-			More.webTracker(request, "load page", null);
-%>
 
 <!DOCTYPE html>
 <html>
@@ -26,22 +19,31 @@
         <![endif]-->
 
 <!-- GLOBAL STYLES -->
-<link rel="stylesheet" href="/more/css/more_style.css" />
-<link rel="stylesheet" href="/more/css/bootstrap_2.css" />
-<link rel="stylesheet" href="/more/css/main_2.css" />
-<link rel="stylesheet" href="/more/css/theme.css" />
-<link rel="stylesheet" href="/more/css/MoneAdmin.css" />
 <link rel="stylesheet"
-	href="/more/css/plugins/Font-Awesome/css/font-awesome_2.css" />
+	href="assets/plugins/bootstrap/css/bootstrap_2.css" />
+<link rel="stylesheet" href="assets/css/main_2.css" />
+<link rel="stylesheet" href="assets/css/MoneAdmin.css" />
 <link rel="stylesheet"
-	href="/more/css/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
+	href="assets/plugins/Font-Awesome/css/font-awesome_2.css" />
+<link rel="stylesheet"
+	href="assets/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
 <!--END GLOBAL STYLES -->
 
-<!-- JavaScript -->
+<!-- jQuery -->
 <script src="assets/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
 <script src="assets/js/bootstrap.min.js"></script>
+
+<!-- JavaScript -->
 <script src="js/controller_list.js"></script>
 
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
 <style>
 
