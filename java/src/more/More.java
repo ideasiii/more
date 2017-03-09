@@ -223,7 +223,7 @@ public class More
 	    stat.close();
 	    con.close();
 	    sqlite = null;
-	    More.webTracker(request, "queryMember failed: ", strSQL);
+	    More.webTracker(request, "queryMember success: ", strSQL);
 
 	} catch (SQLException e)
 	{
@@ -278,6 +278,7 @@ public class More
 	    return MORE_ERR_EXCEPTION;
 	}
 
+	
 	return MORE_ERR_SUCCESS;
     }
 

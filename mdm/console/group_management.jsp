@@ -78,7 +78,7 @@
 						return;
 					}
 
-					int nCount = mdm.queryPermission(strEmail, listPermission);
+					int nCount = mdm.queryPermission(request, strEmail, listPermission);
 					//nCount = 0;
 					if (0 < nCount) {
 						Iterator<Mdm.PermissionData> itPD = null;
@@ -91,7 +91,7 @@
 							if (permissionData.permission.trim().equals("android")) {
 								strUserId_Android = permissionData.user_id;
 
-								if (!mdm.conTypeDB(0)) {
+								if (!mdm.conTypeDB(request, 0)) {
 									response.sendRedirect("error.html"); //insert error page 
 									return;
 								}
@@ -102,7 +102,7 @@
 								Mdm.GroupData groupData = null;
 
 								ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
-								int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+								int nGCount = mdm.queryGroup(request, permissionData.user_id, listGroup);
 								//out.println(nGCount);
 
 								if (0 < nGCount) {
@@ -861,7 +861,7 @@
 										Mdm.GroupData groupData = null;
 
 										ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
-										int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
+										int nGCount = mdm.queryGroup(request, permissionData.user_id, listGroup);
 
 										itGD2 = listGroup.iterator();
 							%>
@@ -1073,7 +1073,7 @@
 
 </html>
 <%
-    mdm.closeTypeDB(0);
+    mdm.closeTypeDB(request, 0);
     mdm.closeDB(request);
     mdm = null;
 

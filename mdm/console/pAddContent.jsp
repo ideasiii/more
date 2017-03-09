@@ -164,14 +164,14 @@
 							"Insert Content Data to Database, USER_ID:" + strUserId_Android + ", GROUP_ID:" + strGroupId);
 					Mdm mdm = new Mdm();
 
-					if (!mdm.conTypeDB(0)) {
+					if (!mdm.conTypeDB(request, 0)) {
 						response.sendRedirect("error.html"); //insert error page 
 						return;
 					}
 					mapData.put(Mdm.Common.FILE_NAME, strFileName);
 					int nResult = mdm.insertContentManage(strGroupId, strAlias, strContentType, strFN, strFileLocation);
 
-					mdm.closeTypeDB(0);
+					mdm.closeTypeDB(request, 0);
 					mdm = null;
 	%>
 

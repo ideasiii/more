@@ -206,7 +206,6 @@ public class Mdm
 	    conMdmUser = sqlite.getConnection(Common.DB_PATH_MDM_USER);
 	    conLocation = sqlite.getConnection(Common.DB_PATH_LOCATION);
 	    bResult = true;
-	    More.webTracker(request, "connect to mdm_user DB success", null);
 	}
 	catch (SQLException e)
 	{
@@ -214,6 +213,8 @@ public class Mdm
 	    e.printStackTrace();
 	    More.webTracker(request, "connect to mdm_user DB failed ", e.toString());
 	}
+	
+	More.webTracker(request, "connect to mdm_user DB success", null);
 	return bResult;
     }
 
@@ -224,7 +225,6 @@ public class Mdm
 	    conMdmUser.close();
 	    conLocation.close();
 	    sqlite = null;
-	    More.webTracker(request, "close mdm_user DB success", null);
 	}
 	catch (SQLException e)
 	{
@@ -232,6 +232,8 @@ public class Mdm
 	    e.printStackTrace();
 	    More.webTracker(request, "close mdm_user DB failed ", e.toString());
 	}
+	
+	More.webTracker(request, "close mdm_user DB success", null);
     }
 
     // for android db
@@ -248,7 +250,6 @@ public class Mdm
 		break;
 	    }
 	    bResult = true;
-	    More.webTracker(request, "connect to mdm_android DB success", null);
 	}
 	catch (SQLException e)
 	{
@@ -256,6 +257,8 @@ public class Mdm
 	    e.printStackTrace();
 	    More.webTracker(request, "connect to mdm_android DB failed ", e.toString());
 	}
+	
+	More.webTracker(request, "connect to mdm_android DB success", null);
 	return bResult;
     }
 
@@ -270,7 +273,6 @@ public class Mdm
 		break;
 	    }
 	    sqlite = null;
-	    More.webTracker(request, "close mdm_android DB success", null);
 	}
 	catch (SQLException e)
 	{
@@ -278,26 +280,28 @@ public class Mdm
 	    e.printStackTrace();
 	    More.webTracker(request, "close mdm_android DB failed ", e.toString());
 	}
+
+	    More.webTracker(request, "close mdm_android DB success", null);
     }
 
     
-    public int queryPermission(String strEmail, ArrayList<PermissionData> listPermission)
+    public int queryPermission(HttpServletRequest request, String strEmail, ArrayList<PermissionData> listPermission)
     {
 	int nCount = 0;
-
+	String strSQL = "select * from user_permission where user_email='" + strEmail + "' order by create_time ;";
+	ArrayList<HashMap<String, String> > listData = new ArrayList<HashMap<String, String> >();
+	
 	try
 	{
 	    // sqlite = new sqliteClient();
 	    // Connection con = sqlite.getConnection(Common.DB_PATH_MDM_USER);
-	    String strSQL = "select * from user_permission where user_email='" + strEmail + "' order by create_time ;";
-	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	    sqlite.query(conMdmUser, strSQL, listPermissionField, listData);
 	    // con.close();
 	    // sqlite = null;
 
 	    if (0 < listData.size())
 	    {
-		Iterator<HashMap<String, String>> it = null;
+		Iterator<HashMap<String, String> > it = null;
 		HashMap<String, String> mapItem;
 		it = listData.iterator();
 		PermissionData permissionData = null;
@@ -322,29 +326,31 @@ public class Mdm
 	{
 	    Logs.showError(e.toString());
 	    e.printStackTrace();
+	    More.webTracker(request, "queryPermission failed: ", e.toString());
 	}
 
+	More.webTracker(request, "queryPermission success: ", strSQL);
 	return nCount;
     }
 
-    public int queryGroup(String strUserId, ArrayList<GroupData> listGroup)
+    public int queryGroup(HttpServletRequest request, String strUserId, ArrayList<GroupData> listGroup)
     {
 	int nCount = 0;
-
+	String strSQL = "select * from group_info where user_id='" + strUserId + "' order by create_time ;";
+	ArrayList<HashMap<String, String> > listData = new ArrayList<HashMap<String, String> >();
+	    
 	try
 	{
 	    // sqliteClient sqlite = new sqliteClient();
 	    // Connection con =
 	    // sqlite.getConnection(Common.DB_PATH_MDM_ANDROID);
-	    String strSQL = "select * from group_info where user_id='" + strUserId + "' order by create_time ;";
-	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	    sqlite.query(conMdmAndroid, strSQL, listGroupField, listData);
 	    // con.close();
 	    // sqlite = null;
 
 	    if (0 < listData.size())
 	    {
-		Iterator<HashMap<String, String>> it = null;
+		Iterator<HashMap<String, String> > it = null;
 		HashMap<String, String> mapItem;
 		it = listData.iterator();
 		GroupData groupData = null;
@@ -371,18 +377,20 @@ public class Mdm
 	{
 	    Logs.showError(e.toString());
 	    e.printStackTrace();
+	    More.webTracker(request, "queryGroup failed: ", e.toString());
 	}
 
+	More.webTracker(request, "queryGroup success: ", strSQL);
 	return nCount;
     }
     
     
 
-    public int insertpGroupAdd(final String strName, final String strAccount, final String strPassword, final String strMaximum, final String strUserId)
+    public int insertGroup(HttpServletRequest request, final String strName, final String strAccount, final String strPassword, final String strMaximum, final String strUserId)
     {
+	String strSQL = "insert into group_info(group_name, account, password, maximum, user_id) values(?,?,?,?,?) ;";
 	try
 	{
-	    String strSQL = "insert into group_info(group_name, account, password, maximum, user_id) values(?,?,?,?,?) ;";
 	    PreparedStatement pst = null;
 	    pst = conMdmAndroid.prepareStatement(strSQL);
 	    int idx = 1;
@@ -397,17 +405,18 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "insertGroup failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "insertGroup success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
     }
 
-    public int updatepGroupEdit(final String strGroupId, final String strAccount, final String strPassword, final String strMaximum)
+    public int updatepGroupEdit(HttpServletRequest request, final String strGroupId, final String strAccount, final String strPassword, final String strMaximum)
     {
+	 String strSQL = "update group_info set account =? , password =? , maximum =?, update_time = datetime('now','localtime')  where group_id ='" + strGroupId + "';";
 	try
 	{
-	    String strSQL = "update group_info set account =? , password =? , maximum =?, update_time = datetime('now','localtime')  where group_id ='" + strGroupId + "';";
 	    Logs.showError(strSQL);
 	    Logs.showError(strAccount);
 	    Logs.showError(strPassword);
@@ -424,13 +433,14 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "updatepGroupEdit failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "updatepGroupEdit success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
     }
 
-    public int deleteGroup(final String strGroupId)
+    public int deleteGroup(HttpServletRequest request, final String strGroupId)
     {
 	try
 	{

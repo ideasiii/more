@@ -64,16 +64,16 @@
 				return;
 			}
 			
-			if (!mdm.conTypeDB(0))
+			if (!mdm.conTypeDB(request, 0))
 			{
 			    response.sendRedirect("error.html"); //insert error page 
 			    return;
 			}
 			
-			int nResult = mdm.insertpGroupAdd(strName, strAccount, strPassword, strMaximum, strUserId);
+			int nResult = mdm.insertGroup(request, strName, strAccount, strPassword, strMaximum, strUserId);
 			
-			mdm.closeTypeDB(0);
-			mdm.closeDB();
+			mdm.closeTypeDB(request, 0);
+			mdm.closeDB(request);
 			mdm = null;
 %>
 

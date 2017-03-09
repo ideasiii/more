@@ -13,15 +13,15 @@
 			out.println(strMaximum);
 			Mdm mdm = new Mdm();
 
-			if (!mdm.conTypeDB(0)) {
+			if (!mdm.conTypeDB(request, 0)) {
 				response.sendRedirect("error.html"); //insert error page 
 				return;
 			}
 
-			int nResult = mdm.updatepGroupEdit(strGroupId, strAccount, strPassword, strMaximum);
+			int nResult = mdm.updatepGroupEdit(request, strGroupId, strAccount, strPassword, strMaximum);
 			String strResult = null;
 
-			mdm.closeTypeDB(0);
+			mdm.closeTypeDB(request, 0);
 			mdm = null;
 %>
 
