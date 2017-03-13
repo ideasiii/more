@@ -158,15 +158,14 @@ public class More
     public int queryMemberAccountList(HttpServletRequest request, ArrayList<String> listEmailAccount)
     {
 	int nCount = 0;
-
+	String strSQL = "select member_email from more_member;";
+	Statement stat = null;
+	ResultSet rs = null;
 	try
 	{
 	    sqliteClient sqlite = new sqliteClient();
 	    Connection con = sqlite.getConnection(Common.DB_PATH_MORE_MEMBER);
-	    String strSQL = "select member_email from more_member;";
 
-	    Statement stat = null;
-	    ResultSet rs = null;
 	    stat = con.createStatement();
 	    rs = stat.executeQuery(strSQL);
 	    while (rs.next())
@@ -178,7 +177,6 @@ public class More
 	    stat.close();
 	    con.close();
 	    sqlite = null;
-	    More.webTracker(request, "queryMemberAccountList success: ", strSQL);
 
 	} catch (SQLException e)
 	{
@@ -186,22 +184,21 @@ public class More
 	    e.printStackTrace();
 	    More.webTracker(request, "queryMemberAccountList failed: ", e.toString());
 	}
-
+	More.webTracker(request, "queryMemberAccountList success: ", strSQL);
 	return nCount;
     }
 
     public int queryMember(HttpServletRequest request, final String strEmail, MemberData memData)
     {
 	int nCount = 0;
-
+	String strSQL = "select * from more_member where member_email = '" + strEmail + "';";
+	Statement stat = null;
+	ResultSet rs = null;
 	try
 	{
 	    sqliteClient sqlite = new sqliteClient();
 	    Connection con = sqlite.getConnection(Common.DB_PATH_MORE_MEMBER);
-	    String strSQL = "select * from more_member where member_email = '" + strEmail + "';";
 
-	    Statement stat = null;
-	    ResultSet rs = null;
 	    stat = con.createStatement();
 	    rs = stat.executeQuery(strSQL);
 	    while (rs.next())
@@ -223,7 +220,6 @@ public class More
 	    stat.close();
 	    con.close();
 	    sqlite = null;
-	    More.webTracker(request, "queryMember success: ", strSQL);
 
 	} catch (SQLException e)
 	{
@@ -231,7 +227,7 @@ public class More
 	    e.printStackTrace();
 	    More.webTracker(request, "queryMember failed: ", e.toString());
 	}
-
+	More.webTracker(request, "queryMember success: ", strSQL);
 	return nCount;
     }
 
@@ -243,6 +239,7 @@ public class More
 	    return MORE_ERR_INVALID_PARAMETER;
 	}
 
+	String sql = "insert into more_member(member_email,member_password,member_name,member_company,member_phone,member_token) values ( ?,?,?,?,?,?)";
 	try
 	{
 	    MemberData memData = new MemberData();
@@ -252,8 +249,6 @@ public class More
 
 	    sqliteClient sqlite = new sqliteClient();
 	    Connection con = sqlite.getConnection(Common.DB_PATH_MORE_MEMBER);
-
-	    String sql = "insert into more_member(member_email,member_password,member_name,member_company,member_phone,member_token) values ( ?,?,?,?,?,?)";
 
 	    PreparedStatement pst = null;
 	    pst = con.prepareStatement(sql);
@@ -269,8 +264,6 @@ public class More
 	    con.close();
 	    sqlite = null;
 
-	    More.webTracker(request, "memberAdd success: ", sql);
-
 	} catch (Exception e)
 	{
 
@@ -278,7 +271,7 @@ public class More
 	    return MORE_ERR_EXCEPTION;
 	}
 
-	
+	More.webTracker(request, "memberAdd success: ", sql);
 	return MORE_ERR_SUCCESS;
     }
 
@@ -318,13 +311,13 @@ public class More
     public int querySdk(HttpServletRequest request, ArrayList<SdkData> listSdk)
     {
 	int nCount = 0;
-
+	String strSQL = "select * from sdk order by create_date;";
+	ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	try
 	{
 	    sqliteClient sqlite = new sqliteClient();
 	    Connection con = sqlite.getConnection(Common.DB_PATH_IDEAS);
-	    String strSQL = "select * from sdk order by create_date;";
-	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
+	   
 	    sqlite.query(con, strSQL, listSdkField, listData);
 	    con.close();
 	    sqlite = null;
@@ -353,7 +346,6 @@ public class More
 		}
 		nCount = listSdk.size();
 	    }
-	    More.webTracker(request, "querySdk success: ", strSQL);
 
 	} catch (SQLException e)
 	{
@@ -361,7 +353,7 @@ public class More
 	    e.printStackTrace();
 	    More.webTracker(request, "querySdk failed: ", e.toString());
 	}
-
+	 More.webTracker(request, "querySdk success: ", strSQL);
 	return nCount;
     }
 
@@ -404,6 +396,7 @@ public class More
 	    transport.sendMessage(message, message.getAllRecipients());
 	    transport.close();
 	    More.webTracker(request, "MORE SendingEmail success: " + Email, null);
+	    
 	} catch (Exception e)
 	{
 	    System.out.println("MORE Send Mail Exception:" + e.toString());
@@ -414,13 +407,13 @@ public class More
     public int queryApp(HttpServletRequest request, ArrayList<AppData> listApp, String strUserToken)
     {
 	int nCount = 0;
-
+	String strSQL = "select * from app where user_token = '" + strUserToken + "' order by create_date;";
+	ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	try
 	{
 	    sqliteClient sqlite = new sqliteClient();
 	    Connection con = sqlite.getConnection(Common.DB_PATH_IDEAS);
-	    String strSQL = "select * from app where user_token = '" + strUserToken + "' order by create_date;";
-	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
+	    
 	    sqlite.query(con, strSQL, listAppField, listData);
 	    con.close();
 	    sqlite = null;
@@ -451,7 +444,6 @@ public class More
 		}
 		nCount = listApp.size();
 	    }
-	    More.webTracker(request, "queryApp success: ", strSQL);
 
 	} catch (Exception e)
 	{
@@ -459,6 +451,7 @@ public class More
 	    e.printStackTrace();
 	    More.webTracker(request, "queryApp failed: ", e.toString());
 	}
+	More.webTracker(request, "queryApp success: ", strSQL);
 	return nCount;
     }
 

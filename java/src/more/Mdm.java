@@ -517,14 +517,14 @@ public class Mdm
 	return MDM_DB_ERR_SUCCESS;
     }
 
-    public int queryApp(String strGroupId, ArrayList<AppData> listApp)
+    public int queryApp(HttpServletRequest request, String strGroupId, ArrayList<AppData> listApp)
     {
 	int nCount = 0;
-
+	String strSQL = "select * from app_manage where group_id='" + strGroupId + "' order by create_time ;";
+	ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
+	
 	try
 	{
-	    String strSQL = "select * from app_manage where group_id='" + strGroupId + "' order by create_time ;";
-	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	    sqlite.query(conMdmAndroid, strSQL, listAppField, listData);
 
 	    if (0 < listData.size())
@@ -558,20 +558,23 @@ public class Mdm
 	{
 	    Logs.showError(e.toString());
 	    e.printStackTrace();
+	    More.webTracker(request, "queryApp failed: ", e.toString());
+	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "queryApp success: ", strSQL);
 	return nCount;
     }
 
-    public int deleteApp(final String strGroupId, final String strAPKFileName)
+    public int deleteApp(HttpServletRequest request, final String strGroupId, final String strAPKFileName)
     {
+	String strSQL;
 	try
 	{
 	    sqliteClient sqlite = new sqliteClient();
 	    Connection con = sqlite.getConnection(Common.DB_PATH_MDM_ANDROID);
 
 	    // Query File Path
-	    String strSQL = "select app_icon, file_location from app_manage where group_id = '" + strGroupId + "' and apk_file_name = '" + strAPKFileName + "'";
+	    strSQL = "select app_icon, file_location from app_manage where group_id = '" + strGroupId + "' and apk_file_name = '" + strAPKFileName + "'";
 	    Statement stat = null;
 	    ResultSet rs = null;
 	    stat = con.createStatement();
@@ -666,17 +669,19 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "deleteApp failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
+	 More.webTracker(request, "deleteApp success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
 
     }
 
-    public int insertContentManage(final String strGroupId, final String strAlias, final String strContentType, final String strFileName, final String strFileLocation)
+    public int insertContentManage(HttpServletRequest request, final String strGroupId, final String strAlias, final String strContentType, final String strFileName, final String strFileLocation)
     {
+	 String strSQL = "insert into content_manage(group_id, alias, content_type, file_name, file_location) values(?,?,?,?,?) ;";
 	try
 	{
-	    String strSQL = "insert into content_manage(group_id, alias, content_type, file_name, file_location) values(?,?,?,?,?) ;";
 	    PreparedStatement pst = null;
 	    pst = conMdmAndroid.prepareStatement(strSQL);
 	    int idx = 1;
@@ -691,20 +696,21 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "insertContentManage failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "insertContentManage success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
     }
 
-    public int queryContent(String strGroupId, ArrayList<ContentData> listContent)
+    public int queryContent(HttpServletRequest request, String strGroupId, ArrayList<ContentData> listContent)
     {
 	int nCount = 0;
+	String strSQL = "select * from content_manage where group_id='" + strGroupId + "' order by create_time ;";
+	ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 
 	try
 	{
-	    String strSQL = "select * from content_manage where group_id='" + strGroupId + "' order by create_time ;";
-	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	    sqlite.query(conMdmAndroid, strSQL, listContentField, listData);
 
 	    if (0 < listData.size())
@@ -735,20 +741,23 @@ public class Mdm
 	{
 	    Logs.showError(e.toString());
 	    e.printStackTrace();
+	    More.webTracker(request, "queryContent failed: ", e.toString());
+	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "queryContent success: ", strSQL);
 	return nCount;
     }
 
-    public int deleteContent(final String strGroupId, final String strFileName)
+    public int deleteContent(HttpServletRequest request, final String strGroupId, final String strFileName)
     {
+	String strSQL;
 	try
 	{
 	    sqliteClient sqlite = new sqliteClient();
 	    Connection con = sqlite.getConnection(Common.DB_PATH_MDM_ANDROID);
 
 	    // Query File Path
-	    String strSQL = "select file_location from content_manage where group_id = '" + strGroupId + "' and file_name = '" + strFileName + "'";
+	    strSQL = "select file_location from content_manage where group_id = '" + strGroupId + "' and file_name = '" + strFileName + "'";
 	    Statement stat = null;
 	    ResultSet rs = null;
 	    stat = con.createStatement();
@@ -810,21 +819,23 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "deleteContent failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
+	More.webTracker(request, "deleteContent success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
 
     }
 
-    public int queryDevice(String strGroupId, ArrayList<DeviceData> listDevice)
+    public int queryDevice(HttpServletRequest request, String strGroupId, ArrayList<DeviceData> listDevice)
     {
 	int nCount = 0;
-
+	String strSQL = "select * from device_info where group_id='" + strGroupId + "' order by create_time ;";
+	System.out.println(strSQL);
+	ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
+	
 	try
 	{
-	    String strSQL = "select * from device_info where group_id='" + strGroupId + "' order by create_time ;";
-	    System.out.println(strSQL);
-	    ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	    sqlite.query(conMdmAndroid, strSQL, listDeviceField, listData);
 
 	    if (0 < listData.size())
@@ -858,16 +869,17 @@ public class Mdm
 	{
 	    Logs.showError(e.toString());
 	    e.printStackTrace();
+	    More.webTracker(request, "queryDevice failed: ", e.toString());
 	}
-
+	More.webTracker(request, "queryDevice success: ", strSQL);
 	return nCount;
     }
 
-    public int insertControllerJob(final String strControlId, final String strJobSeq, final String strCmmdFrom, final String strMacAddress)
+    public int insertControllerJob(HttpServletRequest request, final String strControlId, final String strJobSeq, final String strCmmdFrom, final String strMacAddress)
     {
+	String strSQL = "insert into job(control_id, job_seq, cmmd_from, mac_address) values(?,?,?,?) ;";
 	try
 	{
-	    String strSQL = "insert into job(control_id, job_seq, cmmd_from, mac_address) values(?,?,?,?) ;";
 	    PreparedStatement pst = null;
 	    pst = conMdmAndroid.prepareStatement(strSQL);
 	    int idx = 1;
@@ -881,17 +893,18 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "insertControllerJob failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "insertControllerJob success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
     }
 
-    public int insertActionDevice(final String strJobSeq, final String strControlId, final String strAction, final String strInput)
+    public int insertActionDevice(HttpServletRequest request, final String strJobSeq, final String strControlId, final String strAction, final String strInput)
     {
+	String strSQL = "insert into action_device(job_seq, control_id, action, input) values(?,?,?,?) ;";
 	try
 	{
-	    String strSQL = "insert into action_device(job_seq, control_id, action, input) values(?,?,?,?) ;";
 	    PreparedStatement pst = null;
 	    pst = conMdmAndroid.prepareStatement(strSQL);
 	    int idx = 1;
@@ -905,9 +918,10 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "insertActionDevice failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "insertActionDevice success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
     }
 
