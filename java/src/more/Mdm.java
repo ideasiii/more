@@ -414,7 +414,7 @@ public class Mdm
 
     public int updatepGroupEdit(HttpServletRequest request, final String strGroupId, final String strAccount, final String strPassword, final String strMaximum)
     {
-	 String strSQL = "update group_info set account =? , password =? , maximum =?, update_time = datetime('now','localtime')  where group_id ='" + strGroupId + "';";
+	String strSQL = "update group_info set account =? , password =? , maximum =?, update_time = datetime('now','localtime')  where group_id ='" + strGroupId + "';";
 	try
 	{
 	    Logs.showError(strSQL);
@@ -442,9 +442,10 @@ public class Mdm
 
     public int deleteGroup(HttpServletRequest request, final String strGroupId)
     {
+	String strSQL;
 	try
 	{
-	    String strSQL = "delete from group_info where group_id = ?";
+	    strSQL = "delete from group_info where group_id = ?";
 	    PreparedStatement pst = null;
 	    pst = conMdmAndroid.prepareStatement(strSQL);
 	    int idx = 1;
@@ -459,6 +460,8 @@ public class Mdm
 	    pst.executeUpdate();
 	    pst.close();
 
+	    
+	    
 	    strSQL = "delete from app_manage where group_id = ?";
 	    pst = conMdmAndroid.prepareStatement(strSQL);
 	    idx = 1;
@@ -476,18 +479,20 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "deleteGroup failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
+	More.webTracker(request, "deleteGroup success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
 
     }
 
-    public int insertAppManage(final String strGroupId, final String strAppName, final String strCategory, final String strEdition, final String strDescription,
+    public int insertAppManage(HttpServletRequest request, final String strGroupId, final String strAppName, final String strCategory, final String strEdition, final String strDescription,
 	    final String strAppIcon, final String strAPKFileName, final String strFileLocation)
     {
+	String strSQL = "insert into app_manage(group_id, app_name, category, edition, description, app_icon, apk_file_name, file_location) values(?,?,?,?,?,?,?,?) ;";
 	try
 	{
-	    String strSQL = "insert into app_manage(group_id, app_name, category, edition, description, app_icon, apk_file_name, file_location) values(?,?,?,?,?,?,?,?) ;";
 	    PreparedStatement pst = null;
 	    pst = conMdmAndroid.prepareStatement(strSQL);
 	    int idx = 1;
@@ -505,9 +510,10 @@ public class Mdm
 	catch (Exception e)
 	{
 	    Logs.showError(e.toString());
+	    More.webTracker(request, "insertAppManage failed: ", e.toString());
 	    return MDM_DB_ERR_EXCEPTION;
 	}
-
+	More.webTracker(request, "insertAppManage success: ", strSQL);
 	return MDM_DB_ERR_SUCCESS;
     }
 
