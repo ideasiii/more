@@ -986,7 +986,9 @@
 		</div>
 	</div>
 	<!--END PAGE CONTENT -->
-
+	
+<!--END MAIN WRAPPER -->
+	
 	<!--FOOTER -->
 	<footer class="footer">
 		<div class="link_area">
@@ -1010,7 +1012,7 @@
 	</footer>
 	<!--END FOOTER -->
 
-	<!--END MAIN WRAPPER -->
+	
 
 
 	<!-- GLOBAL SCRIPTS -->

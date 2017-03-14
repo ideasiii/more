@@ -18,11 +18,11 @@
 					</a>
 				</header>
 				<!-- END LOGO SECTION -->
-				<ul class="nav navbar-top-links navbar-right">
+			
 
 
 					<!--ADMIN SETTINGS SECTIONS -->
-
+	<ul class="nav navbar-top-links navbar-right">
 					<li class="dropdown" style="margin-top:8px;"><a class="dropdown-toggle" style="background-color:transparent;"
 						data-toggle="dropdown" href="#"> <i class="icon-gear fa-lg fa-inverse"></i>
 					</a>
@@ -34,10 +34,10 @@
 							<li class="divider"></li>
 							<li><a href="login.html"><i class="icon-signout"></i>
 									Logout </a></li>
-						</ul></li>
+						</ul></li>	</ul>
 					<!--END ADMIN SETTINGS -->
 
-				</ul>
+			
 			</nav>
 		</div>
 		<!-- END HEADER SECTION -->
