@@ -121,7 +121,7 @@
 								String strAppIconPath = null;
 
 								ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
-								int nACount = mdm.queryApp(strGroupId, listApp);
+								int nACount = mdm.queryApp(request, strGroupId, listApp);
 								//out.println(nACount);
 								
 								if (0 < nACount) {
@@ -139,7 +139,7 @@
 								Mdm.ContentData contentData = null;
 
 								ArrayList<Mdm.ContentData> listContent = new ArrayList<Mdm.ContentData>();
-								int nCCount = mdm.queryContent(strGroupId, listContent);
+								int nCCount = mdm.queryContent(request, strGroupId, listContent);
 
 								itCD = listContent.iterator();
 		%>

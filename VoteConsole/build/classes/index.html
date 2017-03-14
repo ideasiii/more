@@ -13,6 +13,8 @@
 	href="/more/css/plugins/Font-Awesome/css/font-awesome_2.css" />
 <link rel="stylesheet"
 	href="/more/css/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
+<link href="/more/css/plugins/dataTables/dataTables.bootstrap.css"
+	rel="stylesheet" />
 
 <style>
 </style>
@@ -162,12 +164,203 @@
 			</div>
 		</div>
 
+		<div class="col-lg-12">
+			<div class="modal fade" id="DeleteGroup" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Delete Confirm</h4>
+						</div>
+
+						<div class="modal-body">
+							<span>You have selected to delete "<span
+								id="GroupDeleteConfirm"></span>".<br> <span
+								style="color: #b94a48;">The following procedures delete
+									either all data, or contents and applications (including files
+									in the Management) in this group.</span> <br>If this was the
+								action that you wanted to do, please confirm your choice, or
+								cancel and return to the page.
+							</span>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Cancel</button>
+							<input type="submit" class="btn btn-danger" value="Delete">
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12">
+			<div class="modal fade" id="Issue" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" style="width: 90%;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h3 class="modal-title" id="H1">
+								<span id="VCName"></span> - 投票所內的議題
+							</h3>
+						</div>
+						<div class="modal-body">
+							您可以在此檢視議題的投票結果。
+
+							<p>投票所內只能開放一個議題，被開放的議題可以讓加入本投票所的其他人看見並進行投票。</p>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12">
+								<div>
+									<div class="panel-body">
+										<div class="table-responsive">
+											<table class="table table-striped table-bordered table-hover"
+												id="dataTables-VC">
+												<thead class="toolbar">
+													<tr>
+														<th>#</th>
+														<th>類型</th>
+														<th>描述</th>
+														<th>建立時間</th>
+														<th>操作選項</th>
+													</tr>
+												</thead>
+
+												<tbody>
+
+													<tr class="odd gradeX">
+														<td style="vertical-align: middle;">1</td>
+														<td style="vertical-align: middle;">自訂選項</td>
+														<td style="vertical-align: middle;">請問創研所所長是?</td>
+														<td class="center" style="vertical-align: middle;">27
+															天前</td>
+														<td class="center">
+															<button class="btn btn-primary btn-line"
+																style="margin-right: 10px;" title="Result"
+																data-toggle="modal" data-target="#ResultChart">
+																<i class="fa fa-bar-chart" aria-hidden="true"></i><span
+																	class="sr-only">Result</span>
+															</button>
+															<button class="btn btn-danger btn-line" title="Delete"
+																data-toggle="modal" data-target="#DeleteIssue">
+																<i class="fa fa-trash-o" aria-hidden="true"></i><span
+																	class="sr-only">Delete</span>
+															</button>
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								title="Create an issue" data-toggle="modal"
+								data-target="#AddIssue">
+								<i class="fa fa-plus" aria-hidden="true"
+									style="margin-right: 5px;"></i><span class="sr-only">Create
+									an issue</span>新增議題
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12">
+			<div class="modal fade" id="AddIssue" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" style="padding-top: 150px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">新增議題</h4>
+						</div>
+						<div class="modal-body">
+
+							<div class="form-group">
+								<label>選項類型</label> <select class="form-control"
+									style="width: 70%;">
+									<option>評分選項</option>
+									<option>是非選項</option>
+									<option>自訂選項</option>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label>題目描述</label> <input class="form-control"
+									style="width: 70%;" maxlength="25" />
+							</div>
+<br>
+							<div class="form-group">
+								<input type="button" id="btn-add-item" value="新增自訂選項" />
+							</div>
+
+							<div style="text-align: right;">
+								<button type="button" class="btn btn-primary">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<div class="col-lg-12">
+			<div class="modal fade" id="DeleteIssue" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" style="padding-top: 150px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">Delete Confirm</h4>
+						</div>
+						<form action="pDeleteContent.jsp" method="post"
+							name="formDeleteContent" id="formDeleteContent">
+							<input name="<%=Mdm.Common.USER_EMAIL%>"
+								id="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
+								value="<%=strEmail%>" /> <input name="<%=Mdm.Common.GROUP_ID%>"
+								id="<%=Mdm.Common.GROUP_ID%>" type="hidden"
+								value="<%=strGroupId%>" /> <input
+								name="<%=Mdm.Common.FILE_NAME%>" id="<%=Mdm.Common.FILE_NAME%>"
+								type="hidden" />
+
+							<div class="modal-body">
+								<span> You have selected to delete "<span
+									id="DeleteContentName"></span>". <br>If this was the
+									action that you wanted to do, please confirm your choice, or
+									cancel and return to the page.
+								</span>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Cancel</button>
+								<input type="submit" class="btn btn-danger" value="Delete">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
 		<!-- END HEADER SECTION -->
 
 		<!--PAGE CONTENT -->
 		<div id="content">
 
-			<div class="inner" style="margin-top: 25px; min-height: 850px;">
+			<div class="inner"
+				style="margin-top: 25px; padding: 0px 50px; min-height: 850px;">
 				<div class="row">
 					<div class="col-lg-12">
 						<br>
@@ -210,7 +403,7 @@
 					<div class="col-lg-6">
 						<div class="box">
 							<header>
-								<h5>投票所清單</h5>
+								<h5>您的投票所清單</h5>
 								<div class="toolbar">
 									<div class="btn-group">
 
@@ -219,7 +412,7 @@
 											style="padding: 4px 10px; margin-right: 15px;"
 											data-toggle="modal" data-target="#AddGroup"
 											title="Create a new vote center">
-											<i class="fa fa-plus fa-lg" aria-hidden="true"></i> <span
+											<i class="fa fa-plus fa-lg" aria-hidden="true"></i> 新增投票所<span
 												class="sr-only">Create a vote center</span>
 										</button>
 										<!-- END CREATE GROUP -->
@@ -229,16 +422,15 @@
 							</header>
 
 							<div id="sortableTable" class="body collapse in"
-								style="padding: 5px 50px;">
+								style="padding: 5px 15%;">
 								<table
 									class="table table-bordered sortableTable responsive-table">
 									<thead>
 										<tr>
-											<th>#</th>
+											<th>編號</th>
 											<th>投票所</th>
 											<th>建立時間</th>
-											<th>Type</th>
-											<th>Option</th>
+											<th>操作選項</th>
 										</tr>
 									</thead>
 
@@ -249,11 +441,10 @@
 											<td style="text-align: center; vertical-align: middle;">101會議室</td>
 											<td style="text-align: center; vertical-align: middle;">27
 												天前 (2017/02/14 15:05:01)</td>
-											<td style="text-align: center; vertical-align: middle;">Android</td>
 											<td style="text-align: center; padding: 5;"><button
 													class="btn btn-sm btn-grad btn-metis-4"
 													style="margin-right: 8px;" data-toggle="modal"
-													data-target="#Issues" title="Voting Issues">
+													data-target="#Issue" title="Voting Issues">
 													<i class="fa fa-university" aria-hidden="true"></i> <span
 														class="sr-only">Voting Issues</span> Voting Issues
 												</button>
@@ -317,6 +508,16 @@
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<!-- END GLOBAL SCRIPTS -->
+
+	<!-- PAGE LEVEL SCRIPTS -->
+	<script>
+		$(document).ready(function() {
+			$('#dataTables-VC').dataTable();
+		});
+	</script>
+	<script src="/assets/plugins/dataTables/jquery.dataTables.js"></script>
+	<script src="/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
 
 </body>
 </html>
