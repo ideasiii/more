@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>投票系統</title>
 
+<!-- GLOBAL STYLES -->
 <link rel="stylesheet" href="/more/css/more_style.css" />
 <link rel="stylesheet" href="/more/css/bootstrap_2.css" />
 <link rel="stylesheet" href="/more/css/main_2.css" />
@@ -13,8 +14,12 @@
 	href="/more/css/plugins/Font-Awesome/css/font-awesome_2.css" />
 <link rel="stylesheet"
 	href="/more/css/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
+	<!--END GLOBAL STYLES -->
+	
+	<!-- PAGE LEVEL STYLES -->
 <link href="/more/css/plugins/dataTables/dataTables.bootstrap.css"
 	rel="stylesheet" />
+<!-- END PAGE LEVEL STYLES -->
 
 <style>
 </style>
@@ -26,19 +31,32 @@
 	<div id="wrap" style="display: table; width: 100%; height: 100%;">
 
 		<!-- HEADER SECTION -->
-		<nav class="navbar navbar-inverse navbar-fixed-top "
+		<nav class="navbar navbar-fixed-top "
 			style="background: rgb(86, 99, 100); border-left: 0;">
 
 			<!-- LOGO SECTION -->
 			<header class="navbar-header">
 
-				<a href="index.jsp" class="navbar-brand"> <img height="50"
-					style="padding-bottom: 8px;"
+				<a href="index.jsp"> <img height="50" style="padding: 5px 0px;"
 					src="/assets/img/more_logo_transparent.png" alt="" />
-
 				</a>
 			</header>
 			<!-- END LOGO SECTION -->
+
+			<!-- LOGIN SECTION -->
+			<div class="super-header"
+				style="padding-top: 10px; background-color: rgba(86, 99, 100, 1)">
+				<ul>
+
+					<li class="super-header-li"><a class="super-header-a" href="login.html">Login</a></li>
+					<!--	<li class="super-header-li"><a class="super-header-a"
+						href="">Sign Up</a></li>  -->
+
+					<li class="super-header-li"><a class="super-header-a" href=""><i
+							class="icon-gear fa-inverse"></i></a></li>
+				</ul>
+			</div>
+			<!-- END LOGIN SECTION -->
 		</nav>
 
 		<div class="col-lg-12">
@@ -61,11 +79,6 @@
 							</div>
 							<div class="form-group">
 								<label>Login Account</label> <input class="form-control" />
-								<button id="btnV" type="button"
-									class="btn btn-xs btn-grad btn-default"
-									style="margin-top: 10px;">Verification</button>
-								<button id="btnA" type="button" class="btn btn-xs btn-success"
-									style="display: none; margin-top: 10px;">Available</button>
 								<p class="help-block">(Must be less than 20 letters in
 									alphanumeric format.)</p>
 							</div>
@@ -301,7 +314,7 @@
 								<label>題目描述</label> <input class="form-control"
 									style="width: 70%;" maxlength="25" />
 							</div>
-<br>
+							<br>
 							<div class="form-group">
 								<input type="button" id="btn-add-item" value="新增自訂選項" />
 							</div>
@@ -315,9 +328,30 @@
 			</div>
 		</div>
 
-<div class="col-lg-12">
-			<div class="modal fade" id="DeleteIssue" tabindex="-1"
-				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="col-lg-12">
+			<div class="modal fade" id="ResultChart" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" style="padding-top: 150px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="H1">投票結果</h4>
+						</div>
+
+						<div class="modal-body">
+							請關閉此視窗再重新開啟以取得最新結果 <br>
+						</div>
+						<div class="modal-footer"></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12">
+			<div class="modal fade" id="DeleteIssue" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog" style="padding-top: 150px;">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -325,34 +359,25 @@
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="H1">Delete Confirm</h4>
 						</div>
-						<form action="pDeleteContent.jsp" method="post"
-							name="formDeleteContent" id="formDeleteContent">
-							<input name="<%=Mdm.Common.USER_EMAIL%>"
-								id="<%=Mdm.Common.USER_EMAIL%>" type="hidden"
-								value="<%=strEmail%>" /> <input name="<%=Mdm.Common.GROUP_ID%>"
-								id="<%=Mdm.Common.GROUP_ID%>" type="hidden"
-								value="<%=strGroupId%>" /> <input
-								name="<%=Mdm.Common.FILE_NAME%>" id="<%=Mdm.Common.FILE_NAME%>"
-								type="hidden" />
 
-							<div class="modal-body">
-								<span> You have selected to delete "<span
-									id="DeleteContentName"></span>". <br>If this was the
-									action that you wanted to do, please confirm your choice, or
-									cancel and return to the page.
-								</span>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Cancel</button>
-								<input type="submit" class="btn btn-danger" value="Delete">
-							</div>
-						</form>
+						<div class="modal-body">
+							<span> You have selected to delete "<span
+								id="DeleteContentName"></span>". <br>If this was the action
+								that you wanted to do, please confirm your choice, or cancel and
+								return to the page.
+							</span>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Cancel</button>
+							<input type="submit" class="btn btn-danger" value="Delete">
+						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 
 		<!-- END HEADER SECTION -->
 
@@ -360,7 +385,7 @@
 		<div id="content">
 
 			<div class="inner"
-				style="margin-top: 25px; padding: 0px 50px; min-height: 850px;">
+				style="margin-top: -5px; padding: 0px 50px; min-height: 850px;">
 				<div class="row">
 					<div class="col-lg-12">
 						<br>
