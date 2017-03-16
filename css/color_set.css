@@ -1,0 +1,345 @@
+
+
+
+
+
+/*********************************************************/
+
+/*                 Jewel Bright 9 colors                 */
+
+/*********************************************************/
+
+
+/* text color */
+
+.jb-red {
+	color: #eb1e2c;
+}
+
+.jb-pumpkin {
+	color: #fd6f30;
+}
+
+.jb-orange {
+	color: #f9a729;
+}
+
+.jb-yellow {
+	color: #f9d23c;
+}
+
+.jb-green {
+	color: #5fbb68;
+}
+
+.jb-turquoise {
+	color: #64cdcc;
+}
+
+.jb-blue {
+	color: #91dcea;
+}
+
+.jb-purplr {
+	color: #a4a4d5;
+}
+
+.jb-indigo {
+	color: #bbc9e5;
+}
+
+
+/* background */
+
+.bg-jb-red {
+	background: #eb1e2c;
+}
+
+.bg-jb-pumpkin {
+	background: #fd6f30;
+}
+
+.bg-jb-orange {
+	background: #f9a729;
+}
+
+.bg-jb-yellow {
+	background: #f9d23c;
+}
+
+.bg-jb-green {
+	background: #5fbb68;
+}
+
+.bg-jb-turquoise {
+	background: #64cdcc;
+}
+
+.bg-jb-blue {
+	background: #91dcea;
+}
+
+.bg-jb-purple {
+	background: #a4a4d5;
+}
+
+.bg-jb-indigo {
+	background: #bbc9e5;
+}
+
+/*********************************************************/
+
+/*                     Summer 8 colors                   */
+
+/*********************************************************/
+
+
+/* text color */
+
+.sm-red {
+	color:#cf3e53;
+}
+
+.sm-pink {
+	color:#f1788d;
+}
+
+.sm-orange {
+	color:#f3a546;
+}
+
+.sm-nude {
+	color:#f7c480;
+}
+
+.sm-turquoise {
+	color:#00a2b3;
+}
+
+.sm-blue {
+	color:#97cfd0;
+}
+
+.sm-green {
+	color:#8fb202;
+}
+
+.sm-lime {
+	color:#b9ca5d;
+}
+
+
+/* background */
+
+.bg-sm-red {
+	background: #cf3e53;
+}
+
+.bg-sm-pink {
+	background: #f1788d;
+}
+
+.bg-sm-orange {
+	background: #f3a546;
+}
+
+.bg-sm-nude {
+	background: #f7c480;
+}
+
+.bg-sm-turquoise {
+	background: #00a2b3;
+}
+
+.bg-sm-blue {
+	background: #97cfd0;
+}
+
+.bg-sm-green {
+	background: #8fb202;
+}
+
+.bg-sm-lime {
+	background: #b9ca5d;
+}
+
+
+/*********************************************************/
+
+/*                  Nuriel Stone 9 colors                */
+
+/*********************************************************/
+
+
+/* text color */
+
+.ns-purple {
+	color:#8175aa;
+}
+
+.ns-indigo {
+	color:#a39fc9;
+}
+
+.ns-gray {
+	color:#959c9e;
+}
+
+.ns-turquoise {
+	color:#027b8e;
+}
+
+.ns-ocean {
+	color:#31a1b3;
+}
+
+.ns-blue {
+	color:#94d0c0;
+}
+
+.ns-teal {
+	color:#6fb899;
+}
+
+.ns-green {
+	color:#9f8f12;
+}
+
+.ns-lime {
+	color:#ccb22b;
+}
+
+
+/* background */
+
+.bg-ns-purple {
+	background: #8175aa;
+}
+
+.bg-ns-indigo {
+	background: #a39fc9;
+}
+
+.bg-ns-gray {
+	background: #959c9e;
+}
+
+.bg-ns-turquoise {
+	background: #027b8e;
+}
+
+.bg-ns-ocean {
+	background: #31a1b3;
+}
+
+.bg-ns-blue {
+	background: #94d0c0;
+}
+
+.bg-ns-teal {
+	background: #6fb899;
+}
+
+.bg-ns-green {
+	background: #9f8f12;
+}
+
+.bg-ns-lime {
+	background: #ccb22b;
+}
+
+
+
+/*********************************************************/
+
+/*                 Color Blind 10 colors                 */
+
+/*********************************************************/
+
+
+/* text color */
+
+.cb-gray1 {
+	color:#c8d0d9;
+}
+
+.cb-gray2 {
+	color:#a3acb9;
+}
+
+.cb-gray3 {
+	color:#7b848f;
+}
+
+.cb-gray4 {
+	color:#57606c;
+}
+
+.cb-bule1 {
+	color:#a3cce9;
+}
+
+.cb-bule2 {
+	color:#5fa2ce;
+}
+
+.cb-bule3 {
+	color:#1170aa;
+}
+
+.cb-orange1 {
+	color:#ffbc79;
+}
+
+.cb-orange2 {
+	color:#fc7d0b;
+}
+
+.cb-orange3 {
+	color:#c85200;
+}
+
+
+/* background */
+
+.bg-cb-gray1 {
+	background: #c8d0d9;
+}
+
+.bg-cb-gray2 {
+	background: #a3acb9;
+}
+
+.bg-cb-gray3 {
+	background: #7b848f;
+}
+
+.bg-cb-gray4 {
+	background: #57606c;
+}
+
+.bg-cb-bule1 {
+	background: #a3cce9;
+}
+
+.bg-cb-bule2 {
+	background: #5fa2ce;
+}
+
+.bg-cb-bule3 {
+	background: #1170aa;
+}
+
+.bg-cb-orange1 {
+	color: #ffbc79;
+}
+
+.bg-cb-orange2 {
+	color: #fc7d0b;
+}
+
+.bg-cb-orange3 {
+	color: #c85200;
+}
+
+
