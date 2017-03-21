@@ -49,7 +49,8 @@
 							class="icon-gear fa-inverse"></i></a></li>
 					<%
 					    }
-					    } else
+					    }
+					    else
 					    {
 					%>
 					<li class="super-header-li"><a class="super-header-a"
@@ -71,17 +72,53 @@
 							<li class="menu-header-li"><a href="" class="menu-header-a">
 									PLATFORM </a>
 								<ul class="dropdown-menu-container">
-									<li class="dropdown-menu-li"><a
-										href="/more/mdm/console/group_management.jsp">MORE MDM</a></li>
+									<li class="dropdown-menu-li">
+										<%
+										    if (bLogined == true)
+										    {
+										%> <a href="/more/mdm/console/group_management.jsp">MORE
+											MDM</a> <%
+     }
+     else
+     {
+ %> <a href="/more/home/console/login.jsp">MORE MDM</a> <%
+     }
+ %>
+
+									</li>
 									<li class="dropdown-menu-li"><a href="">MORE API</a></li>
 								</ul></li>
 
 							<li class="menu-header-li"><a href="" class="menu-header-a">
 									DASHBOARD </a>
 								<ul class="dropdown-menu-container">
-									<li class="dropdown-menu-li"><a
-										href="/more/Dashboard/trackerdata_query.jsp">Traker Data</a></li>
-									<li class="dropdown-menu-li"><a href="">ANALYSIS</a></li>
+									<li class="dropdown-menu-li">
+										<%
+										    if (bLogined == true)
+										    {
+										%> <a href="/more/Dashboard/trackerdata_query.jsp">TRACKER
+											DATA</a> <%
+     }
+     else
+     {
+ %> <a href="/more/home/console/login.jsp">TRACKER DATA</a> <%
+     }
+ %>
+									</li>
+									<li class="dropdown-menu-li">
+									<%
+										    if (bLogined == true)
+										    {
+										%>
+									<a href="">ANALYSIS</a>
+									 <%
+     }
+     else
+     {
+ %> <a href="/more/home/console/login.jsp">ANALYSIS</a> <%
+     }
+ %>
+									</li>
 									<li class="dropdown-menu-li"><a href="">ASFDGFHVGH</a></li>
 								</ul></li>
 
