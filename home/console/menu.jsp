@@ -49,9 +49,9 @@
 							class="icon-gear fa-inverse"></i></a></li>
 					<%
 					    }
-					    }
-					    else
-					    {
+										    }
+										    else
+										{
 					%>
 					<li class="super-header-li"><a class="super-header-a"
 						href="/more/home/console/login.jsp">Login</a></li>
@@ -106,12 +106,10 @@
  %>
 									</li>
 									<li class="dropdown-menu-li">
-									<%
+										<%
 										    if (bLogined == true)
 										    {
-										%>
-									<a href="">ANALYSIS</a>
-									 <%
+										%> <a href="">ANALYSIS</a> <%
      }
      else
      {

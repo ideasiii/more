@@ -296,13 +296,13 @@
 											E-mail account cannot be changed.</p>
 									</div>
 									<div class="form-group">
-										<label>Password</label> <input type="text"
+										<label>Password</label> <input type="password"
 											name="inputPassword" class="form-control" />
 										<p class="help-block">(Must be less than 20 letters in
 											alphanumeric format.)</p>
 									</div>
 									<div class="form-group">
-										<label>Retype Password</label> <input type="text"
+										<label>Retype Password</label> <input type="password"
 											name="inputPassword2" class="form-control" /> <br>
 									</div>
 							<!--  		<div class="form-group">
