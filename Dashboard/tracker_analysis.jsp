@@ -29,36 +29,72 @@
 
 
 </head>
-<body>
 
-	<script type='text/javascript'
-	src='http://124.9.6.34/javascripts/api/viz_v1.js'></script>
-	<div class='tableauPlaceholder' style='width: 100%; height: 100%;'>
-		<object class='tableauViz' width='100%' height='100%'
-			style='display: none;'>
-			<param name='host_url' value='http%3A%2F%2F124.9.6.34%2F' />
-			<param name='site_root' value='' />
-			<param name='name' value='_170224_10_0&#47;sheet0' />
-			<param name='tabs' value='no' />
-			<param name='toolbar' value='no' />
-			<param name='showShareOptions' value='false' />
-		</object>
+<body class="padTop53">
+
+	<!-- MAIN WRAPPER -->
+	<div id="wrap">
+
+		<%@include file="../home/console/menu.jsp"%>
+
+
+		<!--PAGE CONTENT -->
+		<div id="content">
+			<div class="inner" style="min-height: 100%; padding: 0;">
+				<div id="intro" class="landscape-bg"
+					style="background-image: url('/assets/img/tech2_1920.jpg'); min-height: 100%;">
+					<div class="spotlight" style="min-height: 1000px;">
+						<div id="block-list" class="panel-body"
+							style="padding: 100px 10.5%;">
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--END PAGE CONTENT -->
+
 	</div>
+	<!--END MAIN WRAPPER -->
 
-	<script type='text/javascript'
-	src='http://124.9.6.34/javascripts/api/viz_v1.js'></script>
-	<div class='tableauPlaceholder' style='width: 100%; height: 100%;'>
-		<object class='tableauViz' width='100%' height='100%'
-			style='display: none;'>
-			<param name='host_url' value='http%3A%2F%2F124.9.6.34%2F' />
-			<param name='site_root' value='' />
-			<param name='name' value='_170224_10_0&#47;sheet0' />
-			<param name='tabs' value='no' />
-			<param name='toolbar' value='no' />
-			<param name='showShareOptions' value='false' />
-		</object>
+	<!--FOOTER -->
+	<footer class="footer">
+	<div class="link_area">
+		<dl class="link_group">
+			<dd class="link">
+				<a href="">Document</a>
+			</dd>
+		</dl>
+		<dl class="link_group">
+			<dd class="link">
+				<a href="">Privacy Policy</a>
+			</dd>
+		</dl>
+		<dl class="link_group">
+			<dd class="link">
+				<a href="">Contact Us</a>
+			</dd>
+		</dl>
+		<div class="copyright_area">Copyright ©</div>
 	</div>
+	</footer>
+	<!--END FOOTER -->
 
+
+	<!-- GLOBAL SCRIPTS -->
+	<script src="/assets/plugins/jquery-2.0.3.min.js"></script>
+	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<!-- END GLOBAL SCRIPTS -->
 
 </body>
 </html>

@@ -5,11 +5,23 @@
 
     boolean bLogined = false;
     boolean bManager = false;
+    
+    String uri = request.getRequestURI();
+    String pageName = uri.substring(uri.lastIndexOf("/")+1);
+    //System.out.println(pageName);
 
     More more = new More();
 
     if (null != strEmail)
 		bLogined = true;
+    else
+    {
+	
+	if (!pageName.contains("login.jsp"))
+	{
+	response.sendRedirect("/more/home/console/login.jsp");
+	}
+    }
 
     if (null != groupLevel && groupLevel == 1)
 		bManager = true;

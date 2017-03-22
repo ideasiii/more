@@ -7,8 +7,6 @@
 
 <%
     final String strHostUrl = request.getRequestURL().toString();
-    final String uri = request.getRequestURI();
-    final String pageName = uri.substring(uri.lastIndexOf("/") + 1);
 %>
 
 <!DOCTYPE html>

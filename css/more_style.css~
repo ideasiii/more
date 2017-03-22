@@ -272,11 +272,8 @@
 	color: #fff;
 }
 
-.center {
-	text-align: center; 
-}
-
 .middle {
+	text-align: center; 
 	vertical-align: middle;
 }
 
