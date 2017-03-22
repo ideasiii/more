@@ -90,8 +90,8 @@
 									<div class="panel-body">
 										<i class="<%=sdkData.sdk_icon%>"></i> <a
 											href="<%=sdkData.sdk_doc%>"
-											class="panel-content spotlight text-style2">Document</a> <a
-											href="<%=sdkData.sdk_file%>" class="panel-content spotlight text-style2"
+											class="panel-content spotlight">Document</a> <a
+											href="<%=sdkData.sdk_file%>" class="panel-content spotlight"
 											style="margin-top: 45px;">Download</a>
 									</div>
 								</li>
