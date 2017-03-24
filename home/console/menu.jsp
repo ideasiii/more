@@ -121,7 +121,7 @@
 										<%
 										    if (bLogined == true)
 										    {
-										%> <a href="">ANALYSIS</a> <%
+										%> <a href="/more/Dashboard/tracker_analysis.jsp">ANALYSIS</a> <%
      }
      else
      {

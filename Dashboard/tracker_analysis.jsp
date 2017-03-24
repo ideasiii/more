@@ -43,18 +43,40 @@
 			<div class="inner" style="min-height: 100%; padding: 0;">
 				<div id="intro" class="landscape-bg"
 					style="background-image: url('/assets/img/tech2_1920.jpg'); min-height: 100%;">
-					<div class="spotlight" style="min-height: 1000px;">
-						<div id="block-list" class="panel-body"
-							style="padding: 100px 10.5%;">
+					<div class="spotlight" style="min-height: 800px;">
+						<div  class="panel-body"
+							style="padding: 200px 25.5%;">
+							
+							<div class="appIDQuery">
+						
+						<div>
+						<p class="panel-title bg-blue1">
+						<i class="icon-circle light-blue1"></i>
+						Analyze App Tracker Data
+						</p>
+						</div>
+						
+						<div class="panel-body">
+							<form action="" role="form" name="formAppIDInput" id="formAppIDInput">
+							
+							<div class="form-group">
+							<div class="col-lg-4 panel-content">
+							<label class="col-lg-4">Enter Your App ID</label> <input
+														class="form-control" />
+								</div>
+							</div>
+							
+						
+							
+								<button type="button" class="btn btn-primary"
+								>Confirm</button>
+							
+								</form>
+							</div>
 							
 							
-							
-							
-							
-							
-							
-							
-							
+								</div>
+								
 							</div>
 
 					</div>

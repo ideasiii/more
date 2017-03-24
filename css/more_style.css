@@ -804,21 +804,43 @@
 
 /*********************************************************/
 
-/*                      Analysis Style                   */
+/*                 Simple Form Modal Style               */
 
 /*********************************************************/
 
 /* input window */
 
+.appIDQuery {
+	height:300px;
+	display: block;
+
+}
+
+.appIDQuery .panel-title {
+	font-size: 16px;
+	padding: 8px 10px;
+	height: 36px;
+	vertical-align: middle;
+	margin: 0px;
 
 
+}
 
+.appIDQuery .panel-body {
+	font-size: 16px;
+	width: 100%; 
+   	height: 264px;
+    	vertical-align: middle;
+	text-align: center;
+    	display: inline-block;
+    	background-color: rgba(255, 255, 255, 0.5);
+}
 
-
-
-
-
-
+.appIDQuery .panel-content {
+	text-align: center;
+	margin-top: 15px;
+	padding: 30px 20.5%;
+}
 
 /* end input window */
 
