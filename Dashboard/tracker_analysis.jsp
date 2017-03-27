@@ -97,7 +97,7 @@
 												<label class="col-lg-4">Enter Your App ID</label> <input
 													class="form-control" name="app_id" />
 											</div>
-										</div>
+										</div>db
 										<button type="button" class="btn btn-primary"
 											onClick="checkAppID('formAppIDInput')">Confirm</button>
 

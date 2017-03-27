@@ -129,7 +129,7 @@
      }
  %>
 									</li>
-									<li class="dropdown-menu-li"><a href="">ASFDGFHVGH</a></li>
+									
 								</ul></li>
 
 							<li class="menu-header-li"><a href="" class="menu-header-a">
@@ -137,17 +137,14 @@
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li" id="3level-sdk"><a
 										href="/more/home/console/moreSDKandroid.jsp">MORE SDK</a></li>
-									<li class="dropdown-menu-li"><a href="">ASFGHJMK</a></li>
-									<li class="dropdown-menu-li"><a href="">ASFDGFHVGH</a></li>
-									<li class="dropdown-menu-li"><a href="">QWERYU</a></li>
-									<li class="dropdown-menu-li"><a href="">ASFGHJMK</a></li>
-									<li class="dropdown-menu-li"><a href="">ASFDGFHVGH</a></li>
+								
 								</ul></li>
 
 							<li class="menu-header-li"><a href="" class="menu-header-a">
 									DEVELOPER </a>
 								<ul class="dropdown-menu-container">
-									<li class="dropdown-menu-li"><a href="">QWERYU</a></li>
+									<li class="dropdown-menu-li"><a href="">App Registration</a></li>
+									
 								</ul></li>
 
 						</ul>
