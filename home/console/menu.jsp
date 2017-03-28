@@ -17,7 +17,7 @@
     else
     {
 	
-	if (!pageName.contains("login.jsp"))
+	if (!pageName.contains("login.jsp") && (!pageName.contains("signup.jsp") || !pageName.contains("home.jsp")))
 	{
 	response.sendRedirect("/more/home/console/login.jsp");
 	}
