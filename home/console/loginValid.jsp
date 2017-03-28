@@ -1,8 +1,8 @@
-<%@ page import="more.*"%>
+
 <%
     String strEmailValid = (String) session.getAttribute("Email");
 
-    boolean bLogined = false;
+    boolean bLoginedValid = false;
 
     String uri = request.getRequestURI();
     String pageName = uri.substring(uri.lastIndexOf("/") + 1);
@@ -11,7 +11,7 @@
     
     
     if (null != strEmailValid)
-		bLogined = true;
+		bLoginedValid = true;
     else
     {
 	

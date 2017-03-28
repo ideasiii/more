@@ -269,7 +269,8 @@ public class Mdm
 	    switch (nType)
 	    {
 	    case 0:
-		conMdmAndroid.close();
+		if(null != conMdmAndroid)
+		  conMdmAndroid.close();
 		break;
 	    }
 	    sqlite = null;

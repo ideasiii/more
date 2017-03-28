@@ -15,6 +15,8 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="backstage.MoreManager"%>
 
+
+<%@include file="../../home/console/loginValid.jsp"%>
 <%
     request.setCharacterEncoding("UTF-8");
 

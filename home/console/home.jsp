@@ -7,6 +7,7 @@
 
 <%
     final String strHostUrl = request.getRequestURL().toString();
+
 %>
 
 <!DOCTYPE html>

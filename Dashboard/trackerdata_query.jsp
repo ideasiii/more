@@ -15,9 +15,13 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="more.*"%>
 
+<%@include file="../../home/console/loginValid.jsp"%>
 <%@include file="tracker_common.jsp"%>
 <%
     request.setCharacterEncoding("UTF-8");
+
+			/** Web Tracker **/
+			More.webTracker(request, "load page", null);
 
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date current = new Date();
@@ -142,7 +146,7 @@
 
 
 	<%@include file="../home/console/menu.jsp"%>
-	
+
 
 	<!--PAGE CONTENT -->
 	<div id="content">
@@ -165,10 +169,8 @@
 											<div class="form-group">
 												<div class="col-lg-4 form-inline" style="width: 340px;">
 													<label class="col-lg-4">App ID</label> <input
-														class="form-control"
-														<%if (null != strID) {%>
-														value="<%=strID%>" <%}%>
-														name="<%=Common.APP_ID%>" />
+														class="form-control" <%if (null != strID) {%>
+														value="<%=strID%>" <%}%> name="<%=Common.APP_ID%>" />
 												</div>
 											</div>
 
@@ -329,7 +331,7 @@
 		//]]>
 	</script>
 	<!--END PAGE LEVEL SCRIPT-->
-<!--FOOTER -->
+	<!--FOOTER -->
 	<footer class="footer">
 		<div class="link_area">
 			<dl class="link_group">

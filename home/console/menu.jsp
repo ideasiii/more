@@ -6,22 +6,11 @@
     boolean bLogined = false;
     boolean bManager = false;
     
-    String uri = request.getRequestURI();
-    String pageName = uri.substring(uri.lastIndexOf("/")+1);
-    //System.out.println(pageName);
-
     More more = new More();
 
     if (null != strEmail)
 		bLogined = true;
-    else
-    {
-	
-	if (!pageName.contains("login.jsp") && (!pageName.contains("signup.jsp") || !pageName.contains("home.jsp")))
-	{
-	response.sendRedirect("/more/home/console/login.jsp");
-	}
-    }
+  
 
     if (null != groupLevel && groupLevel == 1)
 		bManager = true;
@@ -85,18 +74,8 @@
 									PLATFORM </a>
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li">
-										<%
-										    if (bLogined == true)
-										    {
-										%> <a href="/more/mdm/console/group_management.jsp">MORE
-											MDM</a> <%
-     }
-     else
-     {
- %> <a href="/more/home/console/login.jsp">MORE MDM</a> <%
-     }
- %>
-
+										 <a href="/more/mdm/console/group_management.jsp">MORE
+											MDM</a> 
 									</li>
 									<li class="dropdown-menu-li"><a href="">MORE API</a></li>
 								</ul></li>
@@ -105,29 +84,11 @@
 									DASHBOARD </a>
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li">
-										<%
-										    if (bLogined == true)
-										    {
-										%> <a href="/more/Dashboard/trackerdata_query.jsp">TRACKER
-											DATA</a> <%
-     }
-     else
-     {
- %> <a href="/more/home/console/login.jsp">TRACKER DATA</a> <%
-     }
- %>
+										<a href="/more/Dashboard/trackerdata_query.jsp">TRACKER
+											DATA</a> 
 									</li>
 									<li class="dropdown-menu-li">
-										<%
-										    if (bLogined == true)
-										    {
-										%> <a href="/more/Dashboard/tracker_analysis.jsp">ANALYSIS</a> <%
-     }
-     else
-     {
- %> <a href="/more/home/console/login.jsp">ANALYSIS</a> <%
-     }
- %>
+										<a href="/more/Dashboard/tracker_analysis.jsp">ANALYSIS</a> 
 									</li>
 									
 								</ul></li>

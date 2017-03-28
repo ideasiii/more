@@ -8,6 +8,8 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
 
+
+<%@include file="../../home/console/loginValid.jsp"%>
 <%
     final String strHostUrl = request.getRequestURL().toString();
 
@@ -53,8 +55,8 @@
 
 	<!-- MAIN WRAPPER -->
 	<div id="wrap" style="display: table; width: 100%; height: 100%;">
-
-		<%@include file="/home/console/menu.jsp"%>
+	
+		<%@include file="../../home/console/menu.jsp"%>
 
 		<%
 		    final String strContextPath = request.getContextPath();
@@ -71,6 +73,18 @@
 					Mdm.PermissionData permissionData = null;
 					String strUserId_Android = null;
 
+					Iterator<Mdm.PermissionData> itPD = null;
+					Iterator<Mdm.GroupData> itGD = null;
+					Mdm.GroupData groupData = null;
+					
+					Iterator<Mdm.AppData> itAD = null;
+					Mdm.AppData appData = null;
+					String strAppIconPath = null;
+					
+					Iterator<Mdm.ContentData> itCD = null;
+					Mdm.ContentData contentData = null;
+					
+					
 					Mdm mdm = new Mdm();
 
 					if (!mdm.conDB(request)) {
@@ -81,7 +95,7 @@
 					int nCount = mdm.queryPermission(request, strEmail, listPermission);
 					//nCount = 0;
 					if (0 < nCount) {
-						Iterator<Mdm.PermissionData> itPD = null;
+						
 						itPD = listPermission.iterator();
 
 						while (itPD.hasNext()) {
@@ -96,10 +110,7 @@
 									return;
 								}
 
-								/********** group info**************/
-
-								Iterator<Mdm.GroupData> itGD = null;
-								Mdm.GroupData groupData = null;
+								/********** group dropdown select**************/
 
 								ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
 								int nGCount = mdm.queryGroup(request, permissionData.user_id, listGroup);
@@ -114,11 +125,19 @@
 
 								itGD = listGroup.iterator();
 
+								/********** group list table**************/
+								
+							/**	Iterator<Mdm.GroupData> itGD2 = null;
+										Mdm.GroupData groupData2 = null;
+
+										ArrayList<Mdm.GroupData> listGroup2 = new ArrayList<Mdm.GroupData>();
+										int nGCount2 = mdm.queryGroup(request, permissionData.user_id, listGroup);
+
+										itGD2 = listGroup2.iterator();*/
+								
 								/********** App Manager **************/
 
-								Iterator<Mdm.AppData> itAD = null;
-								Mdm.AppData appData = null;
-								String strAppIconPath = null;
+								
 
 								ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
 								int nACount = mdm.queryApp(request, strGroupId, listApp);
@@ -135,8 +154,7 @@
 
 								/********** Content Manager **************/
 
-								Iterator<Mdm.ContentData> itCD = null;
-								Mdm.ContentData contentData = null;
+								
 
 								ArrayList<Mdm.ContentData> listContent = new ArrayList<Mdm.ContentData>();
 								int nCCount = mdm.queryContent(request, strGroupId, listContent);
@@ -813,7 +831,7 @@
 									<%
 									    }
 
-															while (itGD.hasNext()) {
+															while (null != itGD && itGD.hasNext()) {
 																groupData = itGD.next();
 																strAccountV = strAccountV + groupData.account;
 																if (itGD.hasNext()) {
@@ -856,15 +874,6 @@
 							    }
 							%>
 
-							<%
-							    Iterator<Mdm.GroupData> itGD2 = null;
-										Mdm.GroupData groupData = null;
-
-										ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
-										int nGCount = mdm.queryGroup(request, permissionData.user_id, listGroup);
-
-										itGD2 = listGroup.iterator();
-							%>
 							<!--END GROUP SELECT -->
 
 							<div class="panel-heading">Welcome, please select a group
@@ -915,11 +924,13 @@
 											<tbody>
 												<%
 												    int gCount = 0;
-															while (itGD2.hasNext()) {
-																groupData = itGD2.next();
+											
+															while (null != itGD && itGD.hasNext()) {
+																groupData = itGD.next();
 																
-																/**if (null != itGD2){
-																 More.webTracker(request, "itGD2 ", null);
+																
+																/**if (null != itGD){
+																 More.webTracker(request, "itGD ", null);
 																}**/
 																 %>
 												<tr>
@@ -1075,9 +1086,12 @@
 
 </html>
 <%
+if(null != mdm && null != request)
+{
     mdm.closeTypeDB(request, 0);
     mdm.closeDB(request);
     mdm = null;
+}
 
     //	out.println(strAccountV);
 %>
