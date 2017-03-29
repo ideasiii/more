@@ -55,7 +55,7 @@
 
 	<!-- MAIN WRAPPER -->
 	<div id="wrap" style="display: table; width: 100%; height: 100%;">
-	
+
 		<%@include file="../../home/console/menu.jsp"%>
 
 		<%
@@ -76,15 +76,14 @@
 					Iterator<Mdm.PermissionData> itPD = null;
 					Iterator<Mdm.GroupData> itGD = null;
 					Mdm.GroupData groupData = null;
-					
+
 					Iterator<Mdm.AppData> itAD = null;
 					Mdm.AppData appData = null;
 					String strAppIconPath = null;
-					
+
 					Iterator<Mdm.ContentData> itCD = null;
 					Mdm.ContentData contentData = null;
-					
-					
+
 					Mdm mdm = new Mdm();
 
 					if (!mdm.conDB(request)) {
@@ -95,7 +94,7 @@
 					int nCount = mdm.queryPermission(request, strEmail, listPermission);
 					//nCount = 0;
 					if (0 < nCount) {
-						
+
 						itPD = listPermission.iterator();
 
 						while (itPD.hasNext()) {
@@ -119,42 +118,39 @@
 								if (0 < nGCount) {
 
 									More.webTracker(request, "queryGroup success ", "GroupCount: " + nGCount);
-								}else{
-								    More.webTracker(request, "queryGroup failed ", "GroupCount: " + nGCount);
+								} else {
+									More.webTracker(request, "queryGroup failed ", "GroupCount: " + nGCount);
 								}
 
 								itGD = listGroup.iterator();
 
 								/********** group list table**************/
-								
-							/**	Iterator<Mdm.GroupData> itGD2 = null;
-										Mdm.GroupData groupData2 = null;
 
-										ArrayList<Mdm.GroupData> listGroup2 = new ArrayList<Mdm.GroupData>();
-										int nGCount2 = mdm.queryGroup(request, permissionData.user_id, listGroup);
-
-										itGD2 = listGroup2.iterator();*/
+								/**	Iterator<Mdm.GroupData> itGD2 = null;
+											Mdm.GroupData groupData2 = null;
 								
+											ArrayList<Mdm.GroupData> listGroup2 = new ArrayList<Mdm.GroupData>();
+											int nGCount2 = mdm.queryGroup(request, permissionData.user_id, listGroup);
+								
+											itGD2 = listGroup2.iterator();*/
+
 								/********** App Manager **************/
-
-								
 
 								ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
 								int nACount = mdm.queryApp(request, strGroupId, listApp);
 								//out.println(nACount);
-								
+
 								if (0 < nACount) {
 
 									More.webTracker(request, "queryApp success ", "AppCount: " + nACount);
-								}else{
-								    More.webTracker(request, "queryApp failed ", "AppCount: " + nACount +" groupID: " + strGroupId);
+								} else {
+									More.webTracker(request, "queryApp failed ",
+											"AppCount: " + nACount + " groupID: " + strGroupId);
 								}
 
 								itAD = listApp.iterator();
 
 								/********** Content Manager **************/
-
-								
 
 								ArrayList<Mdm.ContentData> listContent = new ArrayList<Mdm.ContentData>();
 								int nCCount = mdm.queryContent(request, strGroupId, listContent);
@@ -636,7 +632,7 @@
 														<td style="vertical-align: middle;"><%=contentData.content_type%></td>
 														<td class="center" style="vertical-align: middle;"><%=contentData.create_time%></td>
 														<td class="center"><a
-															href="<%="/more" +contentData.file_location%>"
+															href="<%="/more" + contentData.file_location%>"
 															target="_blank"><button
 																	class="btn btn-primary btn-line"
 																	style="margin-right: 10px;" title="Preview">
@@ -791,33 +787,22 @@
 							<!-- GROUP SELECT -->
 							<%
 							    /*  int nCount = mdm.queryPermission(strEmail, listPermission);
-																									//nCount = 0;
-																									if (0 < nCount) {
-																										Iterator<Mdm.PermissionData> itPD = null;
-																										itPD = listPermission.iterator();
-																							
-																										while (itPD.hasNext()) {
-																											permissionData = itPD.next();
-																											listPermissionName.add(permissionData.permission);
-																										
-																											if (permissionData.permission.trim().equals("android")) {
-																												strUserId_Android = permissionData.user_id;
-																												
-																												if (!mdm.conTypeDB(0)) {
-																													response.sendRedirect("error.html"); //insert error page 
-																													return;
-																												}
-																							
-																												//===== group info ======//
-																							
-																												Iterator<Mdm.GroupData> itGD = null;
-																												Mdm.GroupData groupData = null;
-																							
-																												ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
-																												int nGCount = mdm.queryGroup(permissionData.user_id, listGroup);
-																												//out.println(nGCount);
-																							
-																												itGD = listGroup.iterator();*/
+									//nCount = 0;
+									if (0 < nCount) {
+									Iterator<Mdm.PermissionData> itPD = null;
+									itPD = listPermission.iterator();
+									
+											while (itPD.hasNext()) {
+									permissionData = itPD.next();
+									listPermissionName.add(permissionData.permission);
+																			
+								if (permissionData.permission.trim().equals("android")) {
+										strUserId_Android = permissionData.user_id;
+																																
+									if (!mdm.conTypeDB(0)) {
+										response.sendRedirect("error.html"); //insert error page 
+										return;
+										}*/
 							%>
 							<div class="styled-select blue semi-square"
 								style="margin-top: 4px;">
@@ -825,7 +810,8 @@
 									onchange="location.href=this.options[this.selectedIndex].value">
 
 									<%
-									    if (null == strGroupId || null != strShowContent || null != strShowApp) {
+									    if (null == strGroupId || null != strShowContent || null != strShowApp)
+												{
 									%>
 									<option value="#">Select Group</option>
 									<%
@@ -924,15 +910,14 @@
 											<tbody>
 												<%
 												    int gCount = 0;
-											
+
 															while (null != itGD && itGD.hasNext()) {
 																groupData = itGD.next();
-																
-																
+
 																/**if (null != itGD){
 																 More.webTracker(request, "itGD ", null);
 																}**/
-																 %>
+												%>
 												<tr>
 													<td style="text-align: center; vertical-align: middle;"><%=++gCount%></td>
 													<td style="text-align: center; vertical-align: middle;"><%=groupData.group_name%></td>
@@ -997,9 +982,9 @@
 		</div>
 	</div>
 	<!--END PAGE CONTENT -->
-	
-<!--END MAIN WRAPPER -->
-	
+
+	<!--END MAIN WRAPPER -->
+
 	<!--FOOTER -->
 	<footer class="footer">
 		<div class="link_area">
@@ -1023,7 +1008,7 @@
 	</footer>
 	<!--END FOOTER -->
 
-	
+
 
 
 	<!-- GLOBAL SCRIPTS -->
@@ -1055,7 +1040,7 @@
 	%>
 	<script type="text/javascript"> 
 	showGN('<%=strShowGN%>','<%=strGroupId%>');
-		$('#AppManage').modal('show');
+	$('#AppManage').modal('show');
 	</script>
 	<%
 	    }
@@ -1086,12 +1071,12 @@
 
 </html>
 <%
-if(null != mdm && null != request)
-{
-    mdm.closeTypeDB(request, 0);
-    mdm.closeDB(request);
-    mdm = null;
-}
+    if (null != mdm && null != request)
+    {
+		mdm.closeTypeDB(request, 0);
+		mdm.closeDB(request);
+		mdm = null;
+    }
 
     //	out.println(strAccountV);
 %>

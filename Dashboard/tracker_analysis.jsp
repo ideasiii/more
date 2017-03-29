@@ -3,6 +3,7 @@
 <%@ page import="more.*"%>
 
 <%@include file="../../home/console/loginValid.jsp"%>
+<%@include file="tracker_common.jsp"%>
 <%
 
     /** Web Tracker **/

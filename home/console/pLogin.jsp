@@ -98,7 +98,7 @@
 					}
 						if (0 < nUserId2) {
 						    bAuthResult = true;
-							More.webTracker(request, "User login success: " + nUserId2, "Email: " + strEmail);
+							More.webTracker(request, "User login success  ID: " + nUserId2, "Email: " + strEmail);
 
 							Cookie cEmail = new Cookie("email", strEmail);
 							response.addCookie(cEmail);
