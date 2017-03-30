@@ -83,7 +83,7 @@
 				<div id="intro" class="landscape-bg"
 					style="background-image: url('/assets/img/tech2_1920.jpg'); min-height: 100%;">
 					<div class="spotlight" style="min-height: 800px;">
-						<div class="panel-body" style="padding: 200px 25.5%;">
+						<div class="panel-body" style="padding: 200px 30%;">
 
 							<div class="appIDQuery">
 
@@ -95,7 +95,6 @@
 								</div>
 
 								<div class="panel-body">
-
 									<form action="tracker_dashboard.jsp" role="form"
 										name="formAppIDInput" id="formAppIDInput">
 										<div class="form-group">
@@ -109,10 +108,10 @@
 
 									</form>
 								</div>
+								
 							</div>
 
 						</div>
-
 					</div>
 				</div>
 			</div>

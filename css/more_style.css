@@ -813,7 +813,6 @@
 .appIDQuery {
 	height:300px;
 	display: block;
-
 }
 
 .appIDQuery .panel-title {
@@ -822,8 +821,6 @@
 	height: 36px;
 	vertical-align: middle;
 	margin: 0px;
-
-
 }
 
 .appIDQuery .panel-body {
@@ -843,6 +840,31 @@
 }
 
 /* end input window */
+
+/* registration modal */
+
+.appRegistration {
+	height: auto;
+	display: block;
+}
+
+.appRegistration .panel-body {
+	font-size: 16px;
+	width: 100%; 
+   	height: auto;
+    	vertical-align: middle;
+	text-align: center;
+    	display: inline-block;
+    	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.appRegistration .panel-content {
+	text-align: center;
+	margin-top: 15px;
+	padding: 12.5px 22.5%;
+}
+
+/* end registration modal */
 
 /*********************************************************/
 

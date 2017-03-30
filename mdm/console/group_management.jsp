@@ -472,7 +472,7 @@
 										style="text-align: center;" data-provides="fileupload">
 										<div class="fileupload-new thumbnail"
 											style="width: 60px; height: 60px; border: 0; margin-bottom: 5px;">
-											<img src="assets/img/Apps-Android-icon.png" alt="" />
+											<img src="/assets/img/Apps-Android-icon.png" alt="" />
 										</div>
 										<div
 											class="fileupload-preview fileupload-exists thumbnail form-group"
