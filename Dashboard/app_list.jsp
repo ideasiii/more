@@ -31,7 +31,7 @@
 
 <body class="padTop53">
 
-<!-- MAIN WRAPPER -->
+	<!-- MAIN WRAPPER -->
 	<div id="wrap">
 
 		<%@include file="../home/console/menu.jsp"%>
@@ -43,15 +43,95 @@
 				<div id="intro" class="landscape-bg"
 					style="background-image: url('/assets/img/tech2_1920.jpg'); min-height: 100%;">
 					<div class="spotlight" style="min-height: 800px;">
-					
-					
-					
-					
-					
-					
-					
-					
-					
+						<div id="app-list" class="panel-body" style="padding: 100px 14%;">
+
+							<div style="margin-left: 8%;">
+								<h1 class="white-text">Your Applications</h1>
+								<br>
+							</div>
+
+							<!-- APP List -->
+							<ul class="app-list app-list-ul">
+								<li class="app-list-li">
+									<div class="panel-body">
+										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
+											alt="" />
+										<div class="panel-content">
+
+											<h4 class="app-title">Test App</h4>
+
+											<ul class="app-info">
+												<li class="app-info-li">APP ID: 1490859308059</li>
+												<li class="app-info-li">APP 類別: 新聞與雜誌</li>
+												<li class="app-info-li">APP 類型: IOS</li>
+
+											</ul>
+
+										</div>
+									</div>
+								</li>
+
+								<li class="app-list-li">
+									<div class="panel-body">
+										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
+											alt="" />
+										<div class="panel-content">
+
+											<h4 class="app-title">Test App</h4>
+
+											<ul class="app-info">
+												<li class="app-info-li">APP ID: 1490859308059</li>
+												<li class="app-info-li">APP 類別: 新聞與雜誌</li>
+												<li class="app-info-li">APP 類型: Android</li>
+
+											</ul>
+
+										</div>
+									</div>
+								</li>
+
+								<li class="app-list-li">
+									<div class="panel-body">
+										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
+											alt="" />
+										<div class="panel-content">
+
+											<h4 class="app-title">Test App</h4>
+
+											<ul class="app-info">
+												<li class="app-info-li">APP ID: 1490859308059</li>
+												<li class="app-info-li">APP 類別: 新聞與雜誌</li>
+												<li class="app-info-li">APP 類型: Android</li>
+
+											</ul>
+
+										</div>
+									</div>
+								</li>
+
+								<li class="app-list-li">
+									<div class="panel-body">
+										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
+											alt="" />
+										<div class="panel-content">
+
+											<h4 class="app-title">Test App</h4>
+
+											<ul class="app-info">
+												<li class="app-info-li">APP ID: 1490859308059</li>
+												<li class="app-info-li">APP 類別: 新聞與雜誌</li>
+												<li class="app-info-li">APP 類型: Android</li>
+
+											</ul>
+
+										</div>
+									</div>
+								</li>
+
+
+							</ul>
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -90,7 +170,7 @@
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<!-- END GLOBAL SCRIPTS -->
-	
+
 
 </body>
 </html>
