@@ -105,7 +105,7 @@
 									DEVELOPER </a>
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li"><a href="/more/Dashboard/app_registration.jsp">APP REGISTRATION</a></li>
-									<li class="dropdown-menu-li"><a href="/more/Dashboard/app_registration.jsp">APPLICATIONS</a></li>
+									<li class="dropdown-menu-li"><a href="/more/Dashboard/app_list.jsp">APPLICATIONS</a></li>
 									
 								</ul></li>
 
