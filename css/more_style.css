@@ -850,6 +850,7 @@
 
 .appRegistration .panel-body {
 	font-size: 16px;
+	padding-top: 50px;
 	width: 100%; 
    	height: auto;
     	vertical-align: middle;
@@ -861,8 +862,27 @@
 .appRegistration .panel-content {
 	text-align: center;
 	margin-top: 15px;
-	padding: 12.5px 22.5%;
+	padding: 12.5px 23%;
 }
+
+.appRegistration .panel-upload {
+	margin-top: 15px;
+	padding-left: 14%;
+}
+
+.appRegistration .panel-upload-title {
+	text-align:left;
+	margin-left: 47px;
+}
+
+.appRegistration .subm-btn {
+	margin-top: 10px;
+}
+
+.appRegistration .subm-footer {
+	margin-bottom: 35px;
+}
+
 
 /* end registration modal */
 

@@ -1050,6 +1050,7 @@
 	<!-- PAGE LEVEL SCRIPTS -->
 	<script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
 	<script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+	 <script src="assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 
 </body>

@@ -44,7 +44,7 @@
 				<div id="intro" class="landscape-bg"
 					style="background-image: url('/assets/img/tech2_1920.jpg'); min-height: 100%;">
 					<div class="spotlight" style="min-height: 800px;">
-						<div class="panel-body" style="padding: 150px 25.5%;">
+						<div class="panel-body" style="padding: 130px 27.5%;">
 
 							<div class="white-text">
 								<h1>Register a New App</h1>
@@ -56,6 +56,27 @@
 								<div class="panel-body">
 									<form action="applications.jsp" role="form"
 										name="formAppRegistration" id="formAppRegistration">
+
+										<div class="fileupload fileupload-new panel-upload"
+											data-provides="fileupload">
+
+											<div class="fileupload-new thumbnail"
+												style="width: 60px; height: 60px; border: 0; margin-bottom: 5px;">
+												<img src="/assets/img/Apps-Android-icon.png" alt="" />
+											</div>
+											<div class="fileupload-preview fileupload-exists thumbnail"
+												style="width: 60px; height: 60px; padding: 0; border: 0; margin-bottom: 10px;"></div>
+											<div style="display: inline-block;">
+
+												<div class="panel-upload-title">
+													<label class="control-label">App
+														Icon</label>
+											</div>
+												<input name="" id="inputIcon" style="margin-left: 20px;"
+													type="file" onChange="validateAppIcon(this.value)" />
+											</div>
+										</div>
+
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
 												<label class="col-lg-4">Application Name</label> <input
@@ -63,27 +84,10 @@
 											</div>
 										</div>
 
-										<label class="control-label" style="margin-left: 20px;">App
-											Icon</label>
-										<div class="fileupload fileupload-new"
-											style="text-align: center;" data-provides="fileupload">
-											<div class="fileupload-new thumbnail"
-												style="width: 60px; height: 60px; border: 0; margin-bottom: 5px;">
-												<img src="/assets/img/Apps-Android-icon.png" alt="" />
-											</div>
-											<div
-												class="fileupload-preview fileupload-exists thumbnail form-group"
-												style="width: 50px; height: 50px; padding: 0; border: 0; margin-bottom: 10px;"></div>
-											<input name="<%=Mdm.Common.APP_ICON%>" id="inputIcon"
-												style="margin-left: 20px;" type="file"
-												onChange="validateAppIcon(this.value)" />
-
-										</div>
-
 
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
-												<label>Max Number of Devices</label> <select name=""
+												<label>Type</label> <select name=""
 													class="form-control">
 													<option value="android">android</option>
 													<option value="ios">ios</option>
@@ -92,7 +96,7 @@
 										</div>
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
-												<label>Max Number of Devices</label> <select name=""
+												<label>Categories</label> <select name=""
 													class="form-control">
 													<option>工具</option>
 													<option>天氣</option>
@@ -126,24 +130,25 @@
 										</div>
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
-												<label class="col-lg-4">Enter Your App ID</label> <input
+												<label class="col-lg-4">Organization</label> <input
 													class="form-control" name="app_id" />
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
-												<label class="col-lg-4">Enter Your App ID</label> <input
+												<label class="col-lg-4">Support E-mail</label> <input
 													class="form-control" name="app_id" />
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
-												<label class="col-lg-4">Enter Your App ID</label> <input
+												<label class="col-lg-4">Phone</label> <input
 													class="form-control" name="app_id" />
 											</div>
 										</div>
-										<button type="button" class="btn btn-primary"">Register</button>
-
+										<div class="subm-footer">
+											<button type="button" class="btn btn-primary subm-btn">Register</button>
+										</div>
 									</form>
 								</div>
 
@@ -188,6 +193,10 @@
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<!-- END GLOBAL SCRIPTS -->
+
+	<!-- PAGE LEVEL SCRIPTS -->
+	<script src="/assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
 
 </body>
 </html>
