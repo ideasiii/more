@@ -906,7 +906,7 @@
 
 .app-list .app-list-li {
 	float: left;
-	margin: 35px 60px;
+	margin: 20px 38px;
 	display: inline-block;
 }
 
@@ -936,21 +936,25 @@
 .app-list .app-title {
 	padding: 5px 15px;
 	color: #000;
+	font-size: 22px;
 }
 
 .app-list .app-info {
 	padding: 0px 15px;
 	display: inline-block;
-	margin-bottom: 20px;
+	
 }
 
 .app-list .app-info-li {
 	display: inline-block;
-	color: #0d3d6d;
+	/*color: #000;  */                        /**** light-blue1: #0d3d6d; ****/
 	font-weight: bold;
 }
 
-
+.app-list .silk {
+	background-color: rgba(255, 255, 255, 0);
+	background-image: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.8) 90%);
+}
 
 
 /*********************************************************/
