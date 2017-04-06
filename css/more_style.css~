@@ -949,7 +949,7 @@
 	display: inline-block;
 	/*color: #000;  */      /**** light-blue1: #0d3d6d; ****/
 	font-weight: bold;
-	margin: 2px 0px;
+	margin: 3px 0px;
 }
 
 .app-list .silk {

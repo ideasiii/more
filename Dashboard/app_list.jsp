@@ -103,7 +103,7 @@
 					<div class="spotlight" style="min-height: 800px;">
 						<div id="app-list" class="panel-body" style="padding: 100px 4.8%;">
 
-							<div style="margin-left: 12%; margin-bottom: 40px;">
+							<div style="margin-left: 12%; margin-bottom: 30px;">
 								<h1 class="white-text">Your Applications</h1>
 							</div>
 
@@ -125,7 +125,7 @@
 												<li class="app-info-li">APP ID: 1490859308059</li>
 
 											</ul>
-
+											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
@@ -133,7 +133,7 @@
 								<li class="app-list-li">
 									<div class="panel-body">
 										<a data-toggle="modal" data-target="#AppInfo" href=><img
-											class="app-icon" src="/assets/img/Apps-Android-icon.png"
+											class="app-icon" src="/assets/img/mdm_logo_web67t4.png"
 											alt="" /></a>
 										<div class="panel-content">
 
@@ -146,7 +146,7 @@
 												<li class="app-info-li">APP ID: 1490859308059</li>
 
 											</ul>
-
+											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
@@ -165,7 +165,7 @@
 												<li class="app-info-li">新聞與雜誌</li>
 												<li class="app-info-li">APP ID: 1490859308059</li>
 											</ul>
-
+											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
@@ -185,7 +185,7 @@
 												<li class="app-info-li">APP ID: 1490859308059</li>
 
 											</ul>
-
+											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
@@ -205,7 +205,7 @@
 												<li class="app-info-li">APP ID: 1490859308059</li>
 
 											</ul>
-
+											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
@@ -224,7 +224,7 @@
 												<li class="app-info-li">APP ID: 1490859308059</li>
 
 											</ul>
-
+											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
@@ -243,7 +243,7 @@
 												<li class="app-info-li">APP ID: 1490859308059</li>
 
 											</ul>
-
+											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
