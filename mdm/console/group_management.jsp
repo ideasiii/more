@@ -74,15 +74,23 @@
 					String strUserId_Android = null;
 
 					Iterator<Mdm.PermissionData> itPD = null;
+					
+					/********** group info **************/
 					Iterator<Mdm.GroupData> itGD = null;
 					Mdm.GroupData groupData = null;
+					ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
 
+					/********** app manager info **************/
 					Iterator<Mdm.AppData> itAD = null;
 					Mdm.AppData appData = null;
 					String strAppIconPath = null;
+					ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
 
+					/********** content manager info **************/
 					Iterator<Mdm.ContentData> itCD = null;
 					Mdm.ContentData contentData = null;
+					ArrayList<Mdm.ContentData> listContent = new ArrayList<Mdm.ContentData>();
+					
 
 					Mdm mdm = new Mdm();
 
@@ -111,7 +119,6 @@
 
 								/********** group dropdown select**************/
 
-								ArrayList<Mdm.GroupData> listGroup = new ArrayList<Mdm.GroupData>();
 								int nGCount = mdm.queryGroup(request, permissionData.user_id, listGroup);
 								//out.println(nGCount);
 
@@ -121,8 +128,6 @@
 								} else {
 									More.webTracker(request, "queryGroup failed ", "GroupCount: " + nGCount);
 								}
-
-								itGD = listGroup.iterator();
 
 								/********** group list table**************/
 
@@ -136,7 +141,6 @@
 
 								/********** App Manager **************/
 
-								ArrayList<Mdm.AppData> listApp = new ArrayList<Mdm.AppData>();
 								int nACount = mdm.queryApp(request, strGroupId, listApp);
 								//out.println(nACount);
 
@@ -148,14 +152,11 @@
 											"AppCount: " + nACount + " groupID: " + strGroupId);
 								}
 
-								itAD = listApp.iterator();
-
 								/********** Content Manager **************/
 
-								ArrayList<Mdm.ContentData> listContent = new ArrayList<Mdm.ContentData>();
 								int nCCount = mdm.queryContent(request, strGroupId, listContent);
 
-								itCD = listContent.iterator();
+								
 		%>
 
 		<!-- HEADER SECTION -->
@@ -396,6 +397,7 @@
 												</thead>
 												<tbody>
 													<%
+														itAD = listApp.iterator();
 													    while (itAD.hasNext()) {
 
 																				appData = itAD.next();
@@ -620,6 +622,7 @@
 												<tbody>
 													<%
 													    int ic = 0;
+														itCD = listContent.iterator();
 																			while (itCD.hasNext()) {
 
 																				contentData = itCD.next();
@@ -816,7 +819,7 @@
 									<option value="#">Select Group</option>
 									<%
 									    }
-
+									                        itGD = listGroup.iterator();
 															while (null != itGD && itGD.hasNext()) {
 																groupData = itGD.next();
 																strAccountV = strAccountV + groupData.account;
@@ -910,7 +913,7 @@
 											<tbody>
 												<%
 												    int gCount = 0;
-
+												            itGD = listGroup.iterator();
 															while (null != itGD && itGD.hasNext()) {
 																groupData = itGD.next();
 
