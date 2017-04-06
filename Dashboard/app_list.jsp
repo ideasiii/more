@@ -48,39 +48,62 @@
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title">Application Info</h4>
 						</div>
-						<div class="modal-body">
+						<div class="modal-body" style="padding: 20px 80px 0px 80px;">
 
+							<dl
+								style="display: inline-block; width: 420px; vertical-align: top;">
+								<dd style="display: block;">
+									<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
+										style="float: left; margin: 10px 50px 10px 10px">
+								</dd>
 
-							<div class="form-group">
-								<label>Login Account</label> <input name="GroupEditAccount"
-									id="GroupEditAccount" class="form-control" />
-								<p class="help-block">(Must be less than 20 letters in
-									alphanumeric format.)</p>
-							</div>
-							<div class="form-group">
-								<label>Password</label> <input name="GroupEditPassword"
-									id="GroupEditPassword" class="form-control" />
-								<p class="help-block">(Must be less than 20 letters in
-									alphanumeric format.)</p>
-							</div>
-							<div class="form-group">
-								<label>Max Number of Devices</label> <select
-									name="GroupEditMaximum" id="GroupEditMaximum"
-									class="form-control">
-									<option value="5">5</option>
-									<option value="10">10</option>
-									<option value="15">15</option>
-									<option value="20">20</option>
-									<option value="25">25</option>
-									<option value="30">30</option>
-									<option value="35">35</option>
-									<option value="40">40</option>
-									<option value="45">45</option>
-									<option value="50">50</option>
-								</select>
-							</div>
+								<dd>
+									<h4 class="app-title">Test App 1</h4>
+									<label> <i class="icon-apple icon-large"
+										style="margin-right: 5px;"></i></label> <label> 運動</label>
+								</dd>
+							</dl>
 
+							<dl style="display: inline-block; width: 130px; margin-bottom:0px;">
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">APP
+										ID: </span>
+								</dd>
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">Organization:
+									</span>
+								</dd>
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">Support
+										E-mail: </span>
+								</dd>
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">Phone:
+									</span>
+								</dd>
+							</dl>
 
+							<dl style="display: inline-block; width: 280px; margin-bottom:0px;">
+
+								<dd class="form-group">
+									<span style="color: #737373;"> 1490859308059</span>
+								</dd>
+								<dd class="form-group">
+									<span style="color: #737373;"> testname</span>
+								</dd>
+								<dd class="form-group">
+									<span style="color: #737373;"> testname123456789@ttt.tt</span>
+								</dd>
+								<dd class="form-group">
+									<span style="color: #737373;"> 001122334455</span>
+								</dd>
+							</dl>
+						</div>
+
+						<div class="modal-footer">
+						<input type="submit" class="btn btn-line btn-danger" value="Delete">
+							<button type="button" class="btn btn-line btn-primary"
+								data-dismiss="modal"><i class="icon-pencil" aria-hidden="true"></i>  Edit </button>
 						</div>
 
 					</div>

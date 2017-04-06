@@ -927,25 +927,25 @@
 	background-color: rgba(255, 255, 255, 0.5)
 }
 
-.app-list .app-icon {
+.app-icon {
 	width: 60px; 
 	height: 60px; 
 	vertical-align:top;
 }
 
-.app-list .app-title {
+.app-title {
 	padding: 5px 15px;
 	color: #000;
 	font-size: 22px;
 }
 
-.app-list .app-info {
+.app-info {
 	padding: 0px 15px;
 	display: inline-block;
 	
 }
 
-.app-list .app-info-li {
+.app-info-li {
 	display: inline-block;
 	/*color: #000;  */      /**** light-blue1: #0d3d6d; ****/
 	font-weight: bold;
