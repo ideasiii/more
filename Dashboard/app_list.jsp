@@ -62,7 +62,7 @@
 								</dd>
 
 								<dd>
-									<h4 class="app-title">Test App 1</h4>
+									<h4 class="app-title">Test App 2</h4>
 									<label> <i class="icon-apple icon-large"
 										style="margin-right: 5px;"></i></label> <label> 運動</label>
 								</dd>
@@ -304,7 +304,7 @@
 								<li class="app-list-li">
 									<div class="panel-body">
 										<a data-toggle="modal" data-target="#AppInfo" href=><img
-											class="app-icon" src="/assets/img/mdm_logo_web67t4.png"
+											class="app-icon" src="/assets/img/Apps-Android-icon.png"
 											alt="" /></a>
 										<div class="panel-content">
 
@@ -324,7 +324,7 @@
 
 								<li class="app-list-li">
 									<div class="panel-body">
-										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
+										<img class="app-icon" src="/assets/img/mdm_logo_web67t4.png"
 											alt="" />
 										<div class="panel-content">
 
