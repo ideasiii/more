@@ -860,17 +860,17 @@
 }
 
 .appRegistration .panel-content {
-	text-align: center;
+	text-align: left;
 	margin-top: 5px;
-	padding: 10px 23%;
+	padding: 10px 0px;
 }
 
-.appRegistration .panel-upload {
+.panel-upload {
 	margin-top: 15px;
 	padding-left: 14%;
 }
 
-.appRegistration .panel-upload-title {
+.panel-upload-title {
 	text-align:left;
 	margin-left: 47px;
 }

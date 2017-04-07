@@ -860,9 +860,9 @@
 }
 
 .appRegistration .panel-content {
-	text-align: center;
+	text-align: left;
 	margin-top: 5px;
-	padding: 10px 23%;
+	padding: 10px 0px;
 }
 
 .panel-upload {
