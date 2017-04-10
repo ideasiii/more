@@ -27,6 +27,54 @@
 <!-- END PAGE LEVEL  STYLES -->
 
 <!--  JavaScript -->
+<script type="text/javascript">
+	function Trim(x) {
+		return x.replace(/^\s+|\s+$/gm, '');
+	}
+
+	function formSubmit(formName) {
+		var form = document.getElementById(formName);
+		form.submit();
+	}
+
+	function checkAppRegiData(formName) {
+		var form = document.getElementById(formName);
+		var formname = form.name;
+		var errMsg = '';
+		re = /\W/;
+		reg = /^[^\s]+@[^\s]+\.[^\s]{2,3}$/;
+
+		if (Trim(form.app_name.value) == '')
+			errMsg += "Please enter an application name !!\n";
+		else {
+			if (form.app_name.value.length > 20)
+				errMsg += "Application name must be less than 20 characters !!\n";
+		}
+
+		if (Trim(form.user_name.value) == '')
+			errMsg += "Organization field is required !!\n";
+
+		if (Trim(form.user_email.value) == '')
+			errMsg += "E-mail field is required !!\n";
+		else {
+			if (!reg.test(Trim(form.inputEmail.value))) {
+				errMsg += "Wrong E-mail format !!\n";
+			}
+		}
+
+		if (Trim(form.user_phone.value) == '')
+			errMsg += "Phone field is required !!\n";
+		
+		if (errMsg == '') {
+			form.submit();
+			return true;
+		}
+		alert(errMsg);
+		return false;
+	}
+</script>
+
+
 
 </head>
 
@@ -61,8 +109,8 @@
 										<dl
 											style="display: inline-block; width: 50%; margin: 10px 0px 5px 30px;">
 
-											<dd class="fileupload fileupload-new" style="margin-bottom: 15px;"
-												data-provides="fileupload">
+											<dd class="fileupload fileupload-new"
+												style="margin-bottom: 15px;" data-provides="fileupload">
 
 												<div class="fileupload-new thumbnail"
 													style="width: 60px; height: 60px; border: 0; margin-bottom: 5px;">
