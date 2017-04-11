@@ -72,6 +72,19 @@
 		alert(errMsg);
 		return false;
 	}
+	
+	function validateAppIcon(file) {
+		var checkIconType = false;
+		var ext = file.split(".");
+		ext = ext[ext.length - 1].toLowerCase();
+		var arrayExtensions = [ "jpg", "png" ];
+
+		if (arrayExtensions.lastIndexOf(ext) == -1) {
+			checkIconType = false;
+		} else {
+			checkIconType = true;
+		}
+	}
 </script>
 
 
