@@ -37,9 +37,25 @@
 		form.submit();
 	}
 
+	/** Check APP Registration Data & Icon Type * */
+	var checkIconType = false;
+
+	function validateAppIcon(file) {
+		var ext = file.split(".");
+		ext = ext[ext.length - 1].toLowerCase();
+		var arrayExtensions = [ "jpg", "png" ];
+
+		if (arrayExtensions.lastIndexOf(ext) == -1) {
+			checkIconType = false;
+		} else {
+			checkIconType = true;
+		}
+	}
+
 	function checkAppRegiData(formName) {
 		var form = document.getElementById(formName);
 		var formname = form.name;
+		var IconCheck = form.inputIcon.value;
 		var errMsg = '';
 		re = /\W/;
 		reg = /^[^\s]+@[^\s]+\.[^\s]{2,3}$/;
@@ -50,6 +66,9 @@
 			if (form.app_name.value.length > 20)
 				errMsg += "Application name must be less than 20 characters !!\n";
 		}
+
+		if (IconCheck != '' && checkIconType == false)
+			errMsg += 'Wrong image type !!\n';
 
 		if (Trim(form.user_name.value) == '')
 			errMsg += "Organization field is required !!\n";
@@ -64,26 +83,13 @@
 
 		if (Trim(form.user_phone.value) == '')
 			errMsg += "Phone field is required !!\n";
-		
+
 		if (errMsg == '') {
 			form.submit();
 			return true;
 		}
 		alert(errMsg);
 		return false;
-	}
-	
-	function validateAppIcon(file) {
-		var checkIconType = false;
-		var ext = file.split(".");
-		ext = ext[ext.length - 1].toLowerCase();
-		var arrayExtensions = [ "jpg", "png" ];
-
-		if (arrayExtensions.lastIndexOf(ext) == -1) {
-			checkIconType = false;
-		} else {
-			checkIconType = true;
-		}
 	}
 </script>
 
@@ -145,14 +151,14 @@
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Application Name</label> <input
-														class="form-control" name="" style="width: 280px;" />
+														class="form-control" name="app_name" style="width: 280px;" />
 												</div>
 											</dd>
 
 
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
-													<label class="col-lg-4">Type</label> <select name=""
+													<label class="col-lg-4">Type</label> <select name="app_os"
 														class="form-control" style="width: 280px;">
 														<option value="android">android</option>
 														<option value="ios">ios</option>
@@ -161,7 +167,7 @@
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
-													<label class="col-lg-4">Categories</label> <select name=""
+													<label class="col-lg-4">Categories</label> <select name="app_category"
 														style="width: 280px;" class="form-control">
 														<option>工具</option>
 														<option>天氣</option>
@@ -203,30 +209,31 @@
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Organization</label> <input
-														class="form-control" name="app_id" style="width: 280px;" />
+														class="form-control" name="user_name" style="width: 280px;" />
 												</div>
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Support E-mail</label> <input
-														class="form-control" name="app_id" style="width: 280px;" />
+														class="form-control" name="user_email" style="width: 280px;" />
 												</div>
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Phone</label> <input
-														class="form-control" name="app_id" style="width: 280px;" />
+														class="form-control" name="user_phone" style="width: 280px;" />
 												</div>
 											</dd>
 										</dl>
 
-
-
-										<div class="subm-footer">
-											<button type="button" class="btn btn-primary subm-btn">Register</button>
-										</div>
-
 									</form>
+
+									<div class="subm-footer">
+										<button type="button" class="btn btn-primary subm-btn"
+											onclick="checkAppRegiData('formAppRegistration')">Register</button>
+									</div>
+
+
 								</div>
 
 							</div>
