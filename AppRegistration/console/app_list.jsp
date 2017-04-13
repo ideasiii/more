@@ -38,7 +38,7 @@
 	<!-- MAIN WRAPPER -->
 	<div id="wrap">
 
-		<%@include file="../home/console/menu.jsp"%>
+		<%@include file="../../home/console/menu.jsp"%>
 
 		<!-- HEADER SECTION -->
 
