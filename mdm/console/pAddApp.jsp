@@ -203,7 +203,7 @@
 						return;
 					}
 					mapData.put(Mdm.Common.APK_FILE_NAME, strFName);
-					int nResult = mdm.insertAppManage(strGroupId, strAppName, strCategory, strEdition, strDescription,
+					int nResult = mdm.insertAppManage(request, strGroupId, strAppName, strCategory, strEdition, strDescription,
 							strAppIcon, strFName, strFileLocation);
 
 					mdm.closeTypeDB(request, 0);

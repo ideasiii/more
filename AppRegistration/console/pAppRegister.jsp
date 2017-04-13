@@ -11,6 +11,11 @@
 <%@ page import="java.util.Iterator"%>
 <%@ page import="java.util.List"%>
 
+<%
+    final String strHostUrl = request.getRequestURL().toString();
+    /** Web Tracker **/
+    More.webTracker(request, "load page", null);
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,7 +45,7 @@
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
 			HashMap<String, String> mapData = new HashMap<String, String>();
-			FileItem itemUploadFile = null;
+			ArrayList<FileItem> itemUploadFileArray = new ArrayList<FileItem>();
 
 			while (iter.hasNext())
 			{
@@ -55,14 +60,24 @@
 			    }
 			    else
 			    {
-				itemUploadFile = item;
+				itemUploadFileArray.add(item);
 			    }
 			} // while
 
 			long timeNow = System.currentTimeMillis();
 			String strFileName = String.valueOf(timeNow);
+			String strFName = null;
 			String strFN = null;
-
+			mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/app_icon_default.png");
+			
+			for (int i = 0; i < itemUploadFileArray.size(); i++) {
+				Logs.showTrace("*******" + itemUploadFileArray.get(i).getName());
+				Logs.showTrace("*******" + itemUploadFileArray.get(i).getContentType());
+				Logs.showTrace("*******" + itemUploadFileArray.get(i).getFieldName());
+				Logs.showTrace("**********************************************");
+			
+				
+				FileItem itemUploadFile = itemUploadFileArray.get(i);
 			if (null != itemUploadFile)
 			{
 			    // Process a file upload
@@ -78,18 +93,17 @@
 			    {
 				String strPath = saveDirectory + "/" + mapData.get(More.Common.USER_TOKEN);
 
+				Logs.showTrace(" fieldName:"+fieldName);
 				if (contentType.trim().equals("image/png"))
 				{
 				    strFN = strFileName + ".png";
 				}
-				if (contentType.trim().equals("image/jpeg"))
+				else if (contentType.trim().equals("image/jpeg"))
 				{
 				    strFN = strFileName + ".jpg";
 				}
-				if (contentType.trim().equals("image/bmp"))
-				{
-				    strFN = strFileName + ".bmp";
-				}
+				
+				
 				if (null != strFN)
 				{
 				    new File(strPath).mkdirs();
@@ -109,6 +123,15 @@
 				System.out.println(key + " : " + mapData.get(key) + "<br/>");
 			}
 			*/
+			
+			final String strToken = mapData.get(More.Common.USER_TOKEN);
+			final String strAppName = mapData.get(More.Common.APP_NAME);
+			final String strAppOs = mapData.get(More.Common.APP_OS);
+			final String strAppCategory = mapData.get(More.Common.APP_CATEGORY);
+			final String strUserName = mapData.get(More.Common.USER_NAME);
+			final String strUserEmail = mapData.get(More.Common.USER_EMAIL);
+			final String strUserPhone = mapData.get(More.Common.USER_PHONE);
+		
 			
 			
 			

@@ -7,7 +7,8 @@
 
 <%
     final String strHostUrl = request.getRequestURL().toString();
-
+    /** Web Tracker **/
+    More.webTracker(request, "load page", null);
 %>
 
 <!DOCTYPE html>
