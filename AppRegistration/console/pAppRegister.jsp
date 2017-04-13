@@ -131,24 +131,26 @@
 			final String strUserName = mapData.get(More.Common.USER_NAME);
 			final String strUserEmail = mapData.get(More.Common.USER_EMAIL);
 			final String strUserPhone = mapData.get(More.Common.USER_PHONE);
-		
 			
+			Logs.showTrace("Insert App Data to Database, TOKEN: " + strToken);
+			Logs.showTrace("AppIcon: " + strAppIcon);
 			
+			sqliteClient sqlite = new sqliteClient();
+			Connection con = sqlite.getConnection(Common.DB_PATH_IDEAS);
+			mapData.put(Common.APP_ID, strAppId);
+			sqlite.insert(con, "app", mapData);
+			con.close();
+			sqlite = null;
 			
-			
-	%>
+			%>
 
 
-
-
-
-
-
-
-	<%
+			<%
 	    return;
-	    }
+			}
 	    response.sendRedirect(".jsp");
-	%>
+	    
+	    %>
+
 </body>
 </html>
