@@ -64,6 +64,11 @@
 							</a>
 
 
+<div class="white-text" style="margin-left:50px;">
+								<h1>ANDROID</h1>
+								<br>
+							</div>
+
 							<!-- SDK Android List -->
 							<ul class="block-list">
 

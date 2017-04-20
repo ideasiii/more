@@ -55,12 +55,15 @@
 							<div class="row container-text-r">
 
 								<h2 style="font-weight: bold; padding-right: 20px;">
-									<span style="color: #001075;">MORE</span> Platform
+									<span style="color: #001075; font-size:38px;">M</span><span>ulti-</span><span
+										style="color: #001075; font-size:38px;">O</span>bject <span
+										style="color: #001075; font-size:38px;">R</span>obotification <span
+										style="color: #001075; font-size:38px;">E</span>nabler 
 								</h2>
 								<h3 style="font-weight: bold;" class="vline-right-orange">
-									<p>將多項服務與應用包裝成多個獨立的模組</p>
-									<p>提供給APP開發人員加入到APP專案裡</p>
-									<p>透過API呼叫即可執行多種應用與服務</p>
+									<p>智能裝置連網服務 設計&開發工具</p>
+									<p>多元數據使用者需求趨勢分析</p>
+									<p>情境設計與洞察體驗</p>
 								</h3>
 
 							</div>

@@ -63,6 +63,12 @@
 								style="margin-right: 5px;"></i> Android
 							</a>
 
+
+							<div class="white-text" style="margin-left: 50px;">
+								<h1>SDK for IOS</h1>
+								<br>
+							</div>
+
 							<!-- SDK Android List -->
 							<ul class="block-list">
 
@@ -88,10 +94,9 @@
 
 									<div class="panel-body">
 										<i class="<%=sdkData.sdk_icon%>"></i> <a
-											href="<%=sdkData.sdk_doc%>"
-											class="panel-content spotlight">Document</a> <a
-											href="<%=sdkData.sdk_file%>" class="panel-content spotlight"
-											style="margin-top: 45px;">Download</a>
+											href="<%=sdkData.sdk_doc%>" class="panel-content spotlight">Document</a>
+										<a href="<%=sdkData.sdk_file%>"
+											class="panel-content spotlight" style="margin-top: 45px;">Download</a>
 									</div>
 								</li>
 
