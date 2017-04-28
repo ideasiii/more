@@ -59,12 +59,12 @@
 							<a href="moreSDKios.jsp"
 								class="connect-bar counte border-grey bg-grey white-text"
 								style="text-decoration: none;"> <i
-								class="icon-apple icon-large"
-								style="margin-right: 5px;"></i> IOS
+								class="icon-apple icon-large" style="margin-right: 5px;"></i>
+								IOS
 							</a>
 
 
-<div class="white-text" style="margin-left:50px;">
+							<div class="white-text" style="margin-left: 50px;">
 								<h1>ANDROID</h1>
 								<br>
 							</div>
@@ -94,10 +94,9 @@
 
 									<div class="panel-body">
 										<i class="<%=sdkData.sdk_icon%>"></i> <a
-											href="<%=sdkData.sdk_doc%>"
-											class="panel-content spotlight">Document</a> <a
-											href="<%=sdkData.sdk_file%>" class="panel-content spotlight"
-											style="margin-top: 45px;">Download</a>
+											href="<%=sdkData.sdk_doc%>" class="panel-content spotlight">Document</a>
+										<a href="<%=sdkData.sdk_file%>"
+											class="panel-content spotlight" style="margin-top: 45px;">Download</a>
 									</div>
 								</li>
 
