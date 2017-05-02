@@ -77,9 +77,9 @@
 
 				<div id="" class="full-height-outer bg-white full-height-m">
 
-					<div class="silk-grey">
+					<div class="silk-grey-l">
 						<div class="container">
-							<div class="row container-text-r">
+							<div class="row container-text-r-large">
 
 								<h2 style="font-weight: bold; padding-right: 20px;">Dashboard</h2>
 								<h3 style="font-weight: bold;" class="vline-right-green">
