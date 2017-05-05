@@ -61,9 +61,9 @@
 										style="color: #001075; font-size:38px;">E</span>nabler 
 								</h2>
 								<h3 style="font-weight: bold;" class="vline-right-orange">
-									<p>智能裝置連網服務 設計&開發工具</p>
+									<p>智能裝置連網服務 BIOT設計&開發工具</p>
 									<p>多元數據使用者需求趨勢分析</p>
-									<p>情境設計與洞察體驗</p>
+									<p>打造專屬 Bot+IOT解決方案</p>
 								</h3>
 
 							</div>
@@ -77,19 +77,20 @@
 
 				<div id="" class="full-height-outer bg-white full-height-m">
 
-					<div class="silk-grey">
-						<div class="container">
-							<div class="row container-text-r">
+					<div class="silk-grey-l">
+						
+							
+<img id="Image-Maps-Com-image-maps-2017-05-02-223807" style="width:100%; height:auto;" src="/assets/img/flowchat.png" border="0" width="1900" height="1001" orgWidth="1900" orgHeight="1001" usemap="#image-maps-2017-05-02-223807" alt="" />
+<map name="image-maps-2017-05-02-223807" id="ImageMapsCom-image-maps-2017-05-02-223807">
+<area shape="rect" coords="1898,999,1900,1001" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+<area id="step1" alt="Step1" title="step1" href="http://www.image-maps1.com/" shape="poly" coords="256,386,300,378,335,382,357,390,382,399,399,414,414,426,433,449,446,473,454,498,458,527,455,563,446,591,436,612,419,637,394,657,370,672,341,684,301,690,271,687,244,678,217,667,188,644,168,618,151,582,142,540,144,508,153,473,182,429,204,410,230,397" style="outline:none;" target="_self"     />
+<area id="step2" alt="Step2" title="step2" href="http://www.image-maps2.com/" shape="poly" coords="941,419,851,437,774,488,723,565,705,655,723,745,774,822,851,873,941,891,1031,873,1108,822,1159,745,1177,655,1159,565,1108,488,1032,437" style="outline:none;" target="_self"     />
+<area id="step3" alt="Step3" title="step3" href="http://www.image-maps3.com/" shape="poly" coords="1388,105,1337,115,1294,144,1265,187,1255,238,1265,289,1294,332,1337,361,1388,371,1439,361,1482,332,1511,289,1521,238,1511,187,1482,144,1441,115" style="outline:none;" target="_self"     />
+<area id="step4" alt="Step4" title="step4" href="http://www.image-maps4.com/" shape="poly" coords="1645,529,1583,541,1531,576,1496,628,1484,690,1496,752,1531,804,1583,839,1645,851,1707,839,1759,804,1794,752,1806,690,1794,628,1759,576,1707,541" style="outline:none;" target="_self"     />
+</map>
 
-								<h2 style="font-weight: bold; padding-right: 20px;">Dashboard</h2>
-								<h3 style="font-weight: bold;" class="vline-right-green">
-									<p>將多項服務與應用包裝成多個獨立的模組</p>
-									<p>提供給APP開發人員加入到APP專案裡</p>
-									<p>透過API呼叫即可執行多種應用與服務</p>
-								</h3>
-
-							</div>
-						</div>
+							
+					
 					</div>
 				</div>
 
@@ -153,7 +154,14 @@
 	<script src="/assets/plugins/flot/jquery.flot.resize.js"></script>
 	<script src="/assets/plugins/flot/jquery.flot.time.js"></script>
 	<script src="/assets/plugins/flot/jquery.flot.stack.js"></script>
-	<script src="/assets/js/for_index.js"></script>
+
+	<script src="/assets/js/jquery.rwdImageMaps.js"></script>
+	<script>
+    $(document).ready(function(e) {
+       $('img[usemap]').rwdImageMaps();
+    });
+	</script>
+	<!-- <script src="/assets/js/for_index.js"></script> -->
 	<!-- END PAGE LEVEL SCRIPTS -->
 
 </body>
