@@ -45,26 +45,32 @@
 		<!--PAGE CONTENT -->
 		<div id="content">
 			<div class="inner" style="min-height: 100%; padding: 0;">
-			<div id="intro"
-				style="min-height: 900px; background-color: #f0f0f0;">
-			
-			<div class="row container-text-l">
+				<div id="intro"
+					style="min-height: 900px; background-color: #f0f0f0;">
 
-								<h2 style="font-weight: bold; padding-right: 20px;">
-									<span style="font-size:72px;">Edubot</span> 
-								</h2>
-								<h3 style="color:#8c8c8c; font-weight: bold;font-size:42px;">
-									<p>We provide 15 scenarios</p>
-									<p>for building application faster</p>
-								</h3>
+					<div class="row container-text-l">
+						<h2 style="font-weight: bold; padding-right: 20px;">
+							<span style="font-size: 72px;">Edubot</span>
+						</h2>
+						<h3 style="color: #8c8c8c; font-weight: bold; font-size: 38px;">
+							<p>We provide 15 scenarios</p>
+							<p>for building application faster</p>
+						</h3>
+					</div>
 
-							</div>
-			
-			
-			
-			
-			
-			</div>
+				<!-- Scenarios List -->
+				<ul>
+				<li>
+				<div>
+				
+				
+				</div>
+				</li>
+				
+				</ul>
+
+
+				</div>
 			</div>
 		</div>
 		<!--END PAGE CONTENT -->
