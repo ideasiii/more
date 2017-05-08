@@ -969,6 +969,40 @@
 }
 
 
+
+/*********************************************************/
+
+/*                  Scenario List Style                  */
+
+/*********************************************************/
+
+.scenario-list {
+	display: block;
+	list-style: none;
+	min-height: 0;
+	overflow: hidden;
+	padding: 0px 10.5% 20px 10.5%;
+}
+
+.scenario-list .scenario-list-li {
+	float: left;
+	margin: 0px 1rem 20px 1rem;
+	display: inline-block;
+}
+
+.scenario-list .panel-body {
+	height: auto;
+	vertical-align: middle;
+	display: inline-block;
+	left: 0;
+	width: auto;
+}
+
+
+
+
+
+
 /*********************************************************/
 
 /*                       Query Style                     */

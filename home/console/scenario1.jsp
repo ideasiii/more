@@ -48,6 +48,7 @@
 				<div id="intro"
 					style="min-height: 900px; background-color: #f0f0f0;">
 
+
 					<div class="row container-text-l">
 						<h2 style="font-weight: bold; padding-right: 20px;">
 							<span style="font-size: 72px;">Edubot</span>
@@ -58,16 +59,41 @@
 						</h3>
 					</div>
 
-				<!-- Scenarios List -->
-				<ul>
-				<li>
-				<div>
-				
-				
-				</div>
-				</li>
-				
-				</ul>
+					<!-- Scenarios List -->
+					<ul class="scenario-list">
+						<li class="scenario-list-li">
+							<div class="panel-body">
+								<img class="" src="/assets/img/sample1.png" alt="" />
+
+
+							</div>
+						</li>
+
+
+						<li class="scenario-list-li">
+							<div class="panel-body">
+								<img class="" src="/assets/img/sample1.png" alt="" />
+
+
+							</div>
+						</li>
+
+
+						<li class="scenario-list-li">
+							<div class="panel-body">
+								<img class="" src="/assets/img/sample1.png" alt="" />
+
+
+							</div>
+						</li>
+
+
+
+
+
+
+					</ul>
+
 
 
 				</div>
