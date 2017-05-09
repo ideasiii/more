@@ -982,11 +982,12 @@
 	min-height: 0;
 	overflow: hidden;
 	padding: 0px 10.5% 20px 10.5%;
+	margin: 0;
 }
 
 .scenario-list .scenario-list-li {
 	float: left;
-	margin: 0px 1rem auto 1rem;
+	margin: 0px 1rem 20px 1rem;
 	display: inline-block;
 }
 

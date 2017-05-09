@@ -49,7 +49,7 @@
 					style="min-height: 900px; background-color: #f0f0f0;">
 
 
-					<div class="row container-text-l">
+					<div class="container-text-l">
 						<h2 style="font-weight: bold; padding-right: 20px;">
 							<span style="font-size: 72px;">Edubot</span>
 						</h2>
