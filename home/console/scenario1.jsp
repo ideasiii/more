@@ -65,8 +65,10 @@
 							<div class="" style="background-image:url('/assets/img/sample1.png');background-repeat:no-repeat;width:295px;height:300px;">
 								
 							<div class="silk-bottom" style="width:295px;height:300px;z-index:100;">
+							<div style="padding: 5px;">
+							<h3 class="" style="text-align:center;margin-top:150px;">Test App 1</h3>
 							
-							
+							</div>
 							</div>
 
 							</div>
