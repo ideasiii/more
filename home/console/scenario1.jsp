@@ -62,9 +62,24 @@
 					<!-- Scenarios List -->
 					<ul class="scenario-list">
 						<li class="scenario-list-li">
-							<div class="panel-body">
-								<img class="" src="/assets/img/sample1.png" alt="" />
+							<div class="" style="background-image:url('/assets/img/sample1.png');background-repeat:no-repeat;width:295px;height:300px;">
+								
+							<div class="silk-bottom" style="width:295px;height:300px;z-index:100;">
+							
+							
+							</div>
 
+							</div>
+						</li>
+
+
+					<li class="scenario-list-li">
+							<div class="" style="background-image:url('/assets/img/sample1.png');background-repeat:no-repeat;width:300px;height:300px;">
+								
+							<div class="silk-bottom" style="z-index:100;">
+							
+							
+							</div>
 
 							</div>
 						</li>
@@ -78,7 +93,6 @@
 							</div>
 						</li>
 
-
 						<li class="scenario-list-li">
 							<div class="panel-body">
 								<img class="" src="/assets/img/sample1.png" alt="" />
@@ -86,8 +100,6 @@
 
 							</div>
 						</li>
-
-
 
 
 
