@@ -981,18 +981,29 @@
 
 /*********************************************************/
 
+.scenario-title {
+	padding-bottom: 2rem;
+	padding-left:14rem;
+}
+
+.scenario-subtitle {
+	color: #8c8c8c; 
+	font-weight: bold; 
+	font-size: 38px;
+}
+
 .scenario-list {
 	display: block;
 	list-style: none;
 	min-height: 0;
 	overflow: hidden;
-	padding: 0px 10.5% 20px 10.5%;
+	padding: 0px 10% 20px 12%;
 	margin: 0;
 }
 
 .scenario-list .scenario-list-li {
 	float: left;
-	margin: 1rem 2rem;
+	margin: 2rem 2rem;
 	display: inline-block;
 }
 
@@ -1004,10 +1015,16 @@
 	width: auto;
 }
 
+.scenario-list .title {
+	text-align:center;
+	margin-top:140px;
+	font-weight: bold; 
+}
 
+.scenario-list .text {
+	font-family: Meiryo, "微軟正黑體", "Microsoft JhengHei"; 
 
-
-
+}
 
 /*********************************************************/
 

@@ -49,11 +49,11 @@
 					style="min-height: 900px; background-color: #f0f0f0;">
 
 
-					<div class="container-text-l">
-						<h2 style="font-weight: bold; padding-right: 20px;">
+					<div class="container-text-l scenario-title">
+						<h2 style="font-weight: bold;">
 							<span style="font-size: 72px;">Edubot</span>
 						</h2>
-						<h3 style="color: #8c8c8c; font-weight: bold; font-size: 38px;">
+						<h3 class="scenario-subtitle">
 							<p>We provide 15 scenarios</p>
 							<p>for building application faster</p>
 						</h3>
@@ -62,47 +62,70 @@
 					<!-- Scenarios List -->
 					<ul class="scenario-list">
 						<li class="scenario-list-li">
-							<div class="" style="background-image:url('/assets/img/sample1.png');background-repeat:no-repeat;width:295px;height:300px;">
-								
-							<div class="silk-bottom" style="width:295px;height:300px;z-index:100;">
-							<div style="padding: 5px;">
-							<h3 class="" style="text-align:center;margin-top:150px;">Test App 1</h3>
-							
-							</div>
-							</div>
+							<div
+								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
-							</div>
-						</li>
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px;">
+									<h2 class="title">早晨喚醒</h2>
+
+									<div 
+										style="text-align: center; margin-top: 50px; font-weight: bold; font-size: 18px">
+										<span class="text">養成孩童自動按時起床習慣</span>
+									</div>
 
 
-					<li class="scenario-list-li">
-							<div class="" style="background-image:url('/assets/img/sample1.png');background-repeat:no-repeat;width:300px;height:300px;">
-								
-							<div class="silk-bottom" style="z-index:100;">
-							
-							
-							</div>
+								</div>
 
 							</div>
 						</li>
 
 
 						<li class="scenario-list-li">
-							<div class="panel-body">
-								<img class="" src="/assets/img/sample1.png" alt="" />
+							<div class=""
+								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100;">
+									<div style="padding: 5px;">
+										<h3 class="title">Test App 1</h3>
+
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+
+						<li class="scenario-list-li">
+							<div class=""
+								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
+
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100;">
+									<div style="padding: 5px;">
+										<h3 class="title">Test App 1</h3>
+
+									</div>
+								</div>
 
 							</div>
 						</li>
 
 						<li class="scenario-list-li">
-							<div class="panel-body">
-								<img class="" src="/assets/img/sample1.png" alt="" />
+							<div class=""
+								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100;">
+									<div style="padding: 5px;">
+										<h3 class="title">Test App 1</h3>
+
+									</div>
+								</div>
 
 							</div>
 						</li>
-
 
 
 
