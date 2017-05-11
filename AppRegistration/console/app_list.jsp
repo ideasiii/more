@@ -39,7 +39,7 @@
 
 </head>
 
-<body class="padTop53">
+<body class="padTop53 body-font">
 
 	<!-- MAIN WRAPPER -->
 	<div id="wrap">

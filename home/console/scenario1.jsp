@@ -66,12 +66,11 @@
 								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
-									style="width: 295px; height: 300px; z-index: 100; padding: 5px;">
-									<h2 class="title">早晨喚醒</h2>
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">早晨喚醒</h2>
 
-									<div 
-										style="text-align: center; margin-top: 50px; font-weight: bold; font-size: 18px">
-										<span class="text">養成孩童自動按時起床習慣</span>
+									<div class="content">
+										<span class="font">養成孩童自動按時起床習慣</span>
 									</div>
 
 
@@ -82,15 +81,18 @@
 
 
 						<li class="scenario-list-li">
-							<div class=""
+							<div
 								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
-									style="width: 295px; height: 300px; z-index: 100;">
-									<div style="padding: 5px;">
-										<h3 class="title">Test App 1</h3>
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">父母對話</h2>
 
+									<div class="content">
+										<span class="font">小孩可隨時透過機器人遠端與父母聯繫</span>
 									</div>
+
+
 								</div>
 
 							</div>
@@ -98,35 +100,40 @@
 
 
 						<li class="scenario-list-li">
-							<div class=""
+							<div
 								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
-									style="width: 295px; height: 300px; z-index: 100;">
-									<div style="padding: 5px;">
-										<h3 class="title">Test App 1</h3>
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">學習探索-說故事</h2>
 
+									<div class="content">
+										<span class="font">陪伴小孩度過父母忙碌時間</span>
 									</div>
+
+
 								</div>
 
 							</div>
 						</li>
 
 						<li class="scenario-list-li">
-							<div class=""
+							<div
 								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
-									style="width: 295px; height: 300px; z-index: 100;">
-									<div style="padding: 5px;">
-										<h3 class="title">Test App 1</h3>
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">學習探索-說故事</h2>
 
+									<div class="content">
+										<span class="font">陪伴小孩度過父母忙碌時間</span>
 									</div>
+
+
 								</div>
 
 							</div>
 						</li>
-
 
 
 					</ul>

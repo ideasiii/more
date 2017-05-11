@@ -1,6 +1,8 @@
 
 
-
+.font {
+	font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+}
 
 
 /*********************************************************/
@@ -1019,6 +1021,13 @@
 	text-align:center;
 	margin-top:140px;
 	font-weight: bold; 
+}
+
+.scenario-list .content {
+	text-align: center; 
+	margin-top: 40px; 
+	font-weight: bold; 
+	font-size: 18px
 }
 
 .scenario-list .text {
