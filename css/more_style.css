@@ -1024,15 +1024,28 @@
 }
 
 .scenario-list .content {
+	width: 100%;
+	position: relative;
+	height: 77px;
 	text-align: center; 
-	margin-top: 40px; 
+	margin-top: 30px; 
 	font-weight: bold; 
-	font-size: 18px
+	font-size: 18px;
+	display: inline-block;
 }
 
 .scenario-list .text {
 	font-family: Meiryo, "微軟正黑體", "Microsoft JhengHei";
 }
+
+.scenario-list .btn-style {
+	display:block;
+	position: absolute;
+	bottom:5px;
+	right:40px;  
+	left: 40px;
+}
+
 
 /*********************************************************/
 

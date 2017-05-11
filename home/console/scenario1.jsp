@@ -71,9 +71,9 @@
 
 									<div class="content">
 										<span class="font">養成孩童自動按時起床習慣</span>
+											<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
 									</div>
-
-
 								</div>
 
 							</div>
@@ -90,9 +90,10 @@
 
 									<div class="content">
 										<span class="font">小孩可隨時透過機器人遠端與父母聯繫</span>
+										<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
 									</div>
-
-
+									
 								</div>
 
 							</div>
@@ -109,9 +110,9 @@
 
 									<div class="content">
 										<span class="font">陪伴小孩度過父母忙碌時間</span>
+										<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
 									</div>
-
-
 								</div>
 
 							</div>
@@ -127,14 +128,13 @@
 
 									<div class="content">
 										<span class="font">陪伴小孩度過父母忙碌時間</span>
+										<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
 									</div>
-
-
 								</div>
 
 							</div>
 						</li>
-
 
 					</ul>
 
