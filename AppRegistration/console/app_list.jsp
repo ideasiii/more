@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="more.*"%>
 
-
+<%@include file="../../home/console/loginValid.jsp"%>
 
 <%
     final String strHostUrl = request.getRequestURL().toString();
