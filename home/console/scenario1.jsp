@@ -63,15 +63,15 @@
 					<ul class="scenario-list">
 						<li class="scenario-list-li">
 							<div
-								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
+								style="background-image: url('/assets/img/10_wakeupjpg.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
 									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
 									<h2 class="title font">早晨喚醒</h2>
 
 									<div class="content">
-										<span class="font">養成孩童自動按時起床習慣</span>
-											<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+										<span class="font">養成孩童自動按時起床習慣</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
 											Resources</a>
 									</div>
 								</div>
@@ -82,18 +82,18 @@
 
 						<li class="scenario-list-li">
 							<div
-								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
+								style="background-image: url('/assets/img/3_conversation.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
 									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
 									<h2 class="title font">父母對話</h2>
 
 									<div class="content">
-										<span class="font">小孩可隨時透過機器人遠端與父母聯繫</span>
-										<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+										<span class="font">小朋友可隨時透過機器人遠端與父母聯繫</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
 											Resources</a>
 									</div>
-									
+
 								</div>
 
 							</div>
@@ -102,15 +102,15 @@
 
 						<li class="scenario-list-li">
 							<div
-								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
+								style="background-image: url('/assets/img/5_storytelling.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
 									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
 									<h2 class="title font">學習探索-說故事</h2>
 
 									<div class="content">
-										<span class="font">陪伴小孩度過父母忙碌時間</span>
-										<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+										<span class="font">陪伴小孩度過父母忙碌時間</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
 											Resources</a>
 									</div>
 								</div>
@@ -120,15 +120,124 @@
 
 						<li class="scenario-list-li">
 							<div
-								style="background-image: url('/assets/img/sample1.png'); background-repeat: no-repeat; width: 295px; height: 300px;">
+								style="background-image: url('/assets/img/4_question.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
 
 								<div class="silk-bottom"
 									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
-									<h2 class="title font">學習探索-說故事</h2>
+									<h2 class="title font">問題解決Q&A</h2>
 
 									<div class="content">
-										<span class="font">陪伴小孩度過父母忙碌時間</span>
-										<a href="#" class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+										<span class="font">解答小孩心中10萬個為什麼</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="scenario-list-li">
+							<div
+								style="background-image: url('/assets/img/6_learning.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
+
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">智慧學習</h2>
+
+									<div class="content">
+										<span class="font">互動式教學</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="scenario-list-li">
+							<div
+								style="background-image: url('/assets/img/9_sleeping.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
+
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">睡眠安撫</h2>
+
+									<div class="content">
+										<span class="font">夜燈模式搭配輕柔音樂來輔助孩童睡眠</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="scenario-list-li">
+							<div
+								style="background-image: url('/assets/img/8_playblocks.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
+
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">智能積木</h2>
+
+									<div class="content">
+										<span class="font">幫助孩子邏輯訓練</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="scenario-list-li">
+							<div
+								style="background-image: url('/assets/img/7_picturebook.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
+
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">讀取繪本</h2>
+
+									<div class="content">
+										<span class="font">根據小朋友的選擇讀取繪本並互動回答問題</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="scenario-list-li">
+							<div
+								style="background-image: url('/assets/img/1_accompany.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
+
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">聊天陪伴</h2>
+
+									<div class="content">
+										<span class="font">讓孩子與機器人互動閒聊</span> <a href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
+											Resources</a>
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="scenario-list-li">
+							<div
+								style="background-image: url('/assets/img/2_comfort.jpg'); background-repeat: no-repeat; width: 295px; height: 300px;">
+
+								<div class="silk-bottom"
+									style="width: 295px; height: 300px; z-index: 100; padding: 5px 30px;">
+									<h2 class="title font">情緒安撫</h2>
+
+									<div class="content">
+										<span class="font">透過互動察覺小朋友心情並以適合的反應及音樂安撫情緒</span> <a
+											href="#"
+											class="btn btn-primary btn-xs btn-flat btn-rect btn-style">View
 											Resources</a>
 									</div>
 								</div>

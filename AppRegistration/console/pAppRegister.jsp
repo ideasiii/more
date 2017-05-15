@@ -10,6 +10,9 @@
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Iterator"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Arrays"%>
+<%@ page import="java.sql.*"%>
 
 <%
     final String strHostUrl = request.getRequestURL().toString();
@@ -26,6 +29,7 @@
 
 </head>
 <body>
+
 
 	<%
 	    //Check that we have a file upload request
@@ -65,7 +69,7 @@
 			} // while
 
 			long timeNow = System.currentTimeMillis();
-			String strFileName = String.valueOf(timeNow);
+			String strAppId = String.valueOf(timeNow);
 			String strFName = null;
 			String strFN = null;
 			mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/app_icon_default.png");
@@ -96,11 +100,11 @@
 				Logs.showTrace(" fieldName:"+fieldName);
 				if (contentType.trim().equals("image/png"))
 				{
-				    strFN = strFileName + ".png";
+				    strFN = strAppId + ".png";
 				}
 				else if (contentType.trim().equals("image/jpeg"))
 				{
-				    strFN = strFileName + ".jpg";
+				    strFN = strAppId + ".jpg";
 				}
 				
 				
@@ -117,7 +121,8 @@
 				    return;
 				}
 			    }
-			}
+			}// if
+			
 			/*
 			for (Object key : mapData.keySet()) {
 				System.out.println(key + " : " + mapData.get(key) + "<br/>");
@@ -125,6 +130,7 @@
 			*/
 			
 			final String strToken = mapData.get(More.Common.USER_TOKEN);
+			final String strAppIcon = mapData.get(More.Common.APP_ICON);
 			final String strAppName = mapData.get(More.Common.APP_NAME);
 			final String strAppOs = mapData.get(More.Common.APP_OS);
 			final String strAppCategory = mapData.get(More.Common.APP_CATEGORY);
@@ -136,25 +142,20 @@
 			Logs.showTrace("AppIcon: " + strAppIcon);
 			
 			sqliteClient sqlite = new sqliteClient();
-			Connection con = sqlite.getConnection(Common.DB_PATH_IDEAS);
-			mapData.put(Common.APP_ID, strAppId);
+			Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
+			
+			
+			mapData.put(More.Common.APP_ID, strAppId);
 			sqlite.insert(con, "app", mapData);
 			con.close();
 			sqlite = null;
 			
-			%>
-
-
-
-
-
-
-			<%
+			
 	    return;
 			}
-	    response.sendRedirect(".jsp");
-	    
+	    response.sendRedirect("index.jsp");
 	    %>
+	
 
 </body>
 </html>

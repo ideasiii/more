@@ -1019,7 +1019,7 @@
 
 .scenario-list .title {
 	text-align:center;
-	margin-top:140px;
+	margin-top:155px; /* */
 	font-weight: bold; 
 }
 
@@ -1028,7 +1028,7 @@
 	position: relative;
 	height: 77px;
 	text-align: center; 
-	margin-top: 30px; 
+	margin-top: 15px; /* */
 	font-weight: bold; 
 	font-size: 18px;
 	display: inline-block;
