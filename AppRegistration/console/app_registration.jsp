@@ -82,7 +82,7 @@
 		if (Trim(form.user_email.value) == '')
 			errMsg += "E-mail field is required !!\n";
 		else {
-			if (!reg.test(Trim(form.inputEmail.value))) {
+			if (!reg.test(Trim(form.user_email.value))) {
 				errMsg += "Wrong E-mail format !!\n";
 			}
 		}
@@ -128,7 +128,7 @@
 							<div class="appRegistration">
 
 								<div class="panel-body">
-									<form action="applications.jsp" role="form"
+									<form action="pAppRegister.jsp" role="form"
 										name="formAppRegistration" id="formAppRegistration">
 
 										<dl
