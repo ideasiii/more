@@ -414,6 +414,21 @@
 	padding-right: 10px;
 }
 
+.vline-left-orange {
+	border-left: 10px solid #F08800;
+	padding-left: 10px;
+}
+
+.vline-left-green {
+	border-left: 10px solid #9fd256;
+	padding-left: 10px;
+}
+
+.vline-left-blue {
+	border-left: 10px solid #428bca;
+	padding-left: 10px;
+}
+
 .photo {
 	border-radius: 5px;
 	visibility: hidden;

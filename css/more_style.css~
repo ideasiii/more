@@ -414,6 +414,21 @@
 	padding-right: 10px;
 }
 
+.vline-left-orange {
+	border-left: 10px solid #F08800;
+	padding-left: 10px;
+}
+
+.vline-left-green {
+	border-left: 10px solid #9fd256;
+	padding-left: 10px;
+}
+
+.vline-left-blue {
+	border-left: 10px solid #428bca;
+	padding-left: 10px;
+}
+
 .photo {
 	border-radius: 5px;
 	visibility: hidden;
@@ -1019,7 +1034,7 @@
 
 .scenario-list .title {
 	text-align:center;
-	margin-top:155px; /* */
+	margin-top:155px; /* title height */
 	font-weight: bold; 
 }
 
@@ -1028,7 +1043,7 @@
 	position: relative;
 	height: 77px;
 	text-align: center; 
-	margin-top: 15px; /* */
+	margin-top: 15px; /* title height */
 	font-weight: bold; 
 	font-size: 18px;
 	display: inline-block;
