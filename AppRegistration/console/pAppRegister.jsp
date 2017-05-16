@@ -34,6 +34,7 @@
 	<%
 	    //Check that we have a file upload request
 	    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+	Logs.showTrace("**********************************************"+String.valueOf(isMultipart));
 	    if (isMultipart)
 	    {
 			String saveDirectory = application.getRealPath(More.Common.UPLOAD_FILE_PATH);
@@ -114,6 +115,8 @@
 				    File uploadedFile = new File(strPath, strFN);
 				    itemUploadFile.write(uploadedFile);
 				    mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/" + mapData.get(More.Common.USER_TOKEN) + "/" + strFN);
+				
+				out.println(strPath);
 				}
 				else
 				{
@@ -122,6 +125,7 @@
 				}
 			    }
 			}// if
+			}//for
 			
 			/*
 			for (Object key : mapData.keySet()) {
@@ -153,7 +157,7 @@
 			
 	    return;
 			}
-	    response.sendRedirect("index.jsp");
+	   // response.sendRedirect("app_list.jsp");
 	    %>
 	
 

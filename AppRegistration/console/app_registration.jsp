@@ -128,7 +128,7 @@
 							<div class="appRegistration">
 
 								<div class="panel-body">
-									<form action="pAppRegister.jsp" role="form"
+									<form action="pAppRegister.jsp" role="form" method="post" enctype="multipart/form-data"
 										name="formAppRegistration" id="formAppRegistration">
 
 										<dl
