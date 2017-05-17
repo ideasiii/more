@@ -403,7 +403,7 @@ public class More
 	    More.webTracker(request, "MORE SendingEmail failed: ", e.toString());
 	}
     }
-
+    
     public int queryApp(HttpServletRequest request, ArrayList<AppData> listApp, String strUserToken)
     {
 	int nCount = 0;
@@ -455,6 +455,36 @@ public class More
 	return nCount;
     }
 
+    public void insertApp(HttpServletRequest request, final String strAppId, final String strAppName, final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserName, final String strUserEmail, final String strUserPhone)
+    {
+	String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?) ;";
+	try
+	{
+	    sqliteClient sqlite = new sqliteClient();
+	    Connection con = sqlite.getConnection(Common.DB_PATH_IDEAS);
+	    
+	    PreparedStatement pst = null;
+	    pst = con.prepareStatement(strSQL);
+	    int idx = 1;
+	    pst.setString(idx++, strAppId);
+	    pst.setString(idx++, strAppName);
+	    pst.setString(idx++, strAppCategory);
+	    pst.setString(idx++, strAppIcon);
+	    pst.setString(idx++, strAppOs);
+	    pst.setString(idx++, strUserName);
+	    pst.setString(idx++, strUserEmail);
+	    pst.setString(idx++, strUserPhone);
+	    pst.executeUpdate();
+	    pst.close();
+	}
+	catch (Exception e)
+	{
+	    Logs.showError(e.toString());
+	    More.webTracker(request, "insertApp failed: ", e.toString());
+	}
+	More.webTracker(request, "insertApp success: ", strSQL);
+    }
+    
     public void deleteApp(HttpServletRequest request, final String strAppId)
     {
 	try

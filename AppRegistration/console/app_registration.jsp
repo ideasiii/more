@@ -147,7 +147,7 @@
 												<div
 													style="margin-left: 10px; display: inline-block; text-align: left;">
 													<label class="control-label" style="margin-left: 5px;">App
-														Icon</label> <input name="" id="inputIcon" type="file"
+														Icon</label> <input name="inputIcon" id="inputIcon" type="file"
 														onChange="validateAppIcon(this.value)" />
 												</div>
 

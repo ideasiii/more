@@ -32,6 +32,8 @@
 
 
 	<%
+	 String strEmail = (String) session.getAttribute("Email");
+	
 	    //Check that we have a file upload request
 	    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 	Logs.showTrace("**********************************************"+String.valueOf(isMultipart));
@@ -65,6 +67,7 @@
 			    }
 			    else
 			    {
+				Logs.showTrace("********" );
 				itemUploadFileArray.add(item);
 			    }
 			} // while
@@ -96,7 +99,7 @@
 
 			    if (fileName != null && !"".equals(fileName) && 0 < sizeInBytes)
 			    {
-				String strPath = saveDirectory + "/" + mapData.get(More.Common.USER_TOKEN);
+				String strPath = saveDirectory + "/" + strEmail;
 
 				Logs.showTrace(" fieldName:"+fieldName);
 				if (contentType.trim().equals("image/png"))
@@ -114,9 +117,9 @@
 				    new File(strPath).mkdirs();
 				    File uploadedFile = new File(strPath, strFN);
 				    itemUploadFile.write(uploadedFile);
-				    mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/" + mapData.get(More.Common.USER_TOKEN) + "/" + strFN);
+				    mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/" + strEmail + "/" + strFN);
 				
-				out.println(strPath);
+				    Logs.showTrace("Path: "+strPath);
 				}
 				else
 				{
@@ -133,7 +136,6 @@
 			}
 			*/
 			
-			final String strToken = mapData.get(More.Common.USER_TOKEN);
 			final String strAppIcon = mapData.get(More.Common.APP_ICON);
 			final String strAppName = mapData.get(More.Common.APP_NAME);
 			final String strAppOs = mapData.get(More.Common.APP_OS);
@@ -142,7 +144,7 @@
 			final String strUserEmail = mapData.get(More.Common.USER_EMAIL);
 			final String strUserPhone = mapData.get(More.Common.USER_PHONE);
 			
-			Logs.showTrace("Insert App Data to Database, TOKEN: " + strToken);
+			Logs.showTrace("Insert App Data to Database, Member Email: " + strEmail);
 			Logs.showTrace("AppIcon: " + strAppIcon);
 			
 			sqliteClient sqlite = new sqliteClient();
@@ -150,6 +152,8 @@
 			
 			
 			mapData.put(More.Common.APP_ID, strAppId);
+			int nResult = More.insertApp();
+			
 			sqlite.insert(con, "app", mapData);
 			con.close();
 			sqlite = null;
@@ -157,7 +161,7 @@
 			
 	    return;
 			}
-	   // response.sendRedirect("app_list.jsp");
+	    response.sendRedirect("app_list.jsp");
 	    %>
 	
 
