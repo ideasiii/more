@@ -80,6 +80,7 @@ public class More
 	final public static String APP_DESC = "app_description";
 	final public static String APP_ICON = "app_icon";
 	final public static String APP_OS = "app_os";
+	final public static String USER_ACCOUNT = "user_account";
 	final public static String USER_TOKEN = "user_token";
 	final public static String USER_NAME = "user_name";
 	final public static String USER_EMAIL = "user_email";
@@ -102,7 +103,7 @@ public class More
 
     final public static ArrayList<String> listAppField = new ArrayList<>(
 	    Arrays.asList(Common.APP_ID, Common.APP_NAME, Common.APP_CATEGORY, Common.APP_DESC, Common.APP_ICON,
-		    Common.APP_OS, Common.USER_TOKEN, Common.USER_NAME, Common.USER_EMAIL, Common.USER_PHONE));
+		    Common.APP_OS, Common.USER_ACCOUNT, Common.USER_TOKEN, Common.USER_NAME, Common.USER_EMAIL, Common.USER_PHONE));
 
     final public static ArrayList<String> listSdkField = new ArrayList<>(
 	    Arrays.asList(Common.SDK_ID, Common.SDK_OS, Common.SDK_OWNER, Common.SDK_NAME, Common.SDK_DESC,
@@ -143,6 +144,7 @@ public class More
 	public String app_description;
 	public String app_icon;
 	public String app_os;
+	public String user_account;
 	public String user_token;
 	public String user_name;
 	public String user_email;
@@ -404,10 +406,10 @@ public class More
 	}
     }
     
-    public int queryApp(HttpServletRequest request, ArrayList<AppData> listApp, String strUserToken)
+    public int queryApp(HttpServletRequest request, ArrayList<AppData> listApp, String strUserAccount)
     {
 	int nCount = 0;
-	String strSQL = "select * from app where user_token = '" + strUserToken + "' order by create_date;";
+	String strSQL = "select * from app where user_account = '" + strUserAccount + "' order by create_date;";
 	ArrayList<HashMap<String, String>> listData = new ArrayList<HashMap<String, String>>();
 	try
 	{
@@ -431,9 +433,9 @@ public class More
 		    appData.app_id = mapItem.get(Common.APP_ID);
 		    appData.app_name = mapItem.get(Common.APP_NAME);
 		    appData.app_category = mapItem.get(Common.APP_CATEGORY);
-		    appData.app_description = mapItem.get(Common.APP_DESC);
 		    appData.app_icon = mapItem.get(Common.APP_ICON);
 		    appData.app_os = mapItem.get(Common.APP_OS);
+		    appData.user_account = mapItem.get(Common.USER_ACCOUNT);
 		    appData.user_token = mapItem.get(Common.USER_TOKEN);
 		    appData.user_name = mapItem.get(Common.USER_NAME);
 		    appData.user_email = mapItem.get(Common.USER_EMAIL);
@@ -455,9 +457,9 @@ public class More
 	return nCount;
     }
 
-    public int insertApp(HttpServletRequest request, final String strAppId, final String strAppName, final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserName, final String strUserEmail, final String strUserPhone)
+    public int insertApp(HttpServletRequest request, final String strAppId, final String strAppName, final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserAccount, final String strUserName, final String strUserEmail, final String strUserPhone)
     {
-	String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?) ;";
+	String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_account, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?,?) ;";
 	try
 	{
 	    sqliteClient sqlite = new sqliteClient();
@@ -471,6 +473,7 @@ public class More
 	    pst.setString(idx++, strAppCategory);
 	    pst.setString(idx++, strAppIcon);
 	    pst.setString(idx++, strAppOs);
+	    pst.setString(idx++, strUserAccount);
 	    pst.setString(idx++, strUserName);
 	    pst.setString(idx++, strUserEmail);
 	    pst.setString(idx++, strUserPhone);
