@@ -45,6 +45,12 @@
 	<div id="wrap">
 
 		<%@include file="../../home/console/menu.jsp"%>
+<%
+
+
+
+
+%>
 
 		<!-- HEADER SECTION -->
 

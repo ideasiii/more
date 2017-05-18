@@ -17,7 +17,7 @@
 <%
     final String strHostUrl = request.getRequestURL().toString();
     /** Web Tracker **/
-    More.webTracker(request, "load page", null);
+    More.webTracker(request, "load progress page", null);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,6 +33,7 @@
 
 	<%
 	 String strEmail = (String) session.getAttribute("Email");
+	int nResult = 0;
 	
 	    //Check that we have a file upload request
 	    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -152,16 +153,24 @@
 			
 			
 			mapData.put(More.Common.APP_ID, strAppId);
-			int nResult = More.insertApp();
+			More more = new More();
+			nResult = more.insertApp(request, strAppId, strAppName, strAppCategory, strAppIcon, strAppOs, strUserName, strUserEmail, strUserPhone);
 			
-			sqlite.insert(con, "app", mapData);
+			
 			con.close();
 			sqlite = null;
-			
-			
-	    return;
+		
+	  
 			}
+	    
+		if (0 < nResult)
+		{
 	    response.sendRedirect("app_list.jsp");
+		}
+		else
+		{
+		    response.sendRedirect("error.jsp");
+		}
 	    %>
 	
 

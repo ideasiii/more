@@ -455,7 +455,7 @@ public class More
 	return nCount;
     }
 
-    public void insertApp(HttpServletRequest request, final String strAppId, final String strAppName, final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserName, final String strUserEmail, final String strUserPhone)
+    public int insertApp(HttpServletRequest request, final String strAppId, final String strAppName, final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserName, final String strUserEmail, final String strUserPhone)
     {
 	String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?) ;";
 	try
@@ -481,8 +481,10 @@ public class More
 	{
 	    Logs.showError(e.toString());
 	    More.webTracker(request, "insertApp failed: ", e.toString());
+	    return MORE_ERR_EXCEPTION;
 	}
 	More.webTracker(request, "insertApp success: ", strSQL);
+	return MORE_ERR_SUCCESS;
     }
     
     public void deleteApp(HttpServletRequest request, final String strAppId)
