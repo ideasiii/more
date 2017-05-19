@@ -154,7 +154,7 @@
 			
 			mapData.put(More.Common.APP_ID, strAppId);
 			More more = new More();
-			nResult = more.insertApp(request, strAppId, strAppName, strAppCategory, strAppIcon, strAppOs, strUserName, strUserEmail, strUserPhone);
+			nResult = more.insertApp(request, strAppId, strAppName, strAppCategory, strAppIcon, strAppOs, strEmail, strUserName, strUserEmail, strUserPhone);
 			
 			
 			con.close();

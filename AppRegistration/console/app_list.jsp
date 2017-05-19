@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Iterator"%>
 <%@ page import="more.*"%>
 
 <%@include file="../../home/console/loginValid.jsp"%>
 
 <%
+    final String strContextPath = request.getContextPath();
     final String strHostUrl = request.getRequestURL().toString();
     /** Web Tracker **/
     More.webTracker(request, "load page", null);
@@ -45,12 +49,18 @@
 	<div id="wrap">
 
 		<%@include file="../../home/console/menu.jsp"%>
-<%
-	
+		<%
+		    ArrayList<More.AppData> listAppField = new ArrayList<More.AppData>();
+		    More.AppData appData = null;
+		    Iterator<More.AppData> itAD = null;
+		    String strAppIconPath = null;
 
+		    sqliteClient sqlite = new sqliteClient();
+		    Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
 
-
-%>
+		    int nCount = more.queryApp(request, listAppField, strEmail);
+		    //nCount = 0;
+		%>
 
 		<!-- HEADER SECTION -->
 
@@ -64,17 +74,19 @@
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title">Application Info</h4>
 						</div>
+						
+						
 						<div class="modal-body" style="padding: 20px 80px 0px 80px;">
 
 							<dl
 								style="display: inline-block; width: 420px; vertical-align: top;">
 								<dd style="display: block;">
-									<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
+									<img class="app-icon" src="/assets/img/app_icon_default.png"
 										style="float: left; margin: 10px 50px 10px 10px">
 								</dd>
 
 								<dd>
-									<h4 class="app-title">Test App 2</h4>
+									<h4 class="app-title">Test App</h4>
 									<label> <i class="icon-apple icon-large"
 										style="margin-right: 5px;"></i></label> <label> 運動</label>
 								</dd>
@@ -117,11 +129,12 @@
 								</dd>
 							</dl>
 						</div>
+						
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-line btn-danger"
 								data-toggle="modal" data-target="#DeleteAppInfo">Delete</button>
-								 
+
 							<button type="button" class="btn btn-line btn-primary"
 								data-toggle="modal" data-target="#EditAppInfo">
 								<i class="icon-pencil"></i> Edit
@@ -243,8 +256,8 @@
 		</div>
 
 		<div class="col-lg-12">
-			<div class="modal fade" id="DeleteAppInfo" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="DeleteAppInfo" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog" style="padding-top: 200px;">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -254,7 +267,7 @@
 						</div>
 						<form action=".jsp" method="post" name="formDeleteAppInfo"
 							id="formDeleteAppInfo">
-							
+
 							<div class="modal-body">
 								<span> You have selected to delete "<span
 									id="DeleteAppName"></span>". <br>If this was the action
@@ -275,7 +288,6 @@
 
 
 
-
 		<!-- END HEADER SECTION -->
 
 		<!--PAGE CONTENT -->
@@ -292,145 +304,61 @@
 
 							<!-- APP List -->
 							<ul class="app-list app-list-ul">
+								<%
+								    if (0 < nCount)
+								    {
+										itAD = listAppField.iterator();
+
+										while (itAD.hasNext())
+										{
+										    appData = itAD.next();
+										    strAppIconPath = strContextPath + appData.app_icon;
+										    //out.println(strAppIconPath);
+
+										    if (null != strEmail && (strEmail.trim().equals(appData.user_account.trim())))
+										    {
+								%>
 								<li class="app-list-li">
 									<div class="panel-body">
 										<a data-toggle="modal" data-target="#AppInfo" href=><img
-											class="app-icon" src="/assets/img/Apps-Android-icon.png"
-											alt="" /></a>
+											class="app-icon" style="border-radius: 10px;"
+											src="<%=strAppIconPath%>" alt="" /></a>
 										<div class="panel-content">
 
-											<h4 class="app-title">Test App 1</h4>
+											<h4 class="app-title"><%=appData.app_name%></h4>
 
 											<ul class="app-info silk">
-												<li class="app-info-li"><i
-													class="icon-apple icon-large" style="margin-right: 5px;"></i></li>
-												<li class="app-info-li">新聞與雜誌</li>
-												<li class="app-info-li">APP ID: 1490859308059</li>
+												<li class="app-info-li">
+													<%
+													    if (appData.app_os.trim().equals("android"))
+																{
+													%> <i class="icon-android icon-large"
+													style="margin-right: 5px;"></i> <%
+     }
+ 			else
+ 			{
+
+ 			    if (appData.app_os.trim().equals("ios"))
+ 			    {
+ %> <i class="icon-apple icon-large"
+													style="margin-right: 5px;"></i> <%
+     }
+ 			}
+ %>
+												</li>
+												<li class="app-info-li"><%=appData.app_category%></li>
+												<li class="app-info-li">APP ID: <%=appData.app_id%></li>
 
 											</ul>
 											<div style="height: 25px;"></div>
 										</div>
 									</div>
 								</li>
-
-								<li class="app-list-li">
-									<div class="panel-body">
-										<a data-toggle="modal" data-target="#AppInfo" href=><img
-											class="app-icon" src="/assets/img/Apps-Android-icon.png"
-											alt="" /></a>
-										<div class="panel-content">
-
-											<h4 class="app-title">Test App 2</h4>
-
-											<ul class="app-info silk">
-												<li class="app-info-li"><i
-													class="icon-apple icon-large" style="margin-right: 5px;"></i></li>
-												<li class="app-info-li">運動</li>
-												<li class="app-info-li">APP ID: 1490859308059</li>
-
-											</ul>
-											<div style="height: 25px;"></div>
-										</div>
-									</div>
-								</li>
-
-								<li class="app-list-li">
-									<div class="panel-body">
-										<img class="app-icon" src="/assets/img/mdm_logo_web67t4.png"
-											alt="" />
-										<div class="panel-content">
-
-											<h4 class="app-title">Test App 3</h4>
-
-											<ul class="app-info silk">
-												<li class="app-info-li"><i
-													class="icon-android icon-large" style="margin-right: 5px;"></i></li>
-												<li class="app-info-li">新聞與雜誌</li>
-												<li class="app-info-li">APP ID: 1490859308059</li>
-											</ul>
-											<div style="height: 25px;"></div>
-										</div>
-									</div>
-								</li>
-
-								<li class="app-list-li">
-									<div class="panel-body">
-										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
-											alt="" />
-										<div class="panel-content">
-
-											<h4 class="app-title">Test App 4</h4>
-
-											<ul class="app-info silk">
-												<li class="app-info-li"><i
-													class="icon-android icon-large" style="margin-right: 5px;"></i></li>
-												<li class="app-info-li">工具</li>
-												<li class="app-info-li">APP ID: 1490859308059</li>
-
-											</ul>
-											<div style="height: 25px;"></div>
-										</div>
-									</div>
-								</li>
-
-								<li class="app-list-li">
-									<div class="panel-body">
-										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
-											alt="" />
-										<div class="panel-content">
-
-											<h4 class="app-title">Test App 5</h4>
-
-											<ul class="app-info silk">
-												<li class="app-info-li"><i
-													class="icon-android icon-large" style="margin-right: 5px;"></i></li>
-												<li class="app-info-li">工具</li>
-												<li class="app-info-li">APP ID: 1490859308059</li>
-
-											</ul>
-											<div style="height: 25px;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="app-list-li">
-									<div class="panel-body">
-										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
-											alt="" />
-										<div class="panel-content">
-
-											<h4 class="app-title">Test App 6</h4>
-
-											<ul class="app-info silk">
-												<li class="app-info-li"><i
-													class="icon-android icon-large" style="margin-right: 5px;"></i></li>
-												<li class="app-info-li">工具</li>
-												<li class="app-info-li">APP ID: 1490859308059</li>
-
-											</ul>
-											<div style="height: 25px;"></div>
-										</div>
-									</div>
-								</li>
-								<li class="app-list-li">
-									<div class="panel-body">
-										<img class="app-icon" src="/assets/img/Apps-Android-icon.png"
-											alt="" />
-										<div class="panel-content">
-
-											<h4 class="app-title">Test App 7</h4>
-
-											<ul class="app-info silk">
-												<li class="app-info-li"><i
-													class="icon-android icon-large" style="margin-right: 5px;"></i></li>
-												<li class="app-info-li">工具</li>
-												<li class="app-info-li">APP ID: 1490859308059</li>
-
-											</ul>
-											<div style="height: 25px;"></div>
-										</div>
-									</div>
-								</li>
-
+								<%
+								    } // end if equals
+										} // end while(itAD.hasNext())
+								    } // end if nCount
+								%>
 							</ul>
 
 						</div>
@@ -479,3 +407,6 @@
 
 </body>
 </html>
+<%
+    more = null;
+%>
