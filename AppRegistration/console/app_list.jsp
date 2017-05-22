@@ -38,7 +38,24 @@
 
 
 <!--  JavaScript -->
-
+<script type="text/javascript">
+function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
+	document.getElementById("InfoAppName").innerHTML = aName;
+	document.getElementById("InfoAppId").innerHTML = aId;
+	document.getElementById("InfoOrganization").innerHTML = sOrgan;
+	document.getElementById("InfoEmail").innerHTML = sEmail;
+	document.getElementById("InfoPhone").innerHTML = sPhone;
+	document.getElementById("InfoAppCate").innerHTML = aCate;
+	var icon = document.getElementById("InfoAppIcon");
+	icon.src.value = aIcon;
+	
+	//var form = document.getElementById("formAppInfo");
+	//form.app_os.value = os;
+	alert(aIcon);
+	//document.getElementById("InfoAppIcon").src = aIcon;
+	
+}
+</script>
 
 
 </head>
@@ -75,20 +92,26 @@
 							<h4 class="modal-title">Application Info</h4>
 						</div>
 						
-						
+			
+							<form name="formAppInfo" id="formAppInfo">
+							<input name="<%=More.Common.APP_ICON%>"
+								id="<%=More.Common.APP_ICON%>" type="hidden"
+								value="aIcon" />
+							
+							
 						<div class="modal-body" style="padding: 20px 80px 0px 80px;">
 
 							<dl
 								style="display: inline-block; width: 420px; vertical-align: top;">
 								<dd style="display: block;">
-									<img class="app-icon" src="/assets/img/app_icon_default.png"
+									<img id="InfoAppIcon" class="app-icon" 
 										style="float: left; margin: 10px 50px 10px 10px">
 								</dd>
 
 								<dd>
-									<h4 class="app-title">Test App</h4>
+									<h4 class="app-title"><span id="InfoAppName"></span></h4>
 									<label> <i class="icon-apple icon-large"
-										style="margin-right: 5px;"></i></label> <label> 運動</label>
+										style="margin-right: 5px;"></i></label> <label id="InfoAppCate"></label>
 								</dd>
 							</dl>
 
@@ -116,20 +139,20 @@
 								style="display: inline-block; width: 280px; margin-bottom: 0px;">
 
 								<dd class="form-group">
-									<span style="color: #737373;"> 1490859308059</span>
+									<span style="color: #737373;" id="InfoAppId"></span>
 								</dd>
 								<dd class="form-group">
-									<span style="color: #737373;"> testname</span>
+									<span style="color: #737373;" id="InfoOrganization"></span>
 								</dd>
 								<dd class="form-group">
-									<span style="color: #737373;"> testname123456789@ttt.tt</span>
+									<span style="color: #737373;" id="InfoEmail"></span>
 								</dd>
 								<dd class="form-group">
-									<span style="color: #737373;"> 001122334455</span>
+									<span style="color: #737373;" id="InfoPhone"></span>
 								</dd>
 							</dl>
 						</div>
-						
+					</form>		
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-line btn-danger"
@@ -320,9 +343,9 @@
 								%>
 								<li class="app-list-li">
 									<div class="panel-body">
-										<a data-toggle="modal" data-target="#AppInfo" href=><img
-											class="app-icon" style="border-radius: 10px;"
-											src="<%=strAppIconPath%>" alt="" /></a>
+										<botton data-toggle="modal" data-target="#AppInfo" href=><img
+											class="app-icon" style="border-radius: 10px;cursor: pointer;"
+											src="<%=strAppIconPath%>" onclick="showAppInfo('<%=appData.app_name%>','<%=appData.app_id%>','<%=appData.user_name%>','<%=appData.user_email%>','<%=appData.user_phone%>','<%=appData.app_os%>','<%=appData.app_category%>','<%=appData.app_icon%>')" value="aName"></botton>
 										<div class="panel-content">
 
 											<h4 class="app-title"><%=appData.app_name%></h4>
