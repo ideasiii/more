@@ -62,7 +62,6 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 }
 </script>
 
-
 </head>
 
 <body class="padTop53">
@@ -104,7 +103,7 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 								style="display: inline-block; width: 420px; vertical-align: top;">
 								<dd style="display: block;">
 									<img id="InfoAppIcon" class="app-icon" 
-										style="float: left; margin: 10px 50px 10px 10px">
+										style="float: left; border-radius: 10px; margin: 10px 50px 10px 10px">
 								</dd>
 
 								<dd>
