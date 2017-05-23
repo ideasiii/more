@@ -38,28 +38,9 @@
 
 
 <!--  JavaScript -->
+<script src="js/appValid.js"></script>
 <script type="text/javascript">
-function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
-	document.getElementById("InfoAppName").innerHTML = aName;
-	document.getElementById("InfoAppId").innerHTML = aId;
-	document.getElementById("InfoOrganization").innerHTML = sOrgan;
-	document.getElementById("InfoEmail").innerHTML = sEmail;
-	document.getElementById("InfoPhone").innerHTML = sPhone;
-	document.getElementById("InfoAppCate").innerHTML = aCate;
-	var icon = document.getElementById("InfoAppIcon");
-	icon.src = "/more" + aIcon;
-	
-	if (os == "android")
-		{
-		document.getElementById("iconApple").style.display = "none";
-		document.getElementById("iconAndroid").style.display = "block";
-		}
-	if (os == "ios")
-		{
-		document.getElementById("iconAndroid").style.display = "none";
-		document.getElementById("iconApple").style.display = "block";
-		}
-}
+
 </script>
 
 </head>
@@ -203,7 +184,7 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 										<div style="margin-left: 25px;">
 											<label class="control-label">App Icon</label>
 										</div>
-										<input name="" id="inputIcon" style="margin-left: 20px;"
+										<input name="EditIcon" id="EditIcon" style="margin-left: 20px;"
 											type="file" onChange="validateAppIcon(this.value)" />
 									</div>
 								</div>
@@ -211,19 +192,19 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 								<dl
 									style="display: inline-block; width: 210px; margin: 0px 25px 10px 25px;">
 									<dd class="form-group">
-										<label>App Name</label> <input name="" class="form-control"
+										<label>App Name</label> <input id="EditAppName" name="EditAppName" class="form-control"
 											maxlength="10" />
 									</dd>
 
 									<dd class="form-group">
-										<label>Type</label> <select name="" class="form-control">
+										<label>Type</label> <select id="EditAppOs" name="EditAppOs" class="form-control">
 											<option value="android">android</option>
 											<option value="ios">ios</option>
 										</select>
 									</dd>
 
 									<dd class="form-group">
-										<label>Category</label> <select name="" class="form-control"
+										<label>Category</label> <select id="EditAppCate" name="EditAppCate" class="form-control"
 											style="height: 34px;">
 											<option value="工具">工具</option>
 											<option value="天氣">天氣</option>
@@ -259,22 +240,22 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 								<dl
 									style="display: inline-block; width: 210px; margin: 0px 25px 10px 25px;">
 									<dd class="form-group">
-										<label>Organization</label> <input name=""
+										<label>Organization</label> <input id="EditOrganization" name="EditOrganization"
 											class="form-control" maxlength="8" />
 									</dd>
 									<dd class="form-group">
-										<label>Support E-mail</label> <input name=""
+										<label>Support E-mail</label> <input id="EditSupportEmail" name="EditSupportEmail"
 											class="form-control" />
 									</dd>
 									<dd class="form-group">
-										<label>Phone</label> <input name="" class="form-control"
+										<label>Phone</label> <input id="EditPhone" name="EditPhone" class="form-control"
 											maxlength="20" />
 									</dd>
 								</dl>
 
 							</form>
 							<div style="text-align: right;">
-								<button type="button" class="btn btn-primary" onclick="">Save
+								<button type="button" class="btn btn-primary" onclick="checkAppInfoEdit('formEditAppInfo')">Save
 									Changes</button>
 							</div>
 						</div>
