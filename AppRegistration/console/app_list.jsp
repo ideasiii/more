@@ -47,13 +47,18 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 	document.getElementById("InfoPhone").innerHTML = sPhone;
 	document.getElementById("InfoAppCate").innerHTML = aCate;
 	var icon = document.getElementById("InfoAppIcon");
-	icon.src.value = aIcon;
+	icon.src = "/more" + aIcon;
 	
-	//var form = document.getElementById("formAppInfo");
-	//form.app_os.value = os;
-	alert(aIcon);
-	//document.getElementById("InfoAppIcon").src = aIcon;
-	
+	if (os == "android")
+		{
+		document.getElementById("iconApple").style.display = "none";
+		document.getElementById("iconAndroid").style.display = "block";
+		}
+	if (os == "ios")
+		{
+		document.getElementById("iconAndroid").style.display = "none";
+		document.getElementById("iconApple").style.display = "block";
+		}
 }
 </script>
 
@@ -91,12 +96,6 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title">Application Info</h4>
 						</div>
-						
-			
-							<form name="formAppInfo" id="formAppInfo">
-							<input name="<%=More.Common.APP_ICON%>"
-								id="<%=More.Common.APP_ICON%>" type="hidden"
-								value="aIcon" />
 							
 							
 						<div class="modal-body" style="padding: 20px 80px 0px 80px;">
@@ -110,8 +109,15 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 
 								<dd>
 									<h4 class="app-title"><span id="InfoAppName"></span></h4>
-									<label> <i class="icon-apple icon-large"
-										style="margin-right: 5px;"></i></label> <label id="InfoAppCate"></label>
+									<label>
+									
+									 <i id="iconAndroid" name="iconAndroid" class="icon-android icon-large"
+										style="margin-right: 5px;"></i>
+										
+									 <i id="iconApple" name="iconApple" class="icon-apple icon-large"
+										style="margin-right: 5px;"></i>
+										
+										</label> <label id="InfoAppCate"></label>
 								</dd>
 							</dl>
 
@@ -152,7 +158,7 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 								</dd>
 							</dl>
 						</div>
-					</form>		
+				
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-line btn-danger"
