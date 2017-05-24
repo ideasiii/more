@@ -166,7 +166,7 @@
 							<h4 class="modal-title" id="H1">Edit - 1490859308059</h4>
 						</div>
 						<div class="modal-body">
-							<form role="form" action=".jsp" method="post"
+							<form role="form" action="pAppEdit.jsp" method="post"
 								enctype="multipart/form-data" name="formEditAppInfo"
 								id="formEditAppInfo">
 

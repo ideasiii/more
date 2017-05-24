@@ -37,7 +37,7 @@
 	
 	    //Check that we have a file upload request
 	    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-	Logs.showTrace("**********************************************"+String.valueOf(isMultipart));
+	//Logs.showTrace("**********************************************"+String.valueOf(isMultipart));
 	    if (isMultipart)
 	    {
 			String saveDirectory = application.getRealPath(More.Common.UPLOAD_FILE_PATH);

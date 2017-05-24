@@ -567,7 +567,7 @@ public class More
     }
 
     public void updateApp(HttpServletRequest request, final String strAppId, final String strAppIcon,
-	    final String strAppName, final String strAppOs, final String strAppCategory, final String strAppDesc)
+	    final String strAppName, final String strAppOs, final String strAppCategory, final String strUserName, final String strUserEmail, final String strUserPhone)
     {
 	try
 	{
@@ -577,10 +577,10 @@ public class More
 	    String sql = null;
 	    if (null == strAppIcon)
 	    {
-		sql = "update app set app_name = ? , app_os = ? , app_category = ? , app_description = ? where app_id = ?";
+		sql = "update app set app_name = ? , app_os = ? , app_category = ? , user_name = ? , user_email = ? , user_phone = ? where app_id = ?";
 	    } else
 	    {
-		sql = "update app set app_icon = ?, app_name = ? , app_os = ? , app_category = ? , app_description = ? where app_id = ?";
+		sql = "update app set app_icon = ?, app_name = ? , app_os = ? , app_category = ? , user_name = ? , user_email , user_phone = ? where app_id = ?";
 	    }
 
 	    PreparedStatement pst = null;
@@ -594,7 +594,9 @@ public class More
 	    pst.setString(idx++, strAppName);
 	    pst.setString(idx++, strAppOs);
 	    pst.setString(idx++, strAppCategory);
-	    pst.setString(idx++, strAppDesc);
+	    pst.setString(idx++, strUserName);
+	    pst.setString(idx++, strUserEmail);
+	    pst.setString(idx++, strUserPhone);
 	    pst.setString(idx++, strAppId);
 	    pst.executeUpdate();
 	    pst.close();
@@ -605,7 +607,7 @@ public class More
 
 	} catch (Exception e)
 	{
-
+	    
 	    e.printStackTrace();
 	    More.webTracker(request, "updateApp failed: ", e.toString());
 	}
