@@ -35,6 +35,9 @@
 	 String strEmail = (String) session.getAttribute("Email");
 	int nResult = 0;
 	
+	long timeNow = System.currentTimeMillis();
+	String strAppId = String.valueOf(timeNow);
+	
 	    //Check that we have a file upload request
 	    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 	//Logs.showTrace("**********************************************"+String.valueOf(isMultipart));
@@ -73,8 +76,7 @@
 			    }
 			} // while
 
-			long timeNow = System.currentTimeMillis();
-			String strAppId = String.valueOf(timeNow);
+			
 			String strFName = null;
 			String strFN = null;
 			mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/app_icon_default.png");
@@ -163,7 +165,7 @@
 	  
 			}
 	    
-		if (0 < nResult)
+		if (0 < nResult && StringUtility.isValid(strAppId))
 		{
 	    response.sendRedirect("app_list.jsp");
 		}
