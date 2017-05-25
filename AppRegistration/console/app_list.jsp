@@ -9,9 +9,9 @@
 
 <%
     final String strContextPath = request.getContextPath();
-    final String strHostUrl = request.getRequestURL().toString();
-    /** Web Tracker **/
-    More.webTracker(request, "load page", null);
+			final String strHostUrl = request.getRequestURL().toString();
+			/** Web Tracker **/
+			More.webTracker(request, "load page", null);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,7 +40,7 @@
 <!--  JavaScript -->
 <script src="js/appValid.js"></script>
 <script type="text/javascript">
-
+	
 </script>
 
 </head>
@@ -76,28 +76,28 @@
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title">Application Info</h4>
 						</div>
-							
-							
+
+
 						<div class="modal-body" style="padding: 20px 80px 0px 80px;">
 
 							<dl
 								style="display: inline-block; width: 420px; vertical-align: top;">
 								<dd style="display: block;">
-									<img id="InfoAppIcon" class="app-icon" 
+									<img id="InfoAppIcon" class="app-icon"
 										style="float: left; border-radius: 10px; margin: 10px 50px 10px 10px">
 								</dd>
 
 								<dd>
-									<h4 class="app-title"><span id="InfoAppName"></span></h4>
-									<label>
-									
-									 <i id="iconAndroid" name="iconAndroid" class="icon-android icon-large"
-										style="margin-right: 5px;"></i>
-										
-									 <i id="iconApple" name="iconApple" class="icon-apple icon-large"
-										style="margin-right: 5px;"></i>
-										
-										</label> <label id="InfoAppCate"></label>
+									<h4 class="app-title">
+										<span id="InfoAppName"></span>
+									</h4>
+									<label> <i id="iconAndroid" name="iconAndroid"
+										class="icon-android icon-large" style="margin-right: 5px;"></i>
+
+										<i id="iconApple" name="iconApple"
+										class="icon-apple icon-large" style="margin-right: 5px;"></i>
+
+									</label> <label id="InfoAppCate"></label>
 								</dd>
 							</dl>
 
@@ -138,7 +138,7 @@
 								</dd>
 							</dl>
 						</div>
-				
+
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-line btn-danger"
@@ -166,9 +166,11 @@
 							<h4 class="modal-title" id="H1">Edit - 1490859308059</h4>
 						</div>
 						<div class="modal-body">
-							<form role="form" action="pAppEdit.jsp" method="post"
+							<form role="form" action="pAppEdit.jsp" method="post" 
 								enctype="multipart/form-data" name="formEditAppInfo"
 								id="formEditAppInfo">
+								<input id="<%=More.Common.APP_ID%>"
+									name="<%=More.Common.APP_ID%>" type="hidden" value="" />
 
 								<div class="fileupload fileupload-new"
 									data-provides="fileupload" style="margin-left: 20px;">
@@ -184,28 +186,30 @@
 										<div style="margin-left: 25px;">
 											<label class="control-label">App Icon</label>
 										</div>
-										<input name="EditIcon" id="EditIcon" style="margin-left: 20px;"
-											type="file" onChange="validateAppIcon(this.value)" />
+										<input name="<%=More.Common.APP_ICON%>" id="<%=More.Common.APP_ICON%>"
+											style="margin-left: 20px;" type="file"
+											onChange="validateAppIcon(this.value)" />
 									</div>
 								</div>
 
 								<dl
 									style="display: inline-block; width: 210px; margin: 0px 25px 10px 25px;">
 									<dd class="form-group">
-										<label>App Name</label> <input id="EditAppName" name="EditAppName" class="form-control"
-											maxlength="10" />
+										<label>App Name</label> <input id="<%=More.Common.APP_NAME%>"
+											name="<%=More.Common.APP_NAME%>" class="form-control" maxlength="20" />
 									</dd>
 
 									<dd class="form-group">
-										<label>Type</label> <select id="EditAppOs" name="EditAppOs" class="form-control">
+										<label>Type</label> <select id="<%=More.Common.APP_OS%>" name="<%=More.Common.APP_OS%>"
+											class="form-control">
 											<option value="android">android</option>
 											<option value="ios">ios</option>
 										</select>
 									</dd>
 
 									<dd class="form-group">
-										<label>Category</label> <select id="EditAppCate" name="EditAppCate" class="form-control"
-											style="height: 34px;">
+										<label>Category</label> <select id="<%=More.Common.APP_CATEGORY%>"
+											name="<%=More.Common.APP_CATEGORY%>" class="form-control" style="height: 34px;">
 											<option value="工具">工具</option>
 											<option value="天氣">天氣</option>
 											<option value="生活品味">生活品味</option>
@@ -240,22 +244,23 @@
 								<dl
 									style="display: inline-block; width: 210px; margin: 0px 25px 10px 25px;">
 									<dd class="form-group">
-										<label>Organization</label> <input id="EditOrganization" name="EditOrganization"
-											class="form-control" maxlength="8" />
+										<label>Organization</label> <input id="<%=More.Common.USER_NAME%>"
+											name="<%=More.Common.USER_NAME%>" class="form-control" maxlength="20" />
 									</dd>
 									<dd class="form-group">
-										<label>Support E-mail</label> <input id="EditSupportEmail" name="EditSupportEmail"
-											class="form-control" />
+										<label>Support E-mail</label> <input id="<%=More.Common.USER_EMAIL%>"
+											name="<%=More.Common.USER_EMAIL%>" class="form-control" />
 									</dd>
 									<dd class="form-group">
-										<label>Phone</label> <input id="EditPhone" name="EditPhone" class="form-control"
-											maxlength="20" />
+										<label>Phone</label> <input id="<%=More.Common.USER_PHONE%>" name="<%=More.Common.USER_PHONE%>"
+											class="form-control" maxlength="20" />
 									</dd>
 								</dl>
 
 							</form>
 							<div style="text-align: right;">
-								<button type="button" class="btn btn-primary" onclick="checkAppInfoEdit('formEditAppInfo')">Save
+								<button type="button" class="btn btn-primary"
+									onclick="checkAppInfoEdit('formEditAppInfo')">Save
 									Changes</button>
 							</div>
 						</div>
@@ -329,9 +334,12 @@
 								%>
 								<li class="app-list-li">
 									<div class="panel-body">
-										<botton data-toggle="modal" data-target="#AppInfo" href=><img
-											class="app-icon" style="border-radius: 10px;cursor: pointer;"
-											src="<%=strAppIconPath%>" onclick="showAppInfo('<%=appData.app_name%>','<%=appData.app_id%>','<%=appData.user_name%>','<%=appData.user_email%>','<%=appData.user_phone%>','<%=appData.app_os%>','<%=appData.app_category%>','<%=appData.app_icon%>')" value="aName"></botton>
+										<botton data-toggle="modal" data-target="#AppInfo" href=>
+										<img class="app-icon"
+											style="border-radius: 10px; cursor: pointer;"
+											src="<%=strAppIconPath%>"
+											onclick="showAppInfo('<%=appData.app_name%>','<%=appData.app_id%>','<%=appData.user_name%>','<%=appData.user_email%>','<%=appData.user_phone%>','<%=appData.app_os%>','<%=appData.app_category%>','<%=appData.app_icon%>')"
+											value="aName"></botton>
 										<div class="panel-content">
 
 											<h4 class="app-title"><%=appData.app_name%></h4>
@@ -339,7 +347,7 @@
 											<ul class="app-info silk">
 												<li class="app-info-li">
 													<%
-													    if (appData.app_os.trim().equals("android"))
+													    if (null != appData.app_os && appData.app_os.trim().equals("android"))
 																{
 													%> <i class="icon-android icon-large"
 													style="margin-right: 5px;"></i> <%
@@ -347,10 +355,9 @@
  			else
  			{
 
- 			    if (appData.app_os.trim().equals("ios"))
+ 			    if (null != appData.app_os && appData.app_os.trim().equals("ios"))
  			    {
- %> <i class="icon-apple icon-large"
-													style="margin-right: 5px;"></i> <%
+ %> <i class="icon-apple icon-large" style="margin-right: 5px;"></i> <%
      }
  			}
  %>

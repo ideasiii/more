@@ -72,6 +72,7 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 	document.getElementById("InfoEmail").innerHTML = sEmail;
 	document.getElementById("InfoPhone").innerHTML = sPhone;
 	document.getElementById("InfoAppCate").innerHTML = aCate;
+	document.getElementById("app_id").value = aId;
 	var icon = document.getElementById("InfoAppIcon");
 	icon.src = "/more" + aIcon;
 	
@@ -87,47 +88,47 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 		}
 	
 	//edit app info
-	document.getElementById("EditAppName").value = aName;
-	document.getElementById("EditAppOs").value = os;
-	document.getElementById("EditAppCate").value = aCate;
-	document.getElementById("EditOrganization").value = sOrgan;
-	document.getElementById("EditSupportEmail").value = sEmail;
-	document.getElementById("EditPhone").value = sPhone;
+	document.getElementById("app_name").value = aName;
+	document.getElementById("app_os").value = os;
+	document.getElementById("app_category").value = aCate;
+	document.getElementById("user_name").value = sOrgan;
+	document.getElementById("user_email").value = sEmail;
+	document.getElementById("user_phone").value = sPhone;
 	//delete app confirm
-	document.getElementById("DeleteAppName").innerHTML = aName;
+	//document.getElementById("DeleteAppName").innerHTML = aName;
 }
 
 
 function checkAppInfoEdit(formName){
 	var form = document.getElementById(formName);
 	var formname = form.name;
-	var IconCheck = form.EditIcon.value;
+	var IconCheck = form.app_icon.value;
 	var errMsg = '';
 	re = /\W/;
 	reg = /^[^\s]+@[^\s]+\.[^\s]{2,3}$/;
 
-	if (Trim(form.EditAppName.value) == '')
+	if (Trim(form.app_name.value) == '')
 		errMsg += "Please enter an application name !!\n";
 	else {
-		if (form.EditAppName.value.length > 20)
+		if (form.app_name.value.length > 20)
 			errMsg += "Application name must be less than 20 characters !!\n";
 	}
 
 	if (IconCheck != '' && checkIconType == false)
 		errMsg += 'Wrong image type !!\n';
 
-	if (Trim(form.EditOrganization.value) == '')
+	if (Trim(form.user_name.value) == '')
 		errMsg += "Organization field is required !!\n";
 
-	if (Trim(form.EditSupportEmail.value) == '')
+	if (Trim(form.user_email.value) == '')
 		errMsg += "E-mail field is required !!\n";
 	else {
-		if (!reg.test(Trim(form.EditSupportEmail.value))) {
+		if (!reg.test(Trim(form.user_email.value))) {
 			errMsg += "Wrong E-mail format !!\n";
 		}
 	}
 
-	if (Trim(form.EditPhone.value) == '')
+	if (Trim(form.user_phone.value) == '')
 		errMsg += "Phone field is required !!\n";
 
 	if (errMsg == '') {
