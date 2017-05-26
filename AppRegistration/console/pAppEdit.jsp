@@ -129,7 +129,8 @@
 					    File uploadedFile = new File(strPath, strFN);
 					    itemUploadFile.write(uploadedFile);
 					    mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/" + strEmail + "/" + strFN);
-					
+					    strAppIcon = More.Common.UPLOAD_FILE_PATH + "/" + strEmail + "/" + strFN;
+					    
 					    Logs.showTrace("FN: "+strFN);
 					    Logs.showTrace("Path: "+strPath);
 					}
