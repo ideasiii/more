@@ -95,7 +95,7 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 	document.getElementById("user_email").value = sEmail;
 	document.getElementById("user_phone").value = sPhone;
 	//delete app confirm
-	//document.getElementById("DeleteAppName").innerHTML = aName;
+	document.getElementById("DeleteAppConfirm").innerHTML = aName;
 }
 
 

@@ -279,12 +279,12 @@
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="H1">Delete Confirm</h4>
 						</div>
-						<form action=".jsp" method="post" name="formDeleteAppInfo"
+						<form action="pAppDelete.jsp" method="post" name="formDeleteAppInfo"
 							id="formDeleteAppInfo">
 
 							<div class="modal-body">
 								<span> You have selected to delete "<span
-									id="DeleteAppName"></span>". <br>If this was the action
+									id="DeleteAppConfirm"></span>". <br>If this was the action
 									that you wanted to do, please confirm your choice, or cancel
 									and return to the page.
 								</span>
