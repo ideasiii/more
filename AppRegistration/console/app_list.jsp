@@ -279,8 +279,10 @@
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="H1">Delete Confirm</h4>
 						</div>
-						<form action="pAppDelete.jsp" method="post" name="formDeleteAppInfo"
-							id="formDeleteAppInfo">
+						<form action="pAppDelete.jsp" method="post"
+							name="formDeleteAppInfo" id="formDeleteAppInfo">
+							<input id="DeleteAppId"
+								name="DeleteAppId" type="hidden" value="" />
 
 							<div class="modal-body">
 								<span> You have selected to delete "<span

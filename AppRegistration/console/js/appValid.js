@@ -72,7 +72,6 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 	document.getElementById("InfoEmail").innerHTML = sEmail;
 	document.getElementById("InfoPhone").innerHTML = sPhone;
 	document.getElementById("InfoAppCate").innerHTML = aCate;
-	document.getElementById("app_id").value = aId;
 	var icon = document.getElementById("InfoAppIcon");
 	icon.src = "/more" + aIcon;
 	
@@ -88,6 +87,7 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 		}
 	
 	//edit app info
+	document.getElementById("app_id").value = aId;
 	document.getElementById("app_name").value = aName;
 	document.getElementById("app_os").value = os;
 	document.getElementById("app_category").value = aCate;
@@ -96,6 +96,7 @@ function showAppInfo(aName, aId, sOrgan, sEmail, sPhone, os, aCate, aIcon) {
 	document.getElementById("user_phone").value = sPhone;
 	//delete app confirm
 	document.getElementById("DeleteAppConfirm").innerHTML = aName;
+	document.getElementById("DeleteAppId").value = aId;
 }
 
 
