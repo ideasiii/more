@@ -530,7 +530,8 @@ public class More
 	    // Delete local file
 	    if (null != strAppIcon)
 	    {
-		File file = new File("/data/opt/tomcat/webapp/more" + strAppIcon);
+		File file = new File("/data/opt/tomcat/webapps/more" + strAppIcon);
+		System.out.println("##########/data/opt/tomcat/webapps/more" + strAppIcon);
 		if (null != file)
 		{
 
