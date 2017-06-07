@@ -53,12 +53,13 @@
 			style='display: none;'>
 			<param name='host_url' value='http%3A%2F%2F124.9.6.34%2F' />
 			<param name='site_root' value='' />
-			<param name='name' value='_170605_10_0&#47;sheet0' />
+			<param name='name' value='_170605_10_0&#47;sheet0_1' />
 			<param name='tabs' value='no' />
 			<param name='toolbar' value='no' />
 			<param name='showShareOptions' value='false' />
 		</object>
 	</div>
+
 
 
 
