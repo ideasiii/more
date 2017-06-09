@@ -13,7 +13,7 @@
 <%@ page import="org.json.JSONArray"%>
 <%@ page import="java.util.Date"%>
 <%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="backstage.MoreManager"%>
+<%@ page import="more.*"%>
 
 
 <%@include file="../../home/console/loginValid.jsp"%>
