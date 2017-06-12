@@ -157,9 +157,10 @@
 
 		More.webTracker(request, "Login failed : " + strStatus, strMessage + " Email: " + strEmail);
 
-		Cookie cEmail = new Cookie("email", strEmail);
-		Cookie cStatus = new Cookie("status", strStatus);
-		Cookie cMessage = new Cookie("message", strMessage);
+		Cookie cEmail = new Cookie("email", URLEncoder.encode(strEmail, "UTF-8"));
+		Cookie cStatus = new Cookie("status", URLEncoder.encode(strStatus, "UTF-8"));
+		Cookie cMessage = new Cookie("message", URLEncoder.encode(strMessage, "UTF-8"));
+		response.addCookie(cEmail);
 		response.addCookie(cEmail);
 		response.addCookie(cStatus);
 		response.addCookie(cMessage);
