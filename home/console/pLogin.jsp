@@ -5,6 +5,7 @@
 <%@page import="sdk.ideas.HttpsClient"%>
 <%@ page import="sdk.ideas.HttpsClient.*"%>
 <%@ page import="org.json.JSONObject"%>
+<%@ page import="java.net.URLEncoder"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -126,9 +127,9 @@
 					   
 						More.webTracker(request, "Login authorize failed : " + strStatus, strMessage + " Email: " + strEmail);
 
-						Cookie cEmail = new Cookie("email", strEmail);
-						Cookie cStatus = new Cookie("status", strStatus);
-						Cookie cMessage = new Cookie("message", strMessage);
+						Cookie cEmail = new Cookie("email", URLEncoder.encode(strEmail, "UTF-8"));
+						Cookie cStatus = new Cookie("status", URLEncoder.encode(strStatus, "UTF-8"));
+						Cookie cMessage = new Cookie("message", URLEncoder.encode(strMessage, "UTF-8"));
 						response.addCookie(cEmail);
 						response.addCookie(cStatus);
 						response.addCookie(cMessage);
