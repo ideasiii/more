@@ -101,11 +101,13 @@ public class More
 	final public static String APP_EDIT = "app_edit";
     }
 
-    final public static ArrayList<String> listAppField = new ArrayList<>(Arrays.asList(Common.APP_ID, Common.APP_NAME, Common.APP_CATEGORY, Common.APP_DESC, Common.APP_ICON,
-	    Common.APP_OS, Common.USER_ACCOUNT, Common.USER_TOKEN, Common.USER_NAME, Common.USER_EMAIL, Common.USER_PHONE));
+    final public static ArrayList<String> listAppField = new ArrayList<>(Arrays.asList(Common.APP_ID, Common.APP_NAME,
+	    Common.APP_CATEGORY, Common.APP_DESC, Common.APP_ICON, Common.APP_OS, Common.USER_ACCOUNT,
+	    Common.USER_TOKEN, Common.USER_NAME, Common.USER_EMAIL, Common.USER_PHONE));
 
     final public static ArrayList<String> listSdkField = new ArrayList<>(
-	    Arrays.asList(Common.SDK_ID, Common.SDK_OS, Common.SDK_OWNER, Common.SDK_NAME, Common.SDK_DESC, Common.SDK_FILE, Common.SDK_DOC, Common.SDK_ICON, Common.CREATE_DATE));
+	    Arrays.asList(Common.SDK_ID, Common.SDK_OS, Common.SDK_OWNER, Common.SDK_NAME, Common.SDK_DESC,
+		    Common.SDK_FILE, Common.SDK_DOC, Common.SDK_ICON, Common.CREATE_DATE));
 
     public static class MemberData
     {
@@ -178,8 +180,7 @@ public class More
 	    con.close();
 	    sqlite = null;
 
-	}
-	catch (SQLException e)
+	} catch (SQLException e)
 	{
 
 	    e.printStackTrace();
@@ -222,8 +223,7 @@ public class More
 	    con.close();
 	    sqlite = null;
 
-	}
-	catch (SQLException e)
+	} catch (SQLException e)
 	{
 
 	    e.printStackTrace();
@@ -233,8 +233,8 @@ public class More
 	return nCount;
     }
 
-    public int memberAdd(HttpServletRequest request, final String strEmail, final String strPassword, final String strName, final String strCompany, final String strPhone,
-	    final String strToken)
+    public int memberAdd(HttpServletRequest request, final String strEmail, final String strPassword,
+	    final String strName, final String strCompany, final String strPhone, final String strToken)
     {
 	if (!StringUtility.isValid(strEmail) || !StringUtility.isValid(strPassword))
 	{
@@ -266,8 +266,7 @@ public class More
 	    con.close();
 	    sqlite = null;
 
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 
 	    More.webTracker(request, "memberAdd failed: ", e.toString());
@@ -291,8 +290,7 @@ public class More
 		md.update(now);
 	    }
 	    return toHex(md.digest());
-	}
-	catch (NoSuchAlgorithmException e)
+	} catch (NoSuchAlgorithmException e)
 	{
 
 	}
@@ -351,8 +349,7 @@ public class More
 		nCount = listSdk.size();
 	    }
 
-	}
-	catch (SQLException e)
+	} catch (SQLException e)
 	{
 
 	    e.printStackTrace();
@@ -402,8 +399,7 @@ public class More
 	    transport.close();
 	    More.webTracker(request, "MORE SendingEmail success: " + Email, null);
 
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 	    System.out.println("MORE Send Mail Exception:" + e.toString());
 	    More.webTracker(request, "MORE SendingEmail failed: ", e.toString());
@@ -450,8 +446,7 @@ public class More
 		nCount = listApp.size();
 	    }
 
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 
 	    e.printStackTrace();
@@ -461,8 +456,9 @@ public class More
 	return nCount;
     }
 
-    public int insertApp(HttpServletRequest request, final String strAppId, final String strAppName, final String strAppCategory, final String strAppIcon, final String strAppOs,
-	    final String strUserAccount, final String strUserName, final String strUserEmail, final String strUserPhone)
+    public int insertApp(HttpServletRequest request, final String strAppId, final String strAppName,
+	    final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserAccount,
+	    final String strUserName, final String strUserEmail, final String strUserPhone)
     {
 	String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_account, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?,?) ;";
 	try
@@ -484,8 +480,7 @@ public class More
 	    pst.setString(idx++, strUserPhone);
 	    pst.executeUpdate();
 	    pst.close();
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 	    Logs.showError(e.toString());
 	    More.webTracker(request, "insertApp failed: ", e.toString());
@@ -542,8 +537,7 @@ public class More
 		    {
 			System.out.println(file.getName() + " is deleted!");
 			More.webTracker(request, file.getName() + "deleteApp success: ", strSQL);
-		    }
-		    else
+		    } else
 		    {
 			System.out.println("Delete operation is failed.");
 			More.webTracker(request, "[Delete operation is failed.] deleteApp failed: ", strSQL);
@@ -565,8 +559,7 @@ public class More
 		}
 	    }
 
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 
 	    e.printStackTrace();
@@ -574,8 +567,9 @@ public class More
 	}
     }
 
-    public void updateApp(HttpServletRequest request, final String strAppId, final String strAppIcon, final String strAppName, final String strAppOs, final String strAppCategory,
-	    final String strUserName, final String strUserEmail, final String strUserPhone)
+    public void updateApp(HttpServletRequest request, final String strAppId, final String strAppIcon,
+	    final String strAppName, final String strAppOs, final String strAppCategory, final String strUserName,
+	    final String strUserEmail, final String strUserPhone)
     {
 	try
 	{
@@ -586,8 +580,7 @@ public class More
 	    if (null == strAppIcon)
 	    {
 		sql = "update app set app_name = ? , app_os = ? , app_category = ? , user_name = ? , user_email = ? , user_phone = ? where app_id = ?";
-	    }
-	    else
+	    } else
 	    {
 		sql = "update app set app_icon = ? , app_name = ? , app_os = ? , app_category = ? , user_name = ? , user_email = ? , user_phone = ? where app_id = ?";
 	    }
@@ -612,13 +605,13 @@ public class More
 
 	    con.close();
 	    sqlite = null;
-	    
-	    String strData = strAppIcon + strAppName + strAppOs + strAppCategory + strUserName + strUserEmail + strUserPhone + strAppId;
-	  
+
+	    String strData = strAppIcon + strAppName + strAppOs + strAppCategory + strUserName + strUserEmail
+		    + strUserPhone + strAppId;
+
 	    More.webTracker(request, "updateApp success: ", sql);
 	    More.webTracker(request, "updateApp success: ", strData);
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 
 	    e.printStackTrace();
@@ -626,7 +619,8 @@ public class More
 	}
     }
 
-    public void updateUser(HttpServletRequest request, final String strAppId, final String strUserName, final String strUserPhone, final String strUserEmail)
+    public void updateUser(HttpServletRequest request, final String strAppId, final String strUserName,
+	    final String strUserPhone, final String strUserEmail)
     {
 	try
 	{
@@ -648,8 +642,7 @@ public class More
 	    sqlite = null;
 	    More.webTracker(request, "updateUser success: ", sql);
 
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 
 	    e.printStackTrace();
@@ -691,7 +684,8 @@ public class More
     }
 
     @SuppressWarnings("deprecation")
-    static public int insert(String strIP, int nPort, final String strDB, final String strCollection, final HashMap<String, String> mapData)
+    static public int insert(String strIP, int nPort, final String strDB, final String strCollection,
+	    final HashMap<String, String> mapData)
     {
 	int nResult = 0;
 
@@ -722,8 +716,7 @@ public class More
 	    if (null != mongo)
 		mongo.close();
 
-	}
-	catch (Exception e)
+	} catch (Exception e)
 	{
 	    nResult = -1;
 	    System.out.println("Mongo Exception: " + e.toString());
@@ -738,6 +731,8 @@ public class More
 	mapData.put("host", request.getRequestURL().toString());
 	mapData.put("create_date", getDateTime());
 	mapData.put("action", strAction);
+	if (null == strEvent)
+	    strEvent = request.getRequestURI();
 	mapData.put("event", strEvent);
 	insert("127.0.0.1", 27017, "website", "more", mapData);
 	mapData.clear();
