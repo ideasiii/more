@@ -224,7 +224,7 @@
 
 				<div class="box white-box">
 					<table class="table table-bordered"
-						style="border: 2px #dddddd solid; display: block;word-break:break-all">
+						style="border: 2px #dddddd solid; display: block; word-break: break-all">
 						<thead>
 							<tr>
 								<th style="width: 30%; vertical-align: middle;">Host</th>
@@ -237,21 +237,24 @@
 						<tbody>
 
 							<%
+							try
+							{
 							    MongoClient mongoClient = new MongoClient();
-										DB db = mongoClient.getDB("website");
-										if (null != db) {
-											DBCollection collection = db.getCollection("more");
-
-											BasicDBObject dataQuery = new BasicDBObject();
-											dataQuery.put("create_date", new BasicDBObject("$gte", strSD).append("$lte", strED + " 23:59:59"));
+								DB db = mongoClient.getDB("website");
+								if (null != db) 
+								{
+									DBCollection collection = db.getCollection("more");
+									BasicDBObject dataQuery = new BasicDBObject();
+									dataQuery.put("create_date", new BasicDBObject("$gte", strSD).append("$lte", strED + " 23:59:59"));
 											//out.println(strSD + strED);
 
-											DBCursor cursor = collection.find(dataQuery);
-											cursor.sort(new BasicDBObject("create_date",1));
-											
-											while (cursor.hasNext()) {
-												JSONObject jsonobj = new JSONObject(cursor.next().toString());
-												jsonobj.remove("_id");
+									DBCursor cursor = collection.find(dataQuery);
+									cursor.sort(new BasicDBObject("create_date", 1));
+
+									while (cursor.hasNext()) 
+									{
+										JSONObject jsonobj = new JSONObject(cursor.next().toString());
+										jsonobj.remove("_id");
 							%>
 							<tr>
 								<td><%=jsonobj.getString("host")%></td>
@@ -261,9 +264,14 @@
 								<td><%=jsonobj.getString("event")%></td>
 							</tr>
 							<%
-							    } //while
-										}
-										mongoClient.close();
+							    	} //while
+								}
+								mongoClient.close();
+							}
+							catch(Exception e)
+							{
+							    System.out.println("[userlogs] Mongo Exception: " + e.toString());
+							}
 							%>
 						</tbody>
 					</table>
