@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 
 <%
-	response.sendRedirect("https://iiideasmartbuilding.sytes.net/more/home/console/home.jsp");
+	response.sendRedirect("http://52.68.108.37/more/home/console/home.jsp");
 %>

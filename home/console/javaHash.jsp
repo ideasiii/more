@@ -2,10 +2,9 @@
 	session="false"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="java.util.Map"%>
-<%@ page import="sdk.ideas.More"%>
 <%@page import="sdk.ideas.HttpsClient"%>
 <%@ page import="org.json.JSONObject"%>
-
+<%@ page import="more.*"%>
 
 <%
     request.setCharacterEncoding("UTF-8");
