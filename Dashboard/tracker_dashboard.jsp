@@ -23,10 +23,7 @@
 	href="/more/css/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
 <!--END GLOBAL STYLES -->
 
-
 <!--  JavaScript -->
-
-
 
 
 </head>
