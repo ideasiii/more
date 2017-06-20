@@ -14,8 +14,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MORE</title>
-
+<title>Scenarios | MORE</title>
+<link rel="icon" href="/assets/img/more.png">
 
 <!-- GLOBAL STYLES -->
 <link rel="stylesheet" href="/more/css/more_style.css" />

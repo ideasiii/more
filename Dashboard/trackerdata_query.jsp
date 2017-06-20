@@ -45,6 +45,7 @@
 
 <meta charset="UTF-8" />
 <title>APP Tracker Data Query | MORE</title>
+<link rel="icon" href="/assets/img/more.png">
 
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />

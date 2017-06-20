@@ -17,6 +17,7 @@
 <meta name="keywords" content="MORE">
 <meta name="description" content="MORE">
 <title>SDK android version | MORE</title>
+<link rel="icon" href="/assets/img/more.png">
 
 <!-- GLOBAL STYLES -->
 <link rel="stylesheet" href="/more/css/more_style.css" />
