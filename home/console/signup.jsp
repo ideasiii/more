@@ -189,7 +189,7 @@
 											<b>Notification and Letter of Consent for Collection,
 												Processing and Use of Personal Information<br /> <span
 												style="color: #b94a48;">(Version: P-X-X)</span>
-											</b> <br /> <br /> MAccording to the R.O.C. Personal
+											</b> <br /> <br /> According to the R.O.C. Personal
 											Information Protection Act and the internal
 											policy/regulations of Institute for Information Industry
 											(hereinafter referred to as “III”), III is obligated to make
