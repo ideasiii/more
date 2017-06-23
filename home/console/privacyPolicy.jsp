@@ -65,8 +65,7 @@
 											referred to as “III”) respects and protects your privacy. To
 											help you understand how III collects, processes and uses your
 											personal information, please read our Privacy Policy
-											carefully. <span style="color: #b94a48;">(Version:
-												P-X-X)</span>
+											carefully. <span style="color: #b94a48;"></span>
 										</b>
 									</p>
 									<br />
@@ -93,7 +92,7 @@
 
 									<p style="text-align: justify; color: gray;">
 										<u><b>II. Collecting, Processing and Using Personal
-											Information</b></u>
+												Information</b></u>
 									</p>
 									<p style="text-align: justify; color: gray;">1. You will be
 										required to provide your personal information as adequate and
@@ -117,15 +116,84 @@
 									<br />
 
 									<p style="text-align: justify; color: gray;">
-										<u><b>III. Sharing Personal Information with Third Party</b></u>
+										<u><b>III. Sharing Personal Information with Third
+												Party</b></u>
 									</p>
 									<p style="text-align: justify; color: gray;">1. III will
 										not provide, exchange, lease or sell your personal information
 										to other persons, organizations, private corporations or
 										public institutions, unless due to legal or contractual
 										obligations.</p>
-										
-										
+
+									<p style="text-align: justify; color: gray;">
+										2. The “legal or contractual obligations” in the previous
+										paragraph to share your personal information with a third
+										party include, but are not limited to, the following
+										circumstances:<br /> (1) to cooperate with legal
+										investigation initiated by judicial authorities;<br /> (2) to
+										cooperate with competent authorities in discharge of their
+										duties to investigate or use (such as financial audit carried
+										out by the National Audit Office of the R.O.C. or a certified
+										public accountant);<br /> (3) a good-faith belief that the
+										disclosure of your personal information is required by law;<br />
+										(4) to determine your identity, to provide contact information
+										or to take legal actions, when necessary, if you as a website
+										visitor violate the service terms of III, or are likely to
+										jeopardize or interfere with the interests of III or result in
+										damages to any person;<br /> (5) to fulfill contractual
+										obligations under outsourcing contracts.
+									</p>
+
+									<p style="text-align: justify; color: gray;">3. III will
+										fulfill the responsibilities for supervising and managing the
+										vendors or individuals whom III has engaged to collect,
+										process or use your personal information.</p>
+
+									<p style="text-align: justify; color: gray;">
+										<u><b>IV. Use of Cookies</b></u>
+									</p>
+
+									<p style="text-align: justify; color: gray;">1. Based on
+										the needs of website internal management and to optimize
+										customer services, our websites use Cookies to collect from
+										website visitors certain data, such as IP addresses, log-in
+										periods, and hits information for total analysis of site
+										traffic and visitors’ online behaviors. No analysis will be
+										performed on the perspective of “individual” website visitors.
+									</p>
+									<p style="text-align: justify; color: gray;">2. Website
+										visitors may disable Cookies. Please note that certain
+										functions of III websites will not be available once Cookies
+										are disabled.</p>
+
+									<p style="text-align: justify; color: gray;">
+										<u><b>V. Server Records</b></u>
+									</p>
+
+									<p style="text-align: justify; color: gray;">If you use any
+										browser, application program or other means to visit III
+										websites, our servers will automatically record specific
+										technical information. Such server records may include your
+										web page requests, Internet IP address, type of browser,
+										language of browser, the date and time on which requests were
+										sent, etc. These server records will be used as reference for
+										server management only. III will not use any information in
+										server records to perform analysis of any “individual” website
+										visitors.</p>
+
+									<p style="text-align: justify; color: gray;">
+										<u><b>VI. Amendment to Privacy Policy</b></u>
+									</p>
+
+									<p style="text-align: justify; color: gray;">In order to
+										achieve the goal of protecting privacy and online security,
+										Privacy Policy may be amended from time to time in accordance
+										with any amendments to the laws, developments of relevant
+										technologies and/or adjustments of internal management system.
+										Whenever our Privacy Policy is amended, III will immediately
+										display a notice on our websites to provide you with the
+										chance to review the changed terms prior to continuing to use
+										the sites.</p>
 
 								</div>
 								</section>

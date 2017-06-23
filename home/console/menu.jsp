@@ -5,12 +5,11 @@
 
     boolean bLogined = false;
     boolean bManager = false;
-    
+
     More more = new More();
 
     if (null != strEmail)
 		bLogined = true;
-  
 
     if (null != groupLevel && groupLevel == 1)
 		bManager = true;
@@ -50,9 +49,9 @@
 							class="icon-gear fa-inverse"></i></a></li>
 					<%
 					    }
-										    }
-										    else
-										{
+					    }
+					    else
+					    {
 					%>
 					<li class="super-header-li"><a class="super-header-a"
 						href="/more/home/console/login.jsp">Login</a></li>
@@ -73,41 +72,45 @@
 							<li class="menu-header-li"><a href="" class="menu-header-a">
 									PLATFORM </a>
 								<ul class="dropdown-menu-container">
-									<li class="dropdown-menu-li">
-										 <a href="/more/mdm/console/group_management.jsp">MORE
-											MDM</a> 
+									<li class="dropdown-menu-li"><a
+										href="/more/home/console/pTaskComposer.jsp">TASK COMPOSER</a>
 									</li>
-									
+									<li class="dropdown-menu-li"><a
+										href="/more/mdm/console/group_management.jsp">MORE MDM</a></li>
+
 								</ul></li>
 
 							<li class="menu-header-li"><a href="" class="menu-header-a">
 									DASHBOARD </a>
 								<ul class="dropdown-menu-container">
-									<li class="dropdown-menu-li">
-										<a href="/more/Dashboard/trackerdata_query.jsp">TRACKER
-											DATA</a> 
+									<li class="dropdown-menu-li"><a
+										href="/more/Dashboard/trackerdata_query.jsp">TRACKER DATA</a>
 									</li>
-									<li class="dropdown-menu-li">
-										<a href="/more/Dashboard/tracker_analysis.jsp">ANALYSIS</a> 
-									</li>
-									
+									<li class="dropdown-menu-li"><a
+										href="/more/Dashboard/tracker_analysis.jsp">ANALYSIS</a></li>
+
 								</ul></li>
 
 							<li class="menu-header-li"><a href="" class="menu-header-a">
 									RESOURCES </a>
 								<ul class="dropdown-menu-container">
-								<li class="dropdown-menu-li"><a href="https://www.moreapi.net/dashboard/swagger/index.html" target="_blank">MORE API</a></li>
+									<li class="dropdown-menu-li"><a
+										href="https://www.moreapi.net/dashboard/swagger/index.html"
+										target="_blank">MORE API</a></li>
 									<li class="dropdown-menu-li" id="3level-sdk"><a
 										href="/more/home/console/moreSDKandroid.jsp">MORE SDK</a></li>
-								
+
 								</ul></li>
 
 							<li class="menu-header-li"><a href="" class="menu-header-a">
 									DEVELOPER </a>
 								<ul class="dropdown-menu-container">
-									<li class="dropdown-menu-li"><a href="/more/AppRegistration/console/app_registration.jsp">APP REGISTRATION</a></li>
-									<li class="dropdown-menu-li"><a href="/more/AppRegistration/console/app_list.jsp">APPLICATIONS</a></li>
-									
+									<li class="dropdown-menu-li"><a
+										href="/more/AppRegistration/console/app_registration.jsp">APP
+											REGISTRATION</a></li>
+									<li class="dropdown-menu-li"><a
+										href="/more/AppRegistration/console/app_list.jsp">APPLICATIONS</a></li>
+
 								</ul></li>
 
 						</ul>
