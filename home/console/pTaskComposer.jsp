@@ -20,7 +20,27 @@
 
 <!-- Javascript -->
 <script type="text/javascript">
-	
+function post(path, params, method) {
+    method = method || "post"; 
+
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
 </script>
 
 </head>
@@ -37,18 +57,31 @@
 	    jobj.put("clientId", strClientId);
 
 	    HttpsClient httpsClient = new HttpsClient();
-	    String strResult = httpsClient.sendPost(httpsURL, jobj.toString());
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+	    String strAuthResult = httpsClient.sendPost(httpsURL, jobj.toString());
+
+	    JSONObject jObjAuth = new JSONObject(strAuthResult);
+	    int nUserId2 = 0;
+	    String strAToken = null;
+
+	    if (null != jObjAuth && jObjAuth.has("accessToken"))
+	    {
+			strAToken = jObjAuth.getString("accessToken");
+	    }
+
+	    if (null != jObjAuth && jObjAuth.has("userId"))
+	    {
+			nUserId2 = jObjAuth.getInt("userId");
+	    }
+	    if (null != strAToken && 0 < nUserId2)
+	    {
+
+		%>
+		<script>
+		post('testpost.jsp', {accessToken: '<%=strAToken%>'});
+		</script>
+		<%
+		
+	    }
 	%>
 
 </body>
