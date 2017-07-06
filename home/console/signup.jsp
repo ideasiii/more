@@ -342,7 +342,7 @@
 		</dl>
 		<dl class="link_group">
 			<dd class="link">
-				<a href="">Privacy Policy</a>
+				<a href="/more/home/console/privacyPolicy.jsp">Privacy Policy</a>
 			</dd>
 		</dl>
 		<dl class="link_group">
