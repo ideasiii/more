@@ -85,8 +85,8 @@
 <map name="image-maps-2017-05-02-223807" id="ImageMapsCom-image-maps-2017-05-02-223807">
 <area shape="rect" coords="1898,999,1900,1001" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
 <area id="step1" alt="Step1" title="step1" href="scenario1.jsp" shape="poly" coords="256,386,300,378,335,382,357,390,382,399,399,414,414,426,433,449,446,473,454,498,458,527,455,563,446,591,436,612,419,637,394,657,370,672,341,684,301,690,271,687,244,678,217,667,188,644,168,618,151,582,142,540,144,508,153,473,182,429,204,410,230,397" style="outline:none;" target="_self"     />
-<area id="step2" alt="Step2" title="step2" href="http://www.image-maps2.com/" shape="poly" coords="941,419,851,437,774,488,723,565,705,655,723,745,774,822,851,873,941,891,1031,873,1108,822,1159,745,1177,655,1159,565,1108,488,1032,437" style="outline:none;" target="_self"     />
-<area id="step3" alt="Step3" title="step3" href="http://www.image-maps3.com/" shape="poly" coords="1388,105,1337,115,1294,144,1265,187,1255,238,1265,289,1294,332,1337,361,1388,371,1439,361,1482,332,1511,289,1521,238,1511,187,1482,144,1441,115" style="outline:none;" target="_self"     />
+<area id="step2" alt="Step2" title="step2" href="testpost.jsp" shape="poly" coords="941,419,851,437,774,488,723,565,705,655,723,745,774,822,851,873,941,891,1031,873,1108,822,1159,745,1177,655,1159,565,1108,488,1032,437" style="outline:none;" target="_self"     />
+<area id="step3" alt="Step3" title="step3" href="testpost.jsp" shape="poly" coords="1388,105,1337,115,1294,144,1265,187,1255,238,1265,289,1294,332,1337,361,1388,371,1439,361,1482,332,1511,289,1521,238,1511,187,1482,144,1441,115" style="outline:none;" target="_self"     />
 <area id="step4" alt="Step4" title="step4" href="/more/Dashboard/tracker_analysis.jsp" shape="poly" coords="1645,529,1583,541,1531,576,1496,628,1484,690,1496,752,1531,804,1583,839,1645,851,1707,839,1759,804,1794,752,1806,690,1794,628,1759,576,1707,541" style="outline:none;" target="_self"     />
 </map>
 
