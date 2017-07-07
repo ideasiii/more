@@ -27,7 +27,7 @@
 
 final String strAToken = request.getParameter("accessToken");
 
-/*out.println(strAToken);*/
+//out.println(strAToken);
 
 %>
   <div class="container">
