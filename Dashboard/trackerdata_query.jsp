@@ -332,28 +332,9 @@
 		//]]>
 	</script>
 	<!--END PAGE LEVEL SCRIPT-->
-	<!--FOOTER -->
-	<footer class="footer">
-		<div class="link_area">
-			<dl class="link_group">
-				<dd class="link">
-					<a href="">Document</a>
-				</dd>
-			</dl>
-			<dl class="link_group">
-				<dd class="link">
-					<a href="/more/home/console/privacyPolicy.jsp">Privacy Policy</a>
-				</dd>
-			</dl>
-			<dl class="link_group">
-				<dd class="link">
-					<a href="">Contact Us</a>
-				</dd>
-			</dl>
-			<div class="copyright_area">Copyright ©</div>
-		</div>
-	</footer>
-	<!--END FOOTER -->
+	
+			<%@include file="../home/console/footer.jsp"%>
+			
 </body>
 </html>
 <%

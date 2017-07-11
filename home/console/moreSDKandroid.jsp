@@ -54,6 +54,7 @@
 				<div id="intro" class="landscape-bg"
 					style="background-image: url('/assets/img/tech2_1920.jpg'); min-height: 100%;">
 					<div class="spotlight" style="min-height: 1000px;">
+
 						<div id="block-list" class="panel-body"
 							style="padding: 100px 10.5%;">
 
@@ -64,9 +65,8 @@
 								IOS
 							</a>
 
-
-							<div class="white-text" style="margin-left: 50px;">
-								<h1>ANDROID</h1>
+							<div class="white-text" style="margin-left: 50px;width:500px;">
+								<h1>SDK for ANDROID</h1>
 								<br>
 							</div>
 
@@ -121,28 +121,7 @@
 	</div>
 	<!--END MAIN WRAPPER -->
 
-	<!--FOOTER -->
-	<footer class="footer">
-		<div class="link_area">
-			<dl class="link_group">
-				<dd class="link">
-					<a href="">Document</a>
-				</dd>
-			</dl>
-			<dl class="link_group">
-				<dd class="link">
-					<a href="/more/home/console/privacyPolicy.jsp">Privacy Policy</a>
-				</dd>
-			</dl>
-			<dl class="link_group">
-				<dd class="link">
-					<a href="">Contact Us</a>
-				</dd>
-			</dl>
-			<div class="copyright_area">Copyright ©</div>
-		</div>
-	</footer>
-	<!--END FOOTER -->
+	<%@include file="footer.jsp"%>
 
 	<!-- GLOBAL SCRIPTS -->
 	<script src="/assets/plugins/jquery-2.0.3.min.js"></script>
