@@ -95,7 +95,7 @@
 									RESOURCES </a>
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li"><a
-										href="https://www.moreapi.net/dashboard/swagger/index.html"
+										href="testpost.jsp"
 										target="_blank">MORE API</a></li>
 									<li class="dropdown-menu-li" id="3level-sdk"><a
 										href="/more/home/console/moreSDKandroid.jsp">MORE SDK</a></li>

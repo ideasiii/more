@@ -96,7 +96,7 @@
 								</div>
 
 								<div class="panel-body">
-									<form action="tracker_dashboard.jsp" role="form"
+									<form action="/more/home/console/testpost.jsp" role="form"
 										name="formAppIDInput" id="formAppIDInput">
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
