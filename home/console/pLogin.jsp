@@ -40,7 +40,14 @@
 
 	<%
 	    request.setCharacterEncoding("UTF-8");
-
+		String rMethod = request.getMethod();
+		/** Web Tracker **/
+		More.webTracker(request, "request method", rMethod);
+		
+		if (null != rMethod && rMethod.equals("GET")) {
+		    response.sendRedirect("/more/home/console/error.jsp");
+		}
+	
 				final String strEmail = request.getParameter("inputEmail");
 				final String strPassword = request.getParameter("inputPassword");
 				boolean bAuthResult = false;
