@@ -75,8 +75,8 @@
 			}
 		}
 
-		alert(email);
-		alert(url);
+		//alert(email);
+		//alert(url);
 		
 		if (errMsg == '') {
 			contentEditWin = window.open(url,'_blank','toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=0, top=0, width=10000, height=10000, visible=none','');
@@ -97,8 +97,8 @@
 			var email = getCookie("email");
 			var respCode = getCookie("error")
 			var message = getCookie("message")
-			alert(email);
-			alert(respCode);
+		//	alert(email);
+		//	alert(respCode);
 			
 			if (respCode == '200') {
 				document.getElementById("btnA").style.display = "block";
@@ -175,7 +175,7 @@
 								<h2 style="font-weight: bold;">Sign Up For MORE Account</h2>
 							</div>
 
-							<form name="formSignUp" id="formSignUp">
+							<form name="formSignUp" id="formSignUp" method="post">
 					<!--			<input name="accountList" id="accountList"
 									value="<%--=strAccountV--%>" type="hidden"> -->
 								<input name="agreeVersion" id="agreeVersion"

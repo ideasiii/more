@@ -8,6 +8,13 @@
 
 <%
     request.setCharacterEncoding("UTF-8");
+			String rMethod = request.getMethod();
+			/** Web Tracker **/
+			More.webTracker(request, "request method", rMethod);
+
+			if (null != rMethod && rMethod.equals("GET")) {
+				response.sendRedirect("/more/home/console/error.jsp");
+			}
 
 			final String strEmail = request.getParameter("inputEmail");
 			final String strPassword = request.getParameter("inputPassword");
@@ -16,26 +23,24 @@
 			final String strPhone = request.getParameter("inputPhone");
 			final String strPurpose = request.getParameter("inputPurpose");
 			final String strAgreeV = request.getParameter("agreeVersion");
-			
-			/** Web Tracker **/
-			More.webTracker(request, "load progress page", null);
-			
+
+
 			/** MD5 hash **/
 			More more = new More();
 			String hash = more.calcMD5(strPassword);
 			String strHashedPassword = more.calcMD5("$1$MoREKey" + hash);
-			
+
 			more = null;
-			
+
 			/**	More more = new More();
 			
 				String strToken = more.generateToken(strEmail, false);
 				int nResult = more.memberAdd(request, strEmail, strPassword, strName, strCompany, strPhone, strToken);
 				more = null;
 			**/
-			
+
 			String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
-			
+
 			JSONObject jObj = new JSONObject();
 			jObj.put("email", strEmail);
 			jObj.put("password", strHashedPassword);
@@ -45,7 +50,6 @@
 			jObj.put("phone", strPhone);
 			jObj.put("purpose", strPurpose);
 			jObj.put("agreementVersion", strAgreeV);
-			
 
 			HttpsClient httpsClient = new HttpsClient();
 			String strResult = httpsClient.sendPost(httpsURL, jObj.toString());
@@ -54,11 +58,12 @@
 			int nUserId = 0;
 			if (null != jObjUserId && jObjUserId.has("userId")) {
 				nUserId = jObjUserId.getInt("userId");
-				
+
 			}
 
 			if (nUserId > 0)
-				More.webTracker(request, "User registeration success ", "Email: " + strEmail + " UserId: " + String.valueOf(nUserId));
+				More.webTracker(request, "User registeration success ",
+						"Email: " + strEmail + " UserId: " + String.valueOf(nUserId));
 			else {
 				More.webTracker(request, "User registeration failed, error: no response from server ", strResult);
 			}
@@ -103,7 +108,7 @@
 	    }
 	    else
 	    {
-		out.println(strResult);
+			out.println(strResult);
 	    }
 	%>
 </body>

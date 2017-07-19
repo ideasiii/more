@@ -46,14 +46,13 @@
 		
 		if (null != rMethod && rMethod.equals("GET")) {
 		    response.sendRedirect("/more/home/console/error.jsp");
+		    
+		    
 		}
 	
 				final String strEmail = request.getParameter("inputEmail");
 				final String strPassword = request.getParameter("inputPassword");
 				boolean bAuthResult = false;
-
-				/** Web Tracker **/
-				More.webTracker(request, "load progress page", null);
 
 				/** MD5 hash **/
 				More more = new More();
@@ -123,6 +122,7 @@
 							session.setAttribute("Email", strEmail);
 							session.setAttribute("Group Level", groupLevel);
 							session.setAttribute("Client ID", strClientId);
+							session.setAttribute("Token", strAToken);
 
 						}
 
