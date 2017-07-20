@@ -52,11 +52,7 @@ final String strMessage = request.getParameter("message");
 				<h1>Error !</h1>
 			</div>
 			<p class="lead text-muted"><%=strMessage%></p>
-			<div class="clearfix"></div>
-			<div class="col-lg-6 col-lg-offset-3">
-				<form action="index.html"></form>
-			</div>
-			<div class="clearfix"></div>
+			
 			<br />
 			<div class="col-lg-6  col-lg-offset-3">
 				<div class="btn-group btn-group-justified">
