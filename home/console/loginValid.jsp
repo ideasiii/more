@@ -25,9 +25,11 @@
 
 		if (200 == nCode)
 		{
-
+		    More.webTracker(request, "Validate token", "token: " + strTokenValid);
 		    bLoginedValid = true;
 
+		    Cookie cCode = new Cookie("status", String.valueOf(nCode));
+		    response.addCookie(cCode);
 		}
 		else
 		{
@@ -42,12 +44,51 @@
 		    {
 			strStatus = jObjMessage.getString("status");
 		    }
-		    
+
 		    if (401 == nCode)
 		    {
+			More.webTracker(request, "Token verification failed : " + strStatus + nCode, strMessage + " Token: " + strTokenValid);
+
+			Cookie cCode = new Cookie("status", String.valueOf(nCode));
+			Cookie cErrorMessage = new Cookie("message", strMessage);
+			response.addCookie(cCode);
+			response.addCookie(cErrorMessage);
+
+			if (!pageName.contains("login.jsp"))
+			{
+			    response.sendRedirect("/more/home/console/login.jsp");
+			}
 
 		    }
+		    else
+		    {
 
+			if (400 == nCode)
+			{
+			    More.webTracker(request, "Token verification failed : " + strStatus + nCode, strMessage + " Token: " + strTokenValid);
+
+			    Cookie cCode = new Cookie("status", String.valueOf(nCode));
+			    Cookie cErrorMessage = new Cookie("message", strMessage);
+			    response.addCookie(cCode);
+			    response.addCookie(cErrorMessage);
+
+			    if (!pageName.contains("login.jsp"))
+			    {
+				response.sendRedirect("/more/home/console/login.jsp");
+			    }
+
+			}
+			else
+			{
+
+			    More.webTracker(request, "Token verification error: " + strStatus + nCode, strMessage + " Token: " + strTokenValid);
+			    if (!pageName.contains("login.jsp"))
+			    {
+				response.sendRedirect("/more/home/console/login.jsp");
+			    }
+
+			}
+		    }
 		}
 
     }
