@@ -1,6 +1,4 @@
 <%@ page import="more.*"%>
-<%@ page import="sdk.ideas.HttpsClient.*"%>
-<%@ page import="sdk.ideas.HttpsClient"%>
 <%@ page import="org.json.JSONObject"%>
 <%
     String strEmailValid = (String) session.getAttribute("Email");
@@ -18,7 +16,7 @@
 		HttpsClient httpsClient = new HttpsClient();
 		String strURL = httpsURL + "?" + httpsClient.UrlEncode("token", strTokenValid, true);
 
-		Response respData = new Response();
+		HttpsClient.Response respData = new HttpsClient.Response();
 		String strResult = httpsClient.sendGet(strURL, respData);
 		int nCode = respData.mnCode;
 		//String strMessage = respData.mstrContent;

@@ -3,8 +3,6 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="more.*"%>
-<%@ page import="sdk.ideas.HttpsClient"%>
-<%@ page import="sdk.ideas.HttpsClient.*"%>
 <%@ page import="org.json.JSONObject"%>
 
 <%
@@ -21,7 +19,7 @@
     HttpsClient httpsClient = new HttpsClient();
     String strURL = httpsURL + "?" + httpsClient.UrlEncode("email", strEmail, true);
 
-    Response respData = new Response();
+    HttpsClient.Response respData = new HttpsClient.Response();
     String strResult = httpsClient.sendGet(strURL, respData);
     int nCode = respData.mnCode;
     //String strMessage = respData.mstrContent;

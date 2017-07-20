@@ -33,6 +33,29 @@
 		alert("User is not verified, please contact us. \n");
 		location.replace("login.jsp");
 	}
+
+	
+function post(path, params, method) {
+    method = method || "post"; 
+
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
 </script>
 
 </head>
@@ -45,9 +68,12 @@
 		More.webTracker(request, "request method", rMethod);
 		
 		if (null != rMethod && rMethod.equals("GET")) {
-		    response.sendRedirect("/more/home/console/error.jsp");
 		    
-		    
+			%>
+			<script>
+			post('error.jsp', {message: 'User data should be submitted by the POST method instead of GET method.'});
+			</script>
+			<%
 		}
 	
 				final String strEmail = request.getParameter("inputEmail");
