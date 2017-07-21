@@ -39,23 +39,34 @@
 
 <%
 
-final String strMessage = request.getParameter("message");
+ String strMessage = request.getParameter("message");
+ int nErrorCode = response.getStatus();
+ String strErrorCode = null;
 
-//out.println(strAToken);
+	if (200 == nErrorCode){
+	    strErrorCode = "";
+	}
+	else
+	{
+	    strErrorCode = Integer.toString(nErrorCode);
+	}
 
+if (null == strMessage)
+    strMessage = "Oooops";
 %>
 
 	<div class="container">
 		<div class="col-lg-8 col-lg-offset-2 text-center"
-			style="padding: 8% 30%;">
+			style="padding: 8% 22%;">
 			<div class="logo">
-				<h1>Error !</h1>
+				<h1>Error <span><%=strErrorCode%></span> ! </h1>
 			</div>
+			
 			<p class="lead text-muted"><%=strMessage%></p>
 			
 			<br />
 			<div class="col-lg-6  col-lg-offset-3">
-				<div class="btn-group btn-group-justified">
+				<div class="btn-group btn-group-justified" style="padding: 0 15%;">
 					<a href="/more/home/console/home.jsp" class="btn btn-success">Return
 						MORE Website</a>
 				</div>

@@ -66,7 +66,7 @@
 				/** Web Tracker **/
 				More.webTracker(request, "request method", rMethod);
 
-				if (null != rMethod && rMethod.equals("GET")) {
+				if (null != rMethod && !rMethod.equals("POST")) {
 	%>
 	<script>
 		post(
