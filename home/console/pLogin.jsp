@@ -72,7 +72,7 @@
 		post(
 				'error.jsp',
 				{
-					message : 'User data should be submitted by the POST method instead of GET method.'
+					message : '1'
 				});
 	</script>
 	<%

@@ -28,11 +28,6 @@
 <link rel="stylesheet" href="/more/css/error.css" />
 <!--END PAGE LEVEL STYLES -->
 
-<!-- Javascript -->
-<script type="text/javascript">
-
-
-</script>
 
 </head>
 <body>
@@ -42,17 +37,29 @@
  String strMessage = request.getParameter("message");
  int nErrorCode = response.getStatus();
  String strErrorCode = null;
+ String strShowMessage = null;
 
-	if (200 == nErrorCode){
-	    strErrorCode = "";
-	}
-	else
-	{
-	    strErrorCode = Integer.toString(nErrorCode);
-	}
+if (200 == nErrorCode){
+    strErrorCode = "";
+}
+else
+{
+    strErrorCode = Integer.toString(nErrorCode);
+}
 
-if (null == strMessage)
+if (null == strMessage || strMessage.length() == 0)
     strMessage = "Oooops";
+else 
+	switch (strMessage.charAt(0))
+	{
+	case '1': 
+	    strShowMessage = "User data should be submitted by the POST method instead of GET method.";
+		break;
+	default:
+	    strMessage = "Oooops";
+	    break;
+	}
+
 %>
 
 	<div class="container">
@@ -62,7 +69,7 @@ if (null == strMessage)
 				<h1>Error <span><%=strErrorCode%></span> ! </h1>
 			</div>
 			
-			<p class="lead text-muted"><%=strMessage%></p>
+			<p class="lead text-muted"><%=strShowMessage%></p>
 			
 			<br />
 			<div class="col-lg-6  col-lg-offset-3">
