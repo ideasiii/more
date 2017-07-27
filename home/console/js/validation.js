@@ -56,25 +56,63 @@ function checkAccountListData(formName) {
 	return false;
 }
 
+
+function post(path, params, method) {
+	method = method || "post";
+alert(123456);
+	var form = document.createElement("form");
+	form.setAttribute("method", method);
+	form.setAttribute("action", path);
+
+	for ( var key in params) {
+		if (params.hasOwnProperty(key)) {
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", key);
+			hiddenField.setAttribute("value", params[key]);
+
+			form.appendChild(hiddenField);
+		}
+	}
+
+	document.body.appendChild(form);
+	form.submit();
+}
+
 function checkLoginData(formName){
 	
 	var form = document.getElementById(formName);
+	var account = form.inputEmail.value;
+	var pw = form.inputPassword.value;
 	var errMsg = '';
 
 	
-	if (Trim(form.inputEmail.value) == '')
+	if (Trim(account) == '')
 		errMsg += "E-mail account is required !!\n";
 	
-	if (Trim(form.inputPassword.value) == '')
+	if (Trim(pw) == '')
 		errMsg += "Password is required !!\n";
-	
-	
+
 	if (errMsg == '') {
-		form.submit();
+		
+		var loginData = account + "\n" + pw;
+		
+		
+		
+		
+		post('pLogin.jsp',{loginToken : loginData});
 		return true;
 	}
+	
 	alert(errMsg);
 	return false;
 }
+
+
+
+
+
+
+
 
 
