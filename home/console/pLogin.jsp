@@ -58,16 +58,16 @@
 	    }
 				if (null != rMethod && rMethod.equals("POST")) {
 
-				 //   final String strEmail = request.getParameter("inputEmail");
-				//	final String strPassword = request.getParameter("inputPassword");
+				  final String strEmail = request.getParameter("inputEmail");
+					final String strPassword = request.getParameter("inputPassword");
 				    
-					  final String strLoginToken = request.getParameter("loginToken");
-					    String[] parts = strLoginToken.split("\n");
+				//	  final String strLoginToken = request.getParameter("loginToken");
+				//	    String[] parts = strLoginToken.split("\n");
 					    
-						final String strEmail = parts[0];   
-						final String strPassword = parts[1];
+				//		final String strEmail = parts[0];   
+				//		final String strPassword = parts[1];
 						
-						More.webTracker(request, "test", "email : " + strEmail + " pw : " + strPassword);
+				//		More.webTracker(request, "test", "email : " + strEmail + " pw : " + strPassword);
 				  
 					
 					
