@@ -4,6 +4,7 @@
 <%@ page import="more.*"%>
 <%@ page import="org.json.JSONObject"%>
 <%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.util.*"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -58,16 +59,21 @@
 	    }
 				if (null != rMethod && rMethod.equals("POST")) {
 
-				  final String strEmail = request.getParameter("inputEmail");
-					final String strPassword = request.getParameter("inputPassword");
+			//	  final String strEmail = request.getParameter("inputEmail");
+			//		final String strPassword = request.getParameter("inputPassword");
 				    
-				//	  final String strLoginToken = request.getParameter("loginToken");
-				//	    String[] parts = strLoginToken.split("\n");
+					   String strTokenEncoded = request.getParameter("encoded");
+					
+						final Base64.Decoder decoder = Base64.getDecoder();
+					  final String strLoginToken = new String(decoder.decode(strTokenEncoded), "UTF-8");
+				    String[] parts = strLoginToken.split("\r\n");
 					    
-				//		final String strEmail = parts[0];   
-				//		final String strPassword = parts[1];
+						final String strEmail = parts[0];   
+						final String strPassword = parts[1];
 						
-				//		More.webTracker(request, "test", "email : " + strEmail + " pw : " + strPassword);
+						Logs.showTrace("******************email : " + strEmail + " pw : " + strPassword);
+						System.out.println("******************email : " + strEmail + " pw : " + strPassword);
+					More.webTracker(request, "test", "email : " + strEmail + " pw : " + strPassword);
 				  
 					
 					
