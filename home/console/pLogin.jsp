@@ -62,10 +62,17 @@
 			//	  final String strEmail = request.getParameter("inputEmail");
 			//		final String strPassword = request.getParameter("inputPassword");
 				    
-					   String strTokenEncoded = request.getParameter("encoded");
+					   String strTokenEncoded = request.getParameter("loginToken");
 					
-						final Base64.Decoder decoder = Base64.getDecoder();
-					  final String strLoginToken = new String(decoder.decode(strTokenEncoded), "UTF-8");
+					   System.out.println(strTokenEncoded);
+					   Logs.showTrace("******************encoded : " + strTokenEncoded + " **********************" );
+					   
+						 Base64.Decoder decoder = Base64.getDecoder();
+					 byte[] decodedByte = decoder.decode(strTokenEncoded);
+						 final String strLoginToken = new String(decodedByte);
+				
+					 // final String strLoginToken = new String(decoder.decode(strTokenEncoded), "UTF-8");
+					 
 				    String[] parts = strLoginToken.split("\r\n");
 					    
 						final String strEmail = parts[0];   
