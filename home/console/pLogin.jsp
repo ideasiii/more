@@ -34,7 +34,6 @@
 		alert("User is not verified, please contact us. \n");
 		location.replace("login.jsp");
 	}
-
 </script>
 
 </head>
@@ -49,133 +48,124 @@
 				if (null != rMethod && !rMethod.equals("POST")) {
 	%>
 	<script>
-		post(
-				'error.jsp',
-				{
-					message : '1'
-				});
+		post('error.jsp', {
+			message : '1'
+		});
 	</script>
 	<%
 	    }
 				if (null != rMethod && rMethod.equals("POST")) {
 
-			//	  final String strEmail = request.getParameter("inputEmail");
-			//		final String strPassword = request.getParameter("inputPassword");
-				    
-					   String strTokenEncoded = request.getParameter("loginToken");
-					
-					   System.out.println(strTokenEncoded);
-					   Logs.showTrace("******************encoded : " + strTokenEncoded + " **********************" );
-					   
-						 Base64.Decoder decoder = Base64.getDecoder();
-					 byte[] decodedByte = decoder.decode(strTokenEncoded);
-						 final String strLoginToken = new String(decodedByte);
-				
-					 // final String strLoginToken = new String(decoder.decode(strTokenEncoded), "UTF-8");
-					 
-				    String[] parts = strLoginToken.split("\r\n");
-					    
-						final String strEmail = parts[0];   
+					//	  final String strEmail = request.getParameter("inputEmail");
+					//		final String strPassword = request.getParameter("inputPassword");
+
+					String strTokenEncoded = request.getParameter("loginToken");
+					Logs.showTrace("******************encoded : " + strTokenEncoded);
+
+					if (null != strTokenEncoded) {
+
+						Base64.Decoder decoder = Base64.getDecoder();
+						byte[] decodedByte = decoder.decode(strTokenEncoded);
+						final String strLoginToken = new String(decodedByte);
+
+						String[] parts = strLoginToken.split("\r\n");
+						final String strEmail = parts[0];
 						final String strPassword = parts[1];
-						
-						Logs.showTrace("******************email : " + strEmail + " pw : " + strPassword);
-						System.out.println("******************email : " + strEmail + " pw : " + strPassword);
-					More.webTracker(request, "test", "email : " + strEmail + " pw : " + strPassword);
-				  
-					
-					
-					boolean bAuthResult = false;
 
-					/** MD5 hash **/
-					More more = new More();
-					String hash = more.calcMD5(strPassword);
-					String strHashedPassword = more.calcMD5("$1$MoREKey" + hash);
+						Logs.showTrace("******************email : " + strEmail);
 
-					String httpsURL = "https://ser.kong.srm.pw/dashboard/token/client-id";
+						boolean bAuthResult = false;
 
-					JSONObject jobj = new JSONObject();
-					jobj.put("email", strEmail);
-					jobj.put("hashedPassword", strHashedPassword);
+						/** MD5 hash **/
+						More more = new More();
+						String hash = more.calcMD5(strPassword);
+						String strHashedPassword = more.calcMD5("$1$MoREKey" + hash);
 
-					HttpsClient httpsClient = new HttpsClient();
-					String strResult = httpsClient.sendPost(httpsURL, jobj.toString());
+						String httpsURL = "https://ser.kong.srm.pw/dashboard/token/client-id";
 
-					JSONObject jObjLoginInput = new JSONObject(strResult.trim());
-
-					int nUserId = 0;
-					int nUserId2 = 0;
-					String strAToken = null;
-					String strClientId = null;
-					String strStatus = null;
-					String strMessage = null;
-
-					if (null != jObjLoginInput && jObjLoginInput.has("userId")) {
-						nUserId = jObjLoginInput.getInt("userId");
-					}
-					if (null != jObjLoginInput && jObjLoginInput.has("clientId")) {
-						strClientId = jObjLoginInput.getString("clientId");
-					}
-
-					if (0 < nUserId) {
-						httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize";
-
-						jobj = new JSONObject();
+						JSONObject jobj = new JSONObject();
 						jobj.put("email", strEmail);
-						jobj.put("clientId", strClientId);
+						jobj.put("hashedPassword", strHashedPassword);
 
-						httpsClient = new HttpsClient();
-						String strAuthResult = httpsClient.sendPost(httpsURL, jobj.toString());
+						HttpsClient httpsClient = new HttpsClient();
+						String strResult = httpsClient.sendPost(httpsURL, jobj.toString());
 
-						JSONObject jObjAuth = new JSONObject(strAuthResult);
+						JSONObject jObjLoginInput = new JSONObject(strResult.trim());
 
-						if (null != jObjAuth && jObjAuth.has("accessToken")) {
-							strAToken = jObjAuth.getString("accessToken");
+						int nUserId = 0;
+						int nUserId2 = 0;
+						String strAToken = null;
+						String strClientId = null;
+						String strStatus = null;
+						String strMessage = null;
+
+						if (null != jObjLoginInput && jObjLoginInput.has("userId")) {
+							nUserId = jObjLoginInput.getInt("userId");
+						}
+						if (null != jObjLoginInput && jObjLoginInput.has("clientId")) {
+							strClientId = jObjLoginInput.getString("clientId");
 						}
 
-						if (null != jObjAuth && jObjAuth.has("userId")) {
-							nUserId2 = jObjAuth.getInt("userId");
-						}
-						if (null != strAToken && 0 < nUserId2) {
-							bAuthResult = true;
-							More.webTracker(request, "login success User ID: " + nUserId2,
-									"Email: " + strEmail + "; Access Token: " + strAToken);
+						if (0 < nUserId) {
+							httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize";
 
-							Cookie cEmail = new Cookie("email", strEmail);
-							response.addCookie(cEmail);
+							jobj = new JSONObject();
+							jobj.put("email", strEmail);
+							jobj.put("clientId", strClientId);
 
-							More.MemberData memberData = new More.MemberData();
-							int nCount = more.queryMember(request, strEmail, memberData);
-							more = null;
+							httpsClient = new HttpsClient();
+							String strAuthResult = httpsClient.sendPost(httpsURL, jobj.toString());
 
-							Integer groupLevel = new Integer(memberData.member_group);
+							JSONObject jObjAuth = new JSONObject(strAuthResult);
 
-							if (0 < nCount) {
-
-								session.setAttribute("Email", strEmail);
-								session.setAttribute("Group Level", groupLevel);
-								session.setAttribute("Client ID", strClientId);
-								session.setAttribute("Token", strAToken);
-
+							if (null != jObjAuth && jObjAuth.has("accessToken")) {
+								strAToken = jObjAuth.getString("accessToken");
 							}
 
-						} else {
-
-							if (null != jObjAuth && jObjAuth.has("status") && jObjAuth.has("message")) {
-								strStatus = jObjAuth.getString("status");
-								strMessage = jObjAuth.getString("message");
+							if (null != jObjAuth && jObjAuth.has("userId")) {
+								nUserId2 = jObjAuth.getInt("userId");
 							}
+							if (null != strAToken && 0 < nUserId2) {
+								bAuthResult = true;
+								More.webTracker(request, "login success User ID: " + nUserId2,
+										"Email: " + strEmail + "; Access Token: " + strAToken);
 
-							More.webTracker(request, "Login authorize failed : " + strStatus,
-									strMessage + " Email: " + strEmail);
+								Cookie cEmail = new Cookie("email", strEmail);
+								response.addCookie(cEmail);
 
-							Cookie cEmail = new Cookie("email", URLEncoder.encode(strEmail, "UTF-8"));
-							Cookie cStatus = new Cookie("status", URLEncoder.encode(strStatus, "UTF-8"));
-							Cookie cMessage = new Cookie("message", URLEncoder.encode(strMessage, "UTF-8"));
-							response.addCookie(cEmail);
-							response.addCookie(cStatus);
-							response.addCookie(cMessage);
+								More.MemberData memberData = new More.MemberData();
+								int nCount = more.queryMember(request, strEmail, memberData);
+								more = null;
 
-							if (null != strMessage && strMessage.equals("User is not verified.")) {
+								Integer groupLevel = new Integer(memberData.member_group);
+
+								if (0 < nCount) {
+
+									session.setAttribute("Email", strEmail);
+									session.setAttribute("Group Level", groupLevel);
+									session.setAttribute("Client ID", strClientId);
+									session.setAttribute("Token", strAToken);
+
+								}
+
+							} else {
+
+								if (null != jObjAuth && jObjAuth.has("status") && jObjAuth.has("message")) {
+									strStatus = jObjAuth.getString("status");
+									strMessage = jObjAuth.getString("message");
+								}
+
+								More.webTracker(request, "Login authorize failed : " + strStatus,
+										strMessage + " Email: " + strEmail);
+
+								Cookie cEmail = new Cookie("email", URLEncoder.encode(strEmail, "UTF-8"));
+								Cookie cStatus = new Cookie("status", URLEncoder.encode(strStatus, "UTF-8"));
+								Cookie cMessage = new Cookie("message", URLEncoder.encode(strMessage, "UTF-8"));
+								response.addCookie(cEmail);
+								response.addCookie(cStatus);
+								response.addCookie(cMessage);
+
+								if (null != strMessage && strMessage.equals("User is not verified.")) {
 	%>
 	<script type="text/javascript">
 		setTimeout('jumpLoginPageUnverified()', 1);
@@ -189,21 +179,21 @@
 	<%
 	    }
 
-						}
-					} else {
+							}
+						} else {
 
-						strStatus = jObjLoginInput.getString("status");
-						strMessage = jObjLoginInput.getString("message");
+							strStatus = jObjLoginInput.getString("status");
+							strMessage = jObjLoginInput.getString("message");
 
-						More.webTracker(request, "Login failed : " + strStatus, strMessage + " Email: " + strEmail);
+							More.webTracker(request, "Login failed : " + strStatus, strMessage + " Email: " + strEmail);
 
-						Cookie cEmail = new Cookie("email", URLEncoder.encode(strEmail, "UTF-8"));
-						Cookie cStatus = new Cookie("status", URLEncoder.encode(strStatus, "UTF-8"));
-						Cookie cMessage = new Cookie("message", URLEncoder.encode(strMessage, "UTF-8"));
-						response.addCookie(cEmail);
-						response.addCookie(cEmail);
-						response.addCookie(cStatus);
-						response.addCookie(cMessage);
+							Cookie cEmail = new Cookie("email", URLEncoder.encode(strEmail, "UTF-8"));
+							Cookie cStatus = new Cookie("status", URLEncoder.encode(strStatus, "UTF-8"));
+							Cookie cMessage = new Cookie("message", URLEncoder.encode(strMessage, "UTF-8"));
+							response.addCookie(cEmail);
+							response.addCookie(cEmail);
+							response.addCookie(cStatus);
+							response.addCookie(cMessage);
 	%>
 	<script type="text/javascript">
 		setTimeout('jumpLoginPage()', 1);
@@ -211,7 +201,7 @@
 	<%
 	    }
 
-					if (bAuthResult == true) {
+						if (bAuthResult == true) {
 	%>
 	<form action="home.jsp" method="post" name="FormHome" id="FormHome">
 		<input name="<%=More.Common.MEMBER_EMAIL%>" type="hidden"
@@ -222,6 +212,7 @@
 	</script>
 	<%
 	    }
+			}
 	    }
 	%>
 </body>
