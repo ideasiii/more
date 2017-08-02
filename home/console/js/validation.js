@@ -96,10 +96,8 @@ function checkLoginData(formName){
 	if (errMsg == '') {
 		
 		var loginData = account + "\r\n" + pw;
-		alert(123);
 		
 		var encoded = btoa(loginData)
-		alert(456);
 		
 		post('pLogin.jsp',{loginToken : encoded});
 		return true;

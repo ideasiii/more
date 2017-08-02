@@ -47,10 +47,10 @@ public class More
 	final public static String UPLOAD_FILE_PATH = "/uploadfile";
 	final public static String DB_PATH_IDEAS = "/data/sqlite/ideas.db";
 	final public static String DB_PATH_MORE_MEMBER = "/data/sqlite/more_member.db";
-	final public static String PATH_DOWNLOAD_LIB_ANDROID = "/ideas/sdk/download/libs/android";
-	final public static String PATH_DOWNLOAD_LIB_IOS = "/ideas/sdk/download/libs/ios";
-	final public static String PATH_DOWNLOAD_DOC_ANDROID = "/ideas/sdk/download/doc/android";
-	final public static String PATH_DOWNLOAD_DOC_IOS = "/ideas/sdk/download/doc/ios";
+	final public static String PATH_DOWNLOAD_LIB_ANDROID = "/more/sdk/download/libs/android";
+	final public static String PATH_DOWNLOAD_LIB_IOS = "/more/sdk/download/libs/ios";
+	final public static String PATH_DOWNLOAD_DOC_ANDROID = "/more/sdk/download/doc/android";
+	final public static String PATH_DOWNLOAD_DOC_IOS = "/more/sdk/download/doc/ios";
 
 	/** sqlite Common **/
 	final public static String CREATE_DATE = "create_date";

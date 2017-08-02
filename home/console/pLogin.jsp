@@ -62,7 +62,7 @@
 					String strTokenEncoded = request.getParameter("loginToken");
 					Logs.showTrace("******************encoded : " + strTokenEncoded);
 
-					if (null != strTokenEncoded) {
+					//if (null != strTokenEncoded) 
 
 						Base64.Decoder decoder = Base64.getDecoder();
 						byte[] decodedByte = decoder.decode(strTokenEncoded);
@@ -213,7 +213,7 @@
 	<%
 	    }
 			}
-	    }
+	    
 	%>
 </body>
 </html>
