@@ -3,7 +3,6 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="more.*"%>
-<%@page import="sdk.ideas.HttpsClient"%>
 <%@ page import="org.json.JSONObject"%>
 
 <%
