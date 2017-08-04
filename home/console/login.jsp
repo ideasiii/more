@@ -65,7 +65,7 @@
 								<div class="tab-content" style="border: 0; padding: 0;">
 								
 									<div id="login" class="tab-pane active">
-										<form id="formLogin" name="formLogin" class="form-signin">
+										<form method="post" id="formLogin" name="formLogin" class="form-signin">
 											<h4 class="text-center">Enter Your E-mail and Password</h4>
 											<input id="inputEmail" name="inputEmail" type="text"
 												placeholder="E-mail Account" class="form-control" /> <input
