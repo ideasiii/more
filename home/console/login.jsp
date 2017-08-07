@@ -3,12 +3,17 @@
 <%@ page import="more.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
+<%@page import="java.util.UUID"%> 
 
 <%
 			final String strHostUrl = request.getRequestURL().toString();
 
+
 			/** Web Tracker **/
 			More.webTracker(request, "load page", null);
+			
+			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+			request.getSession().setAttribute("randTxt",uuid);
 %>
 <!DOCTYPE html>
 <html>
@@ -66,6 +71,7 @@
 								
 									<div id="login" class="tab-pane active">
 										<form method="post" id="formLogin" name="formLogin" class="form-signin">
+										<input type="hidden" name="randSession"  value = "<%=request.getSession().getAttribute("randTxt")%>" />  
 											<h4 class="text-center">Enter Your E-mail and Password</h4>
 											<input id="inputEmail" name="inputEmail" type="text"
 												placeholder="E-mail Account" class="form-control" /> <input
