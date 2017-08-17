@@ -5,7 +5,7 @@
 <%@ page import="java.util.Iterator"%>
 <%@ page import="more.*"%>
 
-<%@include file="../../home/console/loginValid.jsp"%>
+<%@include file="../../console/loginValid.jsp"%>
 
 <%
     final String strContextPath = request.getContextPath();
@@ -51,7 +51,7 @@
 	<!-- MAIN WRAPPER -->
 	<div id="wrap">
 
-		<%@include file="../../home/console/menu.jsp"%>
+		<%@include file="../../console/menu.jsp"%>
 		<%
 		    ArrayList<More.AppData> listAppField = new ArrayList<More.AppData>();
 		    More.AppData appData = null;
@@ -390,7 +390,7 @@
 	</div>
 	<!--END MAIN WRAPPER -->
 
-			<%@include file="../../home/console/footer.jsp"%>
+			<%@include file="../../console/footer.jsp"%>
 
 
 	<!-- GLOBAL SCRIPTS -->

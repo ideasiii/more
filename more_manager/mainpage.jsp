@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="more.*"%>
 
-<%@include file="../../home/console/loginValid.jsp"%>
+<%@include file="../../console/loginValid.jsp"%>
 
 <!DOCTYPE html>
 <html>

@@ -14,7 +14,7 @@
 <%@ page import="java.util.Arrays"%>
 <%@ page import="java.sql.*"%>
 
-<%@include file="../../home/console/loginValid.jsp"%>
+<%@include file="../../console/loginValid.jsp"%>
 
 <%
     final String strHostUrl = request.getRequestURL().toString();

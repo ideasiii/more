@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="more.*"%>
 
-<%@include file="../../home/console/loginValid.jsp"%>
+<%@include file="../../console/loginValid.jsp"%>
 
 <%
     final String strHostUrl = request.getRequestURL().toString();
@@ -43,7 +43,7 @@
 	<!-- MAIN WRAPPER -->
 	<div id="wrap">
 
-		<%@include file="../../home/console/menu.jsp"%>
+		<%@include file="../../console/menu.jsp"%>
 
 
 		<!--PAGE CONTENT -->
@@ -189,7 +189,7 @@
 	</div>
 	<!--END MAIN WRAPPER -->
 
-	<%@include file="../../home/console/footer.jsp"%>
+	<%@include file="../../console/footer.jsp"%>
 
 
 	<!-- GLOBAL SCRIPTS -->
