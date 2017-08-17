@@ -734,7 +734,7 @@ public class More
 	if (null == strEvent)
 	    strEvent = request.getRequestURI();
 	mapData.put("event", strEvent);
-	insert("127.0.0.1", 27017, "website", "more", mapData);
+	insert("175.98.119.121", 27017, "website", "more", mapData);
 	mapData.clear();
     }
 
