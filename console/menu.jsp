@@ -23,7 +23,7 @@
 		<!-- LOGO SECTION -->
 		<header>
 			<div class="header-angle navbar-brand">
-				<a href="/more/home/console/home.jsp" class="navbar-brand"> <img
+				<a href="/more/console/home.jsp" class="navbar-brand"> <img
 					class="logo" height="80"
 					src="/assets/img/more_logo_white_board_sm.png" alt="" />
 				</a>
@@ -39,7 +39,7 @@
 					    {
 					%>
 					<li class="super-header-li"><a class="super-header-a"
-						href="/more/home/console/logout.jsp">Logout</a></li>
+						href="/more/console/logout.jsp">Logout</a></li>
 					<%
 					    if (bManager == true)
 							{
@@ -54,9 +54,9 @@
 					    {
 					%>
 					<li class="super-header-li"><a class="super-header-a"
-						href="/more/home/console/login.jsp">Login</a></li>
+						href="/more/console/login.jsp">Login</a></li>
 					<li class="super-header-li"><a class="super-header-a"
-						href="/more/home/console/signup.jsp">Sign Up</a></li>
+						href="/more/console/signup.jsp">Sign Up</a></li>
 					<%
 					    }
 					%>
@@ -73,7 +73,7 @@
 									PLATFORM </a>
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li"><a
-										href="/more/home/console/pTaskComposer.jsp">TASK COMPOSER</a>
+										href="/more/console/pTaskComposer.jsp">TASK COMPOSER</a>
 									</li>
 									<li class="dropdown-menu-li"><a
 										href="testpost.jsp">MORE MDM</a></li>
@@ -84,10 +84,10 @@
 									DASHBOARD </a>
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li"><a
-										href="/more/Dashboard/trackerdata_query.jsp">TRACKER DATA</a>
+										href="/more/dashboard/trackerdata_query.jsp">TRACKER DATA</a>
 									</li>
 									<li class="dropdown-menu-li"><a
-										href="/more/Dashboard/tracker_analysis.jsp">ANALYSIS</a></li>
+										href="/more/dashboard/tracker_analysis.jsp">ANALYSIS</a></li>
 
 								</ul></li>
 
@@ -98,7 +98,7 @@
 										href="testpost.jsp"
 										target="_blank">MORE API</a></li>
 									<li class="dropdown-menu-li" id="3level-sdk"><a
-										href="/more/home/console/moreSDKandroid.jsp">MORE SDK</a></li>
+										href="/more/console/moreSDKandroid.jsp">MORE SDK</a></li>
 
 								</ul></li>
 
@@ -106,10 +106,10 @@
 									DEVELOPER </a>
 								<ul class="dropdown-menu-container">
 									<li class="dropdown-menu-li"><a
-										href="/more/AppRegistration/console/app_registration.jsp">APP
+										href="/more/app/app_registration.jsp">APP
 											REGISTRATION</a></li>
 									<li class="dropdown-menu-li"><a
-										href="/more/AppRegistration/console/app_list.jsp">APPLICATIONS</a></li>
+										href="/more/app/app_list.jsp">APPLICATIONS</a></li>
 
 								</ul></li>
 

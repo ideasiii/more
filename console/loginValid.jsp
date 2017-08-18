@@ -54,7 +54,7 @@
 
 			if (!pageName.contains("login.jsp"))
 			{
-			    response.sendRedirect("/more/home/console/login.jsp");
+			    response.sendRedirect("/more/console/login.jsp");
 			}
 
 		    }
@@ -72,7 +72,7 @@
 
 			    if (!pageName.contains("login.jsp"))
 			    {
-				response.sendRedirect("/more/home/console/login.jsp");
+				response.sendRedirect("/more/console/login.jsp");
 			    }
 
 			}
@@ -82,7 +82,7 @@
 			    More.webTracker(request, "Token verification error: " + strStatus + nCode, strMessage + " Token: " + strTokenValid);
 			    if (!pageName.contains("login.jsp"))
 			    {
-				response.sendRedirect("/more/home/console/login.jsp");
+				response.sendRedirect("/more/console/login.jsp");
 			    }
 
 			}
@@ -95,7 +95,7 @@
 
 		if (!pageName.contains("login.jsp"))
 		{
-		    response.sendRedirect("/more/home/console/login.jsp");
+		    response.sendRedirect("/more/console/login.jsp");
 		}
     }
 %>

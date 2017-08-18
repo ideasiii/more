@@ -15,7 +15,7 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="more.*"%>
 
-<%@include file="../../home/console/loginValid.jsp"%>
+<%@include file="../../console/loginValid.jsp"%>
 <%@include file="tracker_common.jsp"%>
 <%
     request.setCharacterEncoding("UTF-8");
@@ -146,7 +146,7 @@
 <body>
 
 
-	<%@include file="../home/console/menu.jsp"%>
+	<%@include file="../console/menu.jsp"%>
 
 
 	<!--PAGE CONTENT -->
@@ -333,7 +333,7 @@
 	</script>
 	<!--END PAGE LEVEL SCRIPT-->
 	
-			<%@include file="../home/console/footer.jsp"%>
+			<%@include file="../console/footer.jsp"%>
 			
 </body>
 </html>
