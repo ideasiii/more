@@ -74,7 +74,7 @@ else
 			<br />
 			<div class="col-lg-6  col-lg-offset-3">
 				<div class="btn-group btn-group-justified" style="padding: 0 15%;">
-					<a href="/more/home/console/home.jsp" class="btn btn-success">Return
+					<a href="/more/console/home.jsp" class="btn btn-success">Return
 						MORE Website</a>
 				</div>
 

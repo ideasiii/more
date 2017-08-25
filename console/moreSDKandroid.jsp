@@ -34,7 +34,6 @@
 <!-- JavaScript -->
 <script src="js/validation.js"></script>
 
-
 </head>
 
 <body class="padTop53">

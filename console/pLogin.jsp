@@ -6,6 +6,16 @@
 <%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.util.*"%>
 
+<%
+
+/** Web Tracker **/
+More.webTracker(request, "load page", null);
+
+Logs.showTrace("**********************************************");
+
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -108,7 +118,7 @@
 
 						if (0 < nUserId) {
 							httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize";
-
+						
 							jobj = new JSONObject();
 							jobj.put("email", strEmail);
 							jobj.put("clientId", strClientId);
@@ -129,18 +139,22 @@
 								bAuthResult = true;
 								More.webTracker(request, "login success User ID: " + nUserId2,
 										"Email: " + strEmail + "; Access Token: " + strAToken);
-
+								System.out.println("******************login success User ID: " + nUserId2 +
+									", Email: " + strEmail + "; Access Token: " + strAToken);
+								
 								Cookie cEmail = new Cookie("email", strEmail);
 								response.addCookie(cEmail);
 
-								More.MemberData memberData = new More.MemberData();
-								int nCount = more.queryMember(request, strEmail, memberData);
+								More.mMemberData memberData = new More.mMemberData(); 
+								int nCount = more.mQueryMember(request, strEmail, memberData);
 								more = null;
 
-								Integer groupLevel = new Integer(memberData.member_group);
+								System.out.println("******************$$$$$$$$***************nCount:" + nCount);
+								
+								Integer groupLevel = new Integer(memberData.member_level);
 
 								if (0 < nCount) {
-
+									System.out.println("******************%%%%%%%**************");
 									session.setAttribute("Email", strEmail);
 									session.setAttribute("Group Level", groupLevel);
 									session.setAttribute("Client ID", strClientId);

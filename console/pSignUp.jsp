@@ -12,7 +12,8 @@
 			More.webTracker(request, "request method", rMethod);
 
 			if (null != rMethod && rMethod.equals("GET")) {
-				response.sendRedirect("/more/home/console/error.jsp");
+				response.sendRedirect("/more/console/error.jsp");
+				
 			}
 
 			final String strEmail = request.getParameter("inputEmail");
