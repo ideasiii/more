@@ -49,8 +49,8 @@ public class More {
 		final public static String DB_PATH_IDEAS = "/data/sqlite/ideas.db";
 		final public static String DB_PATH_MORE_MEMBER = "/data/sqlite/more_member.db";
 
-		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://localhost:3306/more_member";
-		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://localhost:3306/more";
+		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://175.98.119.121:3306/more_member?useUnicode=true&characterEncoding=UTF-8";
+		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://175.98.119.121:3306/more?useUnicode=true&characterEncoding=UTF-8";
 		final public static String DB_USER = "more";
 		final public static String DB_PASS = "ideas123!";
 
@@ -183,10 +183,15 @@ public class More {
 		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE_MEMBER, Common.DB_USER, Common.DB_PASS);
+			//Logs.showTrace("#################before con");
+			//con = DriverManager.getConnection("jdbc:mysql://175.98.119.121:3306/more_member?useUnicode=true&characterEncoding=UTF-8", "more", "ideas123!");
+			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE_MEMBER,Common.DB_USER,Common.DB_PASS);
+		//	Logs.showTrace("#################after con");
+			
+			if (con.isValid(3))
+			{
 			stat = con.createStatement();
 			rs = stat.executeQuery(strSQL);
-
 			while (rs.next()) {
 				++nCount;
 				memData.member_id = rs.getInt("member_id");
@@ -202,6 +207,10 @@ public class More {
 			rs.close();
 			stat.close();
 			con.close();
+			} else {
+				Logs.showTrace("Connection failed");
+			}
+			
 
 		} catch (SQLException se) {
 			se.printStackTrace();

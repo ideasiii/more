@@ -45,7 +45,7 @@
 							{
 					%>
 					<li class="super-header-li"><a class="super-header-a"
-						href="/more/more_manager/manager/mainpage.jsp" target="_blank"><i
+						href="/more/more_manager/mainpage.jsp" target="_blank"><i
 							class="icon-gear fa-inverse"></i></a></li>
 					<%
 					    }

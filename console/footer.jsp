@@ -15,7 +15,7 @@
 			</dl>
 			<dl class="link_group">
 				<dd class="link">
-					<a href="">Contact Us</a>
+					<a href="/more/console/contactUs.jsp">Contact Us</a>
 				</dd>
 			</dl>
 			<div class="copyright_area">Copyright © 2017 Institute for Information Industry</div>

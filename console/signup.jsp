@@ -179,7 +179,7 @@
 					<!--			<input name="accountList" id="accountList"
 									value="<%--=strAccountV--%>" type="hidden"> -->
 								<input name="agreeVersion" id="agreeVersion"
-									value="P-X-X" type="hidden">
+									value="P-DSI-V4" type="hidden">
 									
 								<div id="wizard">
 									<h2>Agreement</h2>
@@ -188,7 +188,7 @@
 										<p style="text-align: justify; color: gray;">
 											<b>Notification and Letter of Consent for Collection,
 												Processing and Use of Personal Information<br /> <span
-												style="color: #b94a48;">(Version: P-X-X)</span>
+												style="color: #b94a48;">(Version: P-DSI-V4)</span>
 											</b> <br /> <br /> According to the R.O.C. Personal
 											Information Protection Act and the internal
 											policy/regulations of Institute for Information Industry
