@@ -46,7 +46,7 @@
 		<div id="content" style="display: table-row; height: auto;">
 			<div class="inner" style="min-height: 100%; padding: 0;">
 				<div id="intro" class="landscape-bg"
-					style="background-image: url('/assets/img/white-letter.jpeg'); background-size: 100% 100%;
+					style="background-image: url('/assets/img/white-letter.jpg'); background-size: 100% 100%;
     background-repeat: no-repeat; min-height: 100%;">
 
 				

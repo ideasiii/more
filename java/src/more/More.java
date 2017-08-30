@@ -241,6 +241,56 @@ public class More {
 
 	}
 
+	public int mMemberAdd(HttpServletRequest request, final int nMemberId, final String strEmail) {
+		if (!StringUtility.isValid(strEmail)) {
+			return MORE_ERR_INVALID_PARAMETER;
+		}
+
+		String sql = "insert into member(member_id,member_email) values ( ?,?)";
+		Connection con = null;
+		
+		try {
+			mMemberData memData = new mMemberData();
+			int nCount = mQueryMember(request, strEmail, memData);
+			if (0 < nCount)
+				return MORE_ERR_MEMBER_EXIST;
+
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE_MEMBER,Common.DB_USER,Common.DB_PASS);
+
+			PreparedStatement pst = null;
+			pst = con.prepareStatement(sql);
+			int idx = 1;
+			pst.setInt(idx++, nMemberId);
+			pst.setString(idx++, strEmail);
+			pst.executeUpdate();
+			pst.close();
+			con.close();
+
+		} catch (SQLException se) {
+			se.printStackTrace();
+			Logs.showTrace("JDBC failed: "+ se.toString());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			Logs.showTrace("memberAdd failed: "+ e.toString());
+			More.webTracker(request, "memberAdd failed: ", e.toString());
+			return MORE_ERR_EXCEPTION;
+			
+		} finally {
+
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+
+		More.webTracker(request, "memberAdd success: ", sql);
+		Logs.showTrace("memberAdd success: "+ sql);
+		return MORE_ERR_SUCCESS;
+	}
 	
 	
 	

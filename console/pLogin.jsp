@@ -11,8 +11,6 @@
 /** Web Tracker **/
 More.webTracker(request, "load page", null);
 
-Logs.showTrace("**********************************************");
-
 %>
 
 
@@ -70,7 +68,7 @@ Logs.showTrace("**********************************************");
 					//		final String strPassword = request.getParameter("inputPassword");
 
 					String strTokenEncoded = request.getParameter("loginToken");
-					Logs.showTrace("******************encoded : " + strTokenEncoded);
+				//	Logs.showTrace("******************encoded : " + strTokenEncoded);
 
 					//if (null != strTokenEncoded) 
 
@@ -149,17 +147,25 @@ Logs.showTrace("**********************************************");
 								int nCount = more.mQueryMember(request, strEmail, memberData);
 								more = null;
 
-								System.out.println("******************$$$$$$$$***************nCount:" + nCount);
+								//System.out.println("*********************************1. nCount:" + nCount);
+								
+								if (0 == nCount) {
+									
+									 more = new More();
+									int nAddResult = more.mMemberAdd(request, nUserId2, strEmail);  
+									 nCount = more.mQueryMember(request, strEmail, memberData);
+									more = null;
+								}
+								
+								//System.out.println("*********************************2. nCount:" + nCount);
 								
 								Integer groupLevel = new Integer(memberData.member_level);
 
 								if (0 < nCount) {
-									System.out.println("******************%%%%%%%**************");
 									session.setAttribute("Email", strEmail);
 									session.setAttribute("Group Level", groupLevel);
 									session.setAttribute("Client ID", strClientId);
 									session.setAttribute("Token", strAToken);
-
 								}
 
 							} else {
