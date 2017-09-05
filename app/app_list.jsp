@@ -58,11 +58,10 @@
 		    Iterator<More.AppData> itAD = null;
 		    String strAppIconPath = null;
 
-		    sqliteClient sqlite = new sqliteClient();
-		    Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
+		    //sqliteClient sqlite = new sqliteClient();
+		  //  Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
 
-		    int nCount = more.queryApp(request, listAppField, strEmail);
-		    //nCount = 0;
+		    int nCount = more.mQueryApp(request, listAppField, strEmail); 
 		%>
 
 		<!-- HEADER SECTION -->

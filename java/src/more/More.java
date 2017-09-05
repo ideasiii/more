@@ -49,8 +49,8 @@ public class More {
 		final public static String DB_PATH_IDEAS = "/data/sqlite/ideas.db";
 		final public static String DB_PATH_MORE_MEMBER = "/data/sqlite/more_member.db";
 
-		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://175.98.119.121:3306/more_member?useUnicode=true&characterEncoding=UTF-8";
-		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://175.98.119.121:3306/more?useUnicode=true&characterEncoding=UTF-8";
+		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://52.68.108.37:3306/more_member?useUnicode=true&characterEncoding=UTF-8";
+		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://52.68.108.37:3306/more?useUnicode=true&characterEncoding=UTF-8";
 		final public static String DB_USER = "more";
 		final public static String DB_PASS = "ideas123!";
 
@@ -75,6 +75,7 @@ public class More {
 		final public static String MEMBER_AUTH_STATE = "member_auth_state";
 		final public static String MEMBER_GROUP = "member_group";
 		final public static String MEMBER_STATE = "member_state";
+		final public static String MEMBER_LEVEL = "member_level";
 		final public static String START_DATE = "start_date";
 		final public static String END_DATE = "end_date";
 
@@ -156,15 +157,14 @@ public class More {
 		public String app_id;
 		public String app_name;
 		public String app_category;
-		public String app_description;
 		public String app_icon;
 		public String app_os;
 		public String user_account;
-		public String user_token;
 		public String user_name;
 		public String user_email;
 		public String user_phone;
 		public String create_date;
+		public String update_date;
 	}
 
 	public More() {
@@ -225,7 +225,7 @@ public class More {
 			try {
 				if (stat != null)
 					stat.close();
-			} catch (SQLException se2) {
+			} catch (SQLException se) {
 			}
 			try {
 				if (con != null)
@@ -289,6 +289,177 @@ public class More {
 
 		More.webTracker(request, "memberAdd success: ", sql);
 		Logs.showTrace("memberAdd success: "+ sql);
+		return MORE_ERR_SUCCESS;
+	}
+	
+	public int mQuerySdk(HttpServletRequest request, ArrayList<SdkData> listSdk) {
+		int nCount = 0;
+		String strSQL = "select * from sdk order by create_date;";
+		Connection con = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE,Common.DB_USER,Common.DB_PASS);
+
+			if (con.isValid(3))
+			{
+			stat = con.createStatement();
+			rs = stat.executeQuery(strSQL);
+			
+				SdkData sdkData = null;
+				while (rs.next()) {
+					++nCount;
+					sdkData = new SdkData();
+					sdkData.sdk_id = rs.getString("sdk_id");
+					sdkData.sdk_os = rs.getString("sdk_os");
+					sdkData.sdk_owner = rs.getString("sdk_owner");
+					sdkData.sdk_name = rs.getString("sdk_name");
+					sdkData.sdk_desc = rs.getString("sdk_desc");
+					sdkData.sdk_file = rs.getString("sdk_file");
+					sdkData.sdk_doc = rs.getString("sdk_doc");
+					sdkData.sdk_icon = rs.getString("sdk_icon");
+					sdkData.create_date = rs.getString("create_date");
+					listSdk.add(sdkData);
+					sdkData = null;
+				}
+				nCount = listSdk.size();
+			
+			rs.close();
+			stat.close();
+			con.close();
+			} else {
+				Logs.showTrace("Connection failed");
+			}
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			Logs.showTrace("JDBC failed: "+ se.toString());
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			More.webTracker(request, "querySdk failed: ", e.toString());
+			Logs.showTrace("querySdk failed: "+ e.toString());
+		} finally {
+
+			try {
+				if (stat != null)
+					stat.close();
+			} catch (SQLException se) {
+			}
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		More.webTracker(request, "querySdk success: ", strSQL);
+		Logs.showTrace("querySdk success: "+ strSQL);
+		return nCount;
+	}
+	
+	public int mQueryApp(HttpServletRequest request, ArrayList<AppData> listApp, String strUserAccount) {
+		int nCount = 0;
+		String strSQL = "select * from app where user_account = '" + strUserAccount + "' order by create_date;";
+		Connection con = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE,Common.DB_USER,Common.DB_PASS);
+
+			if (con.isValid(3))
+			{
+			stat = con.createStatement();
+			rs = stat.executeQuery(strSQL);
+			
+			AppData appData = null;
+				while (rs.next()) {
+					++nCount;
+					appData = new AppData();
+					appData.app_id = rs.getString("app_id");
+					appData.app_name = rs.getString("app_name");
+					appData.app_category = rs.getString("app_category");
+					appData.app_icon = rs.getString("app_icon");
+					appData.app_os = rs.getString("app_os");
+					appData.user_account = rs.getString("user_account");
+					appData.user_name = rs.getString("user_name");
+					appData.user_email = rs.getString("user_email");
+					appData.user_phone = rs.getString("user_phone");
+					appData.create_date = rs.getString("create_date");
+					appData.update_date = rs.getString("update_date");
+					listApp.add(appData);
+					appData = null;
+				}
+				nCount = listApp.size();
+
+				rs.close();
+				stat.close();
+				con.close();
+				} else {
+					Logs.showTrace("Connection failed");
+				}
+				
+			} catch (SQLException se) {
+				se.printStackTrace();
+				Logs.showTrace("JDBC failed: "+ se.toString());
+				
+			} catch (Exception e) {
+
+				e.printStackTrace();
+				More.webTracker(request, "queryApp failed: ", e.toString());
+				Logs.showTrace("queryApp failed: "+ e.toString());
+			} finally {
+
+				try {
+					if (stat != null)
+						stat.close();
+				} catch (SQLException se) {
+				}
+				try {
+					if (con != null)
+						con.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			More.webTracker(request, "queryApp success: ", strSQL);
+			Logs.showTrace("queryApp success: "+ strSQL);
+			return nCount;
+		}
+	
+	public int mInsertApp(HttpServletRequest request, final String strAppId, final String strAppName,
+			final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserAccount,
+			final String strUserName, final String strUserEmail, final String strUserPhone) {
+		String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_account, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?,?) ;";
+		try {
+			sqliteClient sqlite = new sqliteClient();
+			Connection con = sqlite.getConnection(Common.DB_PATH_IDEAS);
+
+			PreparedStatement pst = null;
+			pst = con.prepareStatement(strSQL);
+			int idx = 1;
+			pst.setString(idx++, strAppId);
+			pst.setString(idx++, strAppName);
+			pst.setString(idx++, strAppCategory);
+			pst.setString(idx++, strAppIcon);
+			pst.setString(idx++, strAppOs);
+			pst.setString(idx++, strUserAccount);
+			pst.setString(idx++, strUserName);
+			pst.setString(idx++, strUserEmail);
+			pst.setString(idx++, strUserPhone);
+			pst.executeUpdate();
+			pst.close();
+		} catch (Exception e) {
+			Logs.showError(e.toString());
+			More.webTracker(request, "insertApp failed: ", e.toString());
+			return MORE_ERR_EXCEPTION;
+		}
+		More.webTracker(request, "insertApp success: ", strSQL);
 		return MORE_ERR_SUCCESS;
 	}
 	

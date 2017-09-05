@@ -45,7 +45,7 @@
 		<%@include file="menu.jsp"%>
 		<%
 		    ArrayList<More.SdkData> listSdk = new ArrayList<More.SdkData>();
-		    int nCount = more.querySdk(request, listSdk);
+		    int nCount = more.mQuerySdk(request, listSdk);
 		%>
 
 		<!--PAGE CONTENT -->
