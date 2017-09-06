@@ -87,7 +87,7 @@
 				Logs.showTrace("*******" + itemUploadFileArray.get(i).getName());
 				Logs.showTrace("*******" + itemUploadFileArray.get(i).getContentType());
 				Logs.showTrace("*******" + itemUploadFileArray.get(i).getFieldName());
-				Logs.showTrace("**********************************************");
+			//	Logs.showTrace("**********************************************");
 			
 				
 				FileItem itemUploadFile = itemUploadFileArray.get(i);
@@ -149,22 +149,19 @@
 			final String strUserEmail = mapData.get(More.Common.USER_EMAIL);
 			final String strUserPhone = mapData.get(More.Common.USER_PHONE);
 			
+			More.webTracker(request, "Insert App Data to Database", "APP ID: " + strAppId + " Member Email: " + strEmail + " Agreement Version: ");
 			Logs.showTrace("Insert App Data to Database, Member Email: " + strEmail);
 			Logs.showTrace("AppIcon: " + strAppIcon);
 			
-			sqliteClient sqlite = new sqliteClient();
-			Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
-			
+			//sqliteClient sqlite = new sqliteClient();
+			//Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
+		
 			
 			mapData.put(More.Common.APP_ID, strAppId);
 			More more = new More();
-			nResult = more.insertApp(request, strAppId, strAppName, strAppCategory, strAppIcon, strAppOs, strEmail, strUserName, strUserEmail, strUserPhone);
+			nResult = more.mInsertApp(request, strAppId, strAppName, strAppCategory, strAppIcon, strAppOs, strEmail, strUserName, strUserEmail, strUserPhone);
 			
-			
-			con.close();
-			sqlite = null;
-		
-	  
+			more = null;
 			}
 	    
 		if (0 < nResult && StringUtility.isValid(strAppId))
@@ -175,6 +172,7 @@
 		{
 		    response.sendRedirect("error.jsp");
 		}
+		
 	    %>
 	
 

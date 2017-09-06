@@ -82,7 +82,7 @@
 												<div
 													style="margin-left: 10px; display: inline-block; text-align: left;">
 													<label class="control-label" style="margin-left: 5px;">App
-														Icon</label> <input name="inputIcon" id="inputIcon" type="file"
+														Icon</label> <input name="inputIcon" id="inputIcon" type="file" maxlength="100"
 														onChange="validateAppIcon(this.value)" />
 												</div>
 
@@ -92,7 +92,7 @@
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Application Name</label> <input
-														class="form-control" name="app_name" style="width: 280px;" />
+														class="form-control" name="app_name" maxlength="20" style="width: 280px;" />
 												</div>
 											</dd>
 
@@ -150,19 +150,19 @@
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Organization</label> <input
-														class="form-control" name="user_name" style="width: 280px;" />
+														class="form-control" name="user_name" maxlength="20" style="width: 280px;" />
 												</div>
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Support E-mail</label> <input
-														class="form-control" name="user_email" style="width: 280px;" />
+														class="form-control" name="user_email" maxlength="50" style="width: 280px;" />
 												</div>
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Phone</label> <input
-														class="form-control" name="user_phone" style="width: 280px;" />
+														class="form-control" name="user_phone" maxlength="20" style="width: 280px;" />
 												</div>
 											</dd>
 										</dl>

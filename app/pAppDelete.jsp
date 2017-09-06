@@ -31,8 +31,8 @@
 		}
 		
 		More more = new More();
-		more.deleteApp(request, strAppId);
-		More.webTracker(request, "Delete APP", "APP ID: " + strAppId);
+		more.mDeleteApp(request, strAppId);  
+		More.webTracker(request, "Delete APP", "APP ID: " + strAppId + " Member Email: " + strEmail);
 		more = null;
 		
 		

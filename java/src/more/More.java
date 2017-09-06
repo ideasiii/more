@@ -85,11 +85,9 @@ public class More {
 		final public static String APP_ID = "app_id";
 		final public static String APP_NAME = "app_name";
 		final public static String APP_CATEGORY = "app_category";
-		final public static String APP_DESC = "app_description";
 		final public static String APP_ICON = "app_icon";
 		final public static String APP_OS = "app_os";
 		final public static String USER_ACCOUNT = "user_account";
-		final public static String USER_TOKEN = "user_token";
 		final public static String USER_NAME = "user_name";
 		final public static String USER_EMAIL = "user_email";
 		final public static String USER_PHONE = "user_phone";
@@ -110,8 +108,8 @@ public class More {
 	}
 
 	final public static ArrayList<String> listAppField = new ArrayList<>(Arrays.asList(Common.APP_ID, Common.APP_NAME,
-			Common.APP_CATEGORY, Common.APP_DESC, Common.APP_ICON, Common.APP_OS, Common.USER_ACCOUNT,
-			Common.USER_TOKEN, Common.USER_NAME, Common.USER_EMAIL, Common.USER_PHONE));
+			Common.APP_CATEGORY, Common.APP_ICON, Common.APP_OS, Common.USER_ACCOUNT,
+			Common.USER_NAME, Common.USER_EMAIL, Common.USER_PHONE));
 
 	final public static ArrayList<String> listSdkField = new ArrayList<>(
 			Arrays.asList(Common.SDK_ID, Common.SDK_OS, Common.SDK_OWNER, Common.SDK_NAME, Common.SDK_DESC,
@@ -435,10 +433,13 @@ public class More {
 	public int mInsertApp(HttpServletRequest request, final String strAppId, final String strAppName,
 			final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserAccount,
 			final String strUserName, final String strUserEmail, final String strUserPhone) {
+		
 		String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_account, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?,?) ;";
+		Connection con = null;
 		try {
-			sqliteClient sqlite = new sqliteClient();
-			Connection con = sqlite.getConnection(Common.DB_PATH_IDEAS);
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE,Common.DB_USER,Common.DB_PASS);
 
 			PreparedStatement pst = null;
 			pst = con.prepareStatement(strSQL);
@@ -454,18 +455,172 @@ public class More {
 			pst.setString(idx++, strUserPhone);
 			pst.executeUpdate();
 			pst.close();
+			con.close();
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			Logs.showTrace("JDBC failed: "+ se.toString());
+			
 		} catch (Exception e) {
-			Logs.showError(e.toString());
+			e.printStackTrace();
+			Logs.showTrace("insertApp failed: "+ e.toString());
 			More.webTracker(request, "insertApp failed: ", e.toString());
 			return MORE_ERR_EXCEPTION;
+			
+		} finally {
+
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
 		}
+
 		More.webTracker(request, "insertApp success: ", strSQL);
+		Logs.showTrace("insertApp success: "+ strSQL);
 		return MORE_ERR_SUCCESS;
 	}
 	
+	public void mDeleteApp(HttpServletRequest request, final String strAppId) {
+		Connection con = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE,Common.DB_USER,Common.DB_PASS);
+
+			if (con.isValid(3))
+			{
+			
+			// Query APP Icon File Path
+			String strSQL = "select app_icon from app where app_id = '" + strAppId + "'";
+			stat = con.createStatement();
+			rs = stat.executeQuery(strSQL);
+			String strAppIcon = null;
+			if (rs.next()) {
+				strAppIcon = rs.getString("app_icon");
+			}
+			rs.close();
+			stat.close();
+
+			// Delete DB data
+			strSQL = "delete from app where app_id = ?";
+			PreparedStatement pst = null;
+			pst = con.prepareStatement(strSQL);
+			int idx = 1;
+			pst.setString(idx++, strAppId);
+			pst.executeUpdate();
+			pst.close();
+			con.close();
+
+			// Delete local file
+			if (null != strAppIcon) {
+				File file = new File("/data/opt/tomcat/webapps/more" + strAppIcon);
+				System.out.println("##########/data/opt/tomcat/webapps/more" + strAppIcon);
+				if (null != file) {
+
+					String absolutePath = file.getAbsolutePath();
+					String filePath = absolutePath.substring(0, absolutePath.lastIndexOf(File.separator));
+
+					if (file.delete()) {
+						System.out.println(file.getName() + " is deleted!");
+						More.webTracker(request, file.getName() + "deleteApp success: ", strSQL);
+					} else {
+						System.out.println("Delete operation is failed.");
+						More.webTracker(request, "[Delete operation is failed.] deleteApp failed: ", strSQL);
+					}
+
+					File folderPath = new File(filePath);
+
+					if (folderPath.isDirectory()) {
+
+						if (folderPath.list().length <= 0) {
+
+							System.out.println("Directory is empty!");
+							More.webTracker(request, "[Directory is empty!] deleteApp failed: ", strSQL);
+							folderPath.delete();
+						}
+					}
+				}
+			}
+
+			} else {
+				Logs.showTrace("Connection failed");
+			}
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			Logs.showTrace("JDBC failed: "+ se.toString());
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			More.webTracker(request, "deleteApp failed: ", e.toString());
+			Logs.showTrace("deleteApp failed: "+ e.toString());
+		} finally {
+
+			try {
+				if (stat != null)
+					stat.close();
+			} catch (SQLException se) {
+			}
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+	}
 	
-	
-	
+	public void mUpdateApp(HttpServletRequest request, final String strAppId, final String strAppIcon,
+			final String strAppName, final String strAppOs, final String strAppCategory, final String strUserName,
+			final String strUserEmail, final String strUserPhone) {
+		Connection con = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE,Common.DB_USER,Common.DB_PASS);
+
+			String sql = null;
+			if (null == strAppIcon) {
+				sql = "update app set app_name = ? , app_os = ? , app_category = ? , user_name = ? , user_email = ? , user_phone = ? where app_id = ?";
+			} else {
+				sql = "update app set app_icon = ? , app_name = ? , app_os = ? , app_category = ? , user_name = ? , user_email = ? , user_phone = ? where app_id = ?";
+			}
+
+			PreparedStatement pst = null;
+			pst = con.prepareStatement(sql);
+			int idx = 1;
+
+			if (null != strAppIcon) {
+				pst.setString(idx++, strAppIcon);
+			}
+			pst.setString(idx++, strAppName);
+			pst.setString(idx++, strAppOs);
+			pst.setString(idx++, strAppCategory);
+			pst.setString(idx++, strUserName);
+			pst.setString(idx++, strUserEmail);
+			pst.setString(idx++, strUserPhone);
+			pst.setString(idx++, strAppId);
+			pst.executeUpdate();
+			pst.close();
+
+			con.close();
+
+			String strData = strAppIcon + strAppName + strAppOs + strAppCategory + strUserName + strUserEmail
+					+ strUserPhone + strAppId;
+
+			More.webTracker(request, "updateApp success: ", sql);
+			More.webTracker(request, "updateApp success: ", strData);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			More.webTracker(request, "updateApp failed: ", e.toString());
+		}
+	}
 	
 
 	/**
