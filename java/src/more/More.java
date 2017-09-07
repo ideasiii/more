@@ -441,6 +441,8 @@ public class More {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE,Common.DB_USER,Common.DB_PASS);
 
+			if (con.isValid(3))
+			{
 			PreparedStatement pst = null;
 			pst = con.prepareStatement(strSQL);
 			int idx = 1;
@@ -457,6 +459,9 @@ public class More {
 			pst.close();
 			con.close();
 			
+			} else {
+				Logs.showTrace("Connection failed");
+			}
 		} catch (SQLException se) {
 			se.printStackTrace();
 			Logs.showTrace("JDBC failed: "+ se.toString());
@@ -548,7 +553,6 @@ public class More {
 			} else {
 				Logs.showTrace("Connection failed");
 			}
-			
 		} catch (SQLException se) {
 			se.printStackTrace();
 			Logs.showTrace("JDBC failed: "+ se.toString());
@@ -574,17 +578,18 @@ public class More {
 		}
 	}
 	
-	public void mUpdateApp(HttpServletRequest request, final String strAppId, final String strAppIcon,
+	public void mUpdateApp(HttpServletRequest request,final String strEmail, final String strAppId, final String strAppIcon,
 			final String strAppName, final String strAppOs, final String strAppCategory, final String strUserName,
 			final String strUserEmail, final String strUserPhone) {
+		String sql = null;
 		Connection con = null;
-		Statement stat = null;
-		ResultSet rs = null;
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(Common.MYSQLDB_URL_MORE,Common.DB_USER,Common.DB_PASS);
 
-			String sql = null;
+			if (con.isValid(3))
+			{
 			if (null == strAppIcon) {
 				sql = "update app set app_name = ? , app_os = ? , app_category = ? , user_name = ? , user_email = ? , user_phone = ? where app_id = ?";
 			} else {
@@ -607,18 +612,34 @@ public class More {
 			pst.setString(idx++, strAppId);
 			pst.executeUpdate();
 			pst.close();
-
 			con.close();
+			} else {
+				Logs.showTrace("Connection failed");
+			}
+			
+			String strData = "ICON: " + strAppIcon + " NAME: " + strAppName + " OS: "  + strAppOs + " CATE: "  + strAppCategory + " ORGAN: "  + strUserName + " SUPPORT: "  + strUserEmail + " PHONE: "  
+				+ strUserPhone + " APP ID: "  + strAppId + " EDITOR: " + strEmail;
 
-			String strData = strAppIcon + strAppName + strAppOs + strAppCategory + strUserName + strUserEmail
-					+ strUserPhone + strAppId;
-
-			More.webTracker(request, "updateApp success: ", sql);
+			More.webTracker(request, "updateApp", sql);
 			More.webTracker(request, "updateApp success: ", strData);
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+			Logs.showTrace("JDBC failed: "+ se.toString());
+			
 		} catch (Exception e) {
-
 			e.printStackTrace();
+			Logs.showTrace("updateApp failed: "+ e.toString());
 			More.webTracker(request, "updateApp failed: ", e.toString());
+			
+		} finally {
+
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
 		}
 	}
 	

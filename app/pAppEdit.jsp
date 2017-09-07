@@ -84,7 +84,7 @@
 			mapData.put(More.Common.APP_ICON, More.Common.UPLOAD_FILE_PATH + "/app_icon_default.png");
 			strAppId = mapData.get(More.Common.APP_ID);
 			strAppName = mapData.get(More.Common.APP_NAME);
-			Logs.showTrace("line 88 strAppName = mapData.get(More.Common.APP_NAME);: " + strAppName);
+		//	Logs.showTrace("line 88 strAppName = mapData.get(More.Common.APP_NAME);: " + strAppName);
 			strAppOs = mapData.get(More.Common.APP_OS);
 			strAppCategory = mapData.get(More.Common.APP_CATEGORY);
 			strUserName = mapData.get(More.Common.USER_NAME);
@@ -147,8 +147,8 @@
 			Logs.showTrace("Update App Data to Database, Member Email: " + strEmail + ", App ID: " + strAppId);
 			Logs.showTrace("AppIcon: " + strAppIcon);
 
-			sqliteClient sqlite = new sqliteClient();
-			Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
+		//	sqliteClient sqlite = new sqliteClient();
+		//	Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
 			
 			More more = new More();
 			 if (StringUtility.isValid(strEmail) && StringUtility.isValid(strAppId))
@@ -171,12 +171,12 @@
 			     Logs.showTrace("AppIcon: " + strAppIcon);
 			     Logs.showTrace("AppName: " + strAppName);
 			     
-			more.updateApp(request, strAppId, strAppIcon, strAppName, strAppOs, strAppCategory, strUserName, strUserEmail, strUserPhone);
-			 }
-			
+			more.mUpdateApp(request, strEmail, strAppId, strAppIcon, strAppName, strAppOs, strAppCategory, strUserName, strUserEmail, strUserPhone);
+			 } 
+			 
 			more = null;
-			con.close();
-			sqlite = null;
+		//	con.close(); 
+		//	sqlite = null;
 		
 	    }
 	 
