@@ -285,7 +285,10 @@ public class More {
 			}
 		}
 
+		String strSignupData = "ACCOUNT: " + strEmail + " MEMBER ID: " + nMemberId + "AGREEMENT: " ;
+		
 		More.webTracker(request, "memberAdd success: ", sql);
+		More.webTracker(request, "memberAdd success: ", strSignupData);
 		Logs.showTrace("memberAdd success: "+ sql);
 		return MORE_ERR_SUCCESS;
 	}

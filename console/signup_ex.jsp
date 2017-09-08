@@ -182,68 +182,7 @@
 									value="P-V4-DSI" type="hidden">
 									
 								<div id="wizard">
-									<h2>Personal</h2>
-									<section style="width: 100%; padding: 25px 10rem;">
-
-									<div class="form-group">
-										<label>Name</label> <input type="text" name="inputName"
-											id="inputName" class="form-control" />
-									</div>
-									<div class="form-group">
-										<label>Organization</label> <input type="text"
-											name="inputCompany" class="form-control" />
-									</div>
-									<div class="form-group">
-										<label>Phone</label> <input type="text" name="inputPhone"
-											class="form-control" />
-									</div>
-									<div class="form-group">
-										<label>Purpose</label> <input type="text" name="inputPurpose"
-											class="form-control" />
-										<p class="help-block"></p>
-									</div>
-									</section>
-								
-									<h2>Login</h2>
-										<section style="width: 100%; padding: 25px 8rem;">
-
-									<div class="form-group">
-										<label style="margin-left: 5.5rem;">E-mail Account</label>
-										<button id="btnV" type="button"
-											class="btn btn-xs btn-grad btn-default" style="float: right;"
-											onclick="addCanned()">Verification</button>
-										<button id="btnA" type="button" class="btn btn-xs btn-success"
-											style="display: none; float: right;">Available</button>
-
-										<input type="text" name="inputEmail" id="inputEmail"
-											class="form-control" onchange="showBtnV('formSignUp')" />
-
-
-
-										<p class="help-block" style="color: #b94a48;">Notification:
-											E-mail account cannot be changed.</p>
-									</div>
-									<div class="form-group">
-										<label>Password</label> <input type="password"
-											name="inputPassword" class="form-control" />
-										<p class="help-block">(Must be less than 20 letters in
-											alphanumeric format.)</p>
-									</div>
-									<div class="form-group">
-										<label>Retype Password</label> <input type="password"
-											name="inputPassword2" class="form-control" /> <br>
-									</div>
-							<!--  		<div class="form-group">
-										<label>Agreement Version</label> <input type="text"
-											name="inputAgreeV" class="form-control" />
-										<p class="help-block"></p>
-									</div>
-							-->
-
-									</section>
-								
 									<h2>Agreement</h2>
-									
 									<section style="overflow-y: scroll;">
 									<div style="padding-left: 15px; text-align: left;">
 										<p style="text-align: justify; color: gray;">
@@ -314,6 +253,66 @@
 										</div>
 
 									</div>
+									</section>
+
+									<h2>Personal</h2>
+									<section style="width: 100%; padding: 25px 10rem;">
+
+									<div class="form-group">
+										<label>Name</label> <input type="text" name="inputName"
+											id="inputName" class="form-control" />
+									</div>
+									<div class="form-group">
+										<label>Organization</label> <input type="text"
+											name="inputCompany" class="form-control" />
+									</div>
+									<div class="form-group">
+										<label>Phone</label> <input type="text" name="inputPhone"
+											class="form-control" />
+									</div>
+									<div class="form-group">
+										<label>Purpose</label> <input type="text" name="inputPurpose"
+											class="form-control" />
+										<p class="help-block"></p>
+									</div>
+									</section>
+
+									<h2>Login</h2>
+									<section style="width: 100%; padding: 25px 8rem;">
+
+									<div class="form-group">
+										<label style="margin-left: 5.5rem;">E-mail Account</label>
+										<button id="btnV" type="button"
+											class="btn btn-xs btn-grad btn-default" style="float: right;"
+											onclick="addCanned()">Verification</button>
+										<button id="btnA" type="button" class="btn btn-xs btn-success"
+											style="display: none; float: right;">Available</button>
+
+										<input type="text" name="inputEmail" id="inputEmail"
+											class="form-control" onchange="showBtnV('formSignUp')" />
+
+
+
+										<p class="help-block" style="color: #b94a48;">Notification:
+											E-mail account cannot be changed.</p>
+									</div>
+									<div class="form-group">
+										<label>Password</label> <input type="password"
+											name="inputPassword" class="form-control" />
+										<p class="help-block">(Must be less than 20 letters in
+											alphanumeric format.)</p>
+									</div>
+									<div class="form-group">
+										<label>Retype Password</label> <input type="password"
+											name="inputPassword2" class="form-control" /> <br>
+									</div>
+							<!--  		<div class="form-group">
+										<label>Agreement Version</label> <input type="text"
+											name="inputAgreeV" class="form-control" />
+										<p class="help-block"></p>
+									</div>
+							-->
+
 									</section>
 								</div>
 							</form>
