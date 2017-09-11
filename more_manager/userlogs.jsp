@@ -239,7 +239,7 @@
 							<%
 							try
 							{
-							    MongoClient mongoClient = new MongoClient("175.98.119.121", 27017);
+							    MongoClient mongoClient = new MongoClient("54.199.198.94", 27017);
 								DB db = mongoClient.getDB("website");
 								if (null != db) 
 								{

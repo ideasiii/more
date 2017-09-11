@@ -239,7 +239,7 @@ public class More {
 
 	}
 
-	public int mMemberAdd(HttpServletRequest request, final int nMemberId, final String strEmail) {
+	public int mMemberAdd(HttpServletRequest request, final int nMemberId, final String strEmail, final String strAgreement) {
 		if (!StringUtility.isValid(strEmail)) {
 			return MORE_ERR_INVALID_PARAMETER;
 		}
@@ -285,7 +285,7 @@ public class More {
 			}
 		}
 
-		String strSignupData = "ACCOUNT: " + strEmail + " MEMBER ID: " + nMemberId + "AGREEMENT: " ;
+		String strSignupData = "ACCOUNT: " + strEmail + " MEMBER ID: " + nMemberId + " AGREEMENT: " + strAgreement;
 		
 		More.webTracker(request, "memberAdd success: ", sql);
 		More.webTracker(request, "memberAdd success: ", strSignupData);
@@ -1169,7 +1169,7 @@ public class More {
 		if (null == strEvent)
 			strEvent = request.getRequestURI();
 		mapData.put("event", strEvent);
-		insert("175.98.119.121", 27017, "website", "more", mapData);
+		insert("54.199.198.94", 27017, "website", "more", mapData);
 		mapData.clear();
 	}
 

@@ -151,8 +151,34 @@ More.webTracker(request, "load page", null);
 								
 								if (0 == nCount) {
 									
+									httpsURL = "https://ser.kong.srm.pw/dashboard/user";
+									
+									httpsClient = new HttpsClient();
+									String strURL = httpsURL + "?" + httpsClient.UrlEncode("token", strAToken, true);
+									
+									HttpsClient.Response respData = new HttpsClient.Response();
+									strResult = httpsClient.sendGet(strURL, respData);
+									int nCode = respData.mnCode;
+									String strRespData = respData.mstrContent;
+									String strAgreementVersion = null;
+									
+									if (200 == nCode)
+									{
+										JSONObject jObjMessage = new JSONObject(strResult);
+										
+										 if (null != jObjMessage && jObjMessage.has("agreementVersion"))
+										    {
+											 strAgreementVersion = jObjMessage.getString("agreementVersion");
+										    }
+									}
+									else
+									{
+										strAgreementVersion = "error";
+									}
+									
+									
 									 more = new More();
-									int nAddResult = more.mMemberAdd(request, nUserId2, strEmail);  
+									int nAddResult = more.mMemberAdd(request, nUserId2, strEmail, strAgreementVersion);  
 									 nCount = more.mQueryMember(request, strEmail, memberData);
 									more = null;
 								}
