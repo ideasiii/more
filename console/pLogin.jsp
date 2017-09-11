@@ -154,7 +154,7 @@ More.webTracker(request, "load page", null);
 									httpsURL = "https://ser.kong.srm.pw/dashboard/user";
 									
 									httpsClient = new HttpsClient();
-									String strURL = httpsURL + "?" + httpsClient.UrlEncode("token", strAToken, true);
+									String strURL = httpsURL + "?api_key=" + strAToken;
 									
 									HttpsClient.Response respData = new HttpsClient.Response();
 									strResult = httpsClient.sendGet(strURL, respData);
