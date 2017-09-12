@@ -5,9 +5,9 @@
 <%@include file="../../console/loginValid.jsp"%>
 
 <%
-    final String strHostUrl = request.getRequestURL().toString();
-    /** Web Tracker **/
-    More.webTracker(request, "load page", null);
+	final String strHostUrl = request.getRequestURL().toString();
+	/** Web Tracker **/
+	More.webTracker(request, "load page", null);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,6 +46,99 @@
 		<%@include file="../../console/menu.jsp"%>
 
 
+		<!-- HEADER SECTION -->
+
+		<div class="col-lg-12">
+			<div class="modal fade" id="Agree" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Application Info</h4>
+						</div>
+
+
+						<div class="modal-body" style="padding: 20px 80px 0px 80px;">
+
+							<dl
+								style="display: inline-block; width: 420px; vertical-align: top;">
+								<dd style="display: block;">
+									<img id="InfoAppIcon" class="app-icon"
+										style="float: left; border-radius: 10px; margin: 10px 50px 10px 10px">
+								</dd>
+
+								<dd>
+									<h4 class="app-title">
+										<span id="InfoAppName"></span>
+									</h4>
+									<label> <i id="iconAndroid" name="iconAndroid"
+										class="icon-android icon-large" style="margin-right: 5px;"></i>
+
+										<i id="iconApple" name="iconApple"
+										class="icon-apple icon-large" style="margin-right: 5px;"></i>
+
+									</label> <label id="InfoAppCate"></label>
+								</dd>
+							</dl>
+
+							<dl
+								style="display: inline-block; width: 130px; margin-bottom: 0px;">
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">APP
+										ID: </span>
+								</dd>
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">Organization:
+									</span>
+								</dd>
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">Support
+										E-mail: </span>
+								</dd>
+								<dd class="form-group">
+									<span style="font-weight: bold; margin-right: 5px;">Phone:
+									</span>
+								</dd>
+							</dl>
+
+							<dl
+								style="display: inline-block; width: 280px; margin-bottom: 0px;">
+
+								<dd class="form-group">
+									<span style="color: #737373;" id="InfoAppId"></span>
+								</dd>
+								<dd class="form-group">
+									<span style="color: #737373;" id="InfoOrganization"></span>
+								</dd>
+								<dd class="form-group">
+									<span style="color: #737373;" id="InfoEmail"></span>
+								</dd>
+								<dd class="form-group">
+									<span style="color: #737373;" id="InfoPhone"></span>
+								</dd>
+							</dl>
+						</div>
+
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-line btn-danger"
+								data-toggle="modal" data-target="#DeleteAppInfo">Delete</button>
+
+							<button type="button" class="btn btn-line btn-primary"
+								data-toggle="modal" data-target="#EditAppInfo">
+								<i class="icon-pencil"></i> Edit
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- END HEADER SECTION -->
+
 		<!--PAGE CONTENT -->
 		<div id="content">
 			<div class="inner" style="min-height: 100%; padding: 0;">
@@ -63,8 +156,9 @@
 							<div class="appRegistration">
 
 								<div class="panel-body">
-									<form action="pAppRegister.jsp" role="form" method="post" enctype="multipart/form-data"
-										name="formAppRegistration" id="formAppRegistration">
+									<form action="pAppRegister.jsp" role="form" method="post"
+										enctype="multipart/form-data" name="formAppRegistration"
+										id="formAppRegistration">
 
 										<dl
 											style="display: inline-block; width: 50%; margin: 10px 0px 5px 30px;">
@@ -82,8 +176,8 @@
 												<div
 													style="margin-left: 10px; display: inline-block; text-align: left;">
 													<label class="control-label" style="margin-left: 5px;">App
-														Icon</label> <input name="inputIcon" id="inputIcon" type="file" maxlength="100"
-														onChange="validateAppIcon(this.value)" />
+														Icon</label> <input name="inputIcon" id="inputIcon" type="file"
+														maxlength="100" onChange="validateAppIcon(this.value)" />
 												</div>
 
 											</dd>
@@ -92,7 +186,8 @@
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Application Name</label> <input
-														class="form-control" name="app_name" maxlength="20" style="width: 280px;" />
+														class="form-control" name="app_name" maxlength="20"
+														style="width: 280px;" />
 												</div>
 											</dd>
 
@@ -108,8 +203,9 @@
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
-													<label class="col-lg-4">Categories</label> <select name="app_category"
-														style="width: 280px;" class="form-control">
+													<label class="col-lg-4">Categories</label> <select
+														name="app_category" style="width: 280px;"
+														class="form-control">
 														<option>工具</option>
 														<option>天氣</option>
 														<option>生活品味</option>
@@ -150,22 +246,35 @@
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Organization</label> <input
-														class="form-control" name="user_name" maxlength="20" style="width: 280px;" />
+														class="form-control" name="user_name" maxlength="20"
+														style="width: 280px;" />
 												</div>
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Support E-mail</label> <input
-														class="form-control" name="user_email" maxlength="50" style="width: 280px;" />
+														class="form-control" name="user_email" maxlength="50"
+														style="width: 280px;" />
 												</div>
 											</dd>
 											<dd class="form-group">
 												<div class="col-lg-4 panel-content">
 													<label class="col-lg-4">Phone</label> <input
-														class="form-control" name="user_phone" maxlength="20" style="width: 280px;" />
+														class="form-control" name="user_phone" maxlength="20"
+														style="width: 280px;" />
 												</div>
 											</dd>
 										</dl>
+
+										<div class="checkbox" style="padding: 0 28%;">
+											<input type="checkbox" id="ch1" />
+											<p>
+												<strong class="text" for="ch1">I have read and
+													understood the </strong> <a id="agree" data-target="#Agree"
+													data-toggle="modal"
+													style="font-weight: bold; color: #000; text-decoration: underline; cursor: pointer;">Agreement.</a>
+											</p>
+										</div>
 
 									</form>
 
@@ -205,5 +314,5 @@
 </body>
 </html>
 <%
-    more = null;
+	more = null;
 %>
