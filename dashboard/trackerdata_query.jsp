@@ -202,11 +202,11 @@
 										</button>
 									</div>
 
-									<div class="white-box">
+									<div class="white-box" style="overflow-y: scroll;white-space:nowrap;">
 										<%
 										    if (null != strID) {
 
-														MongoClient mongoClient = new MongoClient();
+														MongoClient mongoClient = new MongoClient("54.199.198.94", 27017);
 														DB db = mongoClient.getDB("access");
 														if (null != db) {
 															DBCollection collection = db.getCollection("mobile");
@@ -224,7 +224,7 @@
 																	jsonobj.remove("_id");
 										%>
 
-										<p><%=jsonobj.toString()%></p>
+										<p style=""><%=jsonobj.toString()%></p>
 
 										<%
 										    }
