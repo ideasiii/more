@@ -26,6 +26,7 @@ function Trim(x) {
 		var form = document.getElementById(formName);
 		var formname = form.name;
 		var IconCheck = form.inputIcon.value;
+		var valueCh1 = form.ch1.checked;
 		var errMsg = '';
 		re = /\W/;
 		reg = /^[^\s]+@[^\s]+\.[^\s]{2,3}$/;
@@ -54,6 +55,9 @@ function Trim(x) {
 		if (Trim(form.user_phone.value) == '')
 			errMsg += "Phone field is required !!\n";
 
+		if (valueCh1 != true)
+			errMsg += "You must accept the Agreement before registering.\n";
+		
 		if (errMsg == '') {
 			form.submit();
 			return true;

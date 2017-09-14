@@ -51,85 +51,89 @@
 		<div class="col-lg-12">
 			<div class="modal fade" id="Agree" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
+				<div class="modal-dialog" style="width:850px;">
 					<div class="modal-content">
-						<div class="modal-header">
+						<div class="modal-header" style="background-color: #f8f8f8;">
 							<button type="button" class="close" data-dismiss="modal"
 								aria-hidden="true">&times;</button>
 							<h4 class="modal-title">Privacy Policy</h4>
 						</div>
 
 
-						<div class="modal-body" style="padding: 20px 80px 0px 80px;">
+					<!--	<div class="modal-body" style="padding: 20px 80px 0px 80px;">-->
 
-							<dl
-								style="display: inline-block; width: 420px; vertical-align: top;">
-								<dd style="display: block;">
-									<img id="InfoAppIcon" class="app-icon"
-										style="float: left; border-radius: 10px; margin: 10px 50px 10px 10px">
-								</dd>
+													<div class=""
+								style="padding: 0px 22px;; background-color: #f8f8f8; border-radius: 5px;">
+								<section style="overflow-y: scroll;">
+								<div style="padding-left: 15px; text-align: left;">
+									<br />
+									<p style="text-align: justify; color: gray;">
+											<b>Notification and Letter of Consent for Collection,
+												Processing and Use of Personal Information<br /> <span
+												style="color: #b94a48;">(Version: P-V4-DSI)</span>
+											</b> <br /> <br /> According to the R.O.C. Personal
+											Information Protection Act and the internal
+											policy/regulations of Institute for Information Industry
+											(hereinafter referred to as “III”), III is obligated to make
+											the following notification known to you before you provide
+											personal information to III. Please read it carefully. <br />
+											<br />1. Purposes and Categories of Personal Information to
+											be Collected For the purpose of carrying out III’s business,
+											activity or project, the purpose of providing service,
+											internal administrative management or reporting to the
+											competent authority, the purpose complying with the
+											Endowment, or the purpose of sending III’s or industry
+											relevant information, III needs you to provide these
+											categories of personal information: name, contact information
+											(such as phone number, title, e-mail address, residential or
+											office address), ID card number, or other information which
+											may be used to identify you directly or indirectly. <br /> <br />
+											Note: You may choose, at any time in the future, not to
+											receive any promotional information from III by clicking the
+											link provided in the promotional message. <br /> <br /> 2.
+											Time Period, Area, Target and Way of the Use of Personal
+											Information Unless the purposes of use relating to
+											international businesses or activities, your personal
+											information will be used solely by III in a reasonable way in
+											the territory of the Republic of China to the extent
+											necessary to implement the purposes of collection until the
+											purposes of collection prescribed above is fulfilled. <br />
+											<br /> 3. Your Rights with regard to Personal Information
+											Provided You may exercise the following rights in pursuant to
+											the rules of the activities/project or by submitting your
+											inquiry/request on our website (http://www.iii.org.tw/) at
+											“Application for Exercising Rights with Regard to Personal
+											Information” page: <br /> (1) any inquiry and request for a
+											review of the personal information;<br /> (2) any request to
+											make duplications of the personal information;<br /> (3) any
+											request to supplement or correct the personal information;<br />
+											(4) any request to discontinue collection, processing or use
+											of the personal information; <br /> (5) any request to
+											delete the personal information.<br /> <br /> 4. The
+											Influence on Your Rights and Interests while You Choose not
+											to Provide Your Personal Information<br /> If you provide
+											incorrect personal information or choose not to provide your
+											personal information to III, III may not be able to provide
+											you with services relating to the purposes prescribed above.
+											<br /> <br /> 5. You understand that this document complies
+											with the R.O.C. Personal Information Protection Act and
+											relating regulations, and you agree that III keeps this
+											document for further checking. <br /> <br />
 
-								<dd>
-									<h4 class="app-title">
-										<span id="InfoAppName"></span>
-									</h4>
-									<label> <i id="iconAndroid" name="iconAndroid"
-										class="icon-android icon-large" style="margin-right: 5px;"></i>
+										</p>
 
-										<i id="iconApple" name="iconApple"
-										class="icon-apple icon-large" style="margin-right: 5px;"></i>
-
-									</label> <label id="InfoAppCate"></label>
-								</dd>
-							</dl>
-
-							<dl
-								style="display: inline-block; width: 130px; margin-bottom: 0px;">
-								<dd class="form-group">
-									<span style="font-weight: bold; margin-right: 5px;">APP
-										ID: </span>
-								</dd>
-								<dd class="form-group">
-									<span style="font-weight: bold; margin-right: 5px;">Organization:
-									</span>
-								</dd>
-								<dd class="form-group">
-									<span style="font-weight: bold; margin-right: 5px;">Support
-										E-mail: </span>
-								</dd>
-								<dd class="form-group">
-									<span style="font-weight: bold; margin-right: 5px;">Phone:
-									</span>
-								</dd>
-							</dl>
-
-							<dl
-								style="display: inline-block; width: 280px; margin-bottom: 0px;">
-
-								<dd class="form-group">
-									<span style="color: #737373;" id="InfoAppId"></span>
-								</dd>
-								<dd class="form-group">
-									<span style="color: #737373;" id="InfoOrganization"></span>
-								</dd>
-								<dd class="form-group">
-									<span style="color: #737373;" id="InfoEmail"></span>
-								</dd>
-								<dd class="form-group">
-									<span style="color: #737373;" id="InfoPhone"></span>
-								</dd>
-							</dl>
-						</div>
+								</div>
+								</section>
+							</div>
 
 
-						<div class="modal-footer">
-							<button type="button" class="btn btn-line btn-danger"
-								data-toggle="modal" data-target="#DeleteAppInfo">Delete</button>
+							
+					<!--	</div>-->
 
-							<button type="button" class="btn btn-line btn-primary"
-								data-toggle="modal" data-target="#EditAppInfo">
-								<i class="icon-pencil"></i> Edit
-							</button>
+
+						<div class="modal-footer" style="margin:0;text-align:center;background-color: #f8f8f8;">
+							<button type="button" class="btn btn-line btn-primary" data-dismiss="modal"
+								>I have read and understood the above notification</button>
 						</div>
 
 					</div>
@@ -155,10 +159,12 @@
 
 							<div class="appRegistration">
 
-								<div class="panel-body">
+								<div class="panel-body" style="padding-top:30px;">
 									<form action="pAppRegister.jsp" role="form" method="post"
 										enctype="multipart/form-data" name="formAppRegistration"
 										id="formAppRegistration">
+										<input name="agreeVersion" id="agreeVersion"
+									value="P-V4-DSI" type="hidden">
 
 										<dl
 											style="display: inline-block; width: 50%; margin: 10px 0px 5px 30px;">
@@ -266,18 +272,19 @@
 											</dd>
 										</dl>
 
-										<div class="checkbox" style="padding: 0 28%;">
+										<div class="checkbox" style="padding: 0 15%;">
 											<input type="checkbox" id="ch1" />
 											<p>
-												<strong class="text" for="ch1">I have read and
-													understood the </strong> <a id="agree" data-target="#Agree"
+												<strong class="text" for="ch1">I agreed that III may
+												collect, process and use my personal information for the
+												purposes of collection prescribed by the </strong> <a id="agree" data-target="#Agree"
 													data-toggle="modal"
-													style="font-weight: bold; color: #000; text-decoration: underline; cursor: pointer;">Agreement.</a>
+													style="font-weight: bold; color: #000; text-decoration: underline; cursor: pointer;">Agreement. </a>
 											</p>
 										</div>
 
 									</form>
-
+<br>
 									<div class="subm-footer">
 										<button type="button" class="btn btn-primary subm-btn"
 											onclick="checkAppRegiData('formAppRegistration')">Register</button>
