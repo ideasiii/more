@@ -132,8 +132,8 @@
 						<div class="modal-footer"
 							style="margin: 0; text-align: center; background-color: #f8f8f8;">
 							<button type="button" class="btn btn-line btn-primary"
-								data-dismiss="modal">I have read and
-								understood the above notification</button>
+								data-dismiss="modal">I have read and understood the
+								above notification</button>
 						</div>
 
 					</div>
@@ -272,6 +272,17 @@
 											</dd>
 										</dl>
 
+										<div class="checkbox" style="padding: 0 15%;">
+											<input type="checkbox" id="ch0" disabled="disabled" />
+											<p>
+												<strong class="text">I agreed that III
+													may collect, process and use my personal information for
+													the purposes of collection prescribed by the </strong> <a id="agree"
+													data-target="#Agree" data-toggle="modal"
+													style="font-weight: bold; color: #871111; text-decoration: underline; cursor: pointer;">Agreement.
+												</a>
+											</p>
+										</div>
 										<div class="checkbox" style="padding: 0 15%;">
 											<input type="checkbox" id="ch1" />
 											<p>
