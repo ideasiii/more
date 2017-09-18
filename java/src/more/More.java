@@ -59,11 +59,11 @@ public class More {
 		final public static String PATH_DOWNLOAD_DOC_ANDROID = "/more/sdk/download/doc/android";
 		final public static String PATH_DOWNLOAD_DOC_IOS = "/more/sdk/download/doc/ios";
 
-		/** sqlite Common **/
+		/** DB Common **/
 		final public static String CREATE_DATE = "create_date";
 
 		/**
-		 * sqlite more_mamber.db table: more_mamber
+		 * more_mamber.db table: more_mamber
 		 **/
 		final public static String MEMBER_ID = "member_id";
 		final public static String MEMBER_EMAIL = "member_email";
@@ -80,7 +80,7 @@ public class More {
 		final public static String END_DATE = "end_date";
 
 		/**
-		 * sqlite ideas.db table: app
+		 * more.db table: app
 		 **/
 		final public static String APP_ID = "app_id";
 		final public static String APP_NAME = "app_name";
@@ -91,9 +91,10 @@ public class More {
 		final public static String USER_NAME = "user_name";
 		final public static String USER_EMAIL = "user_email";
 		final public static String USER_PHONE = "user_phone";
+		final public static String AGREE_NO = "agree_no";
 
 		/**
-		 * sqlite ideas.db table: sdk
+		 * more.db table: sdk
 		 **/
 		final public static String SDK_ID = "sdk_id";
 		final public static String SDK_OS = "sdk_os";
@@ -161,6 +162,7 @@ public class More {
 		public String user_name;
 		public String user_email;
 		public String user_phone;
+		public String agree_no;
 		public String create_date;
 		public String update_date;
 	}
@@ -435,9 +437,9 @@ public class More {
 	
 	public int mInsertApp(HttpServletRequest request, final String strAppId, final String strAppName,
 			final String strAppCategory, final String strAppIcon, final String strAppOs, final String strUserAccount,
-			final String strUserName, final String strUserEmail, final String strUserPhone) {
+			final String strUserName, final String strUserEmail, final String strUserPhone, final String agree_no) {
 		
-		String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_account, user_name, user_email, user_phone) values(?,?,?,?,?,?,?,?,?) ;";
+		String strSQL = "insert into app(app_id, app_name, app_category, app_icon, app_os, user_account, user_name, user_email, user_phone, agree_no) values(?,?,?,?,?,?,?,?,?,?) ;";
 		Connection con = null;
 		try {
 			
@@ -458,6 +460,7 @@ public class More {
 			pst.setString(idx++, strUserName);
 			pst.setString(idx++, strUserEmail);
 			pst.setString(idx++, strUserPhone);
+			pst.setString(idx++, agree_no);
 			pst.executeUpdate();
 			pst.close();
 			con.close();

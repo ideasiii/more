@@ -148,18 +148,18 @@
 			final String strUserName = mapData.get(More.Common.USER_NAME);
 			final String strUserEmail = mapData.get(More.Common.USER_EMAIL);
 			final String strUserPhone = mapData.get(More.Common.USER_PHONE);
-			
-			More.webTracker(request, "Insert App Data to Database", "APP ID: " + strAppId + " Member Email: " + strEmail + " Agreement Version: ");
-			Logs.showTrace("Insert App Data to Database, Member Email: " + strEmail);
-			Logs.showTrace("AppIcon: " + strAppIcon);
+			final String strAgreeNo = mapData.get(More.Common.AGREE_NO);  
 			
 			//sqliteClient sqlite = new sqliteClient();
 			//Connection con = sqlite.getConnection(More.Common.DB_PATH_IDEAS);
-		
 			
 			mapData.put(More.Common.APP_ID, strAppId);
 			More more = new More();
-			nResult = more.mInsertApp(request, strAppId, strAppName, strAppCategory, strAppIcon, strAppOs, strEmail, strUserName, strUserEmail, strUserPhone);
+			nResult = more.mInsertApp(request, strAppId, strAppName, strAppCategory, strAppIcon, strAppOs, strEmail, strUserName, strUserEmail, strUserPhone, strAgreeNo);
+			
+			More.webTracker(request, "Insert App Data to Database", "APP ID: " + strAppId + " Member Email: " + strEmail + " Agreement Version: " + strAgreeNo);
+			Logs.showTrace("Insert App Data to Database, Member Email: " + strEmail);
+			Logs.showTrace("AppIcon: " + strAppIcon);
 			
 			more = null;
 			}

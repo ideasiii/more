@@ -163,7 +163,7 @@
 									<form action="pAppRegister.jsp" role="form" method="post"
 										enctype="multipart/form-data" name="formAppRegistration"
 										id="formAppRegistration">
-										<input name="agreeVersion" id="agreeVersion" value="P-V4-DSI"
+										<input name="agree_no" id="agree_no" value="P-V4-DSI"
 											type="hidden">
 
 										<dl
