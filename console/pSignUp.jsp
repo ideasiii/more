@@ -52,7 +52,7 @@
 			jObj.put("agreementVersion", strAgreeV);
 
 			HttpsClient httpsClient = new HttpsClient();
-			String strResult = httpsClient.sendPost(httpsURL,HttpsClient.UrlEncode(jObj.toString()));
+			String strResult = httpsClient.sendPost(httpsURL,jObj.toString());
 
 			JSONObject jObjUserId = new JSONObject(strResult);
 			int nUserId = 0;
