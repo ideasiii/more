@@ -76,7 +76,7 @@
 										href="/more/console/pTaskComposer.jsp">TASK COMPOSER</a>
 									</li>
 									<li class="dropdown-menu-li"><a
-										href="testpost.jsp">MORE MDM</a></li>
+										href="/more/console/testpost.jsp">MORE MDM</a></li>
 
 								</ul></li>
 

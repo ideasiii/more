@@ -3,17 +3,20 @@
 <%@ page import="more.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
-<%@page import="java.util.UUID"%> 
+<%@page import="java.util.UUID"%>
 
 <%
-			final String strHostUrl = request.getRequestURL().toString();
+	final String strHostUrl = request.getRequestURL().toString();
+	if (response.containsHeader("SET-COOKIE")) {
+		String sessionid = request.getSession().getId();
+		response.setHeader("SET-COOKIE", "JSESSIONID=" + sessionid + ";secure;HttpOnly");
+	}
 
+	/** Web Tracker **/
+	More.webTracker(request, "load page", null);
 
-			/** Web Tracker **/
-			More.webTracker(request, "load page", null);
-			
-			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-			request.getSession().setAttribute("randTxt",uuid);
+	String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+	request.getSession().setAttribute("randTxt", uuid);
 %>
 <!DOCTYPE html>
 <html>
@@ -47,7 +50,7 @@
 
 </head>
 
-<body class="padTop53" style="height:100%;">
+<body class="padTop53" style="height: 100%;">
 
 	<!-- MAIN WRAPPER -->
 	<div id="wrap" style="display: table; width: 100%; height: 100%;">
@@ -56,10 +59,9 @@
 
 
 		<!--PAGE CONTENT -->
-		<div id="content" style="display: table-row;height:auto;">
+		<div id="content" style="display: table-row; height: auto;">
 			<div class="inner" style="min-height: 100%; padding: 0;">
-				<div id="intro" class="bg-white full-height-s full-height-outer"
-					>
+				<div id="intro" class="bg-white full-height-s full-height-outer">
 					<div class="silk-grey">
 						<div class="container">
 							<div class="row container-text-c">
@@ -68,10 +70,12 @@
 									<h2 style="font-weight: bold;">Login to MORE</h2>
 								</div>
 								<div class="tab-content" style="border: 0; padding: 0;">
-								
+
 									<div id="login" class="tab-pane active">
-										<form method="post" id="formLogin" name="formLogin" class="form-signin">
-										<input type="hidden" name="randSession"  value = "<%=request.getSession().getAttribute("randTxt")%>" />  
+										<form method="post" id="formLogin" name="formLogin"
+											class="form-signin">
+											<input type="hidden" name="randSession"
+												value="<%=request.getSession().getAttribute("randTxt")%>" />
 											<h4 class="text-center">Enter Your E-mail and Password</h4>
 											<input id="inputEmail" name="inputEmail" type="text"
 												placeholder="E-mail Account" class="form-control" /> <input
@@ -82,9 +86,10 @@
 												type="button" onclick="checkLoginData('formLogin')">Login</button>
 										</form>
 									</div>
-									
+
 									<div id="forgot" class="tab-pane">
-										<form action="index.html" id="formForgot" name="formForgot" class="form-signin">
+										<form action="index.html" id="formForgot" name="formForgot"
+											class="form-signin">
 											<h4 class="text-center">Enter Your E-mail Account</h4>
 											<input type="email" required="required"
 												placeholder="Your E-mail" class="form-control" /> <br />
@@ -120,8 +125,8 @@
 
 
 	<%@include file="footer.jsp"%>
-	
-	
+
+
 
 	<!-- GLOBAL SCRIPTS -->
 	<script src="/assets/plugins/jquery-3.2.1.js"></script>
@@ -141,5 +146,5 @@
 </body>
 </html>
 <%
-    more = null;
+	more = null;
 %>

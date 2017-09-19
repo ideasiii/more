@@ -202,7 +202,7 @@
 										</button>
 									</div>
 
-									<div class="white-box" style="overflow-y: scroll;white-space:nowrap;">
+									<div class="white-box" style="overflow-y: scroll;white-space:nowrap;min-height: 360px;">
 										<%
 										    if (null != strID) {
 
