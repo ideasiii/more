@@ -35,6 +35,18 @@
 
 <!--  JavaScript -->
 <script src="js/appValid.js"></script>
+<script type="text/javascript">
+	function showCheckBox1(formName) {
+		var form = document.getElementById(formName);
+		var formname = form.name;
+		
+		if (formname == "formAppRegistration") {
+			document.getElementById("checkD").style.display = "none";	
+			document.getElementById("checkA").style.display = "block";	
+		}
+	}
+	
+</script>
 
 </head>
 
@@ -131,8 +143,8 @@
 
 						<div class="modal-footer"
 							style="margin: 0; text-align: center; background-color: #f8f8f8;">
-							<button type="button" class="btn btn-line btn-primary"
-								data-dismiss="modal">I have read and understood the
+							<button type="button" class="btn btn-line btn-primary" data-dismiss="modal"
+								 onclick="showCheckBox1('formAppRegistration')">I have read and understood the
 								above notification</button>
 						</div>
 
@@ -272,7 +284,7 @@
 											</dd>
 										</dl>
 
-										<div class="checkbox" style="padding: 0 15%;">
+										<div class="checkbox" id="checkD" style="padding: 0 15%;">
 											<input type="checkbox" id="ch0" disabled="disabled" />
 											<p>
 												<strong class="text">I agreed that III
@@ -283,7 +295,7 @@
 												</a>
 											</p>
 										</div>
-										<div class="checkbox" style="padding: 0 15%;">
+										<div class="checkbox" id="checkA" style="padding: 0 15%;display: none;">
 											<input type="checkbox" id="ch1" />
 											<p>
 												<strong class="text" for="ch1">I agreed that III
