@@ -63,7 +63,7 @@
 
 			if (nUserId > 0)
 				More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),
-						HttpsClient.UrlEncode(jObj.toString()));
+						jObj.toString());
 			else {
 				More.webTracker(request, "User registeration failed, error: no response from server ", strResult);
 			}
