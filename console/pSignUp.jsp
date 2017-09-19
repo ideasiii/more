@@ -52,7 +52,7 @@
 			jObj.put("agreementVersion", strAgreeV);
 
 			HttpsClient httpsClient = new HttpsClient();
-			String strResult = httpsClient.sendPost(httpsURL, jObj.toString());
+			String strResult = httpsClient.sendPost(httpsURL,HttpsClient.UrlEncode(jObj.toString()));
 
 			JSONObject jObjUserId = new JSONObject(strResult);
 			int nUserId = 0;
@@ -63,7 +63,7 @@
 
 			if (nUserId > 0)
 				More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),
-						 jObj.toString());
+						HttpsClient.UrlEncode(jObj.toString()));
 			else {
 				More.webTracker(request, "User registeration failed, error: no response from server ", strResult);
 			}
