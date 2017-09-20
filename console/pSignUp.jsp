@@ -41,7 +41,7 @@
 
 			//String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
 
-			String httpsURL = "http://54.199.198.94/test/test.jsp";
+			String httpsURL = "http://54.199.198.94/test/testpost.jsp";
 			
 			JSONObject jObj = new JSONObject();
 			jObj.put("email", strEmail);
