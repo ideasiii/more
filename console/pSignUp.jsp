@@ -52,8 +52,8 @@
 			jObj.put("agreementVersion", strAgreeV);
 
 			HttpsClient httpsClient = new HttpsClient();
-			//String strResult = httpsClient.sendPost(httpsURL,jObj.toString());
-String strResult = httpsClient.sendPost(httpsURL,"{\"email\":\"strirrng@tt.tt\",\"password\":\"66352f5047b22615fae384a4a7555b84\",\"groupId\":1,\"displayName\":\"ssss\",\"company\":\"測試\",\"phone\":\"123\",\"purpose\":\"string\",\"agreementVersion\":\"string\"}");
+			String strResult = httpsClient.sendPost(httpsURL,jObj.toString());
+//String strResult = httpsClient.sendPost(httpsURL,"{\"email\":\"strirrng@tt.tt\",\"password\":\"66352f5047b22615fae384a4a7555b84\",\"groupId\":1,\"displayName\":\"ssss\",\"company\":\"測試\",\"phone\":\"123\",\"purpose\":\"string\",\"agreementVersion\":\"string\"}");
 			
 			JSONObject jObjUserId = new JSONObject(strResult);
 			int nUserId = 0;
