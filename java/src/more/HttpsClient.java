@@ -115,17 +115,24 @@ public class HttpsClient {
 		HttpClient client = null;
 		int tmout = 5; 
 		// client = buildHttpClient();
-		HttpParams httpParams = new BasicHttpParams();
-		httpParams.setParameter("charset", "UTF-8");
-		HttpConnectionParams.setConnectionTimeout(httpParams, tmout * 1000); 
-		HttpConnectionParams.setSoTimeout(httpParams, tmout * 1000);
-		client = new DefaultHttpClient(httpParams);
+
+		client = new DefaultHttpClient();
+		client.getParams().setParameter("http.protocol.content-charset",HTTP.UTF_8);  
+		client.getParams().setParameter(HTTP.CONTENT_ENCODING, HTTP.UTF_8);  
+		client.getParams().setParameter(HTTP.CHARSET_PARAM, HTTP.UTF_8);  
+		client.getParams().setParameter(HTTP.DEFAULT_PROTOCOL_CHARSET,HTTP.UTF_8);  
 
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("data", stringData));
 		
 		HttpPost post = new HttpPost(url);
-		post.addHeader("Content-Type", "application/json");
+		
+		 post.getParams().setParameter("http.protocol.content-charset",HTTP.UTF_8);  
+         post.getParams().setParameter(HTTP.CONTENT_ENCODING, HTTP.UTF_8);  
+         post.getParams().setParameter(HTTP.CHARSET_PARAM, HTTP.UTF_8);  
+         post.getParams().setParameter(HTTP.DEFAULT_PROTOCOL_CHARSET, HTTP.UTF_8);  
+		
+		post.addHeader("Content-Type", "application/json;charset=UTF-8");
 		post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 
 		HttpResponse responsePOST = client.execute(post);
