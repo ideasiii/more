@@ -33,6 +33,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import org.apache.http.client.HttpClient;
@@ -120,9 +121,12 @@ public class HttpsClient {
 		HttpConnectionParams.setSoTimeout(httpParams, tmout * 1000);
 		client = new DefaultHttpClient(httpParams);
 
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("data", stringData));
+		
 		HttpPost post = new HttpPost(url);
 		post.addHeader("Content-Type", "application/json");
-		post.setEntity(new StringEntity(stringData, "UTF-8"));
+		post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 
 		HttpResponse responsePOST = client.execute(post);
 		HttpEntity resEntity = responsePOST.getEntity();
