@@ -48,7 +48,7 @@
 			jObj.put("password", strHashedPassword);
 			jObj.put("groupId", 1);
 			jObj.put("displayName", strName);
-			jObj.put("company", strCompany);
+			jObj.put("company", "中文");
 			jObj.put("phone", strPhone);
 			jObj.put("purpose", strPurpose);
 			jObj.put("agreementVersion", strAgreeV);
