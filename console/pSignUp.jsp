@@ -39,8 +39,10 @@
 				more = null;
 			**/
 
-			String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
+			//String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
 
+			String httpsURL = "http://54.199.198.94/test/test.jsp";
+			
 			JSONObject jObj = new JSONObject();
 			jObj.put("email", strEmail);
 			jObj.put("password", strHashedPassword);
