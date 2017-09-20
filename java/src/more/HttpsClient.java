@@ -127,7 +127,7 @@ public class HttpsClient
 	client = buildHttpClient();
 	HttpPost post = new HttpPost(url);
 	post.addHeader("Content-Type", "application/json");
-	post.setEntity(new StringEntity(stringData));
+	post.setEntity(new StringEntity(stringData,"UTF-8"));
 
 	HttpResponse responsePOST = client.execute(post);
 	HttpEntity resEntity = responsePOST.getEntity();
