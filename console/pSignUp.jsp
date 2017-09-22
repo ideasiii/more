@@ -6,6 +6,9 @@
 <%@ page import="org.json.JSONObject"%>
 
 <%
+response.setCharacterEncoding("UTF-8");  
+response.setContentType("text/html;charset=UTF-8"); 
+
     request.setCharacterEncoding("UTF-8");
 			String rMethod = request.getMethod();
 			/** Web Tracker **/
@@ -55,7 +58,6 @@
 			jObj.put("purpose", strPurpose);
 			jObj.put("agreementVersion", strAgreeV);
 
-			
 			String strResult = new String(jObj.toString().getBytes("ISO-8859-1"), "UTF-8");
 			
 			HttpsClient httpsClient = new HttpsClient();
