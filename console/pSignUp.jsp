@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java"
+<%@ page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8"
 	session="false"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="java.util.Map"%>
