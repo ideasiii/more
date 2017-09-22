@@ -7,7 +7,7 @@
 
 <%
 response.setCharacterEncoding("UTF-8");  
-response.setContentType("text/html;charset=UTF-8"); 
+//response.setContentType("text/html;charset=UTF-8"); 
 
    request.setCharacterEncoding("UTF-8");
 			String rMethod = request.getMethod();
@@ -88,8 +88,9 @@ More.webTracker(request, "******************************", strResult);
 			}
 
 			if (nUserId > 0)
-				More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),
-						jObj.toString());
+				//More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),
+					//	jObj.toString());
+				More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),strResult);
 			else {
 				More.webTracker(request, "User registeration failed, error: no response from server ", strResult);
 			}
