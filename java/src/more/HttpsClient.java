@@ -30,6 +30,7 @@ import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import org.apache.http.client.HttpClient;
@@ -119,35 +120,49 @@ public class HttpsClient
 	return result;
     }
 
-    public String sendPost(String url, String stringData) throws Exception
-    {
+    @SuppressWarnings("deprecation")
+	public String sendPost(String url, String stringData) throws Exception {
 
-	String result = "";
-	HttpClient client = null;
-	client = buildHttpClient();
-	HttpPost post = new HttpPost(url);
-	post.addHeader("Content-Type", "application/json");
-	post.setEntity(new StringEntity(stringData));
+		String result = "";
+		HttpClient client = null;
+		int tmout = 5; 
+		// client = buildHttpClient();
 
-	HttpResponse responsePOST = client.execute(post);
-	HttpEntity resEntity = responsePOST.getEntity();
+		client = new DefaultHttpClient();
+		client.getParams().setParameter("http.protocol.content-charset",HTTP.UTF_8);  
+		client.getParams().setParameter(HTTP.CONTENT_ENCODING, HTTP.UTF_8);  
+		client.getParams().setParameter(HTTP.CHARSET_PARAM, HTTP.UTF_8);  
+		client.getParams().setParameter(HTTP.DEFAULT_PROTOCOL_CHARSET,HTTP.UTF_8);  
 
-	if (resEntity != null)
-	{
-	    result = EntityUtils.toString(resEntity);
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("data", stringData));
+		
+		HttpPost post = new HttpPost(url);
+		
+		 post.getParams().setParameter("http.protocol.content-charset",HTTP.UTF_8);  
+         post.getParams().setParameter(HTTP.CONTENT_ENCODING, HTTP.UTF_8);  
+         post.getParams().setParameter(HTTP.CHARSET_PARAM, HTTP.UTF_8);  
+         post.getParams().setParameter(HTTP.DEFAULT_PROTOCOL_CHARSET, HTTP.UTF_8);  
+		
+		post.addHeader("Content-Type", "application/json;charset=UTF-8");
+		post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+
+		HttpResponse responsePOST = client.execute(post);
+		HttpEntity resEntity = responsePOST.getEntity();
+
+		if (resEntity != null) {
+			result = EntityUtils.toString(resEntity);
+		}
+
+		client.getConnectionManager().shutdown();
+
+		if (StringUtility.isValid(result)) {
+			result.trim();
+		} else {
+			result = "";
+		}
+		return result;
 	}
-
-	client.getConnectionManager().shutdown();
-
-	if (StringUtility.isValid(result))
-	{
-	    result.trim();
-	} else
-	{
-	    result = "";
-	}
-	return result;
-    }
 
     public String sendGet(String url) throws Exception
     {
