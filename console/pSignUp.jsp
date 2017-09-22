@@ -56,8 +56,7 @@
 			jObj.put("agreementVersion", strAgreeV);
 
 			
-			byte[] b = jObj.toString().getBytes("ISO-8859-1");  
-			String strResult = new String(b,"UTF-8");
+			String strResult = new String(jObj.toString().getBytes("ISO-8859-1"), "UTF-8");
 			
 			HttpsClient httpsClient = new HttpsClient();
 			More.webTracker(request, "*****************$$$$*************", strResult);
