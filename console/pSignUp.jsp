@@ -74,7 +74,9 @@ response.setContentType("text/html;charset=UTF-8");
 			
 			
 			HttpJsonClient httpJsonClient = new HttpJsonClient();
-			httpJsonClient.post(httpsURL,strResult);
+			HttpJsonClient.Response resp = httpJsonClient.post(httpsURL,strResult);
+			System.out.printf("noError: %s, failMessage = %s, code = %d, body = %s", resp.noError ? "true" : "false"
+				, resp.failMessage, resp.code, resp.body);
 			return;
 			
 			
