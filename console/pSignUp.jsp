@@ -57,6 +57,7 @@ response.setContentType("text/html;charset=UTF-8");
 			jObj.put("phone", strPhone);
 			jObj.put("purpose", strPurpose);
 			jObj.put("agreementVersion", strAgreeV);
+			jObj.put("中文", strAgreeV);
 
 			String strResult = new String(jObj.toString().getBytes("ISO-8859-1"), "UTF-8");
 			
