@@ -72,6 +72,14 @@ response.setContentType("text/html;charset=UTF-8");
 				
 			// String strResult = new String(jObj.toString().getBytes("ISO-8859-1"), "UTF-8");
 			
+			
+			HttpJsonClient httpJsonClient = new HttpJsonClient();
+			httpJsonClient.post(httpsURL,strResult);
+			return;
+			
+			
+			
+			
 			HttpsClient httpsClient = new HttpsClient();
 			More.webTracker(request, "*****************$$$$*************", strResult);
 			 strResult = httpsClient.sendPost(httpsURL,strResult);
