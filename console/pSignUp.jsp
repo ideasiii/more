@@ -93,8 +93,7 @@
 
 			JSONObject jObjUserId = new JSONObject(resp.body);
 			if (null != jObjUserId && jObjUserId.has("userId")) {
-				//nUserId = jObjUserId.getInt("userId");
-				nUserId = 0;
+				nUserId = jObjUserId.getInt("userId");
 			}
 
 			if (nUserId > 0)
