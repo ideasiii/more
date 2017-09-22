@@ -55,6 +55,10 @@ else
 	case '1': 
 	    strShowMessage = "User data should be submitted by the POST method instead of GET method.";
 		break;
+	case '2': 
+	    strShowMessage = "User registeration failed.";
+		break;
+		
 	default:
 	    strMessage = "Oooops";
 	    break;
