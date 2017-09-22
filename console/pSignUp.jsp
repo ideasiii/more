@@ -44,8 +44,8 @@ response.setContentType("text/html;charset=UTF-8");
 				more = null;
 			**/
 
-			//String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
-
+			String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
+/*
 			String httpsURL = "http://54.199.198.94/test/testpost.jsp";
 			
 			JSONObject jObj = new JSONObject();
@@ -58,9 +58,19 @@ response.setContentType("text/html;charset=UTF-8");
 			jObj.put("purpose", strPurpose);
 			jObj.put("agreementVersion", strAgreeV);
 			jObj.put("中文", strAgreeV);
-
+*/	
+			
+			String strResult = "{"+
+				"\"email\": \""+strEmail+"\","+
+				"\"password\": \""+strHashedPassword+"\","+
+				"\"groupId\": 1,"+
+				"\"displayName\": \""+strName+"\","+
+				"\"company\": \"中文\","+
+				"\"phone\": \""+strPhone+"\","+
+				"\"purpose\": \""+strPurpose+"\","+
+				"\"agreementVersion\": \""+strAgreeV+"\"}";
+				
 			// String strResult = new String(jObj.toString().getBytes("ISO-8859-1"), "UTF-8");
-			String strResult = new String(jObj.toString().getBytes(), "UTF-8");
 			
 			HttpsClient httpsClient = new HttpsClient();
 			More.webTracker(request, "*****************$$$$*************", strResult);
