@@ -9,7 +9,7 @@
 response.setCharacterEncoding("UTF-8");  
 response.setContentType("text/html;charset=UTF-8"); 
 
-    request.setCharacterEncoding("UTF-8");
+    //request.setCharacterEncoding("UTF-8");
 			String rMethod = request.getMethod();
 			/** Web Tracker **/
 			More.webTracker(request, "request method", rMethod);
