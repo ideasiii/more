@@ -25,6 +25,8 @@
 			final String strAgreeV = request.getParameter("agreeVersion");
 
 
+			More.webTracker(request, "******************************", strName + strCompany + strPurpose);
+			
 			/** MD5 hash **/
 			More more = new More();
 			String hash = more.calcMD5(strPassword);
