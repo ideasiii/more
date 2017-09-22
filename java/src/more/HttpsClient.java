@@ -27,7 +27,6 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.scheme.SchemeSocketFactory;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
@@ -125,7 +124,6 @@ public class HttpsClient
 
 		String result = "";
 		HttpClient client = null;
-		int tmout = 5; 
 		// client = buildHttpClient();
 
 		client = new DefaultHttpClient();

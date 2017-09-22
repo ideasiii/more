@@ -40,7 +40,7 @@ public class HttpJsonClient {
 
 	private static AtomicInteger calledCounter = new AtomicInteger(0);
 
-	public static class Response {
+	public static class JsonResponse {
 		/**
 		 * 隢���葉�������<br>
 		 * ����撩�������蝺蒂������� response body �隞� parse � JSON Object ������� true��
@@ -57,7 +57,7 @@ public class HttpJsonClient {
 		//public Map<String, Object> body;
 		public String body;
 
-		private Response() {
+		private JsonResponse() {
 			this.noError = false;
 		}
 	}
@@ -70,8 +70,8 @@ public class HttpJsonClient {
 		return calledCounter.get();
 	}
 	
-	public synchronized Response post(String url, String params) {	
-		Response ret = new Response();
+	public synchronized JsonResponse post(String url, String params) {	
+		JsonResponse ret = new JsonResponse();
 		StringBuffer responseBuffer = new StringBuffer();
 
 		try {
