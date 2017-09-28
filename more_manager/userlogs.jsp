@@ -45,15 +45,14 @@
         <![endif]-->
 
 <!-- GLOBAL STYLES -->
+<link rel="stylesheet" href="/more/css/bootstrap_2.css" />
+<link rel="stylesheet" href="/more/css/main_2.css" />
+<link rel="stylesheet" href="/more/css/theme.css" />
+<link rel="stylesheet" href="/more/css/MoneAdmin.css" />
 <link rel="stylesheet"
-	href="/assets/plugins/bootstrap/css/bootstrap_2.css" />
-<link rel="stylesheet" href="/assets/css/main_2.css" />
-<link rel="stylesheet" href="/assets/css/theme.css" />
-<link rel="stylesheet" href="/assets/css/MoneAdmin.css" />
+	href="/more/css/plugins/Font-Awesome/css/font-awesome_2.css" />
 <link rel="stylesheet"
-	href="/assets/plugins/Font-Awesome/css/font-awesome_2.css" />
-<link rel="stylesheet"
-	href="/assets/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
+	href="/more/css/plugins/font-awesome-4.6.2/css/font-awesome_3.css" />
 <!--END GLOBAL STYLES -->
 
 <!-- PAGE LEVEL STYLES -->
@@ -216,7 +215,7 @@
 						</div>
 
 					</form>
-					<button type="button" class="btn btn-primary btn-circle btn-xl"
+					<button type="button" class="btn btn-primary btn-circle btn-grad btn-xl"
 						title="Query" onClick="checkInputData('formQueryUserLogs')">
 						<span class="sr-only">Query </span> <i class="icon-search"></i>
 					</button>

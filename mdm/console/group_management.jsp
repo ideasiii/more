@@ -1072,7 +1072,7 @@
 		name="<%=Mdm.Common.GROUP_NAME%>" type="hidden"> <input
 		name="SHOW_APP" type="hidden" value="true">
 </form>
-
+ 
 </html>
 <%
     if (null != mdm && null != request)

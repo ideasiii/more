@@ -58,13 +58,13 @@
 				</a>
 					<ul class="collapse" id="component-nav" style="background-color:#666666;">
 
-						<li class=""><a href="button.html"><i
+						<li class=""><a href="#"><i
 								class="icon-angle-right"></i> MORE Members </a></li>
-								<li class=""><a href="button.html"><i
+								<li class=""><a href="mainpage.jsp"><i
 								class="icon-angle-right"></i> MORE Permission </a></li>
-						<li class=""><a href="icon.html" ><i
+						<li class=""><a href="#" ><i
 								class="icon-angle-right"></i> MDM Permission </a></li>
-						<li class=""><a href="progress.html"><i
+						<li class=""><a href="#"><i
 								class="icon-angle-right"></i> Dashboard Permission </a></li>
 						
 					</ul></li>

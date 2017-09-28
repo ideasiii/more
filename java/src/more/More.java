@@ -49,12 +49,12 @@ public class More {
 		final public static String DB_PATH_IDEAS = "/data/sqlite/ideas.db";
 		final public static String DB_PATH_MORE_MEMBER = "/data/sqlite/more_member.db";
 
-		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://127.0.0.1:3306/more_member?useUnicode=true&characterEncoding=UTF-8";
-		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://127.0.0.1:3306/more?useUnicode=true&characterEncoding=UTF-8";
+		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://52.68.108.37:3306/more_member?useUnicode=true&characterEncoding=UTF-8";
+		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://52.68.108.37:3306/more?useUnicode=true&characterEncoding=UTF-8";
 		final public static String DB_USER = "more";
 		final public static String DB_PASS = "ideas123!";
 		
-		final public static String MONGO_DB = "10.0.20.30";
+		final public static String MONGO_DB = "54.199.198.94"; // 10.0.20.30
 
 		final public static String PATH_DOWNLOAD_LIB_ANDROID = "/more/sdk/download/libs/android";
 		final public static String PATH_DOWNLOAD_LIB_IOS = "/more/sdk/download/libs/ios";
@@ -653,6 +653,19 @@ public class More {
 	
 
 	/**
+	 * MySQL connection for backstage management
+	 **/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
 	 * sqlite connection
 	 **/
 
@@ -1174,7 +1187,7 @@ public class More {
 		if (null == strEvent)
 			strEvent = request.getRequestURI();
 		mapData.put("event", strEvent);
-		insert("10.0.20.30", 27017, "website", "more", mapData);
+		insert(Common.MONGO_DB, 27017, "website", "more", mapData);
 		mapData.clear();
 	}
 
