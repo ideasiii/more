@@ -16,7 +16,7 @@
 
 <!-- GLOBAL STYLES -->
 <link rel="stylesheet"
-	href="/assets/plugins/bootstrap/css/bootstrap_2.css" />
+	href="/assets/plugins/Bootstrap-3.3.7/css/bootstrap.css" />
 <link rel="stylesheet" href="/assets/css/main_2.css" />
 <link rel="stylesheet" href="/assets/css/theme.css" />
 <link rel="stylesheet" href="/assets/css/MoneAdmin.css" />
@@ -30,7 +30,7 @@
 <link href="/assets/plugins/flot/examples/examples.css" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/plugins/timeline/timeline.css" />
 <link
-	href="/assets/plugins/DataTables-1.10.16/css/dataTables.bootstrap.css"
+	href="/assets/plugins/DataTables-1.10.16/css/jquery.dataTables.css"
 	rel="stylesheet" />
 <!-- END PAGE LEVEL  STYLES -->
 
@@ -94,18 +94,18 @@
 											</tr>
 										</thead>
 
-										<tbody>
+										<tbody  style="">
 
 
 											<tr class="odd gradeX">
-												<td style="vertical-align: middle;">weer</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">rt</td>
-												<td class="center" style="vertical-align: middle;">ert</td>
-												<td class="center"><a href=""><button
+												<td style="vertical-align: middle;background-color: #636363;">weer</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">rt</td>
+												<td class="center" style="vertical-align: middle;background-color: #636363;">ert</td>
+												<td class="center" style="background-color: #636363;"><a href=""><button
 															class="btn btn-primary btn-grad"
 															style="margin-right: 10px;" title="Edit">
 															<i class="fa fa-gear" aria-hidden="true"></i><span
@@ -118,14 +118,14 @@
 													</button></td>
 											</tr>
 											<tr class="odd gradeX">
-												<td style="vertical-align: middle;">weer</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">df</td>
-												<td style="vertical-align: middle;">rt</td>
-												<td class="center" style="vertical-align: middle;">ert</td>
-												<td class="center"><a href=""><button
+												<td style="vertical-align: middle;background-color: #636363;">weer</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">df</td>
+												<td style="vertical-align: middle;background-color: #636363;">rt</td>
+												<td class="center" style="vertical-align: middle;background-color: #636363;">ert</td>
+												<td class="center" style="background-color: #636363;"><a href=""><button
 															class="btn btn-primary btn-grad"
 															style="margin-right: 10px;" title="Edit">
 															<i class="fa fa-gear" aria-hidden="true"></i><span
@@ -164,18 +164,18 @@
 
 	<!-- GLOBAL SCRIPTS -->
 	<script src="/assets/plugins/jquery-3.2.1.js"></script>
-	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/assets/plugins/Bootstrap-3.3.7/js/bootstrap.js"></script>
 	<script src="/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<!-- END GLOBAL SCRIPTS -->
 
 	<!-- PAGE LEVEL SCRIPTS -->
 	<script
-		src="assets/plugins/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+		src="/assets/plugins/DataTables-1.10.16/js/jquery.dataTables.js"></script>
 	<script
-		src="assets/plugins/DataTables-1.10.16/js/dataTables.bootstrap.js"></script>
+		src="/assets/plugins/DataTables-1.10.16/js/dataTables.bootstrap.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('#dataTables-CM').DataTable();
+		$(document).ready(function() {	
+		$('#dataTables-CM').DataTable();
 		});
 	</script>
 	<!-- END PAGE LEVEL SCRIPTS -->
