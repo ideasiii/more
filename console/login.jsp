@@ -77,9 +77,9 @@
 											<input type="hidden" name="randSession"
 												value="<%=request.getSession().getAttribute("randTxt")%>" />
 											<h4 class="text-center">Enter Your E-mail and Password</h4>
-											<input id="inputEmail" name="inputEmail" type="text"
+											<input id="inputEmail" name="inputEmail" type="text" required="required"
 												placeholder="E-mail Account" class="form-control" /> <input
-												id="inputPassword" name="inputPassword" type="password"
+												id="inputPassword" name="inputPassword" type="password" required="required"
 												placeholder="Password" class="form-control" />
 											<button
 												class="btn text-muted text-center btn-warning btn-grad"
@@ -88,10 +88,10 @@
 									</div>
 
 									<div id="forgot" class="tab-pane">
-										<form action="index.html" id="formForgot" name="formForgot"
+										<form action="pForgotPass.jsp" id="formForgot" name="formForgot"
 											class="form-signin">
 											<h4 class="text-center">Enter Your E-mail Account</h4>
-											<input type="email" required="required"
+											<input  id="inputAccount" name="inputAccount" type="email" required="required"
 												placeholder="Your E-mail" class="form-control" /> <br />
 											<button
 												class="btn text-muted text-center btn-success btn-grad"
