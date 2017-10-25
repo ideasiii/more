@@ -31,11 +31,16 @@
 		String rMethod = request.getMethod();
 		/** Web Tracker **/
 		More.webTracker(request, "request method", rMethod);
-
-		if (null != rMethod && rMethod.equals("GET")) {
-			response.sendRedirect("/more/console/error.jsp");
-
-		}
+		
+		if (null != rMethod && !rMethod.equals("POST")) {
+			%>
+			<script>
+				post('error.jsp', {
+					message : '1'
+				});
+			</script>
+			<%
+			    }
 
 		final String strEmail = request.getParameter("inputEmail");
 		final String strPassword = request.getParameter("inputPassword");

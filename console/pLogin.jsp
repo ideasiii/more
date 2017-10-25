@@ -61,8 +61,7 @@ More.webTracker(request, "load page", null);
 		});
 	</script>
 	<%
-	    }
-				if (null != rMethod && rMethod.equals("POST")) {
+	    }else{
 
 					//	  final String strEmail = request.getParameter("inputEmail");
 					//		final String strPassword = request.getParameter("inputPassword");

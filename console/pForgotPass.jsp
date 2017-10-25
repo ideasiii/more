@@ -60,16 +60,17 @@
 		});
 	</script>
 	<%
-		}
-		if (null != rMethod && rMethod.equals("POST") && null != strEmail) {
+		}else{
+			
+		if (null != strEmail) {
 
+			String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
 			
 			
 			
 			
 			
-			
-			
+		}
 			
 		}
 		
