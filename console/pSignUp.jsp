@@ -34,12 +34,12 @@
 		
 		if (null != rMethod && !rMethod.equals("POST")) {
 			%>
-			<script>
-				post('error.jsp', {
-					message : '1'
-				});
-			</script>
-			<%
+	<script>
+		post('error.jsp', {
+			message : '1'
+		});
+	</script>
+	<%
 			    }
 
 		final String strEmail = request.getParameter("inputEmail");
@@ -50,6 +50,55 @@
 		final String strPurpose = request.getParameter("inputPurpose");
 		final String strAgreeV = request.getParameter("agreeVersion");
 
+		if (null != strEmail){
+			
+			String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
+			
+			HttpsClient httpsClient = new HttpsClient();
+			String strURL = httpsURL + "?" + httpsClient.UrlEncode("email", strEmail, true);
+			
+			HttpsClient.Response respData = new HttpsClient.Response();
+			String strResult = httpsClient.sendGet(strURL, respData);
+			int nCode = respData.mnCode; //http return code
+			//String strMessage = respData.mstrContent;
+			
+			if (200 == nCode)
+			{
+				JSONObject jObjMessage = new JSONObject(strResult);
+				String strMessage = null;
+				String strStatus = null;
+				
+				 if (null != jObjMessage && jObjMessage.has("message"))
+				    {
+					strMessage = jObjMessage.getString("message");
+				    }
+				    if (null != jObjMessage && jObjMessage.has("status"))
+				    {
+					strStatus = jObjMessage.getString("status");
+				    }
+
+				
+				
+				
+				
+				
+			}else{
+				%>
+	<script>
+		post('error.jsp', {
+			message : '2'
+		});
+	</script>
+	<%
+			
+		}
+		
+			
+			
+			
+			
+			
+			
 		/** MD5 hash **/
 		More more = new More();
 		String hash = more.calcMD5(strPassword);
@@ -64,7 +113,7 @@
 			more = null;
 		**/
 
-		String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
+		String httpsURL = "https://ser.kong.srm.pw/dashboard/user";  //User registeration
 		/*		
 					JSONObject jObj = new JSONObject();
 					jObj.put("email", strEmail);
@@ -148,12 +197,12 @@
 			More.webTracker(request, "User registeration failed, error: " + resp.code,
 					"fail message: " + resp.failMessage);
 			%>
-			<script>
-				post('error.jsp', {
-					message : '2'
-				});
-			</script>
-			<%
+	<script>
+		post('error.jsp', {
+			message : '2'
+		});
+	</script>
+	<%
 		}
 	%>
 </body>

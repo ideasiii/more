@@ -66,6 +66,7 @@
 
 			String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
 			
+			HttpsClient httpsClient = new HttpsClient();
 			
 			
 			
