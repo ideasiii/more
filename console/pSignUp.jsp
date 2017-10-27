@@ -68,14 +68,17 @@
 				String strMessage = null;
 				String strStatus = null;
 				
+				
 				 if (null != jObjMessage && jObjMessage.has("message"))
 				    {
 					strMessage = jObjMessage.getString("message");
 				    }
-				    if (null != jObjMessage && jObjMessage.has("status"))
+				 if (null != jObjMessage && jObjMessage.has("status"))
 				    {
 					strStatus = jObjMessage.getString("status");
 				    }
+				
+				   
 
 				
 				
