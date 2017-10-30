@@ -63,7 +63,8 @@
 		}else{
 			
 		if (null != strEmail) {
-
+			System.out.println("*********************************1. strEmail:" + strEmail);
+			
 			String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
 			
 			HttpsClient httpsClient = new HttpsClient();
@@ -74,7 +75,10 @@
 			int nCode = respData.mnCode; //http return code
 			//String strMessage = respData.mstrContent;
 
-			if (200 == nCode) {
+			System.out.println("*********************************3.nCode :" + nCode );
+			
+		//	if (200 == nCode) {
+		//		System.out.println("*********************************200");
 				JSONObject jObjMessage = new JSONObject(strResult);
 				String strMessage = null;
 				String strStatus = null;
@@ -85,13 +89,15 @@
 				if (null != jObjMessage && jObjMessage.has("message")) {
 					strMessage = jObjMessage.getString("message");
 					
+					System.out.println("*********************************3.strMessage:" + strMessage);
+					
 					if (strMessage == "conflict email") {
 					
+						System.out.println("*********************************");
 						
 						
 						
-						
-						
+						More.webTracker(request, "test", null);
 						
 						
 						
@@ -109,7 +115,7 @@
 				
 				
 				
-				} // Email check response code != 200
+			//	} // Email check response code != 200
 				
 		} // email 
 			
