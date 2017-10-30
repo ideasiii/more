@@ -31,16 +31,16 @@
 		String rMethod = request.getMethod();
 		/** Web Tracker **/
 		More.webTracker(request, "request method", rMethod);
-		
+
 		if (null != rMethod && !rMethod.equals("POST")) {
-			%>
+	%>
 	<script>
 		post('error.jsp', {
 			message : '1'
 		});
 	</script>
 	<%
-			    }
+		}
 
 		final String strEmail = request.getParameter("inputEmail");
 		final String strPassword = request.getParameter("inputPassword");
@@ -50,58 +50,6 @@
 		final String strPurpose = request.getParameter("inputPurpose");
 		final String strAgreeV = request.getParameter("agreeVersion");
 
-		if (null != strEmail){
-			
-			String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
-			
-			HttpsClient httpsClient = new HttpsClient();
-			String strURL = httpsURL + "?" + httpsClient.UrlEncode("email", strEmail, true);
-			
-			HttpsClient.Response respData = new HttpsClient.Response();
-			String strResult = httpsClient.sendGet(strURL, respData);
-			int nCode = respData.mnCode; //http return code
-			//String strMessage = respData.mstrContent;
-			
-			if (200 == nCode)
-			{
-				JSONObject jObjMessage = new JSONObject(strResult);
-				String strMessage = null;
-				String strStatus = null;
-				
-				
-				 if (null != jObjMessage && jObjMessage.has("message"))
-				    {
-					strMessage = jObjMessage.getString("message");
-				    }
-				 if (null != jObjMessage && jObjMessage.has("status"))
-				    {
-					strStatus = jObjMessage.getString("status");
-				    }
-				
-				   
-
-				
-				
-				
-				
-				
-			}else{
-				%>
-	<script>
-		post('error.jsp', {
-			message : '2'
-		});
-	</script>
-	<%
-			
-		}
-		
-			
-			
-			
-			
-			
-			
 		/** MD5 hash **/
 		More more = new More();
 		String hash = more.calcMD5(strPassword);
@@ -116,7 +64,7 @@
 			more = null;
 		**/
 
-		String httpsURL = "https://ser.kong.srm.pw/dashboard/user";  //User registeration
+		String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
 		/*		
 					JSONObject jObj = new JSONObject();
 					jObj.put("email", strEmail);
@@ -144,39 +92,7 @@
 		//HttpsClient httpsClient = new HttpsClient(); 
 		//	 strResult = httpsClient.sendPost(httpsURL,strResult);
 		//String strResult = httpsClient.sendPost(httpsURL,"{\"email\":\"strirrng@tt.tt\",\"password\":\"66352f5047b22615fae384a4a7555b84\",\"groupId\":1,\"displayName\":\"ssss\",\"company\":\"測試\",\"phone\":\"123\",\"purpose\":\"string\",\"agreementVersion\":\"string\"}");
-
-		int nUserId = 0;
-		if (resp.code == 200) {
-
-			JSONObject jObjUserId = new JSONObject(resp.body);
-			if (null != jObjUserId && jObjUserId.has("userId")) {
-				nUserId = jObjUserId.getInt("userId");
-			}
-
-			if (nUserId > 0)
-				//More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),
-				//	jObj.toString());
-				More.webTracker(request,
-						"User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),
-						strResult);
-			else {
-				More.webTracker(request, "User registeration failed, error: " + resp.failMessage, strResult);
-				Logs.showTrace("***User registeration failed, error: " + resp.failMessage);
-			}
-		} else {
-			More.webTracker(request, "User registeration failed, error: " + resp.code,
-					"fail message: " + resp.failMessage);
-			Logs.showTrace("***User registeration failed, error: " + resp.failMessage);
 	%>
-	<script>
-		post('error.jsp', {
-			message : '2'
-		});
-	</script>
-	<%
-		}
-	%>
-
 
 	<div class="row">
 		<div class="col-lg-12 title">
@@ -189,17 +105,30 @@
 	<form action="home.jsp" method="post" name="FormHome" id="FormHome">
 
 	</form>
+
 	<%
-		if (nUserId > 0) {
+		int nUserId = 0;
+		if (resp.code == 200) {
+
+			JSONObject jObjUserId = new JSONObject(resp.body);
+			if (null != jObjUserId && jObjUserId.has("userId")) {
+				nUserId = jObjUserId.getInt("userId");
+
+				if (nUserId > 0) {
+					//More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: " + String.valueOf(nUserId),
+					//	jObj.toString());
+					More.webTracker(request, "User registeration success:  Email: " + strEmail + " UserId: "
+							+ String.valueOf(nUserId), strResult);
 	%>
 	<script>
 		formSubmit('FormHome');
 	</script>
 	<%
 		} else {
-			More.webTracker(request, "User registeration failed, error: " + resp.code,
-					"fail message: " + resp.failMessage);
-			%>
+					//	User ID is invalid 
+					More.webTracker(request, "User registeration failed, error: " + resp.failMessage, strResult);
+					Logs.showTrace("***User registeration failed, error: " + resp.failMessage);
+	%>
 	<script>
 		post('error.jsp', {
 			message : '2'
@@ -207,6 +136,26 @@
 	</script>
 	<%
 		}
+			} else {
+				// jObjUserId 
+				More.webTracker(request, "User registeration failed, error: " + resp.code,
+						"fail message: " + resp.failMessage);
+				Logs.showTrace("***User registeration failed, error: " + resp.failMessage);
 	%>
+	<script>
+		post('error.jsp', {
+			message : '2'
+		});
+	</script>
+	<%
+		}
+		} else {
+			// User registeration response code != 200
+			More.webTracker(request, "User registeration failed, error: " + resp.code,
+					"fail message: " + resp.failMessage);
+			Logs.showTrace("***User registeration failed, error: " + resp.failMessage);
+		}
+	%>
+
 </body>
 </html>

@@ -39,6 +39,9 @@
  String strErrorCode = null;
  String strShowMessage = null;
 
+ //String strStatus = (String) session.getAttribute("Status");
+ String strSessMessage = (String) session.getAttribute("Message");
+
 if (200 == nErrorCode){
     strErrorCode = "";
 }
@@ -57,6 +60,12 @@ else
 		break;
 	case '2': 
 	    strShowMessage = "User registeration failed.";
+		break;
+	case '3': 
+	    strShowMessage = strSessMessage;
+		break;
+	case '4': 
+	    strShowMessage = "Recover password failed.";
 		break;
 		
 	default:
@@ -87,7 +96,10 @@ else
 
 
 	</div>
-
+<%
+//session.removeAttribute("Status");
+session.removeAttribute("Message");
+%>
 
 </body>
 </html>

@@ -88,7 +88,7 @@
 									</div>
 
 									<div id="forgot" class="tab-pane">
-										<form action="pForgotPass.jsp" id="formForgot" name="formForgot"
+										<form action="pForgotPass.jsp" method="post" id="formForgot" name="formForgot"
 											class="form-signin">
 											<h4 class="text-center">Enter Your E-mail Account</h4>
 											<input  id="inputAccount" name="inputAccount" type="email" required="required"

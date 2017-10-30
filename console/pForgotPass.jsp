@@ -67,13 +67,53 @@
 			String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
 			
 			HttpsClient httpsClient = new HttpsClient();
+			String strURL = httpsURL + "?" + httpsClient.UrlEncode("email", strEmail, true);
+
+			HttpsClient.Response respData = new HttpsClient.Response();
+			String strResult = httpsClient.sendGet(strURL, respData);
+			int nCode = respData.mnCode; //http return code
+			//String strMessage = respData.mstrContent;
+
+			if (200 == nCode) {
+				JSONObject jObjMessage = new JSONObject(strResult);
+				String strMessage = null;
+				String strStatus = null;
+
+				if (null != jObjMessage && jObjMessage.has("status")) 
+					strStatus = jObjMessage.getString("status");
+				
+				if (null != jObjMessage && jObjMessage.has("message")) {
+					strMessage = jObjMessage.getString("message");
+					
+					if (strMessage == "conflict email") {
+					
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					} else { // non conflict email
+					
+						More.webTracker(request, "Recover Password failed: non conflict email", " Email: " + strEmail);
+						response.sendRedirect("/more/console/signup.jsp");
+						
+					}
+				} // jObjMessage
+				
+				
+				
+				} // Email check response code != 200
+				
+		} // email 
 			
-			
-			
-			
-		}
-			
-		}
+		} //post
 		
 		
 		
