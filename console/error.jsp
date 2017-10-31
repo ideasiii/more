@@ -67,6 +67,9 @@ else
 	case '4': 
 	    strShowMessage = "Recover password failed.";
 		break;
+	case '5': 
+	    strShowMessage = "Recover password failed. Your email account does not exist, please sign up to continue.";
+		break;
 		
 	default:
 	    strMessage = "Oooops";

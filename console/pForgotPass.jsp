@@ -46,7 +46,7 @@
 <body>
 
 	<%
-	  final String strEmail = request.getParameter("inputAccount");
+		final String strEmail = request.getParameter("inputAccount");
 		request.setCharacterEncoding("UTF-8");
 		String rMethod = request.getMethod();
 		/** Web Tracker **/
@@ -60,75 +60,117 @@
 		});
 	</script>
 	<%
-		}else{
-			
-		if (null != strEmail) {
-			System.out.println("*********************************1. strEmail:" + strEmail);
-			
-			String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
-			
-			HttpsClient httpsClient = new HttpsClient();
-			String strURL = httpsURL + "?" + httpsClient.UrlEncode("email", strEmail, true);
+		} else {
 
-			HttpsClient.Response respData = new HttpsClient.Response();
-			String strResult = httpsClient.sendGet(strURL, respData);
-			int nCode = respData.mnCode; //http return code
-			//String strMessage = respData.mstrContent;
+			if (null != strEmail) {
+				System.out.println("*********************************1. strEmail:" + strEmail);
 
-			System.out.println("*********************************3.nCode :" + nCode );
-			
-		//	if (200 == nCode) {
-		//		System.out.println("*********************************200");
-				JSONObject jObjMessage = new JSONObject(strResult);
-				String strMessage = null;
-				String strStatus = null;
+				String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
 
-				if (null != jObjMessage && jObjMessage.has("status")) 
-					strStatus = jObjMessage.getString("status");
-				
-				if (null != jObjMessage && jObjMessage.has("message")) {
-					strMessage = jObjMessage.getString("message");
-					
-					System.out.println("*********************************3.strMessage:" + strMessage);
-					
-					if (strMessage == "conflict email") {
-					
-						System.out.println("*********************************");
-						
-						
-						
-						More.webTracker(request, "test", null);
-						
-						
-						
-						
-						
-						
-						
-					} else { // non conflict email
-					
-						More.webTracker(request, "Recover Password failed: non conflict email", " Email: " + strEmail);
-						response.sendRedirect("/more/console/signup.jsp");
-						
-					}
-				} // jObjMessage
-				
-				
-				
-			//	} // Email check response code != 200
-				
-		} // email 
-			
-		} //post
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				HttpsClient httpsClient = new HttpsClient();
+				String strURL = httpsURL + "?" + httpsClient.UrlEncode("email", strEmail, true);
+
+				HttpsClient.Response respData = new HttpsClient.Response();
+				String strResult = httpsClient.sendGet(strURL, respData);
+				int nCode = respData.mnCode; //http return code
+				//String strMessage = respData.mstrContent;
+
+				System.out.println("*********************************3.nCode :" + nCode);
+
+				if (400 == nCode) {
+					System.out.println("*********************************400");
+					JSONObject jObjMessage = new JSONObject(strResult);
+					String strMessage = null;
+					String strStatus = null;
+
+					if (null != jObjMessage && jObjMessage.has("status"))
+						strStatus = jObjMessage.getString("status");
+
+					if (null != jObjMessage && jObjMessage.has("message")) {
+						strMessage = jObjMessage.getString("message");
+
+						System.out.println("*********************************3.strMessage:" + strMessage);
+
+						if (strMessage.contains("conflict email")) {
+							// email valid SUCCESS to recover password
+							System.out.println("*********************************email valid SUCCESS to recover password");
+
+							
+
+							
+							
+							
+							
+							
+							
+							More.webTracker(request, "test", null);
+							
+							
+							
+						} else {
+							// non conflict email
+							More.webTracker(request,
+									"Recover Password failed: non conflict email, MESSAGE: " + strMessage,
+									" Email: " + strEmail);
+	%>
+	<script>
+		post('error.jsp', {
+			message : '4'
+		});
+	</script>
+	<%
+		}
+					} else {
+						// jObjMessage = null
+						More.webTracker(request,
+								"Recover Password failed: non conflict email, Response Code: " + nCode,
+								" Email: " + strEmail);
+	%>
+	<script>
+		post('error.jsp', {
+			message : '4'
+		});
+	</script>
+	<%
+		}
+				} // Email check response code != 400
+
+				if (200 == nCode) {
+
+					More.webTracker(request, "Recover Password failed: non conflict email, Response Code: " + nCode,
+							" Email: " + strEmail);
+					//response.sendRedirect("/more/console/signup.jsp");
+	%>
+	<script>
+		post('error.jsp', {
+			message : '5'
+		});
+	</script>
+	<%
+		} else {
+					// Email check response code != 200 && code != 400
+					More.webTracker(request, "Recover Password failed. Response Code: " + nCode,
+							" Email: " + strEmail);
+	%>
+	<script>
+		post('error.jsp', {
+			message : '4'
+		});
+	</script>
+	<%
+		}
+			} else {
+				// email = null
+				More.webTracker(request, "Recover Password failed.", " Email: " + strEmail);
+	%>
+	<script>
+		post('error.jsp', {
+			message : '4'
+		});
+	</script>
+	<%
+		}
+		} //method = post
 	%>
 </body>
 </html>
