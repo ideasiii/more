@@ -95,18 +95,39 @@
 							// email valid SUCCESS to recover password
 							System.out.println("*********************************email valid SUCCESS to recover password");
 
+							httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize"; 
 							
+							String strAdEmail = "iiimoreapi@gmail.com";
+							String strAdClientId = "30v3ipcocin86onnb4gli0l2bf";
+							String strAToken = null;
+							int nUserId = 0;
+							
+							JSONObject jobj = new JSONObject();
+							jobj.put("email", strAdEmail);
+							jobj.put("clientId", strAdClientId);
 
+							httpsClient = new HttpsClient();
+							String strAuthResult = httpsClient.sendPost(httpsURL, jobj.toString());
+
+							JSONObject jObjAuth = new JSONObject(strAuthResult);
 							
-							
-							
-							
+							if (null != jObjAuth && jObjAuth.has("accessToken")) {
+								strAToken = jObjAuth.getString("accessToken");
+							}
+							if (null != jObjAuth && jObjAuth.has("userId")) {
+								nUserId = jObjAuth.getInt("userId");
+							}
+							if (null != strAToken && 0 < nUserId) {
+							// Get admin token to recover password
+								
+								
+								
 							
 							
 							More.webTracker(request, "test", null);
 							
 							
-							
+							} // Admin token
 						} else {
 							// non conflict email
 							More.webTracker(request,
