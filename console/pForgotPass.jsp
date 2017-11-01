@@ -75,7 +75,7 @@
 				int nCode = respData.mnCode; //http return code
 				//String strMessage = respData.mstrContent;
 
-				System.out.println("*********************************3.nCode :" + nCode);
+				System.out.println("*********************************2.nCode :" + nCode);
 
 				if (400 == nCode) {
 					System.out.println("*********************************400");
@@ -93,46 +93,101 @@
 
 						if (strMessage.contains("conflict email")) {
 							// email valid SUCCESS to recover password
-							System.out.println("*********************************email valid SUCCESS to recover password");
+							Logs.showTrace("**********email valid SUCCESS to recover password");
 
-							httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize"; 
-							
+							httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize";
+
 							String strAdEmail = "iiimoreapi@gmail.com";
 							String strAdClientId = "30v3ipcocin86onnb4gli0l2bf";
 							String strAToken = null;
 							int nUserId = 0;
-							
+
 							JSONObject jobj = new JSONObject();
 							jobj.put("email", strAdEmail);
 							jobj.put("clientId", strAdClientId);
-
+							
 							httpsClient = new HttpsClient();
 							String strAuthResult = httpsClient.sendPost(httpsURL, jobj.toString());
 
 							JSONObject jObjAuth = new JSONObject(strAuthResult);
-							
+
 							if (null != jObjAuth && jObjAuth.has("accessToken")) {
 								strAToken = jObjAuth.getString("accessToken");
 							}
 							if (null != jObjAuth && jObjAuth.has("userId")) {
 								nUserId = jObjAuth.getInt("userId");
 							}
+							
 							if (null != strAToken && 0 < nUserId) {
-							// Get admin token to recover password
+								// Get admin token to recover password
+								Logs.showTrace("**********Token: " + strAToken + " UserID: " + nUserId);
+
+						//		httpsURL = "https://ser.kong.srm.pw/dashboard/user/reset-password";
+								httpsURL = "https://ser.kong.srm.pw/dashboard/user/reset-password?email="+strEmail +"&api_key=" + strAToken;
 								
+								JSONObject jobjRP = new JSONObject();
+							/*	jobjRP = new JSONObject();
+								jobjRP.put("email", strEmail);
+								jobjRP.put("api_key", strAToken);**/
 								
+								httpsClient = new HttpsClient();
+								HttpsClient.Response respRPData = new HttpsClient.Response();
+								String strRPAuthResult = httpsClient.sendPost(httpsURL, jobjRP.toString());
+								Logs.showTrace("****0******" + strRPAuthResult);
 								
+								int nRPCode = respRPData.mnCode;
+								Logs.showTrace("**********nRPCode:" + nRPCode);
 							
-							
-							More.webTracker(request, "test", null);
-							
-							
-							} // Admin token
+								
+								if (200 == nRPCode)
+								{
+									//****RESET-PASSWORD SUCCESS****
+									More.webTracker(request,
+										"Recover Password SUCCESS: EMAIL:" + strEmail,
+										" ADTOKEN: " + strAToken + " USERID: " + nUserId);
+									response.sendRedirect("/more/console/login.jsp");
+									
+									
+								} else {
+								// reset-password response code != 200
+									
+												if (strRPAuthResult != "") {
+									Logs.showTrace("****a******");
+									JSONObject jObjRPAuth = new JSONObject(strRPAuthResult);
+									Logs.showTrace("****1******");
+								}
+						
+										
+									Logs.showTrace("****reset failed******nRPCode:" + nRPCode);
+										
+										
+										
+										
+										
+									
+								}
+							} else { 
+								// FAILED to get Admin token
+								More.webTracker(request,
+										"Recover Password failed: token authorize failed, Email: " + strEmail,
+										" TOKEN: " + strAToken + " USERID: " + nUserId);
+								Logs.showTrace("**********token authorize failed, email: " + strEmail + " token: " + strAToken
+										+ " UserId: " + nUserId);
+		%>
+		<script>
+			post('error.jsp', {
+				message : '4'
+			});
+		</script>
+		<%
+							}
 						} else {
 							// non conflict email
 							More.webTracker(request,
 									"Recover Password failed: non conflict email, MESSAGE: " + strMessage,
 									" Email: " + strEmail);
+							Logs.showTrace("**********non conflict email, email: " + strEmail + " nCode: " + nCode
+									+ " Message: " + strMessage);
 	%>
 	<script>
 		post('error.jsp', {
@@ -146,6 +201,7 @@
 						More.webTracker(request,
 								"Recover Password failed: non conflict email, Response Code: " + nCode,
 								" Email: " + strEmail);
+						Logs.showTrace("**********jObjMessage = null, email: " + strEmail + " nCode: " + nCode);
 	%>
 	<script>
 		post('error.jsp', {
@@ -154,13 +210,14 @@
 	</script>
 	<%
 		}
-				} // Email check response code != 400
+				} else { // Email check response code != 400
 
-				if (200 == nCode) {
+					if (200 == nCode) {
 
-					More.webTracker(request, "Recover Password failed: non conflict email, Response Code: " + nCode,
-							" Email: " + strEmail);
-					//response.sendRedirect("/more/console/signup.jsp");
+						More.webTracker(request,
+								"Recover Password failed: non conflict email, Response Code: " + nCode,
+								" Email: " + strEmail);
+						//response.sendRedirect("/more/console/signup.jsp");
 	%>
 	<script>
 		post('error.jsp', {
@@ -169,9 +226,11 @@
 	</script>
 	<%
 		} else {
-					// Email check response code != 200 && code != 400
-					More.webTracker(request, "Recover Password failed. Response Code: " + nCode,
-							" Email: " + strEmail);
+						// Email check response code != 200 && code != 400
+						More.webTracker(request, "Recover Password failed. Response Code: " + nCode,
+								" Email: " + strEmail);
+						Logs.showTrace("**********Email check response code != 200, email: " + strEmail + " nCode: "
+								+ nCode);
 	%>
 	<script>
 		post('error.jsp', {
@@ -180,9 +239,11 @@
 	</script>
 	<%
 		}
+				}
 			} else {
 				// email = null
 				More.webTracker(request, "Recover Password failed.", " Email: " + strEmail);
+				Logs.showTrace("**********email = null :" + strEmail);
 	%>
 	<script>
 		post('error.jsp', {
