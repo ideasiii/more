@@ -63,7 +63,7 @@
 		} else {
 
 			if (null != strEmail) {
-				System.out.println("*********************************1. strEmail:" + strEmail);
+				Logs.showTrace("*********************************1. strEmail:" + strEmail);
 
 				String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
 
@@ -75,7 +75,7 @@
 				int nCode = respData.mnCode; //http return code
 				//String strMessage = respData.mstrContent;
 
-				System.out.println("*********************************2.nCode :" + nCode);
+				Logs.showTrace("*********************************2.nCode :" + nCode);
 
 				if (400 == nCode) {
 					System.out.println("*********************************400");
@@ -136,11 +136,11 @@
 								Logs.showTrace("****AuthResult: " + strRPAuthResult);
 
 								if ("" == strRPAuthResult) {
-									//****RESET-PASSWORD SUCCESS****
+					//			****RESET-PASSWORD SUCCESS**** 
 									More.webTracker(request, "Recover Password SUCCESS: EMAIL:" + strEmail,
 											" ADTOKEN: " + strAToken + " USERID: " + nUserId);
 									
-									response.sendRedirect("/more/console/login.jsp");
+									response.sendRedirect("/more/console/resetPWsuccess.jsp");
 
 								} else {
 									// reset-password response code != 200
