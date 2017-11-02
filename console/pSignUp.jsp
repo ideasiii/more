@@ -76,7 +76,7 @@
 					jObj.put("purpose", strPurpose);
 					jObj.put("agreementVersion", strAgreeV);
 					jObj.put("中文", strAgreeV);
-		*/
+		*/ 
 		String strResult = "{" + "\"email\": \"" + strEmail + "\"," + "\"password\": \"" + strHashedPassword + "\","
 				+ "\"groupId\": 1," + "\"displayName\": \"" + strName + "\"," + "\"company\": \"" + strCompany
 				+ "\"," + "\"phone\": \"" + strPhone + "\"," + "\"purpose\": \"" + strPurpose + "\","
