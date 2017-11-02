@@ -11,7 +11,7 @@
 
     if (null != strEmailValid && null != strTokenValid)
     {
-		String httpsURL = "https://ser.kong.srm.pw/dashboard/user/check";
+		String httpsURL = "https://ser.kong.srm.pw/dashboard/token/validation";
 
 		HttpsClient httpsClient = new HttpsClient();
 		String strURL = httpsURL + "?" + httpsClient.UrlEncode("token", strTokenValid, true);
