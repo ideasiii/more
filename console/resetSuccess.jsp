@@ -33,59 +33,18 @@
 <body>
 
 <%
-
- String strMessage = request.getParameter("message");
- int nErrorCode = response.getStatus();
- String strErrorCode = null;
- String strShowMessage = null;
-
- //String strStatus = (String) session.getAttribute("Status");
- String strSessMessage = (String) session.getAttribute("Message");
-
-if (200 == nErrorCode){
-    strErrorCode = "";
-}
-else
-{
-    strErrorCode = Integer.toString(nErrorCode);
-}
-
-if (null == strMessage || strMessage.length() == 0)
-    strMessage = "Oooops";
-else 
-	switch (strMessage.charAt(0))
-	{
-	case '1': 
-	    strShowMessage = "User data should be submitted by the POST method instead of GET method.";
-		break;
-	case '2': 
-	    strShowMessage = "User registeration failed.";
-		break;
-	case '3': 
-	    strShowMessage = strSessMessage;
-		break;
-	case '4': 
-	    strShowMessage = "Recover password failed.";
-		break;
-	case '5': 
-	    strShowMessage = "Recover password failed. Your email account does not exist, please sign up to continue.";
-		break;
-		
-	default:
-	    strMessage = "Oooops";
-	    break;
-	}
-
+String strEmail = (String) session.getAttribute("reset PW Email");
 %>
 
 	<div class="container">
 		<div class="col-lg-8 col-lg-offset-2 text-center"
 			style="padding: 8% 22%;">
 			<div class="logo">
-				<h1>Error <span><%=strErrorCode%></span> ! </h1>
+				<h2>Password Reset</h2>
 			</div>
 			
-			<p class="lead text-muted"><%=strShowMessage%></p>
+			<span class="lead text-muted">We have sent an email to <%=strEmail%>.</span>
+			<p class="lead text-muted">Please check your email to reset your password.</p>
 			
 			<br />
 			<div class="col-lg-6  col-lg-offset-3">
@@ -100,8 +59,7 @@ else
 
 	</div>
 <%
-//session.removeAttribute("Status");
-session.removeAttribute("Message");
+//session.removeAttribute("reset PW Email");
 %>
 
 </body>

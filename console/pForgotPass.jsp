@@ -137,10 +137,13 @@
 
 								if ("" == strRPAuthResult) {
 					//			****RESET-PASSWORD SUCCESS**** 
+					
+								session.setAttribute("reset PW Email", strEmail);
+					
 									More.webTracker(request, "Recover Password SUCCESS: EMAIL:" + strEmail,
 											" ADTOKEN: " + strAToken + " USERID: " + nUserId);
 									
-									response.sendRedirect("/more/console/resetPWsuccess.jsp");
+									response.sendRedirect("/more/console/resetSuccess.jsp");
 
 								} else {
 									// reset-password response code != 200
