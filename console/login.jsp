@@ -18,7 +18,7 @@
 	String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 	request.getSession().setAttribute("randTxt", uuid);
 %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -90,6 +90,8 @@
 									<div id="forgot" class="tab-pane">
 										<form action="pForgotPass.jsp" method="post" id="formForgot" name="formForgot"
 											class="form-signin">
+											<input type="hidden" name="randSession"
+												value="<%=request.getSession().getAttribute("randTxt")%>" />
 											<h4 class="text-center">Enter Your E-mail Account</h4>
 											<input  id="inputAccount" name="inputAccount" type="email" required="required"
 												placeholder="Your E-mail" class="form-control" /> <br />
