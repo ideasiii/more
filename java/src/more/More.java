@@ -48,12 +48,13 @@ public class More {
 		final public static String UPLOAD_FILE_PATH = "/uploadfile";
 		final public static String DB_PATH_IDEAS = "/data/sqlite/ideas.db";
 		final public static String DB_PATH_MORE_MEMBER = "/data/sqlite/more_member.db";
-/*
+		/*
 		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://52.68.108.37:3306/more_member?useUnicode=true&characterEncoding=UTF-8";
 		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://52.68.108.37:3306/more?useUnicode=true&characterEncoding=UTF-8";
-	*/	
+  //wins IP version */
 		final public static String MYSQLDB_URL_MORE_MEMBER = "jdbc:mysql://127.0.0.1:3306/more_member?useUnicode=true&characterEncoding=UTF-8";
 		final public static String MYSQLDB_URL_MORE = "jdbc:mysql://127.0.0.1:3306/more?useUnicode=true&characterEncoding=UTF-8";
+  //aws IP version 	
 		final public static String DB_USER = "more";
 		final public static String DB_PASS = "ideas123!";
 		

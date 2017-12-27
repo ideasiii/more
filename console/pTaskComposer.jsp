@@ -78,9 +78,11 @@ function post(path, params, method) {
 
 		%>
 		<script>
-		post('testpost.jsp', {accessToken: '<%=strAToken%>'});
+		post('testpost.jsp', {clientId: '<%=strClientId%>',returnURL: 'https://www.more.org.tw'});  
 		</script>
-		
+		<!--<script>
+		post('testpost.jsp', {returnURL: 'https://www.more.org.tw'});  
+		</script>  -->
 		<%
 		
 	    }

@@ -25,9 +25,12 @@
 
 <%
 
-final String strAToken = request.getParameter("accessToken");
+//final String strAToken = request.getParameter("accessToken");
+final String strClientId = request.getParameter("clientId");
+final String strURL = request.getParameter("returnURL");
 
-//out.println(strAToken);
+
+out.println("clientId: " + strClientId + " URL: " + strURL); 
 
 %>
   <div class="container">
