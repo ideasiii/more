@@ -78,7 +78,7 @@ function post(path, params, method) {
 
 		%>
 		<script>
-		post('testpost.jsp', {clientId: '<%=strClientId%>',returnURL: 'https://www.more.org.tw'});  
+		post('http://service.inmedia.com.tw/System/sys-edit.htm', {clientId: '<%=strClientId%>',returnURL: 'https://www.more.org.tw'});  
 		</script>
 		<!--<script>
 		post('testpost.jsp', {returnURL: 'https://www.more.org.tw'});  
