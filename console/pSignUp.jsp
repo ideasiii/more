@@ -4,6 +4,7 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="more.*"%>
 <%@ page import="org.json.JSONObject"%>
+<%@ page import="java.net.URLEncoder"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -56,7 +57,6 @@
 		String strHashedPassword = more.calcMD5("$1$MoREKey" + hash);
 
 		more = null;
-
 		/**	More more = new More();
 		
 			String strToken = more.generateToken(strEmail, false);
@@ -64,7 +64,34 @@
 			more = null;
 		**/
 
-		String httpsURL = "https://ser.kong.srm.pw/dashboard/user";
+		String httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize";
+
+		String strAdEmail = "iiimoreapi@gmail.com";
+		String strAdClientId = "30v3ipcocin86onnb4gli0l2bf";
+		String strAToken = null;
+		int nAUserId = 0;
+
+		JSONObject jobj = new JSONObject();
+		jobj.put("email", strAdEmail);
+		jobj.put("clientId", strAdClientId);
+
+		HttpsClient httpsClient = new HttpsClient();
+		String strAuthResult = httpsClient.sendPost(httpsURL, jobj.toString());
+
+		JSONObject jObjAuth = new JSONObject(strAuthResult);
+
+		if (null != jObjAuth && jObjAuth.has("accessToken")) {
+			strAToken = jObjAuth.getString("accessToken");
+		}
+		if (null != jObjAuth && jObjAuth.has("userId")) {
+			nAUserId = jObjAuth.getInt("userId");
+		}
+		
+		if (null != strAToken && 0 < nAUserId) {
+			// Got admin token 
+			Logs.showTrace("**********Token: " + strAToken + " UserID: " + nAUserId);
+		
+		 httpsURL = "https://ser.kong.srm.pw/dashboard/user?" + httpsClient.UrlEncode("api_key", strAToken, true);
 		/*		
 					JSONObject jObj = new JSONObject();
 					jObj.put("email", strEmail);
@@ -155,6 +182,21 @@
 					"fail message: " + resp.failMessage);
 			Logs.showTrace("***User registeration failed, error: " + resp.failMessage);
 		}
+		
+		} else {
+			// FAILED to get Admin token
+			More.webTracker(request, "User registeration failed: token authorize failed, Email: " + strEmail,
+					" TOKEN: " + strAToken + " USERID: " + nAUserId);
+			Logs.showTrace("**********token authorize failed, email: " + strEmail + " token: " + strAToken
+					+ " UserId: " + nAUserId);
+%>
+<script>
+	post('error.jsp', {
+		message : '2'
+	});
+</script>
+<%
+	}
 	%>
 
 </body>
