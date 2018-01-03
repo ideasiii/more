@@ -55,21 +55,31 @@ if (null == strMessage || strMessage.length() == 0)
 else 
 	switch (strMessage.charAt(0))
 	{
+		/** post method **/
 	case '1': 
 	    strShowMessage = "User data should be submitted by the POST method instead of GET method.";
 		break;
+		/** register **/
 	case '2': 
 	    strShowMessage = "User registeration failed.";
 		break;
+		/** original message **/
 	case '3': 
 	    strShowMessage = strSessMessage;
 		break;
+		/** reset password **/
 	case '4': 
 	    strShowMessage = "Recover password failed.";
 		break;
 	case '5': 
 	    strShowMessage = "Recover password failed. Your email account does not exist, please sign up to continue.";
 		break;
+		/** account verify **/
+	case '6': 
+	    strShowMessage = "Verify email failed.";
+		break;
+		
+		
 		
 	default:
 	    strMessage = "Oooops";
