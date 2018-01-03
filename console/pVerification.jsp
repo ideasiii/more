@@ -68,6 +68,10 @@
 				if (200 == nCode) {
 					//****VERIFY EMAIL SUCCESS**** 
 					More.webTracker(request, "Email verification successs", "Email: " + strEmail);
+					Cookie cEmail = new Cookie("email", strEmail);
+					Cookie cCode = new Cookie("error", String.valueOf(nCode));
+					response.addCookie(cEmail);
+					response.addCookie(cCode);
 
 				} else {
 					JSONObject jObjMessage = new JSONObject(strResult);
@@ -80,6 +84,12 @@
 					if (400 == nCode) {
 						More.webTracker(request, "Email verification failed : " + nCode,
 								strMessage + " Email: " + strEmail);
+						Cookie cEmail = new Cookie("email", strEmail);
+						Cookie cCode = new Cookie("error", String.valueOf(nCode));
+						Cookie cMessage = new Cookie("message", strMessage);
+						response.addCookie(cEmail);
+						response.addCookie(cCode);
+						response.addCookie(cMessage);
 	%>
 	<script>
 		post('error.jsp', {
