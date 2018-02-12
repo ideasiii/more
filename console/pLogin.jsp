@@ -112,7 +112,7 @@
 			}
 
 			if (0 < nUserId) {
-				httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize";
+				httpsURL = "https://ser.kong.srm.pw/dashboard/token/authorize"; 
 
 				jobj = new JSONObject();
 				jobj.put("email", strEmail);

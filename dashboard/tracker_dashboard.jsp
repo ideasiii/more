@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="more.*"%>
 
-<%@include file="../../console/loginValid.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -29,12 +28,19 @@
 </head>
 <body>
 
+<%
+ String paraHost_url = "host_url";
+String value = "http%3A%2F%2F124.9.6.34%2F";
+
+%>
+
+
 	<script type='text/javascript'
 		src='http://124.9.6.34/javascripts/api/viz_v1.js'></script>
 	<div class='tableauPlaceholder' style='width: 100%; height: 100%;'>
 		<object class='tableauViz' width='100%' height='100%'
 			style='display: none;'>
-			<param name='host_url' value='http%3A%2F%2F124.9.6.34%2F' />
+			<param name='<%=paraHost_url%>' value='<%=value%>' />
 			<param name='site_root' value='' />
 			<param name='name' value='edubot_170601_10_0&#47;sheet0' />
 			<param name='tabs' value='no' />
