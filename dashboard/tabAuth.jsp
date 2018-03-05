@@ -54,7 +54,6 @@
 		Logs.showTrace("********ticket: " + tabResult);
 		return tabResult;
 	}
-	
 %>
 
 

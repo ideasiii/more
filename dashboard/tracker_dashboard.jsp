@@ -29,7 +29,7 @@
 <body>
 
 <%
- String paraHost_url = "host_url";
+String paraHost_url = "host_url";
 String value = "http%3A%2F%2F124.9.6.34%2F";
 
 %>

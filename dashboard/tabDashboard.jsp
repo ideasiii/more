@@ -4,11 +4,11 @@
 <%@include file="tabAuth.jsp"%>
 	
 <%
-	String strTicket = sendPost(); 
-
+	String strTicket = sendPost(); //Web server POSTS to Tableau Server
+	Logs.showTrace("********strTicket: " + strTicket);
+	
 	if (strTicket != null && !"".equals(strTicket)) {
 
-		
 		
 		
 		
