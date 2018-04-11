@@ -219,6 +219,7 @@
 																//out.println(strSD+strED);
 
 																DBCursor cursor = collection.find(dataQuery);
+																System.out.println("*****************dataQuery***" + dataQuery.toString());
 																while (cursor.hasNext()) {
 																	JSONObject jsonobj = new JSONObject(cursor.next().toString());
 																	jsonobj.remove("_id");

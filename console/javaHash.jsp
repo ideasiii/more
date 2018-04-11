@@ -11,7 +11,7 @@
 
     /** MD5 hash **/
     More more = new More();
-    String hash = more.calcMD5("testlogin");
+    String hash = more.calcMD5("test");
     String strHashedPassword = more.calcMD5("$1$MoREKey" + hash);
     
 	    
