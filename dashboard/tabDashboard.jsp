@@ -7,8 +7,10 @@
 	final String strTicket = sendPostTbaleau(); //Web server POSTS to Tableau Server
 	Logs.showTrace("********strTicket: " + strTicket);
 	
-	if (StringUtility.isValid(strTicket)) {
-
+	if (!StringUtility.isValid(strTicket)) {
+		response.sendRedirect("/more/console/error.jsp");
+	}
+		
 %>	
 	
 	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -52,10 +54,3 @@ String value = "http%3A%2F%2F124.9.6.34%2F";
 </body>
 </html>
 
-<%
-
-} else {
-response.sendRedirect("/more/console/error.jsp");
-}
-
-%>
