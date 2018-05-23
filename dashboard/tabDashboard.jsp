@@ -35,7 +35,7 @@ String value = "http%3A%2F%2F124.9.6.34%2F";
 
 	<script type='text/javascript'
 		src='http://124.9.6.34/javascripts/api/viz_v1.js'></script>
-	<div class='tableauPlaceholder' style='width: 100%; height: 100%;'>
+
 		<object class='tableauViz' width='100%' height='100%'
 			style='display: none;'>
 			<param name='<%=paraHost_url%>' value='<%=value%>' />
@@ -46,7 +46,7 @@ String value = "http%3A%2F%2F124.9.6.34%2F";
 			<param name='toolbar' value='no' />
 			<param name='showShareOptions' value='false' />
 		</object>
-	</div>
+
 
 
 
