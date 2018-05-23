@@ -15,7 +15,7 @@
 
 <%!//HTTP POST request
 	//Web server POSTS to Tableau Server
-	public String sendPost() throws Exception {
+	public String sendPostTbaleau() throws Exception {
 
 		String tabResult = "";
 		String tabUrl = "http://124.9.6.34/trusted";
