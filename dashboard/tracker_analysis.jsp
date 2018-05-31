@@ -98,7 +98,7 @@
 								<div class="panel-body">
 									<!-- <form action="/more/console/testpost.jsp" role="form"
 										name="formAppIDInput" id="formAppIDInput"> -->
-										 <form action="/more/dashboard/tabDashboard.jsp" role="form"
+										 <form action="/more/dashboard/tracker_dashboard.jsp" role="form"
 										name="formAppIDInput" id="formAppIDInput">
 										<div class="form-group">
 											<div class="col-lg-4 panel-content">
