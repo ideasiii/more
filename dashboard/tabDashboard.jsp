@@ -7,6 +7,8 @@
 <%
 	final String strTicket = sendPostTbaleau(); //Web server POSTS to Tableau Server
 	Logs.showTrace("********strTicket: " + strTicket);
+
+	 More.webTracker(request, "load page", "Ticket: " + strTicket);
 	
 	if (!StringUtility.isValid(strTicket)) {
 		response.sendRedirect("/more/console/error.jsp");
